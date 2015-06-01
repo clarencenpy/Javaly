@@ -5,7 +5,6 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 less
 iron:router
 twbs:bootstrap
@@ -15,3 +14,6 @@ jquery
 okgrow:iron-router-autoscroll
 
 
+cfs:standard-packages
+cfs:filesystem
+autopublish
