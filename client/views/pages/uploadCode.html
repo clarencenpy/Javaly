@@ -1,0 +1,23 @@
+<template name="uploadCode">
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="m-t-lg">
+
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            <h1>Upload test classes</h1>
+
+                            {{> upload_bootstrap fileTypes='.java' multiple=true formData=formData }}
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>

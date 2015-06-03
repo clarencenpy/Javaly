@@ -14,6 +14,13 @@ jquery
 okgrow:iron-router-autoscroll
 
 
-cfs:standard-packages
-cfs:filesystem
 autopublish
+tomi:upload-server
+tomi:upload-jquery
+aldeed:collection2
+ian:accounts-ui-bootstrap-3
+accounts-password
+sacha:spin
+aldeed:autoform
+mpowaga:autoform-summernote
+mizzao:sharejs-ace
