@@ -5,3 +5,5 @@ Template.uploadCode.helpers({
         return { userId: Session.get('questionId') };
     }
 });
+
+//TODO: finish the submitQuestion workflow

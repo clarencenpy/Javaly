@@ -22,7 +22,7 @@ Template.editor.events({
 
         Meteor.call('compileAndRun', {
             attemptId: Session.get('curAttempt'),
-            classname: 'Adder',
+            classname: 'Adder', //TODO: derive from the attemptId
             code: code
         }, function (err, result) {
             if (err) {
@@ -45,6 +45,7 @@ Template.editor.helpers({
         }
     },
 
+    //TODO: use the attemptid
     docid: function () {
         return '0001';
     }

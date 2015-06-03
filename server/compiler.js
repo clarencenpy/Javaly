@@ -53,11 +53,12 @@ Meteor.methods({
         //    }}});
         //}
 
+        //TODO: undo hardcoding
         //write the code into file
         var dir = process.env.PWD + '/uploads/attempts/' + options.attemptId;
 
         try {
-            execSync('mkdir -p ' + dir);
+            execSync('mkdir -p ' + dir); //TODO: there should be a better way instead of exec
         } catch (err) {
             throw new Meteor.Error(err.message);
         }
