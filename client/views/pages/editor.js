@@ -20,7 +20,7 @@ Template.editor.events({
         var editor = ace.edit('editor');
         var code = editor.getSession().getValue();
 
-        Meteor.call('compile', {
+        Meteor.call('compileAndRun', {
             attemptId: Session.get('curAttempt'),
             classname: 'Adder',
             code: code

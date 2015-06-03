@@ -28,35 +28,8 @@ writeFileSync = Meteor.wrapAsync(fs.writeFile);
 //mkdirpSync = Meteor.wrapAsync(mkdirp);
 
 Meteor.methods({
-    //compile: function (options) {
-    //    var args = ['javac'];
-    //    args.push('-cp');
-    //    args.push(options.classpath);
-    //    args.push(options.filepath);
-    //    var cmd = args.join(' ');
-    //
-    //    try {
-    //        execSync(cmd);
-    //        return {success: true};
-    //    } catch (err) {
-    //        throw new Meteor.Error(err.message);
-    //    }
-    //},
-    //run: function (options) {
-    //    var args = ['java'];
-    //    args.push('-cp');
-    //    args.push(options.classpath);
-    //    args.push(options.filepath);
-    //    var cmd = args.join(' ');
-    //
-    //    try {
-    //        return execSync(cmd);
-    //    } catch (err) {
-    //        throw new Meteor.Error(err.message);
-    //    }
-    //}
 
-    compile: function (options) {
+    compileAndRun: function (options) {
 
         Attempts.update(options.attemptId, {$set: {code: options.code}});
 
