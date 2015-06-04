@@ -1,8 +1,8 @@
 AutoForm.hooks({
     insertQuestionForm: {
         onSuccess: function (formType, result) {
-            Session.set('questionId', result);
-            Router.go('testQuestion');
+            Router.go('uploadCode/' + result); //result is the questionId
+            //TODO: route needs time to be detected
         }
     }
 });

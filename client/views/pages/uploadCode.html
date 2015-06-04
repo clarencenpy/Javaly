@@ -2,21 +2,24 @@
 
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="m-t-lg">
 
-                    <div class="row">
+            <div class="col-lg-6">
 
-                        <div class="col-lg-6">
-                            <h1>Upload test classes</h1>
+                <h1>Upload test classes</h1>
 
-                            {{> upload_bootstrap fileTypes='.java' multiple=true formData=formData }}
-                        </div>
+                {{> upload_bootstrap
+                    fileTypes='.java'
+                    multiple=true
+                    formData=formData
+                    callbacks=uploadCallback
+                }}
 
-                    </div>
-
-                </div>
             </div>
+
+            <div class="col-lg-6">
+
+            </div>
+
         </div>
     </div>
 

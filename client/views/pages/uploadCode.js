@@ -1,9 +1,17 @@
 Template.uploadCode.helpers({
     formData: function () {
-        var userId = Session.get('questionId');
-        Session.set('questionId', null);
-        return { userId: Session.get('questionId') };
+        return { questionId: Router.current().params.id };
+    },
+
+    uploadCallback: function () {
+        return {
+            finished: function (index, fileInfo, templateContext) {
+                var attemptId = Attempts.insert({
+                    userId: Meteor.userId(),
+                    questionId: Router.current().params.id
+                });
+                Router.go('/codepad/' + attemptId);
+            }
+        }
     }
 });
-
-//TODO: finish the submitQuestion workflow
