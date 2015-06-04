@@ -1,0 +1,29 @@
+<template name="questionBank">
+
+    <!-- Page heading -->
+    {{> pageHeading title='All' category='Java' }}
+
+    <div class="wrapper wrapper-content animated fadeInUp">
+
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Question Bank</h5>
+            </div>
+            <div class="ibox-content">
+
+                <div class="project-list">
+
+                    <table class="table table-hover">
+                        <tbody>
+
+                            {{#each questions}}
+                                {{> questionListing }}
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,29 @@
+<template name="questionListing">
+
+    <tr>
+        <td class="project-status">
+            {{#if uploaded}}
+                <span class="label label-primary">Active</span>
+            {{else}}
+                <span class="label label-default">Unactive</span>
+            {{/if}}
+        </td>
+
+        <td class="project-title">
+            <a href="">{{title}}</a>
+            <br/>
+            <small>{{{content}}}</small>
+        </td>
+
+        <td class="project-title">
+            <a href="">Author: Admin</a>
+            <br/>
+            <small>Created {{createdAt}}</small>
+        </td>
+
+        <td class="project-actions">
+            <a class="start-btn btn btn-primary btn-sm"><i class="fa fa-tachometer"></i> Start </a>
+        </td>
+    </tr>
+
+</template>
