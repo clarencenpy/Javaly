@@ -11,23 +11,24 @@
                 <li class="nav-header">
                     <div class="dropdown profile-element">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Example user</strong>
-                             </span> <span class="text-muted text-xs block">user <b class="caret"></b></span> </span> </a>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Javaly | We Love Java</strong>
+                             </span> <span class="text-muted text-xs block">More <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="#">Item</a></li>
-                            <li><a href="#">Item</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Item</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Features</a></li>
+                            <!--<li class="divider"></li>-->
+                            <li><a href="#">Bug Report</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
-                        IN+
+                        JA+
                     </div>
                 </li>
-                <li class="{{isActiveRoute regex='editor'}}">
-                    <a href=""><i class="fa fa-dashboard"></i> <span class="nav-label">Editor</span> </a>
-                </li>          <li class="{{isActiveRoute regex='submitQuestion'}}">
-                    <a href="{{pathFor route='submitQuestion'}}"><i class="fa fa-diamond"></i> <span class="nav-label">Submit Question</span> </a>
+                <li class="{{isActiveRoute regex='questionBank'}}">
+                    <a href="{{pathFor route='questionBank'}}"><i class="fa fa-bank"></i> <span class="nav-label">Question Bank</span> </a>
+                </li>
+                <li class="{{isActiveRoute regex='submitQuestion'}}">
+                    <a href="{{pathFor route='submitQuestion'}}"><i class="fa fa-upload"></i> <span class="nav-label">Submit Question</span> </a>
                 </li>
             </ul>
 
