@@ -31,10 +31,13 @@ Meteor.methods({
 
     compileAndRun: function (options) {
 
-        var currentCode = Attempts.findOne(options.attemptId).code;
+        var attempt = Attempts.findOne(options.attemptId);
+        var currentCode = attempt.code;
         if (currentCode !== options.code) {    //changes to the code
             Attempts.update(options.attemptId, {$set: {code: options.code}});
         }
+
+        var question = Questions.findOne(attempt.questionId);
 
         //TODO: undo hardcoding
         //write the code into file
@@ -46,7 +49,7 @@ Meteor.methods({
             throw new Meteor.Error(err.message);
         }
 
-        var filepath = dir + '/' + options.classname + '.java';
+        var filepath = dir + '/' + question.classname + '.java';
 
         try {
             writeFileSync(filepath, options.code);
@@ -58,7 +61,7 @@ Meteor.methods({
         //compile question dir against attempt dir
         var args = ['javac', '-cp'];
         args.push(dir);
-        args.push(process.env.PWD + '/uploads/questions/001/TestRunner.java');
+        args.push(process.env.PWD + '/uploads/questions/' + attempt.questionId + '/Test.java');
         var cmd = args.join(' ');
 
         try {
@@ -69,8 +72,8 @@ Meteor.methods({
 
         //run test
         args = ['java', '-cp'];
-        args.push(dir + ':' + process.env.PWD + '/uploads/questions/001');
-        args.push('TestRunner');
+        args.push(dir + ':' + process.env.PWD + '/uploads/questions/' + attempt.questionId);
+        args.push('Test');
         cmd = args.join(' ');
 
         try {
