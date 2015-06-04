@@ -31,27 +31,10 @@ Meteor.methods({
 
     compileAndRun: function (options) {
 
-        Attempts.update(options.attemptId, {$set: {code: options.code}});
-
-        //inserting into the attempts collection
-        //if (Attempts.find({userId: userId, questionId: questionId}).count() === 0) {
-        //    //this is a fresh attempt
-        //    var attemptId = Attempts.insert({
-        //        userId: userId,
-        //        questionId: questionId,
-        //        versions: []
-        //    });
-        //    Attempts.update(id, {$push: {versions: {
-        //        submittedAt: new Date(),
-        //        code: options.code
-        //    }}});
-        //} else {
-        //    //already attempted, just push into version array
-        //    Attempts.update({userId: userId, questionId: questionId}, {$push: {versions: {
-        //        submittedAt: new Date(),
-        //        code: options.code
-        //    }}});
-        //}
+        var currentCode = Attempts.findOne(options.attemptId).code;
+        if (currentCode !== options.code) {    //changes to the code
+            Attempts.update(options.attemptId, {$set: {code: options.code}});
+        }
 
         //TODO: undo hardcoding
         //write the code into file
