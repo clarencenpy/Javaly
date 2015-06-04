@@ -1,19 +1,3 @@
-Template.editor.onRendered (function () {
-    var questionId = '001';
-    var attempt = Attempts.findOne({userId: Meteor.userId(), questionId: questionId});
-
-    if (!attempt) { //no such record yet
-        var attemptId = Attempts.insert({
-            userId: Meteor.userId(),
-            questionId: questionId
-        });
-        Session.set('curAttempt', attemptId);
-    } else {
-        Session.set('curAttempt', attempt._id);
-    }
-
-});
-
 Template.editor.events({
     'click #compile-btn': function () {
         //retrieve editor contents
@@ -21,8 +5,7 @@ Template.editor.events({
         var code = editor.getSession().getValue();
 
         Meteor.call('compileAndRun', {
-            attemptId: Session.get('curAttempt'),
-            classname: 'Adder', //TODO: derive from the attemptId
+            attemptId: Router.current().params.id,
             code: code
         }, function (err, result) {
             if (err) {
@@ -45,8 +28,7 @@ Template.editor.helpers({
         }
     },
 
-    //TODO: use the attemptid
     docid: function () {
-        return '0001';
+        return Router.current().params.id;
     }
 });
