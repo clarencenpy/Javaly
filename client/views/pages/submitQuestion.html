@@ -2,33 +2,23 @@
 
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="m-t-lg">
 
-                    <div class="row">
+            <div class="col-lg-6">
+                <h1>Add a new question</h1>
+                {{> quickForm collection="Questions"
+                id="insertQuestionForm"
+                type="insert"
+                fields="title,content,classname"
+                buttonContent="Submit"}}
+            </div>
 
-                        <div class="col-lg-6">
-                            <h1>Add a new question</h1>
-                            {{> quickForm collection="Questions"
-                            id="insertQuestionForm"
-                            type="insert"
-                            fields="title,content,classname"
-                            buttonContent="Submit"}}
-                        </div>
-
-                        <div class="col-lg-6">
-
-                        </div>
-
-                    </div>
-
-
-
-
-
-
+            <div class="col-lg-6">
+                <div class="text-center" style="margin-top: 100px">
+                    <i class="fa fa-gears" style="font-size: 20em; color:#888888"></i>
+                    <h3>In progress: Guided instructions</h3>
                 </div>
             </div>
+
         </div>
     </div>
 </template>
