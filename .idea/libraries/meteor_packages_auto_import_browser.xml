@@ -63,6 +63,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/random/1.0.3/web.browser/packages/random.js" />
         <item url="file://$USER_HOME$/.meteor/packages/tomi_upload-server/1.2.3/web.browser/packages/tomi_upload-server.js" />
         <item url="file://$USER_HOME$/.meteor/packages/id-map/1.0.3/web.browser/packages/id-map.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/alanning_roles/1.2.13/web.browser/packages/alanning:roles.js" />
         <item url="file://$USER_HOME$/.meteor/packages/reactive-dict/1.1.0/web.browser/packages/reactive-dict.js" />
         <item url="file://$USER_HOME$/.meteor/packages/tomi_upload-jquery/2.1.5/web.browser/packages/tomi_upload-jquery.js" />
         <item url="file://$USER_HOME$/.meteor/packages/iron_controller/1.0.7/web.browser/packages/iron:controller.js" />
@@ -148,6 +149,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/random/1.0.3/web.browser/packages/random.js" />
       <root url="file://$USER_HOME$/.meteor/packages/tomi_upload-server/1.2.3/web.browser/packages/tomi_upload-server.js" />
       <root url="file://$USER_HOME$/.meteor/packages/id-map/1.0.3/web.browser/packages/id-map.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/alanning_roles/1.2.13/web.browser/packages/alanning:roles.js" />
       <root url="file://$USER_HOME$/.meteor/packages/reactive-dict/1.1.0/web.browser/packages/reactive-dict.js" />
       <root url="file://$USER_HOME$/.meteor/packages/tomi_upload-jquery/2.1.5/web.browser/packages/tomi_upload-jquery.js" />
       <root url="file://$USER_HOME$/.meteor/packages/iron_controller/1.0.7/web.browser/packages/iron:controller.js" />
