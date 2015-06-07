@@ -1,11 +1,16 @@
 Template.questionListing.events({
    'click .start-btn': function () {
        var questionId = this._id;
-       var attemptId = Attempts.insert({
-           userId: Meteor.userId(),
-           questionId: questionId
-       });
-       Router.go('/codepad/' + attemptId);
-       //TODO: should not create new attempt if user has already attempted
-   } 
+       //TODO: autopublished
+       var attempt =  Attempts.findOne({questionId: questionId, userId: Meteor.userId()});
+       if (attempt === undefined) {
+           var attemptId = Attempts.insert({
+               userId: Meteor.userId(),
+               questionId: questionId
+           });
+           Router.go('codepad', {id: attemptId});
+       } else {
+           Router.go('codepad', {id: attempt._id});
+       }
+   }
 });
