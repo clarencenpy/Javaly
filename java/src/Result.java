@@ -1,26 +1,23 @@
-import java.util.*;
-
 public class Result {
-    private ArrayList<ResultItem> results;
-    private boolean success = true;
+    private String expected;
+    private String actual;
+    private boolean success;
 
-    public Result() {
-        results = new ArrayList<>();
+    public Result(String expected, String actual, boolean success) {
+        this.expected = expected;
+        this.actual = actual;
+        this.success = success;
     }
 
-    public void add(ResultItem item) {
-        results.add(item);
-        if (!item.isSuccess()) {
-            success = false;
-        }
+    public String getExpected() {
+        return expected;
+    }
+
+    public String getActual() {
+        return actual;
     }
 
     public boolean isSuccess() {
         return success;
     }
-
-    public ArrayList<ResultItem> getResults() {
-        return results;
-    }
-
 }

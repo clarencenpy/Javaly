@@ -41,27 +41,30 @@ Meteor.methods({
 
         //TODO: undo hardcoding
         //write the code into file
-        var dir = process.env.PWD + '/uploads/attempts/' + options.attemptId;
+        var attemptDir = process.env.PWD + '/uploads/attempts/' + options.attemptId;
 
         try {
-            execSync('mkdir -p ' + dir); //TODO: there should be a better way instead of exec
+            execSync('mkdir -p ' + attemptDir); //TODO: there should be a better way instead of exec
         } catch (err) {
             throw new Meteor.Error(err.message);
         }
 
-        var filepath = dir + '/' + question.classname + '.java';
+        var userFilePath = attemptDir + '/' + question.classname + '.java';
 
         try {
-            writeFileSync(filepath, options.code);
+            writeFileSync(userFilePath, options.code);
         } catch (err) {
             throw new Meteor.Error(err.message);
         }
 
+        var engineCP = process.env.PWD + '/java';
+        var questionCP = process.env.PWD + '/uploads/questions/' + attempt.questionId;
 
         //compile question dir against attempt dir
         var args = ['javac', '-cp'];
-        args.push(dir);
-        args.push(process.env.PWD + '/uploads/questions/' + attempt.questionId + '/Test.java');
+        args.push(attemptDir + ':' + engineCP + ':' + questionCP);
+        //args.push(process.env.PWD + '/uploads/questions/' + attempt.questionId + '/Test.java');
+        args.push(questionCP + '/Test.java');
         var cmd = args.join(' ');
 
         try {
@@ -72,8 +75,8 @@ Meteor.methods({
 
         //run test
         args = ['java', '-cp'];
-        args.push(dir + ':' + process.env.PWD + '/uploads/questions/' + attempt.questionId);
-        args.push('Test');
+        args.push(attemptDir + ':' + process.env.PWD + '/uploads/questions/' + attempt.questionId  + ':' + engineCP);
+        args.push('TestEngine');
         cmd = args.join(' ');
 
         try {
