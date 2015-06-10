@@ -10,7 +10,19 @@ Template.uploadCode.helpers({
                     userId: Meteor.userId(),
                     questionId: Router.current().params.id
                 });
-                Router.go('/codepad/' + attemptId);
+
+                var $proceedModal =  $('#proceedModal');
+                $proceedModal.modal();
+                $proceedModal.find('#proceed-btn').on('click', function () {
+                    $proceedModal.modal('hide');    //the backdrop will only be hidden after the hide animation
+                    Router.go('/codepad/' + attemptId);
+                });
+                $proceedModal.find('#nowNow-btn').on('click', function () {
+                    $proceedModal.modal('hide');
+                    Router.go('/');
+                })
+
+
             }
         }
     }
