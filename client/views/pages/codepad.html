@@ -2,14 +2,23 @@
 
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
 
                 {{> questionCard questionId}}
-                {{> editor}}
 
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-6">
+                {{> editor}}
             </div>
 
             <div class="col-lg-6">
+                {{#if compileResults}}
+                    {{> resultDisplay compileResults }}
+                {{/if}}
 
                 <div class="text-center" style="margin-top: 100px">
                     <i class="fa fa-gears" style="font-size: 20em; color:#888888"></i>
@@ -17,7 +26,9 @@
                 </div>
 
             </div>
+
         </div>
+
     </div>
 
 
