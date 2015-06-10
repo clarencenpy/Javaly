@@ -1,5 +1,8 @@
 Template.editor.events({
     'click #compile-btn': function () {
+        //display load spinner
+        Session.set('executing', true);
+
         //retrieve editor contents
         var editor = ace.edit('editor');
         var code = editor.getSession().getValue();
@@ -12,7 +15,8 @@ Template.editor.events({
                 console.log(err.error);
                 return;
             }
-            console.log(result);
+            Session.set('compileResult', JSON.parse(result));
+            Session.set('executing', false);
         });
     }
 });
@@ -30,5 +34,9 @@ Template.editor.helpers({
 
     docid: function () {
         return Router.current().params.id;
+    },
+
+    executing: function () {
+        return Session.get('executing');
     }
 });

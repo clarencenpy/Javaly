@@ -3,7 +3,11 @@
     <div class="ibox float-e-margins">
         <div class="ibox-title">
             <h5>Editor</h5>
-            <a id="compile-btn" class="btn btn-primary btn-xs" style="float: right">Compile and Run</a>
+            {{#if executing}}
+                <i class="fa fa-cog fa-spin" style="float: right; font-size: 2em"></i>
+            {{else}}
+                <a id="compile-btn" class="btn btn-primary btn-xs" style="float: right">Compile and Run</a>
+            {{/if}}
         </div>
         <div class="ibox-content" style="padding: 0px;">
             {{> sharejsAce docid=docid onRender=config id="editor"}}
