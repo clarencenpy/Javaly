@@ -7,7 +7,7 @@ import java.io.*;
  */
 public class TestEngine {
     private static ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private static ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+//    private static ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 
     public static void main(String[] args) throws Exception {
         //save the original first

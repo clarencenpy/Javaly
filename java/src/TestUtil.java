@@ -27,21 +27,4 @@ public class TestUtil {
         }
     }
 
-    public static Result assertEquals(Object o1, Object o2) {
-        try {
-            Assert.assertEquals(o1, o2);
-            return new Result(o1.toString(), o2.toString(), true);
-        } catch (AssertionError e) {
-            return new Result(o1.toString(), o2.toString(), false);
-        }
-    }
-
-    public static Result assertEquals(int a, int b) {
-        try {
-            Assert.assertEquals(a, b);
-            return new Result(a+"", b+"", true);
-        } catch (AssertionError e) {
-            return new Result(a+"", b+"", false);
-        }
-    }
 }
