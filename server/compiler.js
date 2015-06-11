@@ -63,14 +63,17 @@ Meteor.methods({
         //compile question dir against attempt dir
         var args = ['javac', '-cp'];
         args.push(attemptDir + ':' + engineCP + ':' + questionCP);
-        //args.push(process.env.PWD + '/uploads/questions/' + attempt.questionId + '/Test.java');
-        args.push(questionCP + '/Test.java');
+        args.push(userFilePath);
         var cmd = args.join(' ');
 
         try {
             execSync(cmd);
         } catch (err) {
-            throw new Meteor.Error(err.message);
+            //strip the filepath in front
+            var message = err.message;
+            var index = message.indexOf(question.classname + '.java');
+            message = message.substring(index);
+            throw new Meteor.Error(message);
         }
 
         //run test

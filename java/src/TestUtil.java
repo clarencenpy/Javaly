@@ -14,7 +14,10 @@ public class TestUtil {
     public static String captureStacktrace(Exception e) {
         StringWriter sw = new StringWriter();
         e.printStackTrace(new PrintWriter(sw));
-        return sw.toString();
+        String stacktrace = sw.toString();
+        //strip the trace from Tester classes onward
+        int index = stacktrace.indexOf("at Test.run");
+        return stacktrace.substring(0,index).trim();
     }
 
     public static String removeTrailingNewLine(String s) {
