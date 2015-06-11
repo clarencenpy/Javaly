@@ -1,5 +1,9 @@
 Template.codepad.helpers({
-   compileResults: function () {
-       return Session.get('compileResult');
-   }
+    compileResult: function () {
+        return Session.get('compileResult');
+    },
+
+    compileError: function () {
+        return Session.get('compileError');
+    }
 });

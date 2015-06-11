@@ -1,0 +1,15 @@
+<template name="errorDisplay">
+
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Compile Error</h5>
+            {{>iboxTools}}
+        </div>
+        <div class="ibox-content" style="overflow-x: scroll">
+
+            <pre style="font-family:'Lucida Console', monospace">{{this}}</pre>
+
+        </div>
+    </div>
+
+</template>

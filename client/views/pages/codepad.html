@@ -16,8 +16,11 @@
             </div>
 
             <div class="col-lg-6">
-                {{#if compileResults}}
-                    {{> resultDisplay compileResults }}
+                {{#if compileResult}}
+                    {{> resultDisplay compileResult }}
+                {{/if}}
+                {{#if compileError}}
+                    {{> errorDisplay compileError }}
                 {{/if}}
 
                 <div class="text-center" style="margin-top: 100px">

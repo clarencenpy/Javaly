@@ -12,10 +12,14 @@ Template.editor.events({
             code: code
         }, function (err, result) {
             if (err) {
+                Session.set('compileError', err.error);
+                Session.set('compileResult', null);
+                Session.set('executing', false);
                 console.log(err.error);
-                return;
+                return
             }
             Session.set('compileResult', JSON.parse(result));
+            Session.set('compileError', null);
             Session.set('executing', false);
         });
     }
@@ -40,3 +44,9 @@ Template.editor.helpers({
         return Session.get('executing');
     }
 });
+
+Template.editor.destroyed = function () {
+    Session.set('executing', null);
+    Session.set('compileResult', null);
+    Session.set('compileError', null);
+}
