@@ -12,14 +12,19 @@ Template.editor.events({
             code: code
         }, function (err, result) {
             if (err) {
-                Session.set('compileError', err.error);
-                Session.set('compileResult', null);
+                console.log(err);
                 Session.set('executing', false);
-                console.log(err.error);
                 return
             }
-            Session.set('compileResult', JSON.parse(result));
-            Session.set('compileError', null);
+            console.log(result);
+            var res = JSON.parse(result);
+            if (res.status === 'error') {
+                Session.set('compileError', res.message);
+                Session.set('compileResult', null);
+            } else if (res.status === 'completed') {
+                Session.set('compileResult', res);
+                Session.set('compileError', null);
+            }
             Session.set('executing', false);
         });
     }
