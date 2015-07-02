@@ -38,14 +38,16 @@ Meteor.methods({
         var start = new Date();
         console.log("Start: " + (new Date() - start));
 
-
-        //  -------- update db ----------- //
+        //  -------- fetch the docs ----------- //
         var attempt = Attempts.findOne(options.attemptId);
-        var currentCode = attempt.code;
-        if (currentCode !== options.code) {    //changes to the code
-            Attempts.update(options.attemptId, {$set: {code: options.code}});
-        }
         var question = Questions.findOne(attempt.questionId);
+
+        var currentCode = attempt.code;
+        if (currentCode === options.code) {    //no changes to the code
+            //do not attempt to rerun code and send {status: unchanged}
+            console.log('no changes to code');
+            return {status: 'unchanged'};
+        }
 
         //  -------- add job ----------- //
         //TODO: should not even write test to file
@@ -69,73 +71,25 @@ Meteor.methods({
         })
         .on('failed', function (err) {
             console.log("Failed: " + (new Date() - start));
-            future.return(err);
+            throw new Meteor.Error(err);
+            //future.return(err);
         })
         .save();
 
-        return future.wait();   //this is necessary for executing async code in a meteor method
+        var result =  future.wait();   //this is necessary for executing async code in a meteor method
 
 
+        // ------ update mongodb based on results ------ //
 
-        // the code below has been replaced using kue
+        //console.log('Before: ');console.log(result);
 
-        ////  -------- mkdir ----------- //
-        //console.log("start mkdir: " + (new Date() - start));
-        //
-        //try {
-        //    execSync('mkdir -p ' + attemptDir); //TODO: there should be a better way instead of exec
-        //} catch (err) {
-        //    throw new Meteor.Error(err.message);
-        //}
-        //
-        //console.log("end mkdir, start writing file: " + (new Date() - start));
-        //
-        //
-        //
-        ////  -------- write to java file ----------- //
-        //try {
-        //    writeFileSync(userFilePath, options.code);
-        //} catch (err) {
-        //    throw new Meteor.Error(err.message);
-        //}
-        //
-        //console.log("finish writing file, start compile: " + (new Date() - start));
-        //
-        //
-        //
-        ////  -------- compile ----------- //
-        //var args = ['javac', '-cp'];
-        //args.push(attemptDir + ':' + engineCP + ':' + questionCP);
-        //args.push(questionCP + '/Test.java');
-        //var cmd = args.join(' ');
-        //
-        //try {
-        //    execSync(cmd);
-        //} catch (err) {
-        //    //strip the filepath in front
-        //    var message = err.message;
-        //    var index = message.indexOf(question.classname + '.java');
-        //    message = message.substring(index);
-        //    throw new Meteor.Error(message);
-        //}
-        //
-        //console.log("finish compile, start run java: " + (new Date() - start));
-        //
-        //
-        ////  -------- run test ----------- //
-        //args = ['java', '-cp'];
-        //args.push(attemptDir + ':' + questionCP + ':' + engineCP);
-        //args.push('TestEngine');
-        //cmd = args.join(' ');
-        //
-        //try {
-        //    var toReturn = execSync(cmd);
-        //    console.log("done: " + (new Date() - start));
-        //    return toReturn;
-        //} catch (err) {
-        //    console.log("done: " + (new Date() - start));
-        //    throw new Meteor.Error(err.message);
-        //}
+        // there is a strange side effect that changes the result object to {}
+        // currently saving it as a string as a workaround (bad)
+        Attempts.update(options.attemptId, {$set: {code: options.code, result: JSON.stringify(result)}});
+
+        //console.log('After: ');console.log(result);
+
+        return result;
 
     }
 
