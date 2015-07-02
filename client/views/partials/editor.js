@@ -17,13 +17,14 @@ Template.editor.events({
                 return
             }
             console.log(result);
-            var res = JSON.parse(result);
-            if (res.status === 'error') {
-                Session.set('compileError', res.message);
+            if (result.status.indexOf('error') === 0) {
+                Session.set('compileError', result.message);
                 Session.set('compileResult', null);
-            } else if (res.status === 'completed') {
-                Session.set('compileResult', res);
+            } else if (result.status === 'completed') {
+                Session.set('compileResult', result);
                 Session.set('compileError', null);
+            } else if (result.status === 'unchanged') {
+                //do nothing if user has not modified the code
             }
             Session.set('executing', false);
         });
