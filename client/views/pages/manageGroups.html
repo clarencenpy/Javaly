@@ -1,0 +1,45 @@
+<template name='manageGroups'>
+
+    <div class="wrapper wrapper-content animated fadeInUp">
+
+        <!--My groups panel-->
+        <div class="col-lg-6">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>My Groups</h5>
+                    <div class="ibox-tools">
+                        <a href="{{pathFor route='createGroup'}}" class="btn btn-primary btn-xs">Create new Group</a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    {{#if myGroups.count}}
+
+                        <div class="project-list">
+
+                            <table class="table table-hover">
+                                <tbody>
+
+                                {{#each myGroups}}
+                                    {{> groupListing }}
+                                {{/each}}
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    {{else}}
+
+                        <div class="text-center" style="margin-top: 20px">
+                            <i class="fa fa-users" style="font-size: 5em; color:#888888"></i>
+                            <h3>You have not created any groups</h3>
+                        </div>
+
+                    {{/if}}
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</template>
