@@ -81,7 +81,7 @@ Meteor.methods({
 
         // ------ update mongodb based on results ------ //
 
-        Attempts.update(options.attemptId, {$set: {code: options.code, result: result}});
+        Attempts.update(options.attemptId, {$set: {code: options.code, result: result, activeTime: options.activeTime}});
 
         return result;
 

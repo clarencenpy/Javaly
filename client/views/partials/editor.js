@@ -1,7 +1,22 @@
+Template.codepad.onRendered(function () {
+    //Init timeMe.js
+    TimeMe.setIdleDurationInSeconds(15);
+    TimeMe.setCurrentPageName('editor');
+    TimeMe.initialize();
+});
+
+
 Template.editor.events({
     'click #compile-btn': function () {
         //display load spinner
         Session.set('executing', true);
+
+        //retrieve active time
+        var activeTime = TimeMe.getTimeOnCurrentPageInSeconds();
+        TimeMe.resetRecordedPageTime('editor');
+        TimeMe.startTimer();
+        console.log('Active time: ' + activeTime);
+
 
         //retrieve editor contents
         var editor = ace.edit('editor');
@@ -9,7 +24,8 @@ Template.editor.events({
 
         Meteor.call('compileAndRun', {
             attemptId: Router.current().params.id,
-            code: code
+            code: code,
+            activeTime: activeTime
         }, function (err, result) {
             if (err) {
                 console.log(err);
