@@ -10,7 +10,7 @@ Template.mainLayout.rendered = function(){
     });
 
     // Fix height of layout when resize, scroll and load
-    $(document).bind("load resize scroll", function() {
+    $(window).bind("load resize scroll", function() {
         if(!$("body").hasClass('body-small')) {
 
             var navbarHeigh = $('nav.navbar-default').height();
@@ -22,6 +22,10 @@ Template.mainLayout.rendered = function(){
 
             if(navbarHeigh < wrapperHeigh){
                 $('#page-wrapper').css("min-height", $(window).height()  + "px");
+            }
+
+            if ($('body').hasClass('fixed-nav')) {
+                $('#page-wrapper').css("min-height", $(window).height() - 60 + "px");
             }
         }
     });
