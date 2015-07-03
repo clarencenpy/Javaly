@@ -81,13 +81,7 @@ Meteor.methods({
 
         // ------ update mongodb based on results ------ //
 
-        //console.log('Before: ');console.log(result);
-
-        // there is a strange side effect that changes the result object to {}
-        // currently saving it as a string as a workaround (bad)
-        Attempts.update(options.attemptId, {$set: {code: options.code, result: JSON.stringify(result)}});
-
-        //console.log('After: ');console.log(result);
+        Attempts.update(options.attemptId, {$set: {code: options.code, result: result}});
 
         return result;
 
