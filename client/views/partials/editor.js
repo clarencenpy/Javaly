@@ -1,4 +1,4 @@
-Template.codepad.onRendered(function () {
+Template.editor.onRendered(function () {
     //Init timeMe.js
     TimeMe.setIdleDurationInSeconds(15);
     TimeMe.setCurrentPageName('editor');
@@ -56,10 +56,6 @@ Template.editor.helpers({
             editor.setShowPrintMargin(false);
             editor.getSession().setUseWrapMode(true);
         }
-    },
-
-    docid: function () {
-        return Router.current().params.id;
     },
 
     executing: function () {

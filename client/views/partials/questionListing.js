@@ -1,7 +1,7 @@
 Template.questionListing.events({
    'click .start-btn': function () {
        var questionId = this._id;
-       //TODO: autopublished
+       //check if previous attempt exists
        var attempt =  Attempts.findOne({questionId: questionId, userId: Meteor.userId()});
        if (attempt === undefined) {
            var attemptId = Attempts.insert({
