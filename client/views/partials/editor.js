@@ -12,7 +12,7 @@ Template.editor.events({
         Session.set('executing', true);
 
         //retrieve active time
-        var activeTime = TimeMe.getTimeOnCurrentPageInSeconds();
+        var activeTime = +(TimeMe.getTimeOnCurrentPageInSeconds()).toFixed(1);  //'+' is used to convert String to Number
         TimeMe.resetRecordedPageTime('editor');
         TimeMe.startTimer();
         console.log('Active time: ' + activeTime);
@@ -64,6 +64,7 @@ Template.editor.helpers({
 });
 
 Template.editor.destroyed = function () {
+    TimeMe.stopTimer();
     Session.set('executing', null);
     Session.set('compileResult', null);
     Session.set('compileError', null);
