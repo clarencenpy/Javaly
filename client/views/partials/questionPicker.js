@@ -32,13 +32,13 @@ Template.questionPicker.onRendered(function () {
     });
 
     //instantiate slimScroll for every element with droparea class
-    this.$('.droparea').each(function () {
-        $(this).slimScroll({
-            height: '250px',
-            color: '#CCFFCC',
-            size: '5px'
-        });
-    });
+    //this.$('.droparea').each(function () {
+    //    $(this).slimScroll({
+    //        height: '300px',
+    //        color: 'grey',
+    //        size: '5px',
+    //    });
+    //});
 
 });
 

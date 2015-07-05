@@ -1,56 +1,73 @@
 <template name="questionPicker">
 
     <style>
-        .droparea {
+        .droparea-container {
             width: 100%;
-            border: 2px dashed #1ab394;
+            border: 2px dashed grey;
             border-radius: 5px;
             padding: 10px;
         }
+        .droparea {
+            overflow-y: scroll;
+            height: 300px;
+            margin: 0; /*overides margin-bottom property of panel-group*/
+        }
+        .droparea::-webkit-scrollbar {
+            /*disable the scrollbar*/
+            width: 0 !important
+        }
     </style>
 
-    <div class="ibox">
-        <div class="ibox-title">
-            <h5>Select Questions</h5>
-        </div>
-        <div class="ibox-content">
 
-            <!--Search options-->
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <input type="text" placeholder="Search" class="input-sm form-control">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-sm btn-primary"> Go</button>
-                        </span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <select data-placeholder="Choose Categories..." class="chosen-select" multiple style="width: 100%" tabindex="4">
-                        <option value="for loops">for loops</option>
-                        <option value="while">while</option>
-                        <option value="recursion">recursion</option>
-                    </select>
-                </div>
 
-            </div>
+    <div class="row">
+        <!--Picked-->
+        <div class="col-lg-6">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>Selected</h3>
+                    <p class="small"><i class="fa fa-hand-o-up"></i> Drag questions between lists</p>
 
-            <div class="row">
-                <!--Picked-->
-                <div class="col-lg-6">
-
-                    <div class="panel-body">
+                    <div class="droparea-container">
                         <div class="panel-group accordion droparea" id="picked">
 
                         </div>
                     </div>
 
+
                 </div>
+            </div>
+        </div>
 
-                <!--Unpicked-->
-                <div class="col-lg-6">
+        <!--Unpicked-->
+        <div class="col-lg-6">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>Question Bank</h3>
+                    <p class="small"><i class="fa fa-hand-o-up"></i> Drag questions between lists</p>
 
-                    <div class="panel-body">
+                    <!--Search options-->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" placeholder="Search" class="input-sm form-control">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-sm btn-primary"> Go</button>
+                        </span>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <select data-placeholder="Choose Categories..." class="chosen-select" multiple style="width: 100%" tabindex="4">
+                                <option value="for loops">for loops</option>
+                                <option value="while">while</option>
+                                <option value="recursion">recursion</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <br>
+
+                    <div class="droparea-container">
                         <div class="panel-group accordion droparea" id="unpicked">
 
                             {{#if Template.subscriptionsReady }}
@@ -76,9 +93,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
+
     </div>
 </template>
