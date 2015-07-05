@@ -25,8 +25,8 @@
         <div class="col-lg-6">
             <div class="ibox">
                 <div class="ibox-content">
-                    <h3>Selected</h3>
-                    <p class="small"><i class="fa fa-hand-o-up"></i> Drag questions between lists</p>
+                    <h3>Selected Questions</h3>
+                    <p class="small"><i class="fa fa-hand-o-up"></i> Drag questions here</p>
 
                     <div class="droparea-container">
                         <div class="panel-group accordion droparea" id="picked">
@@ -44,10 +44,16 @@
             <div class="ibox">
                 <div class="ibox-content">
                     <h3>Question Bank</h3>
-                    <p class="small"><i class="fa fa-hand-o-up"></i> Drag questions between lists</p>
 
                     <!--Search options-->
                     <div class="row">
+                        <div class="col-md-8">
+                            <select data-placeholder="Choose Categories..." class="chosen-select" multiple style="width: 100%" tabindex="4">
+                                <option value="for loops">for loops</option>
+                                <option value="while">while</option>
+                                <option value="recursion">recursion</option>
+                            </select>
+                        </div>
                         <div class="col-md-4">
                             <div class="input-group">
                                 <input type="text" placeholder="Search" class="input-sm form-control">
@@ -55,13 +61,6 @@
                             <button type="button" class="btn btn-sm btn-primary"> Go</button>
                         </span>
                             </div>
-                        </div>
-                        <div class="col-md-8">
-                            <select data-placeholder="Choose Categories..." class="chosen-select" multiple style="width: 100%" tabindex="4">
-                                <option value="for loops">for loops</option>
-                                <option value="while">while</option>
-                                <option value="recursion">recursion</option>
-                            </select>
                         </div>
 
                     </div>
