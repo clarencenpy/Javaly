@@ -15,10 +15,16 @@ Meteor.publish('questions', function () {
 
 Meteor.publish('question', function (questionId) {
     return Questions.find(questionId);
-})
+});
 
 Questions.allow({
     insert: function (userId, doc) {
-        return true;
+        return userId;
+    },
+    update: function (userId, doc) {
+        return doc.createdBy === userId;
+    },
+    remove: function (userId, doc) {
+        return doc.createdBy === userId;
     }
 });
