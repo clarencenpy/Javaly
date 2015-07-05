@@ -51,10 +51,17 @@ Meteor.methods({
 
         //  -------- add job ----------- //
         //TODO: should not even write test to file
-        try {
-            var test = readFileSync(process.env.PWD + '/uploads/questions/' + attempt.questionId + '/Test.java', {encoding: 'utf8'});
-        } catch (err) {
-            throw new Meteor.Error(err.message);
+
+        // there are two ways of getting the test code now: 1)DB 2)Uploaded File
+        var test = null;
+        if (question.testCode) {
+            test = question.testCode;
+        } else {
+            try {
+                test = readFileSync(process.env.PWD + '/uploads/questions/' + attempt.questionId + '/Test.java', {encoding: 'utf8'});
+            } catch (err) {
+                throw new Meteor.Error(err.message);
+            }
         }
 
         var future = new Future();
