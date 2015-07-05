@@ -1,0 +1,25 @@
+<template name="groupListing">
+
+    <tr>
+        <td class="project-status">
+            {{#if completed}}
+                <span class="label label-primary">Completed</span>
+            {{else}}
+                <span class="label label-default">Incomplete</span>
+            {{/if}}
+        </td>
+
+        <td class="project-title">
+            <a href="">{{name}}</a>
+        </td>
+
+        <td class="project-title">
+            <small>{{moFromNow createdAt}}</small>
+        </td>
+
+        <td class="project-actions">
+            <a href="{{pathFor 'groupView'}}" class="start-btn btn btn-primary btn-sm"><i class="fa fa-tachometer"></i> View </a>
+        </td>
+    </tr>
+
+</template>

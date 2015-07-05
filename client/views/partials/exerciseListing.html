@@ -1,0 +1,42 @@
+<template name="exerciseListing">
+
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>{{description}}</h5>
+            {{>iboxTools}}
+        </div>
+        <div class="ibox-content">
+
+            <div>
+                <span>Overall Progress:</span>
+                <div class="stat-percent">{{completedPercentage}}%</div>
+                <div class="progress progress-mini">
+                    <div style="width: {{completedPercentage}}%;" class="progress-bar"></div>
+                </div>
+            </div>
+            <div class="row m-t-sm">
+                <div class="col-sm-4">
+                    <div class="font-bold">QUESTIONS</div>
+                    {{questions.length}}
+                </div>
+                <div class="col-sm-4">
+                    <div class="font-bold">REQUESTS</div>
+                    3
+                </div>
+                <div class="col-sm-4 text-right">
+                    <div class="font-bold">FLAGS</div>
+                    3 <i class="fa fa-level-up text-navy"></i>
+                </div>
+            </div>
+
+            <br>
+            <!--Question list-->
+            <div class="panel-group">
+            {{#each questions}}
+                {{> questionStats }}
+            {{/each}}
+            </div>
+        </div>
+    </div>
+
+</template>

@@ -1,0 +1,37 @@
+<template name="questionStats">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent=".accordion" href="#{{question._id}}">{{question.title}}</a>
+            </h4>
+        </div>
+        <div id="{{question._id}}" class="panel-collapse">
+            <div class="panel-body">
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Attempts</th>
+                        <th>Time Taken</th>
+                        <th>Completed</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {{#each students}}
+                            <tr>
+                                <td>{{name}}</td>
+                                <td>{{attempts}}</td>
+                                <td>{{timeTaken}}</td>
+                                <td>{{#if completed}} <span class="label label-primary">Completed</span> {{else}} <span class="label">Incomplete</span>{{/if}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</template>
