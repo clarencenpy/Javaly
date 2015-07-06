@@ -6,7 +6,7 @@
                 <a data-toggle="collapse" data-parent=".accordion" href="#{{question._id}}">{{question.title}}</a>
             </h4>
         </div>
-        <div id="{{question._id}}" class="panel-collapse">
+        <div id="{{question._id}}" class="panel-collapse collapse in">
             <div class="panel-body">
 
                 <table class="table table-bordered table-hover datatable">
@@ -28,9 +28,9 @@
                                 <td>{{#if completed}} <span class="label label-primary">Completed</span> {{else}} <span class="label">Incomplete</span>{{/if}}</td>
                                 <td>
                                     {{#if attemptId}}
-                                        <a href="{{pathFor 'codepad' id=attemptId}}" class="btn btn-primary btn-xs">View</a>
+                                        <a href="{{pathFor 'codepad' id=attemptId}}" class="btn btn-primary btn-xs">View <i class="fa fa-lg fa-code"></i></a>
                                     {{else}}
-                                        <a href="" class="btn btn-warning btn-xs">Nudge</a>
+                                        <a href="" class="btn btn-warning btn-xs">Nudge <i class="fa fa-hand-o-right"></i></a>
                                     {{/if}}
                                 </td>
                             </tr>

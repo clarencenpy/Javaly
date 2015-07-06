@@ -5,29 +5,34 @@
             <h5>{{description}}</h5>
             {{>iboxTools}}
         </div>
-        <div class="ibox-content">
+        <div class="ibox-content profile-content">
 
-            <div>
-                <span>Overall Progress:</span>
-                <div class="stat-percent">{{completedPercentage}}%</div>
-                <div class="progress progress-mini">
-                    <div style="width: {{completedPercentage}}%;" class="progress-bar"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <span>Overall Progress:</span>
+                        <div class="stat-percent">{{completedPercentage}}%</div>
+                        <div class="progress progress-striped active">
+                            <div style="width: {{completedPercentage}}%" class="progress-bar progress-bar-default"></div>
+                        </div>
+                    </div>
+                    <div class="row m-t-sm">
+                        <div class="col-sm-4">
+                            <div class="font-bold">QUESTIONS</div>
+                            {{questions.length}}
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="font-bold">REQUESTS</div>
+                            3
+                        </div>
+                        <div class="col-sm-4 text-right">
+                            <div class="font-bold">FLAGS</div>
+                            3 <i class="fa fa-level-up text-navy"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row m-t-sm">
-                <div class="col-sm-4">
-                    <div class="font-bold">QUESTIONS</div>
-                    {{questions.length}}
-                </div>
-                <div class="col-sm-4">
-                    <div class="font-bold">REQUESTS</div>
-                    3
-                </div>
-                <div class="col-sm-4 text-right">
-                    <div class="font-bold">FLAGS</div>
-                    3 <i class="fa fa-level-up text-navy"></i>
-                </div>
-            </div>
+
 
             <br>
             <!--Question list-->
