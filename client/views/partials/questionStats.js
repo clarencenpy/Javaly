@@ -1,3 +1,15 @@
+Template.questionStats.onRendered(function () {
+    //init datatables for every table
+    this.$('.datatable').each(function () {
+        $(this).DataTable({
+            paging: false,
+            info: false,
+            searching: false,
+            aoColumns: [null, null, null, null, {bSortable: false}]
+        });
+    })
+});
+
 Template.questionStats.helpers({
     question: function () {
         return Questions.findOne(this.toString());
@@ -15,7 +27,8 @@ Template.questionStats.helpers({
                 name: Meteor.users.findOne(userId).profile.name,
                 attempts: attempt ? attempt.history ? attempt.history.length : 0 : 0,
                 timeTaken: attempt ? attempt.totalActiveTime ? attempt.totalActiveTime : 0 : 0,
-                completed: attempt ? attempt.result ? attempt.result.success : false : false
+                completed: attempt ? attempt.result ? attempt.result.success : false : false,
+                attemptId: attempt ? attempt._id : false
             });
         });
         return result;

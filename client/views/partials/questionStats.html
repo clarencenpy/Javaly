@@ -9,14 +9,15 @@
         <div id="{{question._id}}" class="panel-collapse">
             <div class="panel-body">
 
-                <table class="table table-hover">
+                <table class="table table-bordered table-hover datatable">
                     <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Attempts</th>
-                        <th>Time Taken</th>
-                        <th>Completed</th>
-                    </tr>
+                        <tr>
+                            <th class="col-md-3">Name</th>
+                            <th class="col-md-2">Attempts</th>
+                            <th class="col-md-2">Time Taken</th>
+                            <th class="col-md-2">Completed</th>
+                            <th class="col-md-3">Actions</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {{#each students}}
@@ -25,6 +26,13 @@
                                 <td>{{attempts}}</td>
                                 <td>{{timeTaken}}</td>
                                 <td>{{#if completed}} <span class="label label-primary">Completed</span> {{else}} <span class="label">Incomplete</span>{{/if}}</td>
+                                <td>
+                                    {{#if attemptId}}
+                                        <a href="{{pathFor 'codepad' id=attemptId}}" class="btn btn-primary btn-xs">View</a>
+                                    {{else}}
+                                        <a href="" class="btn btn-warning btn-xs">Nudge</a>
+                                    {{/if}}
+                                </td>
                             </tr>
                         {{/each}}
                     </tbody>
