@@ -7,6 +7,41 @@ Meteor.publish('group', function (groupId) {
     return Groups.find(groupId);
 });
 
+Meteor.publishComposite('enrolledGroups', {
+    find: function() {
+        return Groups.find({participants: this.userId});
+    },
+    children: [
+        {
+            //publishing all the questions the student should have access to
+            find: function (topLevelDoc) {
+                var questions = [];
+                _.each(topLevelDoc.exercises, function (exercise) {
+                    questions = questions.concat(exercise.questions);
+                });
+                return Questions.find({_id: {$in: questions}}, {fields: {
+                    title: 1
+                }});
+            },
+            children: [
+                {
+                    //for each question, publish all the attempts
+                    find: function (secondLevelDoc, topLevelDoc) {
+                        return Attempts.find({questionId: secondLevelDoc._id, userId: this.userId}, {fields: {
+                            questionId: 1,
+                            userId: 1,
+                            'result.success': 1,
+                            history: {$slice: -1}, //return only the history of the most recent attempt
+                            'history.date': 1
+                        }});
+                    }
+                }
+            ]
+        }
+    ]
+
+});
+
 Meteor.publishComposite('group-info', function (groupId) {
     return {
         find: function () {

@@ -1,0 +1,113 @@
+<template name="enrolledGroups">
+
+    <div class="wrapper wrapper-content animated fadeInUp">
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Exercises</h5>
+                        {{>iboxTools}}
+                    </div>
+                    <div class="ibox-content ibox-heading">
+                        <h3><i class="fa fa-envelope-o"></i> Pending</h3>
+                        <small><i class="fa fa-tim"></i>
+                            {{#if incompleteQuestions}}
+                                You have {{incompleteQuestions}} incomplete questions! Keep going!
+                            {{else}}
+                                You have finished all your assigned questions! Great job!
+                            {{/if}}
+                        </small>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="feed-activity-list">
+
+                            {{#each exercises}}
+                                <div class="feed-element">
+                                    <div>
+                                        <strong>{{description}}</strong>
+                                        <a class="pull-right text-navy"><small class="select-btn">View</small></a>
+                                        <div class="progress progress-mini">
+                                            <div style="width: {{completedPercentage}}%;" class="progress-bar"></div>
+                                            <div style="width: {{attemptedButNotSolvedPercentage}}%;" class="progress-bar progress-bar-warning"></div>
+                                        </div>
+                                        <small class="text-muted">Created: {{moFromNow createdAt}}</small>
+                                    </div>
+                                </div>
+                            {{/each}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+            <div class="ibox float-e-margins">
+
+                <div class="ibox-title">
+                    <h5>{{exerciseDescription}}</h5>
+                    {{>iboxTools}}
+                </div>
+
+                {{#if questions.length}}
+                    <div class="ibox-content">
+                        <table class="table table-hover margin bottom">
+                            <thead>
+                            <tr>
+                                <th class="col-md-5">Question</th>
+                                <th class="col-md-3">Last Attempt</th>
+                                <th class="col-md-1">Status</th>
+                                <th class="col-md-2"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {{#each questions}}
+                                    <tr>
+                                        <td>{{title}}</td>
+                                        <td>
+                                            {{#if lastAttempted}}
+                                                {{moFromNow lastAttempted}}
+                                            {{else}}
+                                                -
+                                            {{/if}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{#if success}}
+                                                <i class="fa fa-check text-navy"></i>
+                                            {{else}}
+                                                <i class="fa fa-times text-danger"></i>
+                                            {{/if}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{#if lastAttempted}}
+                                                <a href="{{pathFor 'codepad' id=attemptId}}" class="btn btn-primary btn-xs"> View <i class="fa fa-lg fa-code"></i></a>
+                                            {{else}}
+                                                <a class="start-btn btn btn-primary btn-xs"> Start <i class="fa fa-lg fa-chevron-right"></i></a>
+                                            {{/if}}
+                                        </td>
+                                    </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+
+                {{else}}
+                    <div class="ibox-content">
+                        <div class="text-center" style="margin-top: 20px">
+                            <i class="fa fa-list" style="font-size: 5em; color:#888888"></i>
+                            <h4>Select an exercise to view its questions</h4>
+                        </div>
+                    </div>
+                {{/if}}
+
+            </div>
+        </div>
+        </div>
+
+
+
+
+    </div>
+
+
+</template>
