@@ -1,15 +1,27 @@
 <template name="submitQuestion">
 
+    <style>
+        /*override summernote code view*/
+        .note-codable, .note-editable, .note-editor {
+            background-color: #fff !important;
+            color: #1f1f1f !important;
+            outline: none !important;
+        }
+
+    </style>
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
 
             <div class="col-lg-6">
                 <h1>Add a new question</h1>
-                {{> quickForm collection="Questions"
-                id="insertQuestionForm"
-                type="insert"
-                fields="title,content,classname"
-                buttonContent="Submit"}}
+                {{> quickForm
+                    collection="Questions"
+                    id="insertQuestionForm"
+                    type="insert"
+                    fields="title,tags,classname,content"
+                    buttonContent="Submit"
+                    buttonClasses="btn btn-primary btn-rounded btn-block"
+                }}
             </div>
 
             <div class="col-lg-6">

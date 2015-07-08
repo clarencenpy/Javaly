@@ -18,3 +18,19 @@ AutoForm.hooks({
         }
     }
 });
+
+Template.submitQuestion.onCreated(function () {
+   this.subscribe('question-tags');
+});
+
+Template.submitQuestion.onRendered(function () {
+    var tagsField = this.$('.autoform-tags-field');
+
+    //override their css
+    tagsField.find('.bootstrap-tagsinput').addClass('form-control');
+
+    //fix for bug that causes half typed text to remain even after autocomplete!
+    tagsField.on('itemAdded', function () {
+        $(this).find('.bootstrap-tagsinput>input').val('');
+    });
+});

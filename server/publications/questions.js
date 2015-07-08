@@ -17,6 +17,10 @@ Meteor.publish('question', function (questionId) {
     return Questions.find(questionId);
 });
 
+Meteor.publish('question-tags', function () {
+   return Questions.find({}, {fields: {tags: 1}});
+});
+
 Questions.allow({
     insert: function (userId, doc) {
         return userId;
