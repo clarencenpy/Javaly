@@ -11,39 +11,42 @@ Template.enrolledGroups.helpers({
         var groups =  Groups.find({participants: Meteor.userId()}).fetch();
 
         //collate all the exercises from various groups
+        //var exercises = [];
+        //_.each(groups, function (group) {
+        //    exercises = exercises.concat(group.exercises);
+        //});
+
         var exercises = [];
+
         _.each(groups, function (group) {
-            exercises = exercises.concat(group.exercises);
-        });
-
-        //for each exercise, find out the progress
-        exercises = _.map(exercises, function (exercise) {
-            //map an object with the required info
-            var info = {
-                questions: exercise.questions,   //required by the view button to show questions
-                description: exercise.description,
-                createdAt: exercise.createdAt,
-                numQuestions: exercise.questions.length,
-                attempted: 0,
-                solved: 0
-            };
-            _.each(exercise.questions, function (questionId) {
-                var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()});
-                if (attempt && attempt.history) {  //have attempted before
-                    info.attempted++;
-                    if (attempt.completed){
-                        info.solved++;
+            //for each exercise, find out the progress
+            _.each(group.exercises, function (exercise) {
+                var info = {
+                    questions: exercise.questions,   //required by the view button to show questions
+                    description: exercise.description,
+                    groupName: group.name,
+                    createdAt: exercise.createdAt,
+                    numQuestions: exercise.questions.length,
+                    attempted: 0,
+                    solved: 0
+                };
+                _.each(exercise.questions, function (questionId) {
+                    var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()});
+                    if (attempt && attempt.history) {  //have attempted before
+                        info.attempted++;
+                        if (attempt.completed){
+                            info.solved++;
+                        }
                     }
-                }
-            });
+                });
 
+                //calculate percentages for stacked progress bar
+                info.completedPercentage = Math.round(info.solved/info.numQuestions*100);
+                info.attemptedPercentage = Math.round(info.attempted/info.numQuestions*100);
+                info.attemptedButNotSolvedPercentage = info.attemptedPercentage - info.completedPercentage;
 
-            //calculate percentages for stacked progress bar
-            info.completedPercentage = Math.round(info.solved/info.numQuestions*100);
-            info.attemptedPercentage = Math.round(info.attempted/info.numQuestions*100);
-            info.attemptedButNotSolvedPercentage = info.attemptedPercentage - info.completedPercentage;
-
-            return info;
+                exercises.push(info);
+            })
         });
 
         //sum and update count for incomplete questions
