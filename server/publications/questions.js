@@ -21,6 +21,23 @@ Meteor.publish('question-tags', function () {
    return Questions.find({}, {fields: {tags: 1}});
 });
 
+Meteor.publishComposite('myQuestions', {
+    find: function () {
+        return Questions.find({createdBy: this.userId});
+    },
+    children: [
+        {
+            find: function (topLevelDoc) {
+                return Attempts.find({questionId: topLevelDoc._id}, {fields: {
+                    questionId: 1,
+                    userId: 1,
+                    completed: 1
+                }});
+            }
+        }
+    ]
+});
+
 Questions.allow({
     insert: function (userId, doc) {
         return userId;
