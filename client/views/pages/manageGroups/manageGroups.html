@@ -9,25 +9,36 @@
                         <h5>My Groups</h5>
 
                         <div class="ibox-tools">
-                            <a href="{{pathFor route='createGroup'}}" class="btn btn-primary btn-xs">Create new
-                                Group</a>
+                            <a href="{{pathFor route='createGroup'}}" class="btn btn-primary btn-sm">
+                                <i class="fa fa-plus"></i> Create new Group
+                            </a>
                         </div>
                     </div>
-                    <div class="ibox-content">
+                    <div class="ibox-content profile-content">
                         {{#if myGroups.count}}
 
-                            <div class="project-list">
+                            <table class="table table-hover no-margins">
+                                <tbody>
 
-                                <table class="table table-hover">
-                                    <tbody>
+                                {{#each myGroups}}
+                                    <tr>
+                                        <td>
+                                            <a href="{{pathFor 'groupView'}}">{{name}}</a>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-user"></i> {{participants.length}}
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-clock-o"></i> {{moFromNow createdAt}}
+                                        </td>
+                                        <td>
+                                            <a><i class="fa fa-pencil"></i> Edit</a>
+                                        </td>
+                                    </tr>
+                                {{/each}}
 
-                                    {{#each myGroups}}
-                                        {{> groupListing }}
-                                    {{/each}}
-
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
 
                         {{else}}
 
