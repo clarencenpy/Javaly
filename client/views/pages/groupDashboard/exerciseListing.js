@@ -14,7 +14,7 @@ Template.exerciseListing.onCreated(function () {
                 var attempt = Attempts.findOne({userId: userId, questionId: questionId});
                 if (attempt && attempt.history) {  //have attempted before
                     attempted++;
-                    if (attempt.result.success){
+                    if (attempt.completed){
                         completed++;
                     }
                 }

@@ -30,8 +30,8 @@ Meteor.publishComposite('enrolledGroups', {
                         return Attempts.find({questionId: secondLevelDoc._id, userId: this.userId}, {fields: {
                             questionId: 1,
                             userId: 1,
-                            'result.success': 1,
-                            history: {$slice: -1}, //return only the history of the most recent attempt
+                            completed: 1,
+                            history: {$slice: -1}, //return only the history of the most recent attempt (to get lastAttempt date)
                             'history.date': 1
                         }});
                     }
@@ -42,7 +42,7 @@ Meteor.publishComposite('enrolledGroups', {
 
 });
 
-Meteor.publishComposite('group-info', function (groupId) {
+Meteor.publishComposite('groupInfo', function (groupId) {
     return {
         find: function () {
             return Groups.find(groupId);
@@ -56,7 +56,14 @@ Meteor.publishComposite('group-info', function (groupId) {
                         questions = questions.concat(exercise.questions);
                     });
                     var participants = topLevelDoc.participants;
-                    return Attempts.find({$and: [{questionId: {$in: questions}}, {userId: {$in: participants}}]});
+                    return Attempts.find({$and: [{questionId: {$in: questions}}, {userId: {$in: participants}}]}, {fields: {
+                        questionId: 1,
+                        userId: 1,
+                        totalActiveTime: 1,
+                        completed: 1,
+                        history: {$slice: -1}, //return only the history of the most recent attempt (to get lastAttempt date)
+                        'history.date': 1
+                    }});
                 }
             },
             {

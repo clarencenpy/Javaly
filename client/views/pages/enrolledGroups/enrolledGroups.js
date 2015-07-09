@@ -31,7 +31,7 @@ Template.enrolledGroups.helpers({
                 var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()});
                 if (attempt && attempt.history) {  //have attempted before
                     info.attempted++;
-                    if (attempt.result.success){
+                    if (attempt.completed){
                         info.solved++;
                     }
                 }
@@ -78,7 +78,7 @@ Template.enrolledGroups.helpers({
             var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()});
             if (attempt) {
                 q.lastAttempted = attempt.history ? attempt.history[0].date: undefined; //since only the last attempt is published
-                q.success = attempt.result ? attempt.result.success : false;
+                q.completed = attempt.completed;
                 q.attemptId = attempt._id;
             }
 

@@ -88,7 +88,20 @@ Meteor.methods({
 
         // ------ update mongodb based on results ------ //
 
-        Attempts.update(options.attemptId, {$set: {code: options.code, result: result, activeTime: options.activeTime}});
+        if (result.success) {
+            Attempts.update(options.attemptId, {$set: {
+                code: options.code,
+                result: result,
+                activeTime: options.activeTime,
+                completed: true     //completed will be true as long as question has been successful before
+            }});
+        } else {
+            Attempts.update(options.attemptId, {$set: {
+                code: options.code,
+                result: result,
+                activeTime: options.activeTime
+            }});
+        }
 
         return result;
 

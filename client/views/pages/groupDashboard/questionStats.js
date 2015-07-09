@@ -27,7 +27,7 @@ Template.questionStats.helpers({
                 name: Meteor.users.findOne(userId).profile.name,
                 attempts: attempt ? attempt.history ? attempt.history.length : 0 : 0,
                 timeTaken: attempt ? attempt.totalActiveTime ? attempt.totalActiveTime : 0 : 0,
-                completed: attempt ? attempt.result ? attempt.result.success : false : false,
+                completed: attempt ? attempt.completed : false,
                 attemptId: attempt ? attempt._id : false
             });
         });
