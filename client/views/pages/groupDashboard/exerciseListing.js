@@ -4,8 +4,8 @@ Template.exerciseListing.onCreated(function () {
     instance.completedPercentage = new ReactiveVar();
     instance.attemptedButNotCompletedPercentage = new ReactiveVar();
 
-    Tracker.autorun(function () {
-        var exercise = Template.currentData();
+    this.autorun(function () {
+        var exercise = instance.data;
         var group = Template.parentData(1);
         var completed = 0;
         var attempted = 0;
