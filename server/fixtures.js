@@ -80,14 +80,11 @@ if (Groups.find().count() === 0) {
     var q3 = Questions.findOne({title: 'Print Numbers'})._id;
 
     Groups.insert({
-        name: 'Beginner\'s class',
+        name: 'Beta Testers',
         participants: [s1,s2,s3],
         exercises: [{
-            description: 'Simple',
-            questions: [q1,q2]
-        },{
-            description: 'A little harder',
-            questions: [q3]
+            description: 'Having fun with each other\'s code',
+            questions: [q1,q2,q3]
         }],
         createdBy: instructor
     })

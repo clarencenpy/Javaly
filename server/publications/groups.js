@@ -96,9 +96,15 @@ Groups.allow({
         return userId && Roles.userIsInRole(userId, ['instructor','admin']);
     },
     update: function (userId, doc) {
-        return doc.createdBy === userId;
+        //TODO: uncomment this line after beta
+        //return doc.createdBy === userId;
+        return true;
     },
     remove: function (userId, doc) {
         return doc.createdBy === userId;
     }
+});
+
+Meteor.publish('betaGroups', function () {
+   return Groups.find();
 });
