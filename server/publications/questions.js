@@ -21,12 +21,24 @@ Meteor.publish('question-tags', function () {
    return Questions.find({}, {fields: {tags: 1}});
 });
 
-Meteor.publishComposite('myQuestions', {
+Meteor.publishComposite('allQuestions', {
     find: function () {
-        return Questions.find({createdBy: this.userId});
+       return Questions.find({}, {fields: {
+           title: 1,
+           tags: 1,
+           createdBy: 1,
+           createdAt: 1
+       }});
     },
     children: [
         {
+            // Publish Author's name
+            find: function (topLevelDoc) {
+                return Meteor.users.find(topLevelDoc._id, {fields: {'profile.name': 1}});
+            }
+        },
+        {
+            // Publish related attempts
             find: function (topLevelDoc) {
                 return Attempts.find({questionId: topLevelDoc._id}, {fields: {
                     questionId: 1,
@@ -36,6 +48,7 @@ Meteor.publishComposite('myQuestions', {
             }
         }
     ]
+
 });
 
 Questions.allow({

@@ -1,4 +1,13 @@
-Template.myQuestions.events({
+Template.questionList.onRendered(function () {
+    this.$('#datatable').DataTable({
+        paging: false,
+        info: false,
+        searching: false,
+        aoColumns: [null, null, null, null, {bSortable: false}]
+    });
+});
+
+Template.questionList.events({
     'click .goto-question-btn': function (event, instance) {
         var questionId = this._id;
         //check if previous attempt exists

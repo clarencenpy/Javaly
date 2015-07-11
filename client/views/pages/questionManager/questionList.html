@@ -1,0 +1,49 @@
+<template name="questionList">
+
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>Verified Questions</h5>
+        </div>
+        <div class="ibox-content profile-content">
+            {{#if this}}
+
+                <table id="datatable" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="col-md-4">Title</th>
+                            <th class="col-md-2">Author</th>
+                            <th class="col-md-2">Date</th>
+                            <th class="col-md-2">Popularity</th>
+                            <th class="col-md-2">Tags</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    {{#each this}}
+                        <tr>
+                            <td><a class="goto-question-btn">{{title}}</a></td>
+                            <td>{{author}}</td>
+                            <td>{{moFromNow createdAt}}</td>
+                            <td>{{numAttempts}}</td>
+                            <td>
+                                {{#each tags}}
+                                    <span class="label">{{this}}</span>
+                                {{/each}}
+                            </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+
+            {{else}}
+                <div class="ibox-content">
+                    <div class="text-center" style="margin-top: 20px">
+                        <i class="fa fa-list" style="font-size: 5em; color:#888888"></i>
+                        <h4>No questions found! <a href="{{pathFor 'submitQuestion'}}">Be the first!</a></h4>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+
+</template>

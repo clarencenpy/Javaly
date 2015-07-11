@@ -2,8 +2,21 @@
 
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7">
                 {{> myQuestions authoredQuestions}}
+            </div>
+            <div class="col-md-5 visible-md-block visible-lg-block">
+                <blockquote>
+                    <p>Don’t worry if it doesn’t work right. If everything did, you’d be out of a job.</p>
+                    <small>Mosher’s Law of Software Engineering</small>
+                </blockquote>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                {{> questionList verifiedQuestions}}
             </div>
         </div>
     </div>
