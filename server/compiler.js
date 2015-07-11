@@ -29,7 +29,12 @@ readFileSync = Meteor.wrapAsync(fs.readFile);
 //mkdirpSync = Meteor.wrapAsync(mkdirp);
 
 kue = Meteor.npmRequire('kue');
-jobs = kue.createQueue();
+jobs = kue.createQueue({
+    redis: {
+        port: 6379,
+        host: process.env.ROOT_URL === 'http://kuala.smu.edu.com' ? 'redis' : 'localhost'
+    }
+});
 
 Meteor.methods({
 
