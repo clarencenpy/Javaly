@@ -1,12 +1,21 @@
+Template.submitQuestion.onRendered(function () {
+    this.$('[data-toggle=tooltip]').tooltip({
+        container: 'body'
+    });
+});
+
 Template.submitQuestion.events({
     'click #addTest': function (event, instance) {
         instance.$('#test-container').append('\
             <tr>\
                 <td>\
-                    <input name="input" type="text" class="form-control">\
+                    <textarea name="input" rows="4" class="form-control" style="font-family: monospace"></textarea>\
                 </td>\
                 <td>\
-                    <input name="output" type="text" class="form-control">\
+                    <input name="input" type="text" class="form-control" style="font-family: monospace">\
+                </td>\
+                <td>\
+                    <input name="output" type="text" class="form-control" style="font-family: monospace">\
                 </td>\
                 <td>\
                     <select name="type" class="form-control" >\
@@ -34,21 +43,21 @@ Template.submitQuestion.events({
             question.tags = AutoForm.getFieldValue('tags', 'insertQuestionForm');
             question.content = AutoForm.getFieldValue('content', 'insertQuestionForm');
             question.classname = AutoForm.getFieldValue('classname', 'insertQuestionForm');
+            question.methodName = AutoForm.getFieldValue('methodName', 'insertQuestionForm');
+            question.questionType = AutoForm.getFieldValue('questionType', 'insertQuestionForm');
+            question.static = AutoForm.getFieldValue('static', 'insertQuestionForm');
 
-            question.test = {};
-            question.test.testcases = [];
+            question.testcases = [];
             instance.$('#test-container>tr').each(function (index, elem) {
                 var $elem = $(elem);
-                question.test.testcases.push({
+                question.testcases.push({
+                    prepCode: $elem.find('textarea[name="prepCode"]').val(),
                     input: $elem.find('input[name="input"]').val(),
                     output: $elem.find('input[name="output"]').val(),
                     type: $elem.find('input[name="type"]').val()
                 })
             });
 
-            question.test.questionType = instance.$('select[name="questionType"]').val();
-            question.test.methodName = instance.$('input[name="methodName"]').val();
-            question.test.static = instance.$('select[name="static"]').val() === 'true';
 
             console.log(question);
 
@@ -82,7 +91,7 @@ Template.submitQuestion.events({
             console.log(questionId + ' inserted');
 
         } else {
-            swal('Not so fast','Please ensure that you have filled all fields correctly', 'warning');
+            swal('Not so fast','Please ensure that you have filled up the required fields from all tabs!', 'warning');
         }
 
     }
