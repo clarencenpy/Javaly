@@ -18,7 +18,7 @@
                             <td><a class="goto-question-btn">{{title}}</a></td>
                             <td><i class="fa fa-clock-o"></i> {{moFromNow createdAt}}</td>
                             <td>{{#if passed}} <span class="label label-primary">Verified</span> {{else}} <span class="label label-warning">Unverified</span> {{/if}}</td>
-                            <td><a><i class="fa fa-pencil"></i> Edit</a></td>
+                            <td><a href="{{pathFor 'updateQuestion'}}"><i class="fa fa-pencil"></i> Edit</a></td>
                         </tr>
                     {{/each}}
                     </tbody>

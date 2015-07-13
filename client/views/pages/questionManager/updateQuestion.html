@@ -1,0 +1,187 @@
+<template name="updateQuestion">
+
+    <style>
+        .bootstrap-tagsinput {
+            background-color: #fff;
+            border: 1px solid #e5e6e7;
+            box-shadow: none;
+            display: inline-block;
+            padding: 4px 6px;
+            margin-bottom: 0px;
+            color: #555;
+            vertical-align: middle;
+            border-radius: 1px;
+            max-width: 100%;
+            line-height: 22px;
+            cursor: text;
+        }
+
+        /*override summernote code view*/
+        .note-codable, .note-editable, .note-editor {
+            background-color: #fff !important;
+            color: #1f1f1f !important;
+            outline: none !important;
+        }
+    </style>
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Update Question</h5>
+                <div class="ibox-tools">
+                    <button id="submit-btn" class="btn btn-primary btn-sm">
+                        <i class="fa fa-upload"></i>
+                        <span class="bold"> Update </span>
+                    </button>
+                </div>
+            </div>
+            <div class="ibox-content profile-content">
+
+                <div class="tabs-container">
+
+                    {{#autoForm collection="Questions" id="updateQuestionForm" type="update" doc=this}}
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab-1"> Content</a></li>
+                            <!--<li class=""><a data-toggle="tab" href="#tab-2"> Options</a></li>-->
+                            <li class=""><a data-toggle="tab" href="#tab-3"> Tests</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab-1" class="tab-pane active">
+                                <div class="panel-body">
+
+                                    <fieldset class="form-horizontal">
+                                        <div class="form-group {{#if afFieldIsInvalid name='title'}}has-error{{/if}}">
+                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="Summary of the question in one sentence">Title:</label>
+                                            <div class="col-sm-9">
+                                                {{> afFieldInput name='title'}}
+                                                {{#if afFieldIsInvalid name='title'}}
+                                                    <span class="help-block">{{{afFieldMessage name='title'}}}</span>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="Tags make your question easily searchable">Tags:</label>
+                                            <div class="col-sm-9">
+                                                {{> afFieldInput name="tags" type="tags" multiple=true}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group {{#if afFieldIsInvalid name='content'}}has-error{{/if}}">
+                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="Description of your question. You can style it with the styles panel or use the code view to write HTML">Content:</label>
+                                            <div class="col-sm-9">
+                                                {{> afFieldInput name='content' type='summernote'}}
+                                                {{#if afFieldIsInvalid name='content'}}
+                                                    <span class="help-block">{{{afFieldMessage name='content'}}}</span>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                </div>
+                            </div>
+
+                            <!--<div id="tab-2" class="tab-pane">-->
+                            <!--<div class="panel-body">-->
+
+                            <!--</div>-->
+                            <!--</div>-->
+
+                            <div id="tab-3" class="tab-pane">
+                                <div class="panel-body">
+
+                                    <fieldset class="form-horizontal">
+                                        <div class="form-group {{#if afFieldIsInvalid name='classname'}}has-error{{/if}}">
+                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="If you require the student to write the full Java class, please specify the class name. If this field is left empty, it is assumed that the student is only required to write the method body.">Class Name:</label>
+                                            <div class="col-sm-9">
+                                                {{> afFieldInput name='classname'}}
+                                                {{#if afFieldIsInvalid name='classname'}}
+                                                    <span class="help-block">{{{afFieldMessage name='classname'}}}</span>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group {{#if afFieldIsInvalid name='methodName'}}has-error{{/if}}">
+                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="Name of the method to be tested (enter just the name without parentheses)">Method Name: </label>
+                                            <div class="col-sm-9">
+                                                {{> afFieldInput name='methodName'}}
+                                                {{#if afFieldIsInvalid name='methodName'}}
+                                                    <span class="help-block">{{{afFieldMessage name='methodName'}}}</span>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group {{#if afFieldIsInvalid name='questionType'}}has-error{{/if}}">
+                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="We currently support testing methods that either return a value or prints to System.out">Output Type:</label>
+                                            <div class="col-sm-9">
+                                                {{> afFieldInput name='questionType' template='buttonGroup'}}
+                                                {{#if afFieldIsInvalid name='questionType'}}
+                                                    <span class="help-block">{{{afFieldMessage name='questionType'}}}</span>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group {{#if afFieldIsInvalid name='methodType'}}has-error{{/if}}">
+                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="Is the method to be tested static or non-static?">Method Type: </label>
+                                            <div class="col-sm-9">
+                                                {{> afFieldInput name='methodType' template='buttonGroup'}}
+                                                {{#if afFieldIsInvalid name='methodType'}}
+                                                    <span class="help-block">{{{afFieldMessage name='methodType'}}}</span>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group"><label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="You may specify any number of test cases by hitting the add button. Please ensure that you do not have empty tests (delete rows that are not needed)">Test Cases: </label>
+                                            <div class="col-sm-9">
+                                                <div class="table-responsive">
+                                                    <table class="table table-stripped table-bordered">
+                                                        <thead>
+                                                        <tr>
+                                                            <th data-toggle="tooltip" data-placement="bottom" title="You may write Java code here that will be executed before the method to be tested is called. This is a good place to define variables that will be referenced by the test method.">Preparation Code</th>
+                                                            <th data-toggle="tooltip" data-placement="bottom" title="Input arguments to be supplied to the method, separated by commas. For example, if your method signature is method(int, String), then input shall be <1, &quot;java&quot;>. You may also reference variables from your preparation code">Input Arguments</th>
+                                                            <th data-toggle="tooltip" data-placement="bottom" title="If you are testing for System Output, then we are simply checking if the strings match. For Return Values, we support all primitive types and arrays. If the return value is an object, you need to reference a variable in the preparation code and override the equals() method of that object as required">Expected Output</th>
+                                                            <th data-toggle="tooltip" data-placement="bottom" title="Controls if this test case is visible to the student. Having some test cases that are hidden may prevent students from hardcoding">Visibility</th>
+                                                            <th></th>
+                                                        </tr>
+                                                        </thead>
+
+                                                        <tbody id="test-container">
+                                                        {{#each testCases}}
+                                                            <tr>
+                                                                <td>
+                                                                    <textarea value="{{prepCode}}" name="prepCode" rows="4" class="form-control" style="font-family: monospace"></textarea>
+                                                                </td>
+                                                                <td>
+                                                                    <input value="{{input}}" name="input" type="text" class="form-control" style="font-family: monospace">
+                                                                </td>
+                                                                <td>
+                                                                    <input value="{{output}}" name="output" type="text" class="form-control" style="font-family: monospace">
+                                                                </td>
+                                                                <td>
+                                                                    <select name="visibility" class="form-control" >
+                                                                        <option value="SHOW" selected="{{isVisible visibility}}">Show</option>
+                                                                        <option value="HIDDEN" selected="{{isNotVisible visibility}}">Hidden</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <button class="remove-btn btn btn-white"><i class="fa fa-trash"></i> </button>
+                                                                </td>
+                                                            </tr>
+                                                        {{/each}}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="text-center">
+                                                    <a id="addTest" class="btn btn-primary btn-sm">Add</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    {{/autoForm}}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>

@@ -116,12 +116,12 @@
                                             {{/if}}
                                         </div>
                                     </div>
-                                    <div class="form-group {{#if afFieldIsInvalid name='static'}}has-error{{/if}}">
+                                    <div class="form-group {{#if afFieldIsInvalid name='methodType'}}has-error{{/if}}">
                                         <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="Is the method to be tested static or non-static?">Method Type: </label>
                                         <div class="col-sm-9">
-                                            {{> afFieldInput name='static' template='buttonGroup'}}
-                                            {{#if afFieldIsInvalid name='static'}}
-                                                <span class="help-block">{{{afFieldMessage name='static'}}}</span>
+                                            {{> afFieldInput name='methodType' template='buttonGroup'}}
+                                            {{#if afFieldIsInvalid name='methodType'}}
+                                                <span class="help-block">{{{afFieldMessage name='methodType'}}}</span>
                                             {{/if}}
                                         </div>
                                     </div>
@@ -151,9 +151,9 @@
                                                             <input name="output" type="text" class="form-control" style="font-family: monospace">
                                                         </td>
                                                         <td>
-                                                            <select name="type" class="form-control" >
-                                                                <option selected>Show</option>
-                                                                <option>Hidden</option>
+                                                            <select name="visibility" class="form-control" >
+                                                                <option value="SHOW" selected>Show</option>
+                                                                <option value="HIDDEN">Hidden</option>
                                                             </select>
                                                         </td>
                                                         <td>

@@ -1,10 +1,19 @@
-Template.submitQuestion.onRendered(function () {
+Template.updateQuestion.onRendered(function () {
     this.$('[data-toggle=tooltip]').tooltip({
         container: 'body'
     });
 });
 
-Template.submitQuestion.events({
+Template.updateQuestion.helpers({
+    isVisible: function (string) {
+        return string === 'SHOW';
+    },
+    isNotVisible: function (string) {
+        return string === 'HIDDEN';
+    }
+});
+
+Template.updateQuestion.events({
     'click #addTest': function (event, instance) {
         instance.$('#test-container').append('\
             <tr>\
@@ -36,40 +45,42 @@ Template.submitQuestion.events({
 
 
     'click #submit-btn': function (event, instance) {
-        if (AutoForm.validateForm('insertQuestionForm')) {
-            var question = {};
+        if (
+            AutoForm.validateField('title','updateQuestionForm') &&
+            AutoForm.validateField('tags','updateQuestionForm') &&
+            AutoForm.validateField('content','updateQuestionForm') &&
+            AutoForm.validateField('classname','updateQuestionForm') &&
+            AutoForm.validateField('methodName','updateQuestionForm') &&
+            AutoForm.validateField('questionType','updateQuestionForm') &&
+            AutoForm.validateField('static','updateQuestionForm')
+        ) {
 
-            question.title = AutoForm.getFieldValue('title', 'insertQuestionForm');
-            question.tags = AutoForm.getFieldValue('tags', 'insertQuestionForm');
-            question.content = AutoForm.getFieldValue('content', 'insertQuestionForm');
-            question.classname = AutoForm.getFieldValue('classname', 'insertQuestionForm');
-            question.methodName = AutoForm.getFieldValue('methodName', 'insertQuestionForm');
-            question.questionType = AutoForm.getFieldValue('questionType', 'insertQuestionForm');
-            question.methodType = AutoForm.getFieldValue('methodType', 'insertQuestionForm');
 
-            question.testCases = [];
+            var testCases = [];
             instance.$('#test-container>tr').each(function (index, elem) {
                 var $elem = $(elem);
-                question.testCases.push({
+                testCases.push({
                     prepCode: $elem.find('textarea[name="prepCode"]').val(),
                     input: $elem.find('input[name="input"]').val(),
                     output: $elem.find('input[name="output"]').val(),
                     visibility: $elem.find('select[name="visibility"]').val()
-                });
+                })
             });
 
 
-            console.log(question);
-
-            var questionId = Questions.insert(question);
-
-            //TODO: remove this after beta
-            Groups.update(Groups.findOne({name: 'Beta Testers'})._id, {$push: {
-                'exercises.0.questions': questionId
+            Questions.update(Template.currentData()._id, {$set: {
+                title: AutoForm.getFieldValue('title', 'updateQuestionForm'),
+                tags: AutoForm.getFieldValue('tags', 'updateQuestionForm'),
+                content: AutoForm.getFieldValue('content', 'updateQuestionForm'),
+                classname: AutoForm.getFieldValue('classname', 'updateQuestionForm'),
+                methodName: AutoForm.getFieldValue('methodName', 'updateQuestionForm'),
+                questionType: AutoForm.getFieldValue('questionType', 'updateQuestionForm'),
+                methodType: AutoForm.getFieldValue('methodType', 'updateQuestionForm'),
+                testCases: testCases
             }});
 
             swal({
-                title: "Question Submitted!",
+                title: "Question Updated!",
                 text: "The question will only be successfully published when it has at least one successful attempt (from you of course!)",
                 type: "success",
                 showCancelButton: true,
@@ -88,7 +99,6 @@ Template.submitQuestion.events({
                 }
             });
 
-            console.log(questionId + ' inserted');
 
         } else {
             swal('Not so fast','Please ensure that you have filled up the required fields from all tabs!', 'warning');
