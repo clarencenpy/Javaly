@@ -1,6 +1,16 @@
 <template name="questionManager">
 
-    <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row wrapper wrapper-content border-bottom white-bg page-heading">
+        <div class="col-md-12">
+            <div class="pull-left m-r-md m-t-sm">
+                <i class="fa fa-book text-navy mid-icon"></i>
+            </div>
+            <h2>View Questions</h2>
+            <span>Only Instructors and TAs can view this page</span>
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-content animated fadeInUp">
         <div class="row">
             <div class="col-md-7">
                 {{> myQuestions authoredQuestions}}

@@ -84,12 +84,12 @@ Meteor.methods({
         })
         .on('complete', function (result) {
             console.log("Completed: " + (new Date() - start));
-                console.log(result);
+                //console.log(result);
             future.return(result);
         })
         .on('failed', function (err) {
             console.log("Failed: " + (new Date() - start));
-                console.log(err);
+                //console.log(err);
             future.return({isError: true, error: err});
         })
         .save();

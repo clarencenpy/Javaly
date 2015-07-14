@@ -9,20 +9,20 @@ Template.exerciseListing.onCreated(function () {
         var group = Template.parentData(1);
         var completed = 0;
         var attempted = 0;
-        var verifiedQuestions = [];
-        _.each(group.participants, function (userId) {
-            //TODO: remove after beta, becase there will not be unverified questions in a group
-            verifiedQuestions = exercise.questions;
-            //remove unverified questions
-            verifiedQuestions = _.filter(verifiedQuestions, function (question) {
-                var attempts = Attempts.find({questionId: question}).fetch();
-                var passedBefore = _.find(attempts, function (attempt) {   // _.find returns when a match has been found
-                    return attempt.completed;
-                });
-                return passedBefore ? true : false;
+
+        //TODO: remove after beta, becase there will not be unverified questions in a group
+        var verifiedQuestions = exercise.questions;
+        //remove unverified questions
+        verifiedQuestions = _.filter(verifiedQuestions, function (question) {
+            var attempts = Attempts.find({questionId: question}).fetch();
+            var passedBefore = _.find(attempts, function (attempt) {   // _.find returns when a match has been found
+                return attempt.completed;
             });
-            console.log(verifiedQuestions);
-            _.each(verifiedQuestions, function (questionId) {
+            return passedBefore ? true : false;
+        });
+
+        _.each(verifiedQuestions, function (questionId) {
+            _.each(group.participants, function (userId) {
                 var attempt = Attempts.findOne({userId: userId, questionId: questionId});
                 if (attempt && attempt.history) {  //have attempted before
                     attempted++;

@@ -24,6 +24,10 @@
                         JA+
                     </div>
                 </li>
+
+                <li class="{{isActiveRoute regex='welcome'}}">
+                    <a href="{{pathFor route='welcome'}}"><i class="fa fa-info-circle"></i> <span class="nav-label">Welcome</span> </a>
+                </li>
                 <li class="{{isActiveRoute regex='questionManager'}}">
                     <a href="{{pathFor route='questionManager'}}"><i class="fa fa-book"></i> <span class="nav-label">View Questions</span> </a>
                 </li>
@@ -34,13 +38,13 @@
                     </li>
                 {{else}}
                     <li class="{{isActiveRoute regex='enrolledGroups'}}">
-                        <a href="{{pathFor route='enrolledGroups'}}"><i class="fa fa-users"></i> <span class="nav-label">Enrolled Groups</span> </a>
+                        <a href="{{pathFor route='enrolledGroups'}}"><i class="fa fa-inbox"></i> <span class="nav-label">My Assignments</span> </a>
                     </li>
                 {{/if}}
 
                 <!--Beta only-->
                 <li class="{{isActiveRoute regex='groupView'}}">
-                    <a href="/groupView/FXSSNuy6PDjgoHrbc">
+                    <a href="/groupView/9maodhs2ZP2yTnBKF">
                         <i class="fa fa-tachometer"></i> <span class="nav-label">Dashboard</span>
                         <span class="label label-primary pull-right">Beta Only</span>
                     </a>

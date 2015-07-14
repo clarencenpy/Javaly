@@ -61,7 +61,6 @@ Template.editor.helpers({
             editor.getSession().setMode('ace/mode/java');
             editor.setHighlightActiveLine(false);
             editor.setShowPrintMargin(false);
-            editor.getSession().setUseWrapMode(true);
         }
     },
 
