@@ -7,7 +7,7 @@ Template.editor.onRendered(function () {
 
 
 Template.editor.events({
-    'click #compile-btn': function () {
+    'click #compile-btn': function (event, instance) {
         //display load spinner
         Session.set('executing', true);
 
@@ -28,19 +28,26 @@ Template.editor.events({
             activeTime: activeTime
         }, function (err, result) {
             if (err) {
-                console.log(err);
+                Session.set('compileError', err.error);
+                Session.set('compileResult', null);
                 Session.set('executing', false);
-                return
+                return;
             }
-            console.log(result);
-            if (result.status.indexOf('error') === 0) {
-                Session.set('compileError', result.message);
+            if (result.status === 'testNotDefined') {
+                Session.set('compileError', 'The author of this question has not defined any test cases for this question.');
                 Session.set('compileResult', null);
             } else if (result.status === 'completed') {
                 Session.set('compileResult', result);
                 Session.set('compileError', null);
             } else if (result.status === 'unchanged') {
-                //do nothing if user has not modified the code
+                //load the results of the last attempt
+                if (instance.data.result.error) {
+                    Session.set('compileError', instance.data.result.error);
+                    Session.set('compileResult', null);
+                } else {
+                    Session.set('compileResult', instance.data.result);
+                    Session.set('compileError', null);
+                }
             }
             Session.set('executing', false);
         });
