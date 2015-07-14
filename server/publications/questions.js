@@ -34,7 +34,7 @@ Meteor.publishComposite('allQuestions', {
         {
             // Publish Author's name
             find: function (topLevelDoc) {
-                return Meteor.users.find(topLevelDoc._id, {fields: {'profile.name': 1}});
+                return Meteor.users.find(topLevelDoc.createdBy, {fields: {'profile.name': 1}});
             }
         },
         {
