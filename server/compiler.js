@@ -25,8 +25,6 @@ fs = Npm.require('fs');
 execSync = Meteor.wrapAsync(exec);
 writeFileSync = Meteor.wrapAsync(fs.writeFile);
 readFileSync = Meteor.wrapAsync(fs.readFile);
-//mkdirp = Npm.require('mkdirp');
-//mkdirpSync = Meteor.wrapAsync(mkdirp);
 
 kue = Meteor.npmRequire('kue');
 jobs = kue.createQueue({
@@ -57,16 +55,22 @@ Meteor.methods({
         //  -------- add job ----------- //
         //TODO: should not even write test to file
 
-        // there are two ways of getting the test code now: 1)DB 2)Uploaded File
-        var test = null;
+        // there are two ways of getting the test code now: 1)From DB as string 2)Test JSON
+
+        var testJSON;
+
         if (question.testCode) {
-            test = question.testCode;
+            //do nothing for now
+        } else if (question.testCases) {
+            testJSON = {};
+            testJSON.testCases = question.testCases;
+            testJSON.questionType = question.questionType;
+            testJSON.methodName = question.methodName;
+            testJSON.classname = question.classname;
+            testJSON.static = question.methodType === 'STATIC';
         } else {
-            try {
-                test = readFileSync(process.env.PWD + '/uploads/questions/' + attempt.questionId + '/Test.java', {encoding: 'utf8'});
-            } catch (err) {
-                throw new Meteor.Error(err.message);
-            }
+            //both not present
+            return {status: 'testNotDefined'};
         }
 
         var future = new Future();
@@ -75,24 +79,37 @@ Meteor.methods({
             attemptId: options.attemptId,
             classname: question.classname,
             code: options.code,
-            test: test
+            testJSON: testJSON,
+            testCode: question.testCode
         })
         .on('complete', function (result) {
             console.log("Completed: " + (new Date() - start));
+                console.log(result);
             future.return(result);
         })
         .on('failed', function (err) {
             console.log("Failed: " + (new Date() - start));
-            throw new Meteor.Error(err);
-            //future.return(err);
+                console.log(err);
+            future.return({isError: true, error: err});
         })
         .save();
 
-        var result =  future.wait();   //this is necessary for executing async code in a meteor method
+        var result = future.wait();   //this is necessary for executing async code in a meteor method
 
 
         // ------ update mongodb based on results ------ //
+        if(result.isError) {
+            //uncompilable code - store result, then throw error to the UI
+            //will have to decide in the future if i wanna store code that cannot compile to history
+            Attempts.update(options.attemptId, {$set: {
+                code: options.code,
+                result: {error: result.error},
+                activeTime: options.activeTime
+            }});
+            throw new Meteor.Error(result.error);
+        }
 
+        // ran succesfully
         if (result.success) {
             Attempts.update(options.attemptId, {$set: {
                 code: options.code,
