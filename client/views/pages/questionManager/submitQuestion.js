@@ -9,6 +9,9 @@ Template.submitQuestion.events({
         instance.$('#test-container').append('\
             <tr>\
                 <td>\
+                    <input name="description" type="text" class="form-control">\
+                </td>\
+                <td>\
                     <textarea name="prepCode" rows="4" class="form-control" style="font-family: monospace"></textarea>\
                 </td>\
                 <td>\
@@ -51,6 +54,7 @@ Template.submitQuestion.events({
             instance.$('#test-container>tr').each(function (index, elem) {
                 var $elem = $(elem);
                 question.testCases.push({
+                    description: $elem.find('input[name="description"]').val(),
                     prepCode: $elem.find('textarea[name="prepCode"]').val(),
                     input: $elem.find('input[name="input"]').val(),
                     output: $elem.find('input[name="output"]').val(),
