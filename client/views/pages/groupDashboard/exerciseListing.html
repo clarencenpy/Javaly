@@ -15,26 +15,27 @@
                     <div style="width: {{attemptedButNotCompletedPercentage}}%" class="progress-bar progress-bar-warning"></div>
                 </div>
             </div>
-            <div class="row m-t-sm">
-                <div class="col-sm-4">
-                    <div class="font-bold">QUESTIONS</div>
-                    {{questions.length}}
-                </div>
-                <div class="col-sm-4">
-                    <div class="font-bold">STUDENTS</div>
-                    3
-                </div>
-                <div class="col-sm-4 text-right">
-                    <div class="font-bold">ALERTS</div>
-                    0 <i class="fa fa-level-up text-navy"></i>
-                </div>
-            </div>
+            <div><small>Click questions to show progress </small><i class="fa fa-hand-o-down"></i></div>
+            <!--<div class="row m-t-sm">-->
+                <!--<div class="col-sm-4">-->
+                    <!--<div class="font-bold">QUESTIONS</div>-->
+                    <!--{{questions.length}}-->
+                <!--</div>-->
+                <!--<div class="col-sm-4">-->
+                    <!--<div class="font-bold">STUDENTS</div>-->
+                    <!--3-->
+                <!--</div>-->
+                <!--<div class="col-sm-4 text-right">-->
+                    <!--<div class="font-bold">ALERTS</div>-->
+                    <!--0 <i class="fa fa-level-up text-navy"></i>-->
+                <!--</div>-->
+            <!--</div>-->
 
 
             <br>
             <!--Question list-->
             <div class="panel-group">
-            {{#each questions}}
+            {{#each verifiedQuestions}}
                 {{> questionStats }}
             {{/each}}
             </div>

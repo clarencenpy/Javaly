@@ -28,7 +28,7 @@
                     <a href="{{pathFor route='questionManager'}}"><i class="fa fa-book"></i> <span class="nav-label">View Questions</span> </a>
                 </li>
 
-                {{#if isInRole 'instructor'}}
+                {{#if isInRole 'instructor, admin'}}
                     <li class="{{isActiveRoute regex='manageGroups'}}">
                         <a href="{{pathFor route='manageGroups'}}"><i class="fa fa-users"></i> <span class="nav-label">Manage Groups</span> </a>
                     </li>
@@ -38,6 +38,13 @@
                     </li>
                 {{/if}}
 
+                <!--Beta only-->
+                <li class="{{isActiveRoute regex='groupView'}}">
+                    <a href="/groupView/FXSSNuy6PDjgoHrbc">
+                        <i class="fa fa-tachometer"></i> <span class="nav-label">Dashboard</span>
+                        <span class="label label-primary pull-right">Beta Only</span>
+                    </a>
+                </li>
             </ul>
 
         </div>
