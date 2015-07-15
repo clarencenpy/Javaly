@@ -15,7 +15,7 @@
                     <div style="width: {{attemptedButNotCompletedPercentage}}%" class="progress-bar progress-bar-warning"></div>
                 </div>
             </div>
-            <div><small>Click questions to show progress </small><i class="fa fa-hand-o-down"></i></div>
+            <div><small>Click on questions to toggle detailed view </small><i class="fa fa-hand-o-down"></i></div>
             <!--<div class="row m-t-sm">-->
                 <!--<div class="col-sm-4">-->
                     <!--<div class="font-bold">QUESTIONS</div>-->
@@ -33,11 +33,50 @@
 
 
             <br>
-            <!--Question list-->
+
             <div class="panel-group">
-            {{#each verifiedQuestions}}
-                {{> questionStats }}
-            {{/each}}
+                <!--Grid View-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent=".accordion" href="#gridview">Summary View</a>
+                        </h4>
+                    </div>
+                    <div id="gridview" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table class="table table-bordered table-hover datatable">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    {{#each participantNames}}
+                                        <th>{{this}}</th>
+                                    {{/each}}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each questionSummary}}
+                                    <tr>
+                                        <td>{{title}}</td>
+                                        {{#each participants}}
+                                        <td>
+                                            {{#if completed}}
+                                                <i class="fa fa-check text-navy"></i>
+                                            {{else}}
+                                                <i class="fa fa-times text-danger"></i>
+                                            {{/if}}
+                                        </td>
+                                        {{/each}}
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--Question list-->
+                {{#each verifiedQuestions}}
+                    {{> questionStats }}
+                {{/each}}
             </div>
         </div>
     </div>

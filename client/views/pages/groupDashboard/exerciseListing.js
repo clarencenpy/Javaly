@@ -41,8 +41,6 @@ Template.exerciseListing.onCreated(function () {
     });
 });
 
-
-
 Template.exerciseListing.helpers({
     completedPercentage: function () {
         return Template.instance().completedPercentage.get();
@@ -63,5 +61,42 @@ Template.exerciseListing.helpers({
             return passedBefore ? true : false;
         });
         return questions;
+    },
+
+    participantNames: function () {
+        var group = Template.parentData(1);
+        return _.map(group.participants, function (userId) {
+            return Meteor.users.findOne(userId).profile.name;
+        })
+    },
+
+    questionSummary: function () {  //returns a 2d array containing the complete status, row=question, col=user
+        var group = Template.parentData(1);
+
+        var verifiedQuestions = this.questions;
+        verifiedQuestions = _.filter(verifiedQuestions, function (question) {
+            var attempts = Attempts.find({questionId: question}).fetch();
+            var passedBefore = _.find(attempts, function (attempt) {   // _.find returns when a match has been found
+                return attempt.completed;
+            });
+            return passedBefore ? true : false;
+        });
+
+        var summary = _.map(verifiedQuestions, function (questionId) {
+            var row = {};
+            row.title = Questions.findOne(questionId).title;
+            row.participants = [];
+            _.each(group.participants, function (userId) {
+                var attempt = Attempts.findOne({userId: userId, questionId: questionId});
+                row.participants.push({completed: attempt ? attempt.completed : false});
+            });
+            return row;
+        });
+
+        return summary;
+        //summary: [
+        //     row: { {title: XX} questions: [ {completed: true},{complete: false} ]},
+        //     row: { {title: XX} questions: [ {completed: true},{complete: false} ]},
+        //]
     }
 });

@@ -30,7 +30,8 @@ kue = Meteor.npmRequire('kue');
 jobs = kue.createQueue({
     redis: {
         port: 6379,
-        host: process.env.ROOT_URL === 'http://kuala.smu.edu.com' ? 'redis' : 'localhost'
+        //host: process.env.ROOT_URL === 'http://kuala.smu.edu.com' ? 'redis' : 'localhost'
+        //host: 'redis'
     }
 });
 
