@@ -10,7 +10,7 @@ Template.questionStats.onRendered(function () {
             paging: false,
             info: false,
             searching: false,
-            aoColumns: [null, null, null, null, {bSortable: false}]
+            aoColumns: [null, null, {IDataSort: 3}, {visible: false}, null, {bSortable: false}]
         });
     })
 });
