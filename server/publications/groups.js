@@ -61,7 +61,6 @@ Meteor.publishComposite('groupInfo', function (groupId) {
                         userId: 1,
                         totalActiveTime: 1,
                         completed: 1,
-                        history: {$slice: -1}, //return only the history of the most recent attempt (to get lastAttempt date)
                         'history.date': 1
                     }});
                 }
