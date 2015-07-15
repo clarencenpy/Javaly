@@ -28,7 +28,9 @@
                                 <td>{{#if completed}} <span class="label label-primary">Completed</span> {{else}} <span class="label">Incomplete</span>{{/if}}</td>
                                 <td>
                                     {{#if attemptId}}
-                                        <a href="{{pathFor 'codepad' id=attemptId}}" class="btn btn-primary btn-xs">View <i class="fa fa-lg fa-code"></i></a>
+                                        <!--Somehow links to codepad will cause the editor not to load, but calling Router.go does-->
+                                        <!--<a href="{{pathFor 'codepad' id=attemptId}}" class="btn btn-primary btn-xs">View <i class="fa fa-lg fa-code"></i></a>-->
+                                        <a class="goto-question-btn btn btn-primary btn-xs">View <i class="fa fa-lg fa-code"></i></a>
                                     {{else}}
                                         <a href="" class="btn btn-warning btn-xs">Nudge <i class="fa fa-hand-o-right"></i></a>
                                     {{/if}}

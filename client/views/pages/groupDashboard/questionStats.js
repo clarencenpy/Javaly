@@ -35,3 +35,9 @@ Template.questionStats.helpers({
     }
 });
 
+Template.questionStats.events({
+   'click .goto-question-btn': function () {
+       Router.go('codepad', {id: this.attemptId});
+   }
+});
+

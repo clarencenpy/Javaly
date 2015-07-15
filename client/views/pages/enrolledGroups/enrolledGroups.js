@@ -110,5 +110,8 @@ Template.enrolledGroups.events({
         } else {
             Router.go('codepad', {id: attempt._id});
         }
+    },
+    'click .goto-question-btn': function (event, instance) {
+        Router.go('codepad', {id: this.attemptId});
     }
 });
