@@ -20,7 +20,7 @@
                         {{>iboxTools}}
                     </div>
                     <div class="ibox-content ibox-heading">
-                        <h3><i class="fa fa-envelope-o"></i> Pending</h3>
+                        <h3><i class="fa fa-envelope-o"></i> {{#if incompleteQuestions}}Pending{{else}}Complete{{/if}}</h3>
                         <small><i class="fa fa-tim"></i>
                             {{#if incompleteQuestions}}
                                 You have {{incompleteQuestions}} incomplete questions! Keep going!
@@ -31,12 +31,20 @@
                     </div>
                     <div class="ibox-content">
                         <div class="feed-activity-list">
-
+                            <style>
+                                .select-btn:hover {
+                                    cursor: pointer;
+                                }
+                            </style>
                             {{#each exercises}}
-                                <div class="feed-element">
+                                <div class="feed-element select-btn">
                                     <div>
-                                        <strong>{{description}}</strong>
-                                        <a class="pull-right text-navy"><small class="select-btn">View</small></a>
+                                        {{#if selected}}
+                                            <strong>{{description}}</strong>
+                                        {{else}}
+                                            <span>{{description}}</span>
+                                        {{/if}}
+                                        <a class="pull-right text-navy"><small>View</small></a>
                                         <div><small class="text-muted">{{groupName}}</small></div>
                                         <div class="progress progress-mini">
                                             <div style="width: {{completedPercentage}}%;" class="progress-bar"></div>

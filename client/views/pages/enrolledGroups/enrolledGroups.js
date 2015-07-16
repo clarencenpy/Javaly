@@ -89,6 +89,10 @@ Template.enrolledGroups.helpers({
         });
 
         return result;
+    },
+
+    selected: function () { //checks whether an exercise has been selected
+        return this.description === Template.instance().exerciseDescription.get();
     }
 });
 
