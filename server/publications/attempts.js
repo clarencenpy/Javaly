@@ -1,5 +1,27 @@
-Meteor.publish('attempt', function (attemptId) {
-    return Attempts.find(attemptId);
+Meteor.publishComposite('codepad', function (attemptId) {
+    return {
+        find: function () {
+            return Attempts.find(attemptId);
+        },
+        children: [
+            {
+                //publish question
+                find: function (topLevelDoc) {
+                    return Questions.find(topLevelDoc.questionId);
+                },
+                children: [
+                    {
+                        //publish author name
+                        find: function (secondLevelDoc, topLevelDoc) {
+                            Meteor.users.find(secondLevelDoc.createdBy, {fields: {
+                                'profile.name': 1
+                            }})
+                        }
+                    }
+                ]
+            }
+        ]
+    }
 });
 
 Meteor.publish('attemptFromQuestionId', function (questionId) {
