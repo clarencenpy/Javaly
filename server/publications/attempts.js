@@ -13,7 +13,7 @@ Meteor.publishComposite('codepad', function (attemptId) {
                     {
                         //publish author name
                         find: function (secondLevelDoc, topLevelDoc) {
-                            Meteor.users.find(secondLevelDoc.createdBy, {fields: {
+                            return Meteor.users.find(secondLevelDoc.createdBy, {fields: {
                                 'profile.name': 1
                             }})
                         }
