@@ -1,9 +1,9 @@
 <template name="questionStats">
 
     <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" data-toggle="collapse" href="#{{question._id}}">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent=".accordion" href="#{{question._id}}">{{question.title}}</a>
+                <a >{{question.title}}</a>
                 <div class="progress-mini progress-striped active">
                     <div style="width: {{completedPercentage}}%" class="progress-bar progress-bar-default"></div>
                     <div style="width: {{attemptedButNotCompletedPercentage}}%" class="progress-bar progress-bar-warning"></div>
@@ -34,9 +34,7 @@
                                 <td>{{#if completed}} <span class="label label-primary">Completed</span> {{else}} <span class="label">Incomplete</span>{{/if}}</td>
                                 <td>
                                     {{#if attemptId}}
-                                        <!--Somehow links to codepad will cause the editor not to load, but calling Router.go does-->
-                                        <!--<a href="{{pathFor 'codepad' id=attemptId}}" class="btn btn-primary btn-xs">View <i class="fa fa-lg fa-code"></i></a>-->
-                                        <a class="goto-question-btn btn btn-primary btn-xs">View <i class="fa fa-lg fa-code"></i></a>
+                                        <a href="{{pathFor 'codepad' id=attemptId}}" class="btn btn-primary btn-xs">View <i class="fa fa-lg fa-code"></i></a>
                                     {{else}}
                                         <a href="" class="btn btn-warning btn-xs">Nudge <i class="fa fa-hand-o-right"></i></a>
                                     {{/if}}

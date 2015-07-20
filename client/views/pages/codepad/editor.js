@@ -41,11 +41,12 @@ Template.editor.events({
                 Session.set('compileError', null);
             } else if (result.status === 'unchanged') {
                 //load the results of the last attempt
-                if (instance.data.result.error) {
-                    Session.set('compileError', instance.data.result.error);
+                var attempt = Attempts.findOne(instance.data);
+                if (attempt.result.error) {
+                    Session.set('compileError', attempt.result.error);
                     Session.set('compileResult', null);
                 } else {
-                    Session.set('compileResult', instance.data.result);
+                    Session.set('compileResult', attempt.result);
                     Session.set('compileError', null);
                 }
             }
