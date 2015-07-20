@@ -12,13 +12,13 @@ Template.submitQuestion.events({
                     <input name="description" type="text" class="form-control">\
                 </td>\
                 <td>\
-                    <textarea name="prepCode" rows="4" class="form-control" style="font-family: monospace"></textarea>\
+                    <textarea name="prepCode" class="form-control" style="font-family: monospace"></textarea>\
                 </td>\
                 <td>\
                     <input name="input" type="text" class="form-control" style="font-family: monospace">\
                 </td>\
                 <td>\
-                    <input name="output" type="text" class="form-control" style="font-family: monospace">\
+                    <textarea name="output" type="text" class="form-control" style="font-family: monospace"></textarea>\
                 </td>\
                 <td>\
                     <select name="visibility" class="form-control" >\
@@ -57,7 +57,7 @@ Template.submitQuestion.events({
                     description: $elem.find('input[name="description"]').val(),
                     prepCode: $elem.find('textarea[name="prepCode"]').val(),
                     input: $elem.find('input[name="input"]').val(),
-                    output: $elem.find('input[name="output"]').val(),
+                    output: $elem.find('textarea[name="output"]').val(),
                     visibility: $elem.find('select[name="visibility"]').val()
                 });
             });
