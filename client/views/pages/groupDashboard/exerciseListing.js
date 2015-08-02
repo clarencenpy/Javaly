@@ -1,6 +1,21 @@
 Template.exerciseListing.onCreated(function () {
 
     var instance = this;
+
+    //TODO: remove after beta, because there will not be unverified questions in a group
+    instance.verifiedQuestions = new ReactiveVar();
+    var exercise = instance.data;
+    var verifiedQuestions = exercise.questions;
+    //remove unverified questions
+    verifiedQuestions = _.filter(verifiedQuestions, function (question) {
+        var attempts = Attempts.find({questionId: question}).fetch();
+        var passedBefore = _.find(attempts, function (attempt) {   // _.find returns when a match has been found
+            return attempt.completed;
+        });
+        return passedBefore ? true : false;
+    });
+    instance.verifiedQuestions.set(verifiedQuestions);
+
     instance.completedPercentage = new ReactiveVar();
     instance.attemptedButNotCompletedPercentage = new ReactiveVar();
 
@@ -11,17 +26,6 @@ Template.exerciseListing.onCreated(function () {
         var group = Template.parentData(1);
         var completed = 0;
         var attempted = 0;
-
-        //TODO: remove after beta, becase there will not be unverified questions in a group
-        var verifiedQuestions = exercise.questions;
-        //remove unverified questions
-        verifiedQuestions = _.filter(verifiedQuestions, function (question) {
-            var attempts = Attempts.find({questionId: question}).fetch();
-            var passedBefore = _.find(attempts, function (attempt) {   // _.find returns when a match has been found
-                return attempt.completed;
-            });
-            return passedBefore ? true : false;
-        });
 
         _.each(verifiedQuestions, function (questionId) {
             _.each(group.participants, function (userId) {
@@ -63,17 +67,7 @@ Template.exerciseListing.helpers({
     },
 
     verifiedQuestions: function () {
-        var questions = this.questions;
-
-        //remove unverified questions
-        questions = _.filter(questions, function (question) {
-            var attempts = Attempts.find({questionId: question}).fetch();
-            var passedBefore = _.find(attempts, function (attempt) {   // _.find returns when a match has been found
-                return attempt.completed;
-            });
-            return passedBefore ? true : false;
-        });
-        return questions;
+        return Template.instance().verifiedQuestions.get();
     },
 
     participantNames: function () {
@@ -85,14 +79,7 @@ Template.exerciseListing.helpers({
 
     questionTitles: function () {
 
-        var verifiedQuestions = this.questions;
-        verifiedQuestions = _.filter(verifiedQuestions, function (question) {
-            var attempts = Attempts.find({questionId: question}).fetch();
-            var passedBefore = _.find(attempts, function (attempt) {   // _.find returns when a match has been found
-                return attempt.completed;
-            });
-            return passedBefore ? true : false;
-        });
+        var verifiedQuestions = Template.instance().verifiedQuestions.get();
 
         var i = 1;
         return _.map(verifiedQuestions, function (questionId) {
@@ -106,14 +93,7 @@ Template.exerciseListing.helpers({
     questionSummaryQuestionHeaders: function () {
         var group = Template.parentData(1);
 
-        var verifiedQuestions = this.questions;
-        verifiedQuestions = _.filter(verifiedQuestions, function (question) {
-            var attempts = Attempts.find({questionId: question}).fetch();
-            var passedBefore = _.find(attempts, function (attempt) {   // _.find returns when a match has been found
-                return attempt.completed;
-            });
-            return passedBefore ? true : false;
-        });
+        var verifiedQuestions = Template.instance().verifiedQuestions.get();
 
         var summary = _.map(group.participants, function (userId) {
             var row = {};
@@ -132,14 +112,7 @@ Template.exerciseListing.helpers({
     questionSummaryStudentHeaders: function () {  //returns a 2d array containing the complete status, row=question, col=user
         var group = Template.parentData(1);
 
-        var verifiedQuestions = this.questions;
-        verifiedQuestions = _.filter(verifiedQuestions, function (question) {
-            var attempts = Attempts.find({questionId: question}).fetch();
-            var passedBefore = _.find(attempts, function (attempt) {   // _.find returns when a match has been found
-                return attempt.completed;
-            });
-            return passedBefore ? true : false;
-        });
+        var verifiedQuestions = Template.instance().verifiedQuestions.get();
 
         var summary = _.map(verifiedQuestions, function (questionId) {
             var row = {};
@@ -154,8 +127,8 @@ Template.exerciseListing.helpers({
 
         return summary;
         //summary: [
-        //     row: { {title: XX} questions: [ {completed: true},{complete: false} ]},
-        //     row: { {title: XX} questions: [ {completed: true},{complete: false} ]},
+        //     row: { {title: XX} participants: [ {completed: true},{complete: false} ]},
+        //     row: { {title: XX} participants: [ {completed: true},{complete: false} ]},
         //]
     }
 });
