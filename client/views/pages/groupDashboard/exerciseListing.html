@@ -34,40 +34,76 @@
 
             <br>
 
+            <style>
+                #summaryView>.panel-body {
+                    overflow-y: scroll
+                }
+
+                #summaryView>.panel-body::-webkit-scrollbar {
+                    /*disable the scrollbar*/
+                    width: 0 !important
+                }
+            </style>
+
             <div class="panel-group">
                 <!--Grid View-->
                 <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" href="#gridview">
+                    <div class="panel-heading" data-toggle="collapse" href="#summaryView">
                         <h4 class="panel-title">
                             <a>Summary View</a>
                         </h4>
                     </div>
-                    <div id="gridview" class="panel-collapse collapse in">
+                    <div id="summaryView" class="panel-collapse collapse in">
                         <div class="panel-body">
-                            <table class="table table-bordered table-hover datatable">
+                            <table class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th></th>
-                                    {{#each participantNames}}
-                                        <th>{{this}}</th>
-                                    {{/each}}
+                                    <th>
+                                        <small><a id="toggleAxes-btn">Toggle Axes <i class="fa fa-exchange"></i></a></small>
+                                    </th>
+                                    {{#if questionsAsHeaders}}
+                                        {{#each questionTitles}}
+                                            <th data-toggle="tooltip" data-placement="top" title="{{title}}">{{index}}</th>
+                                        {{/each}}
+                                    {{else}}
+                                        {{#each participantNames}}
+                                            <th>{{this}}</th>
+                                        {{/each}}
+                                    {{/if}}
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    {{#each questionSummary}}
-                                    <tr>
-                                        <td>{{title}}</td>
-                                        {{#each participants}}
-                                        <td>
-                                            {{#if completed}}
-                                                <i class="fa fa-check text-navy"></i>
-                                            {{else}}
-                                                <i class="fa fa-times text-danger"></i>
-                                            {{/if}}
-                                        </td>
+                                    {{#if questionsAsHeaders}}
+                                        {{#each questionSummaryQuestionHeaders}}
+                                        <tr>
+                                            <td>{{name}}</td>
+                                            {{#each questions}}
+                                            <td>
+                                                {{#if completed}}
+                                                    <i class="fa fa-check text-navy"></i>
+                                                {{else}}
+                                                    <i class="fa fa-times text-danger"></i>
+                                                {{/if}}
+                                            </td>
+                                            {{/each}}
+                                        </tr>
                                         {{/each}}
-                                    </tr>
-                                    {{/each}}
+                                    {{else}}
+                                        {{#each questionSummaryStudentHeaders}}
+                                        <tr>
+                                            <td>{{title}}</td>
+                                            {{#each participants}}
+                                                <td>
+                                                    {{#if completed}}
+                                                        <i class="fa fa-check text-navy"></i>
+                                                    {{else}}
+                                                        <i class="fa fa-times text-danger"></i>
+                                                    {{/if}}
+                                                </td>
+                                            {{/each}}
+                                        </tr>
+                                        {{/each}}
+                                    {{/if}}
                                 </tbody>
                             </table>
                         </div>

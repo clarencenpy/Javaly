@@ -4,6 +4,8 @@ Template.exerciseListing.onCreated(function () {
     instance.completedPercentage = new ReactiveVar();
     instance.attemptedButNotCompletedPercentage = new ReactiveVar();
 
+    instance.questionsAsHeaders = new ReactiveVar(true);
+
     this.autorun(function () {
         var exercise = instance.data;
         var group = Template.parentData(1);
@@ -41,12 +43,23 @@ Template.exerciseListing.onCreated(function () {
     });
 });
 
+Template.exerciseListing.onRendered(function () {
+    this.$('[data-toggle=tooltip]').tooltip({
+        container: 'body'
+    });
+});
+
 Template.exerciseListing.helpers({
     completedPercentage: function () {
         return Template.instance().completedPercentage.get();
     },
     attemptedButNotCompletedPercentage: function () {
         return Template.instance().attemptedButNotCompletedPercentage.get();
+    },
+
+    //for toggling axes of summary view
+    questionsAsHeaders: function () {
+        return Template.instance().questionsAsHeaders.get();
     },
 
     verifiedQuestions: function () {
@@ -70,7 +83,53 @@ Template.exerciseListing.helpers({
         })
     },
 
-    questionSummary: function () {  //returns a 2d array containing the complete status, row=question, col=user
+    questionTitles: function () {
+
+        var verifiedQuestions = this.questions;
+        verifiedQuestions = _.filter(verifiedQuestions, function (question) {
+            var attempts = Attempts.find({questionId: question}).fetch();
+            var passedBefore = _.find(attempts, function (attempt) {   // _.find returns when a match has been found
+                return attempt.completed;
+            });
+            return passedBefore ? true : false;
+        });
+
+        var i = 1;
+        return _.map(verifiedQuestions, function (questionId) {
+            return {
+                index: i++,
+                title: Questions.findOne(questionId).title
+            };
+        });
+    },
+
+    questionSummaryQuestionHeaders: function () {
+        var group = Template.parentData(1);
+
+        var verifiedQuestions = this.questions;
+        verifiedQuestions = _.filter(verifiedQuestions, function (question) {
+            var attempts = Attempts.find({questionId: question}).fetch();
+            var passedBefore = _.find(attempts, function (attempt) {   // _.find returns when a match has been found
+                return attempt.completed;
+            });
+            return passedBefore ? true : false;
+        });
+
+        var summary = _.map(group.participants, function (userId) {
+            var row = {};
+            row.name = Meteor.users.findOne(userId).profile.name;
+            row.questions = [];
+            _.each(verifiedQuestions, function (questionId) {
+                var attempt = Attempts.findOne({userId: userId, questionId: questionId});
+                row.questions.push({completed: attempt ? attempt.completed : false});
+            });
+            return row;
+        });
+
+        return summary;
+    },
+
+    questionSummaryStudentHeaders: function () {  //returns a 2d array containing the complete status, row=question, col=user
         var group = Template.parentData(1);
 
         var verifiedQuestions = this.questions;
@@ -99,4 +158,10 @@ Template.exerciseListing.helpers({
         //     row: { {title: XX} questions: [ {completed: true},{complete: false} ]},
         //]
     }
+});
+
+Template.exerciseListing.events({
+   'click #toggleAxes-btn': function (event, template) {
+       template.questionsAsHeaders.set(!template.questionsAsHeaders.get());
+   }
 });
