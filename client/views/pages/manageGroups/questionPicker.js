@@ -1,11 +1,32 @@
 Template.questionPicker.onCreated(function () {
-   this.subscribe('questions');
+    var instance = this;
+    instance.tagsFilter = new ReactiveVar();
 });
 
 Template.questionPicker.onRendered(function () {
-    this.$('.chosen-select').chosen({
-        max_selected_options: 5
+    var instance = this;
+
+    //generate list of tags and initialise chosen plugin
+    var tags = [];
+    var questions = Questions.find().fetch();
+    _.each(questions, function (question) {
+        tags = tags.concat(question.tags);
     });
+    tags = _.uniq(tags);
+
+    var $chosen = this.$('.chosen-select');
+    _.each(tags, function (tag) {
+        $chosen.append('<option value="' + tag + '">' + tag + '</option>');
+    });
+
+    $chosen.chosen({
+        max_selected_options: 5
+    }).change(function () {
+        var selected = $(this).val();
+        instance.tagsFilter.set(selected);
+    });
+
+
 
     var pickedSortable = Sortable.create(this.find('#picked'), {
         group: 'questions',
@@ -31,21 +52,24 @@ Template.questionPicker.onRendered(function () {
         }
     });
 
-    //instantiate slimScroll for every element with droparea class
-    //this.$('.droparea').each(function () {
-    //    $(this).slimScroll({
-    //        height: '300px',
-    //        color: 'grey',
-    //        size: '5px',
-    //    });
-    //});
 
 });
 
 Template.questionPicker.helpers({
-   questions: function () {
-       return Questions.find();
-   }
+    questions: function () {
+        return Questions.find();
+    },
+
+    filter: function (questionId) {
+        var tagsFilter = Template.instance().tagsFilter.get();
+        if (tagsFilter === undefined || tagsFilter === null) {
+            return true;
+        }
+        var question = Questions.findOne(questionId);
+        return _.find(question.tags, function (tag) {
+            return tagsFilter.indexOf(tag) >= 0;
+        });
+    }
 });
 
 Template.questionPicker.onDestroyed(function () {

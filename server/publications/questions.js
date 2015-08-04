@@ -13,6 +13,10 @@ Meteor.publish('questions', function () {
     }
 });
 
+Meteor.publish('questionBank', function () {
+    return Questions.find();
+});
+
 Meteor.publish('question', function (questionId) {
     return Questions.find(questionId);
 });
