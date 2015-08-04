@@ -104,6 +104,14 @@ Groups.allow({
     }
 });
 
+Meteor.methods({
+    updateExercise: function (description, questions, groupId, exerciseId) {
+        Groups.update({_id: groupId, 'exercises._id': exerciseId}, {
+            $set: {'exercises.$.description': description, 'exercises.$.questions': questions}
+        })
+    }
+});
+
 Meteor.publish('betaGroups', function () {
    return Groups.find();
 });
