@@ -6,8 +6,16 @@
             {{>iboxTools}}
         </div>
         <div class="ibox-content">
-
-            <div style="overflow: scroll">
+            <style>
+                .results-box::-webkit-scrollbar {
+                    /*disable the scrollbar*/
+                    width: 0 !important
+                }
+                .results-box {
+                    overflow-x: scroll;
+                }
+            </style>
+            <div class="results-box">
                 <table class="table table-hover">
                     <thead>
                     <tr>

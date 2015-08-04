@@ -28,9 +28,12 @@
                 <li class="{{isActiveRoute regex='welcome'}}">
                     <a href="{{pathFor route='welcome'}}"><i class="fa fa-info-circle"></i> <span class="nav-label">Welcome</span> </a>
                 </li>
-                <li class="{{isActiveRoute regex='questionManager'}}">
-                    <a href="{{pathFor route='questionManager'}}"><i class="fa fa-book"></i> <span class="nav-label">View Questions</span> </a>
-                </li>
+
+                {{#if isInRole 'instructor, admin, ta'}}
+                    <li class="{{isActiveRoute regex='questionManager'}}">
+                        <a href="{{pathFor route='questionManager'}}"><i class="fa fa-book"></i> <span class="nav-label">View Questions</span> </a>
+                    </li>
+                {{/if}}
 
                 {{#if isInRole 'instructor, admin'}}
                     <li class="{{isActiveRoute regex='manageGroups'}}">
@@ -43,12 +46,14 @@
                 {{/if}}
 
                 <!--Beta only-->
-                <li class="{{isActiveRoute regex='groupView'}}">
-                    <a href="/groupView/9maodhs2ZP2yTnBKF">
-                        <i class="fa fa-tachometer"></i> <span class="nav-label">Dashboard</span>
-                        <span class="label label-primary pull-right">Beta Only</span>
-                    </a>
-                </li>
+                {{#if isInRole 'instructor, admin, ta'}}
+                    <li class="{{isActiveRoute regex='groupView'}}">
+                        <a href="/groupView/vx3tpquDYyCSb8F6A">
+                            <i class="fa fa-bar-chart"></i> <span class="nav-label">Dashboard</span>
+                            <span class="label label-primary pull-right">Beta Only</span>
+                        </a>
+                    </li>
+                {{/if}}
             </ul>
 
         </div>
