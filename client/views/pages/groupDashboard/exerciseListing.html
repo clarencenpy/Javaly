@@ -82,7 +82,11 @@
                                                 {{#if completed}}
                                                     <i class="fa fa-check text-navy"></i>
                                                 {{else}}
-                                                    <i class="fa fa-times text-danger"></i>
+                                                    {{#if attempted}}
+                                                        <i class="fa fa-refresh text-warning"></i>
+                                                    {{else}}
+                                                        <i class="fa fa-times text-danger"></i>
+                                                    {{/if}}
                                                 {{/if}}
                                             </td>
                                             {{/each}}
@@ -97,7 +101,11 @@
                                                     {{#if completed}}
                                                         <i class="fa fa-check text-navy"></i>
                                                     {{else}}
-                                                        <i class="fa fa-times text-danger"></i>
+                                                        {{#if attempted}}
+                                                            <i class="fa fa-refresh text-warning"></i>
+                                                        {{else}}
+                                                            <i class="fa fa-times text-danger"></i>
+                                                        {{/if}}
                                                     {{/if}}
                                                 </td>
                                             {{/each}}

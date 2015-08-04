@@ -101,7 +101,10 @@ Template.exerciseListing.helpers({
             row.questions = [];
             _.each(verifiedQuestions, function (questionId) {
                 var attempt = Attempts.findOne({userId: userId, questionId: questionId});
-                row.questions.push({completed: attempt ? attempt.completed : false});
+                row.questions.push({
+                    completed: attempt ? attempt.completed : false,
+                    attempted: attempt
+                });
             });
             return row;
         });
@@ -120,7 +123,10 @@ Template.exerciseListing.helpers({
             row.participants = [];
             _.each(group.participants, function (userId) {
                 var attempt = Attempts.findOne({userId: userId, questionId: questionId});
-                row.participants.push({completed: attempt ? attempt.completed : false});
+                row.participants.push({
+                    completed: attempt ? attempt.completed : false,
+                    attempted: attempt
+                });
             });
             return row;
         });
