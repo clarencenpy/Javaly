@@ -22,6 +22,20 @@
             color: #1f1f1f !important;
             outline: none !important;
         }
+
+        #editor {
+            padding: 6px 0px;
+            width: 100%;
+            height: 400px;
+            font-size: 16px;
+            border: solid;
+            border-width: thin;
+            border-color: #b9b8b8;
+        }
+
+        .i-checks {
+            padding: 6px 0px;
+        }
     </style>
 
     <div class="wrapper wrapper-content animated fadeInRight">
@@ -42,8 +56,8 @@
                     {{#autoForm collection="Questions" id="updateQuestionForm" type="update" doc=this}}
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#tab-1"> Content</a></li>
-                            <!--<li class=""><a data-toggle="tab" href="#tab-2"> Options</a></li>-->
-                            <li class=""><a data-toggle="tab" href="#tab-3"> Tests</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-2"> Tests</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-3"> Solution</a></li>
                         </ul>
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane active">
@@ -79,13 +93,7 @@
                                 </div>
                             </div>
 
-                            <!--<div id="tab-2" class="tab-pane">-->
-                            <!--<div class="panel-body">-->
-
-                            <!--</div>-->
-                            <!--</div>-->
-
-                            <div id="tab-3" class="tab-pane">
+                            <div id="tab-2" class="tab-pane">
                                 <div class="panel-body">
 
                                     <fieldset class="form-horizontal">
@@ -179,6 +187,27 @@
                                 </div>
                             </div>
 
+                            <div id="tab-3" class="tab-pane">
+                                <div class="panel-body">
+                                    <fieldset class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" data-toggle="tooltip" title="Enter your solution code here, code comments are recommended for clarity" data-placement="right">Code:</label>
+                                            <div class="col-sm-9">
+                                                {{> sharejsAce id="editor" onRender=config}}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" data-toggle="tooltip" title="Solutions can only be viewd by students when this is checked" data-placement="right">Release:</label>
+                                            <div class="col-sm-9">
+                                                <div class="i-checks">
+                                                    <label> <input type="checkbox" value=""> </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
                         </div>
                     {{/autoForm}}
 

@@ -1,7 +1,33 @@
 Template.submitQuestion.onRendered(function () {
+    var instance = this;
+    instance.release = new ReactiveVar(false);
     this.$('[data-toggle=tooltip]').tooltip({
         container: 'body'
     });
+
+    // Initialize i-check plugin
+    this.$('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green'
+    });
+
+    this.$('.i-checks input')
+        .on('ifChecked', function(){
+            instance.release.set(true);
+        })
+        .on('ifUnchecked', function () {
+            instance.release.set(false);
+        });
+});
+
+Template.submitQuestion.helpers({
+    config: function () {
+        return function(editor) {
+            editor.setTheme('ace/theme/crimson_editor');
+            editor.getSession().setMode('ace/mode/java');
+            editor.setHighlightActiveLine(false);
+            editor.setShowPrintMargin(false);
+        }
+    }
 });
 
 Template.submitQuestion.events({
@@ -62,6 +88,12 @@ Template.submitQuestion.events({
                 });
             });
 
+            var editor = ace.edit('editor');
+            var code = editor.getSession().getValue();
+            question.solution = {
+                code: code,
+                release: instance.release.get()
+            };
 
             console.log(question);
 

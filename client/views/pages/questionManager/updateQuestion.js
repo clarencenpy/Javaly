@@ -1,10 +1,43 @@
 Template.updateQuestion.onRendered(function () {
+    var instance = this;
+    instance.release = new ReactiveVar(false);
+
     this.$('[data-toggle=tooltip]').tooltip({
         container: 'body'
     });
+
+    // Initialize i-check plugin
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green'
+    });
+
+    this.$('.i-checks input')
+        .on('ifChecked', function(){
+            instance.release.set(true);
+        })
+        .on('ifUnchecked', function () {
+            instance.release.set(false);
+        });
+
+    //Populate with previous solution object
+    var editor = ace.edit('editor');
+    editor.getSession().setValue(this.data.solution ? this.data.solution.code : '');
+    if (this.data.solution ? this.data.solution.release : false) {
+        instance.$('.i-checks input').iCheck('check');
+    } else {
+        instance.$('.i-checks input').iCheck('uncheck');
+    }
 });
 
 Template.updateQuestion.helpers({
+    config: function () {
+        return function(editor) {
+            editor.setTheme('ace/theme/crimson_editor');
+            editor.getSession().setMode('ace/mode/java');
+            editor.setHighlightActiveLine(false);
+            editor.setShowPrintMargin(false);
+        }
+    },
     isVisible: function (string) {
         return string === 'SHOW';
     },
@@ -71,6 +104,12 @@ Template.updateQuestion.events({
                 })
             });
 
+            var editor = ace.edit('editor');
+            var code = editor.getSession().getValue();
+            var solution = {
+                code: code,
+                release: instance.release.get()
+            };
 
             Questions.update(Template.currentData()._id, {$set: {
                 title: AutoForm.getFieldValue('title', 'updateQuestionForm'),
@@ -80,7 +119,8 @@ Template.updateQuestion.events({
                 methodName: AutoForm.getFieldValue('methodName', 'updateQuestionForm'),
                 questionType: AutoForm.getFieldValue('questionType', 'updateQuestionForm'),
                 methodType: AutoForm.getFieldValue('methodType', 'updateQuestionForm'),
-                testCases: testCases
+                testCases: testCases,
+                solution: solution
             }});
 
             swal({
