@@ -40,6 +40,10 @@
                         <a href="{{pathFor route='manageGroups'}}"><i class="fa fa-users"></i> <span class="nav-label">Manage Groups</span> </a>
                     </li>
                 {{else}}
+                    <li class="{{isActiveRoute regex='joinGroups'}}">
+                        <a href="{{pathFor route='joinGroups'}}"><i class="fa fa-users"></i> <span class="nav-label">Join Groups</span> </a>
+                    </li>
+
                     <li class="{{isActiveRoute regex='assignments'}}">
                         <a href="{{pathFor route='assignments'}}"><i class="fa fa-inbox"></i> <span class="nav-label">My Assignments</span> </a>
                     </li>
