@@ -24,8 +24,6 @@ aldeed:autoform
 mpowaga:autoform-summernote
 mizzao:sharejs-ace
 alanning:roles
-msavin:mongol
-msavin:jetsetter
 meteorhacks:npm
 
 
@@ -38,3 +36,5 @@ ahmetcetin:autoform-tags
 aldeed:autoform-bs-button-group-input
 meteorhacks:kadira
 meteorhacks:subs-manager
+msavin:mongol
+msavin:jetsetter
