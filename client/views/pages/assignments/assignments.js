@@ -1,4 +1,4 @@
-Template.enrolledGroups.onCreated(function () {
+Template.assignments.onCreated(function () {
     //scoping reactive variables (like session) to the template instance
     var instance = this;
     instance.questionsFromSelectedExercise = new ReactiveVar();
@@ -6,7 +6,7 @@ Template.enrolledGroups.onCreated(function () {
     instance.incompleteQuestions = new ReactiveVar();
 });
 
-Template.enrolledGroups.helpers({
+Template.assignments.helpers({
     exercises: function () {
         var groups =  Groups.find({participants: Meteor.userId()}).fetch();
 
@@ -96,7 +96,7 @@ Template.enrolledGroups.helpers({
     }
 });
 
-Template.enrolledGroups.events({
+Template.assignments.events({
     'click .select-btn': function (event, instance) {
         instance.questionsFromSelectedExercise.set(this.questions);
         instance.exerciseDescription.set(this.description);
