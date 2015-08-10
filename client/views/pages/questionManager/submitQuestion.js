@@ -99,11 +99,6 @@ Template.submitQuestion.events({
 
             var questionId = Questions.insert(question);
 
-            //TODO: remove this after beta
-            Groups.update(Groups.findOne({name: 'Beta Testers'})._id, {$push: {
-                'exercises.0.questions': questionId
-            }});
-
             swal({
                 title: "Question Submitted!",
                 text: "The question will only be successfully published when it has at least one successful attempt (from you of course!)",

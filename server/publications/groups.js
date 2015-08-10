@@ -95,9 +95,7 @@ Groups.allow({
         return userId && Roles.userIsInRole(userId, ['instructor','admin']);
     },
     update: function (userId, doc) {
-        //TODO: uncomment this line after beta
-        //return doc.createdBy === userId;
-        return true;
+        return doc.createdBy === userId;
     },
     remove: function (userId, doc) {
         return doc.createdBy === userId;
@@ -110,8 +108,4 @@ Meteor.methods({
             $set: {'exercises.$.description': description, 'exercises.$.questions': questions}
         })
     }
-});
-
-Meteor.publish('betaGroups', function () {
-   return Groups.find();
 });
