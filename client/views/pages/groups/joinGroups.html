@@ -14,20 +14,99 @@
 
         <div class="row">
 
-            <div class="col-md-12">
+            <div class="col-md-5">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Enrolled Groups</h5>
+                    </div>
+                    <div class="ibox-content">
 
+                        {{#if pendingAndEnrolledGroups.count}}
+                        <div class="project-list">
+                            <table class="table table-hover">
+                                <tbody>
+                                {{#each pendingGroups}}
+                                    <tr>
+                                        <td>
+                                            <span style="font-weight: 600">{{name}}</span>
+                                            <br/>
+                                            <small>Created by {{getName createdBy}}</small>
+                                        </td>
+                                        <td style="text-align: right">
+                                            <a id="leave-btn" class="btn btn-warning btn-sm"><i class="fa fa-times"></i> Cancel </a>
+                                        </td>
+                                    </tr>
+                                {{/each}}
+                                {{#each enrolledGroups}}
+                                    <tr>
+                                        <td>
+                                            <span style="font-weight: 600">{{name}}</span>
+                                            <br/>
+                                            <small>Created by {{getName createdBy}}</small>
+                                        </td>
+                                        <td style="text-align: right">
+                                            <a id="leave-btn" class="btn btn-danger btn-sm"><i class="fa fa-sign-out"></i> Leave </a>
+                                        </td>
+                                    </tr>
+                                {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                        {{else}}
+                            <div class="text-center" style="margin-top: 20px">
+                                <i class="fa fa-list" style="font-size: 5em; color:#888888"></i>
+                                <h4>You have not enrolled in any group!</h4>
+                            </div>
+                        {{/if}}
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Available Groups this Semester</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                        {{#if groups.count}}
+                        <div class="project-list">
+                            <table class="table table-hover">
+                                <tbody>
+                                    {{#each groups}}
+                                    <tr>
+                                        <td>
+                                            <span class="label label-primary">Active</span>
+                                        </td>
+                                        <td>
+                                            <span style="font-weight: 600">{{name}}</span>
+                                            <br/>
+                                            <small>Created by {{getName createdBy}}</small>
+                                        </td>
+                                        <td>
+                                            {{#if byInvitation}} <i class="fa fa-lg fa-lock"></i> {{else}} <i class="fa fa-lg fa-unlock-alt"></i> {{/if}}
+                                        </td>
+                                        <td style="text-align: right">
+                                            <a id="join-btn" class="btn btn-primary btn-sm"><i class="fa fa-sign-in"></i> Join </a>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                        {{else}}
+                            <div class="text-center" style="margin-top: 20px">
+                                <i class="fa fa-list" style="font-size: 5em; color:#888888"></i>
+                                <h4>There are no groups available for you now.</h4>
+                            </div>
+                        {{/if}}
+
+                    </div>
+                </div>
             </div>
 
         </div>
-
-        <div class="row">
-
-            <div class="col-md-6">
-
-            </div>
-
-        </div>
-
     </div>
 
 </template>

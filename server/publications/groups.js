@@ -2,12 +2,30 @@ Meteor.publish('myGroups', function () {
     return Groups.find({createdBy: this.userId});
 });
 
+//Used in: joinGroups
+Meteor.publishComposite('allGroups', {
+    find: function () {
+        return Groups.find();
+    },
+    children: [
+        {
+            find: function (topLevelDoc) {
+                return Meteor.users.find({$or: [
+                        {_id: topLevelDoc.createdBy},
+                        {_id: {$in: topLevelDoc.teachingTeam}}
+                    ]}, {fields: {'profile.name': 1}
+                });
+            }
+        }
+    ]
+});
+
 //TODO: should we do more checks to ensure that user has access to that group?
 Meteor.publish('group', function (groupId) {
     return Groups.find(groupId);
 });
 
-Meteor.publishComposite('enrolledGroups', {
+Meteor.publishComposite('assignments', {
     find: function() {
         return Groups.find({participants: this.userId});
     },
@@ -102,10 +120,90 @@ Groups.allow({
     }
 });
 
+// Methods for managing exercises
 Meteor.methods({
     updateExercise: function (description, questions, groupId, exerciseId) {
+        //only the teaching team can update exercise
+        if (!Meteor.userId()) {
+            throw new Meteor.Error('not-logged-in');
+        }
+
+
+        var group = Groups.findOne(groupId);
+        var isTeachingTeam = _.find(group.teachingTeam, function (id) {
+            return id === Meteor.userId();
+        });
+        if (group.createdBy !== Meteor.userId() && !isTeachingTeam) {
+            throw new Meteor.Error('not-authorised');
+        }
+
         Groups.update({_id: groupId, 'exercises._id': exerciseId}, {
             $set: {'exercises.$.description': description, 'exercises.$.questions': questions}
         })
+
+    }
+});
+
+// Methods for managing participants in groups
+Meteor.methods({
+    requestJoinGroup: function (groupId) {
+        //students can request to join groups
+        if (!Meteor.userId()) {
+            throw new Meteor.Error('not-logged-in');
+        }
+
+        Groups.update(groupId, {
+            $push: {
+                pendingParticipants: Meteor.userId()
+            }
+        });
+    },
+
+    leaveGroup: function (groupId) {
+        //students may leave group, TODO: send a notification to instructor
+        if (!Meteor.userId()) {
+            throw new Meteor.Error('not-logged-in');
+        }
+
+        //this method can also be used to withdraw request
+        Groups.update(groupId, {$pull: {
+            participants: Meteor.userId(),
+            pendingParticipants: Meteor.userId()
+        }});
+    },
+
+    addStudentToGroup: function (userId, groupId) {
+        //only members from the teaching team can accept requests
+        if (!Meteor.userId()) {
+            throw new Meteor.Error('not-logged-in');
+        }
+
+        var group = Groups.findOne(groupId);
+        var isTeachingTeam = _.find(group.teachingTeam, function (id) {
+            return id === Meteor.userId();
+        });
+        if (group.createdBy !== Meteor.userId() && !isTeachingTeam) {
+            throw new Meteor.Error('not-authorised');
+        }
+
+        //remove from pendingParticipants if present
+        var pending = _.find(group.pendingParticipants, function (id) {
+            return id === userId;
+        });
+        if (pending) {
+            Groups.update(groupId, {$pull: {
+                pendingParticipants: userId
+            }});
+        }
+
+        //add to participants
+        var alreadyAdded = _.find(group.participants, function (id) {
+            return id === userId;
+        });
+        if (!alreadyAdded) {
+            Groups.update(groupId, {$push: {
+                participants: userId
+            }});
+        }
     }
 });
