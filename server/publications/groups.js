@@ -125,7 +125,7 @@ Meteor.methods({
     updateExercise: function (description, questions, groupId, exerciseId) {
         //only the teaching team can update exercise
         if (!Meteor.userId()) {
-            throw new Meteor.Error('not-logged-in');
+            throw new Meteor.Error(403, 'Not Logged In');
         }
 
 
@@ -134,7 +134,7 @@ Meteor.methods({
             return id === Meteor.userId();
         });
         if (group.createdBy !== Meteor.userId() && !isTeachingTeam) {
-            throw new Meteor.Error('not-authorised');
+            throw new Meteor.Error(403, 'Access Denied');
         }
 
         Groups.update({_id: groupId, 'exercises._id': exerciseId}, {
@@ -149,7 +149,7 @@ Meteor.methods({
     requestJoinGroup: function (groupId) {
         //students can request to join groups
         if (!Meteor.userId()) {
-            throw new Meteor.Error('not-logged-in');
+            throw new Meteor.Error(403, 'Not Logged In');
         }
 
         Groups.update(groupId, {
@@ -162,7 +162,7 @@ Meteor.methods({
     leaveGroup: function (groupId) {
         //students may leave group, TODO: send a notification to instructor
         if (!Meteor.userId()) {
-            throw new Meteor.Error('not-logged-in');
+            throw new Meteor.Error(403, 'Not Logged In');
         }
 
         //this method can also be used to withdraw request
@@ -175,7 +175,7 @@ Meteor.methods({
     addStudentToGroup: function (userId, groupId) {
         //only members from the teaching team can accept requests
         if (!Meteor.userId()) {
-            throw new Meteor.Error('not-logged-in');
+            throw new Meteor.Error(403, 'Not Logged In');
         }
 
         var group = Groups.findOne(groupId);
@@ -183,7 +183,7 @@ Meteor.methods({
             return id === Meteor.userId();
         });
         if (group.createdBy !== Meteor.userId() && !isTeachingTeam) {
-            throw new Meteor.Error('not-authorised');
+            throw new Meteor.Error(403, 'Access Denied');
         }
 
         //remove from pendingParticipants if present
