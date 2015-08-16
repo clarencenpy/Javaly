@@ -70,6 +70,7 @@ if (Meteor.users.find({'profile.name': 'ahmadsm'}).count() === 0) {
 
     var groupId = Groups.insert({
         name: 'IS200 Enrichment',
+        groupType: 'PRIVATE',
         participants: students,
         exercises: [{
             description: 'Javaly - First Class',

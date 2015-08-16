@@ -212,6 +212,7 @@ if (Groups.find().count() === 0) {
 
     Groups.insert({
         name: 'Beta Testers',
+        groupType: 'PRIVATE',
         participants: [s1,s2,s3,ta1,ta2,ta3,ta4,ta5,ta6,ta7,ta8,ta9,ta10,ta11],
         exercises: [{
             description: 'Test each other\'s questions!',
