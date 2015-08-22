@@ -1,13 +1,13 @@
-<template name="createGroup">
+<template name="updateGroup">
 
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="ibox">
             <div class="ibox-title">
-                <h5>Create Group</h5>
+                <h5>Update Group</h5>
                 <div class="ibox-tools">
-                    <button id="save-settings-btn" class="btn btn-primary btn-sm">
-                        <i class="fa fa-check"></i>
-                        <span class="bold"> Save Settings</span>
+                    <button id="update-settings-btn" class="btn btn-primary btn-sm">
+                        <i class="fa fa-upload"></i>
+                        <span class="bold"> Update </span>
                     </button>
                 </div>
             </div>
@@ -15,7 +15,7 @@
 
                 <div class="tabs-container">
 
-                    {{#autoForm collection="Groups" id="insertGroupForm" type="insert"}}
+                    {{#autoForm collection="Groups" id="updateGroupForm" type="update" doc=this}}
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#tab-1"> Settings</a></li>
                             <li class=""><a data-toggle="tab" href="#tab-2"> Teaching Team</a></li>
@@ -53,7 +53,6 @@
                             <div id="tab-2" class="tab-pane">
                                 <div class="panel-body">
 
-                                    <!--Add TAs-->
                                     <div class="col-md-6" style="min-height: 500px">
                                         <h4>Add TAs or co-instructors</h4>
                                         <div class="form-group">
@@ -61,7 +60,7 @@
                                             <div class="input-group" style="width: 100%">
                                                 <select id="ta-list" multiple data-placeholder="Search...">
                                                     {{#each tas}}
-                                                        <option value={{_id}}>{{profile.name}}</option>
+                                                        <option value="{{_id}}" selected="{{selected}}">{{profile.name}}</option>
                                                     {{/each}}
                                                 </select>
                                             </div>
@@ -73,24 +72,28 @@
 
                             <div id="tab-3" class="tab-pane">
                                 <div class="panel-body">
+                                    <div class="row">
 
-                                    <!--Add Students-->
-                                    <div class="col-md-6" style="min-height: 500px">
-                                        <h4>Add Students</h4>
-                                        <div class="form-group">
-                                            <h5>{{selectedStudents.length}} selected</h5>
-                                            <div class="input-group" style="width: 100%">
-                                                <select id="student-list" multiple data-placeholder="Search...">
-                                                    {{#each students}}
-                                                        <option value={{_id}}>{{profile.name}}</option>
-                                                    {{/each}}
-                                                </select>
+                                        <div class="col-md-6" style="min-height: 500px">
+                                            <h4>Add Students</h4>
+                                            <div class="form-group">
+                                                <h5>{{selectedStudents.length}} selected</h5>
+                                                <div class="input-group" style="width: 100%">
+                                                    <select id="student-list" multiple data-placeholder="Select students...">
+                                                        {{#each students}}
+                                                            <option value="{{_id}}" selected="{{selected}}">{{profile.name}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
                             </div>
+
+
+
 
                         </div>
                     {{/autoForm}}
