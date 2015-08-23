@@ -1,10 +1,6 @@
-Template.manageGroups.onCreated(function () {
-    this.subscribe('myGroups');
-});
-
 Template.manageGroups.helpers({
-    myGroups: function () {
-        return Groups.find({createdBy: Meteor.userId()});
+    getName: function (id) {
+        return Meteor.users.findOne(id).profile.name;
     }
 });
 
@@ -38,6 +34,27 @@ Template.manageGroups.events({
                 groupId: groupId,
                 exerciseId: exerciseId
             })
+        });
+    },
+    'click .accept-btn': function (event, instance) {
+        var id = this.toString();
+        var groupId = $(event.target).data('groupid');
+        Groups.update(groupId, {
+            $pull: {
+                pendingParticipants: id
+            },
+            $push: {
+                participants: id
+            }
+        });
+    },
+    'click .reject-btn': function (event, instance) {
+        var id = this.toString();
+        var groupId = $(event.target).data('groupid');
+        Groups.update(groupId, {
+            $pull: {
+                pendingParticipants: id
+            }
         });
     }
 });

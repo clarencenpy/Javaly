@@ -21,14 +21,14 @@
                         </a>
                         <h3><i class="fa fa-user"></i> My Groups</h3>
                         <small><i class="fa fa-time"></i>
-                            You have {{myGroups.count}} active groups.
+                            You have {{this.count}} active groups.
                         </small>
                     </div>
                     <div class="ibox-content" style="background-color: #476480">
                         <br>
-                        {{#if myGroups.count}}
+                        {{#if this.count}}
 
-                            {{#each myGroups}}
+                            {{#each this}}
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>{{name}} &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-user"></i> {{participants.length}}</h5>
@@ -48,6 +48,7 @@
                                             </div>
                                         </div>
 
+                                        {{#if exercises}}
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
@@ -64,6 +65,29 @@
                                                 {{/each}}
                                             </tbody>
                                         </table>
+                                        {{/if}}
+
+                                        {{#if pendingParticipants}}
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>Exercises</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {{#each pendingParticipants}}
+                                                    <tr>
+                                                        <td>{{getName this}}</td>
+                                                        <td>
+                                                            <a data-groupid="{{../_id}}" class="reject-btn pull-right btn btn-warning btn-xs"> Reject <i class="fa fa-times"></i></a>
+                                                            <a data-groupid="{{../_id}}" class="accept-btn pull-right btn btn-primary btn-xs"> Accept <i class="fa fa-check"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                {{/each}}
+                                                </tbody>
+                                            </table>
+                                        {{/if}}
 
                                     </div>
                                 </div>
