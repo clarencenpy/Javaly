@@ -156,8 +156,27 @@ Meteor.methods({
 
         Groups.update({_id: groupId, 'exercises._id': exerciseId}, {
             $set: {'exercises.$.description': description, 'exercises.$.questions': questions}
-        })
+        });
 
+    },
+
+    deleteExercise: function (groupId, exerciseId) {
+        //only the teaching team can update exercise
+        if (!Meteor.userId()) {
+            throw new Meteor.Error(403, 'Not Logged In');
+        }
+
+        var group = Groups.findOne(groupId);
+        var isTeachingTeam = _.find(group.teachingTeam, function (id) {
+            return id === Meteor.userId();
+        });
+        if (group.createdBy !== Meteor.userId() && !isTeachingTeam) {
+            throw new Meteor.Error(403, 'Access Denied');
+        }
+
+        Groups.update(groupId, {
+            $pull: {'exercises': {_id: exerciseId}}
+        });
     }
 });
 

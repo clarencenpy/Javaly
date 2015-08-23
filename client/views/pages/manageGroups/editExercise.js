@@ -27,7 +27,6 @@ Template.editExercise.onRendered(function () {
     });
 
 
-
     var pickedSortable = Sortable.create(this.find('#picked'), {
         group: 'questions',
         dataIdAttr: 'data-id',
@@ -93,26 +92,40 @@ Template.editExercise.helpers({
 });
 
 Template.editExercise.events({
-   'click #save-btn': function (event, instance) {
-       var questions = Session.get('selectedQuestions') ? Session.get('selectedQuestions').split('|') : [];
-       var description = instance.$('input[name=description]').val();
-       var group = Template.currentData();
-       Meteor.call('updateExercise', description, questions, group._id, Router.current().params.exerciseId, function (err, res) {
-           if (err) {
-               console.log(err);
-           } else {
-               swal({
-                   title: "Exercise Saved!",
-                   text: "Students enrolled in this group may now have access to the questions you have selected",
-                   type: "success",
-                   allowEscapeKey: false,
-                   confirmButtonText: 'Ok'
-               }, function () {
-                   Router.go('manageGroups');
-               });
-           }
-       })
-   }
+    'click #save-btn': function (event, instance) {
+        var questions = Session.get('selectedQuestions') ? Session.get('selectedQuestions').split('|') : [];
+        var description = instance.$('input[name=description]').val();
+        var group = Template.currentData();
+        Meteor.call('updateExercise', description, questions, group._id, Router.current().params.exerciseId, function (err, res) {
+            if (err) {
+                console.log(err);
+            } else {
+                swal({
+                    title: "Exercise Saved!",
+                    text: "Students enrolled in this group may now have access to the questions you have selected",
+                    type: "success",
+                    allowEscapeKey: false,
+                    confirmButtonText: 'Ok'
+                }, function () {
+                    Router.go('manageGroups');
+                });
+            }
+        })
+    },
+    'click #delete-btn': function () {
+        swal({
+            title: "Are you sure?",
+            text: "This may interrupt students who have already started on the exercises",
+            type: "warning",
+            showCancelButton: true,
+            allowEscapeKey: false,
+            confirmButtonText: 'Delete'
+        }, function () {
+            Meteor.call('deleteExercise', Router.current().params.groupId, Router.current().params.exerciseId);
+            Router.go('manageGroups');
+        });
+    }
+
 });
 
 Template.editExercise.onDestroyed(function () {
