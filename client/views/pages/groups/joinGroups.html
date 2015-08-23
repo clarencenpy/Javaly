@@ -85,7 +85,7 @@
                                             <small>Created by {{getName createdBy}}</small>
                                         </td>
                                         <td>
-                                            {{#if byInvitation}} <i class="fa fa-lg fa-lock"></i> {{else}} <i class="fa fa-lg fa-unlock-alt"></i> {{/if}}
+                                            {{#if canRequest groupType}} <i class="fa fa-lg fa-lock"></i> {{/if}}
                                         </td>
                                         <td style="text-align: right">
                                             <a id="join-btn" class="btn btn-primary btn-sm"><i class="fa fa-sign-in"></i> Join </a>

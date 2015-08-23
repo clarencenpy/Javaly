@@ -2,7 +2,6 @@ Meteor.publish('myGroups', function () {
     return Groups.find({createdBy: this.userId});
 });
 
-//Used in: joinGroups
 Meteor.publishComposite('allGroups', {
     find: function () {
         return Groups.find();
@@ -14,6 +13,24 @@ Meteor.publishComposite('allGroups', {
                         {_id: topLevelDoc.createdBy},
                         {_id: {$in: topLevelDoc.teachingTeam}}
                     ]}, {fields: {'profile.name': 1}
+                });
+            }
+        }
+    ]
+});
+
+//Used in: joinGroups
+Meteor.publishComposite('availableGroups', {
+    find: function () {
+        return Groups.find({groupType: {$in: ['OPEN', 'ACCEPT_REQUEST']}});
+    },
+    children: [
+        {
+            find: function (topLevelDoc) {
+                return Meteor.users.find({$or: [
+                    {_id: topLevelDoc.createdBy},
+                    {_id: {$in: topLevelDoc.teachingTeam}}
+                ]}, {fields: {'profile.name': 1}
                 });
             }
         }

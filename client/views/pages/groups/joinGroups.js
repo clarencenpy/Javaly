@@ -19,6 +19,9 @@ Template.joinGroups.helpers({
             {participants: Meteor.userId()},
             {pendingParticipants: Meteor.userId()}
         ]});
+    },
+    canRequest: function (groupType) {
+        return groupType === 'ACCEPT_REQUEST';
     }
 });
 
