@@ -155,6 +155,22 @@ Template.updateQuestion.events({
             swal('Not so fast','Please ensure that you have filled up the required fields from all tabs!', 'warning');
         }
 
+    },
+
+    'click #delete-btn': function () {
+        var id = this._id;
+        swal({
+            title: "Are you sure?",
+            text: "Existing attempts will not be accessible by students anymore",
+            type: "warning",
+            showCancelButton: true,
+            allowEscapeKey: false,
+            confirmButtonText: 'Delete'
+
+        }, function () {
+            Questions.remove(id);
+            Router.go('questionManager');
+        });
     }
 });
 
