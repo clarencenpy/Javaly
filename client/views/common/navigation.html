@@ -35,11 +35,12 @@
                     </li>
                 {{/if}}
 
-                {{#if isInRole 'instructor, admin'}}
+                {{#if isInRole 'instructor, admin, ta'}}
                     <li class="{{isActiveRoute regex='manageGroups'}}">
                         <a href="{{pathFor route='manageGroups'}}"><i class="fa fa-users"></i> <span class="nav-label">Manage Groups</span> </a>
                     </li>
-                {{else}}
+                {{/if}}
+                {{#if isInRole 'student'}}
                     <li class="{{isActiveRoute regex='joinGroups'}}">
                         <a href="{{pathFor route='joinGroups'}}"><i class="fa fa-users"></i> <span class="nav-label">Join Groups</span> </a>
                     </li>

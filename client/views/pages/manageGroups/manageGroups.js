@@ -1,6 +1,9 @@
 Template.manageGroups.helpers({
     getName: function (id) {
         return Meteor.users.findOne(id).profile.name;
+    },
+    isCreator: function () {
+        return Template.currentData().createdBy === Meteor.userId();
     }
 });
 

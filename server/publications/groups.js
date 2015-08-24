@@ -1,5 +1,5 @@
 Meteor.publish('myGroups', function () {
-    return Groups.find({createdBy: this.userId});
+    return Groups.find({$or: [{createdBy: this.userId}, {teachingTeam: this.userId}]});
 });
 
 Meteor.publishComposite('allGroups', {
