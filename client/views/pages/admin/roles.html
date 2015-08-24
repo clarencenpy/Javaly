@@ -1,0 +1,72 @@
+<template name="roles">
+
+    <div class="row wrapper wrapper-content border-bottom white-bg page-heading">
+        <div class="col-md-12">
+            <div class="pull-left m-r-md m-t-sm">
+                <i class="fa fa-user-secret text-navy mid-icon"></i>
+            </div>
+            <h2>Assign Roles</h2>
+            <span>Admin only</span>
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-content animated fadeInUp">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>All Users</h5>
+                    </div>
+                    <div class="ibox-content profile-content">
+
+                        <table id="datatable" class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th class="col-md-2">Name</th>
+                                <th class="col-md-4">Email</th>
+                                <th class="col-md-2">Instructor</th>
+                                <th class="col-md-2">TA</th>
+                                <th class="col-md-2">Student</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {{#each this}}
+                                <tr>
+                                    <td>{{profile.name}}</td>
+                                    <td>{{emails.[0].address}}</td>
+                                    <td>
+                                        {{#if isInstructor}}
+                                            <a data-role="instructor" class="toggle-btn btn btn-warning btn-xs">Revoke</a>
+                                        {{else}}
+                                            <a data-role="instructor" class="toggle-btn btn btn-primary btn-xs">Assign</a>
+                                        {{/if}}
+                                    </td>
+                                    <td>
+                                        {{#if isTA}}
+                                            <a data-role="ta" class="toggle-btn btn btn-warning btn-xs">Revoke</a>
+                                        {{else}}
+                                            <a data-role="ta" class="toggle-btn btn btn-primary btn-xs">Assign</a>
+                                        {{/if}}
+                                    </td>
+                                    <td>
+                                        {{#if isStudent}}
+                                            <a data-role="student" class="toggle-btn btn btn-warning btn-xs">Revoke</a>
+                                        {{else}}
+                                            <a data-role="student" class="toggle-btn btn btn-primary btn-xs">Assign</a>
+                                        {{/if}}
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</template>

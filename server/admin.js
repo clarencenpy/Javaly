@@ -2,8 +2,10 @@
 
 Meteor.methods({
     addUser: function (email, name, password, roles) {
-        var loggedInUserId = Meteor.userId();
-        if (!loggedInUserId || !Roles.userIsInRole(loggedInUserId, ['admin'])) {
+        if (!Meteor.userId()) {
+            throw new Meteor.Error(403, 'Not Logged In');
+        }
+        if (!Roles.userIsInRole(Meteor.userId(), ['admin'])) {
             throw new Meteor.Error(403, 'Access denied');
         }
 
@@ -23,8 +25,10 @@ Meteor.methods({
     },
 
     toggleRole: function (userId, role) {
-        var loggedInUserId = Meteor.userId();
-        if (!loggedInUserId || !Roles.userIsInRole(loggedInUserId, ['admin'])) {
+        if (!Meteor.userId()) {
+            throw new Meteor.Error(403, 'Not Logged In');
+        }
+        if (!Roles.userIsInRole(Meteor.userId(), ['admin'])) {
             throw new Meteor.Error(403, 'Access denied');
         }
 
