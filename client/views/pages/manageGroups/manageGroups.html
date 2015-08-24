@@ -16,9 +16,11 @@
             <div class="col-lg-8">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content ibox-heading" style="border-top-width: medium">
+                        {{#if isInRole 'instructor, admin'}}
                         <a href="{{pathFor route='createGroup'}}" class="btn btn-primary" style="position: absolute; top: 30px; right: 30px">
                             <i class="fa fa-plus"></i> Create new Group
                         </a>
+                        {{/if}}
                         <h3><i class="fa fa-user"></i> My Groups</h3>
                         <small><i class="fa fa-time"></i>
                             You have {{this.count}} active groups.
@@ -31,7 +33,7 @@
                             {{#each this}}
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
-                                        <h5>{{name}} &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-user"></i> {{participants.length}}</h5>
+                                        <h5>{{name}} &nbsp;&nbsp;&nbsp;&nbsp; <small>Created By: {{getName createdBy}}  &nbsp;&nbsp;&nbsp;&nbsp; Enrolment: {{participants.length}}</small></h5>
                                         {{>iboxTools}}
                                     </div>
                                     <div class="ibox-content">
