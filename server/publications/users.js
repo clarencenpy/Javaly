@@ -4,7 +4,8 @@ Meteor.publish('allUsers', function () {
         return Meteor.users.find({}, {fields: {
             profile: 1,
             emails: 1,
-            roles: 1
+            roles: 1,
+            'services.google.email': 1
         }});
     } else {
         this.stop();

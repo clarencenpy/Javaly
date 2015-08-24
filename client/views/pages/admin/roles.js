@@ -14,6 +14,15 @@ Template.roles.helpers({
     },
     isStudent: function () {
         return this.roles.indexOf('student') >= 0;
+    },
+    email: function () {
+        if (this.emails) {
+            return this.emails[0].address;
+        } else if (this.services.google) {
+            return this.services.google.email;
+        } else {
+            return "";
+        }
     }
 });
 

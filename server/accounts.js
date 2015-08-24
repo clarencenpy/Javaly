@@ -12,3 +12,19 @@ ServiceConfiguration.configurations.insert({
 Accounts.config({
     restrictCreationByEmailDomain: 'smu.edu.sg'
 });
+
+
+//automatically create student accounts
+Accounts.onCreateUser(function (options, user) {
+    if (user.services.google) {
+        var givenName = user.services.google.given_name;
+        var familyName = user.services.google.family_name;
+        if (familyName === '_') {   //SMU default
+            user.profile = {name: givenName};
+        } else {
+            user.profile = {name: givenName + ' ' + familyName};
+        }
+    }
+    user.roles = ['student'];
+    return user;
+});
