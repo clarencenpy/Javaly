@@ -241,5 +241,12 @@ Meteor.methods({
                 participants: userId
             }});
         }
+    },
+
+    rejectRequest: function (userId, groupId) {
+        //remove from pendingParticipants
+        Groups.update(groupId, {$pull: {
+            pendingParticipants: userId
+        }})
     }
 });

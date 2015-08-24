@@ -32,24 +32,13 @@ Template.manageGroups.events({
 
     },
     'click .accept-btn': function (event, instance) {
-        var id = this.toString();
+        var userId = this.toString();
         var groupId = $(event.target).data('groupid');
-        Groups.update(groupId, {
-            $pull: {
-                pendingParticipants: id
-            },
-            $push: {
-                participants: id
-            }
-        });
+        Meteor.call('addStudentToGroup', userId, groupId);
     },
     'click .reject-btn': function (event, instance) {
-        var id = this.toString();
+        var userId = this.toString();
         var groupId = $(event.target).data('groupid');
-        Groups.update(groupId, {
-            $pull: {
-                pendingParticipants: id
-            }
-        });
+        Meteor.call('rejectRequest', userId, groupId);
     }
 });
