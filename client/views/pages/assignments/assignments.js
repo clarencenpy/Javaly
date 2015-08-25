@@ -101,7 +101,8 @@ Template.assignments.events({
         instance.questionsFromSelectedExercise.set(this.questions);
         instance.exerciseDescription.set(this.description);
     },
-    'click .start-btn': function () {
+    'click .start-btn': function (event, instance) {
+        Session.set('currentExercise', Template.instance().questionsFromSelectedExercise.get());
         var questionId = this.questionId;
         //check if previous attempt exists
         var attempt =  Attempts.findOne({questionId: questionId, userId: Meteor.userId()});
