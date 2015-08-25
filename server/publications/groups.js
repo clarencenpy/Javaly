@@ -188,11 +188,23 @@ Meteor.methods({
             throw new Meteor.Error(403, 'Not Logged In');
         }
 
-        Groups.update(groupId, {
-            $push: {
-                pendingParticipants: Meteor.userId()
-            }
-        });
+        var groupType = Groups.findOne(groupId).groupType;
+
+        if (groupType === 'OPEN') {
+            Groups.update(groupId, {
+                $push: {
+                    participants: Meteor.userId()
+                }
+            });
+        }
+
+        if (groupType === 'ACCEPT_REQUEST') {
+            Groups.update(groupId, {
+                $push: {
+                    pendingParticipants: Meteor.userId()
+                }
+            });
+        }
     },
 
     leaveGroup: function (groupId) {
