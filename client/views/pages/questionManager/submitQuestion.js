@@ -80,7 +80,7 @@ Template.submitQuestion.events({
             instance.$('#test-container>tr').each(function (index, elem) {
                 var $elem = $(elem);
                 question.testCases.push({
-                    description: $elem.find('input[name="description"]').val(),
+                    description: $elem.find('textarea[name="description"]').val(),
                     prepCode: $elem.find('textarea[name="prepCode"]').val(),
                     input: $elem.find('input[name="input"]').val(),
                     output: $elem.find('textarea[name="output"]').val(),
