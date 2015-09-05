@@ -108,7 +108,9 @@ Meteor.publishComposite('groupInfo', function (groupId) {
                         questions = questions.concat(exercise.questions);
                     });
                     return Questions.find({_id: {$in: questions}}, {fields: {
-                        title: 1
+                        title: 1,
+                        createdBy: 1,
+                        content: 1
                     }});
                 }
             },

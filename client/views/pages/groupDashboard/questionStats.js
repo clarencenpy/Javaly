@@ -69,5 +69,8 @@ Template.questionStats.events({
         } else {
             instance.sortByField.set(field);
         }
+    },
+    'click .view-code-btn': function () {
+        Session.set('selectedAttempt', this.attemptId);
     }
 });
