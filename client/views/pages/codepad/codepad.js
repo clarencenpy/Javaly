@@ -6,7 +6,9 @@ Template.codepad.helpers({
     compileError: function () {
         return Session.get('compileError');
     },
-
+    compileResultOrError: function () {
+        return Session.get('compileResult') || Session.get('compileError');
+    },
     showSolution: function (attempt) {
         if (attempt.completed || attempt.history ? attempt.history.length > 3 : false) {
             var question = Questions.findOne(attempt.questionId);

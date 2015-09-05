@@ -26,6 +26,16 @@
                 {{#if compileError}}
                     {{> errorDisplay compileError }}
                 {{/if}}
+                {{#unless compileResultOrError}}
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <div class="text-center" style="margin: 50px 0">
+                                <i class="fa fa-code" style="font-size: 5em; color:#888888"></i>
+                                <h3>Run your code and see results here</h3>
+                            </div>
+                        </div>
+                    </div>
+                {{/unless}}
                 {{> suggestedQuestions}}
             </div>
 
