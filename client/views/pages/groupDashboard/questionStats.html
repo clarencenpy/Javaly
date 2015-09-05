@@ -13,14 +13,13 @@
         <div id="{{question._id}}" class="panel-collapse collapse">
             <div class="panel-body">
 
-                <table class="table table-bordered table-hover datatable">
+                <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th class="col-md-3">Name</th>
-                            <th class="col-md-2">Attempts</th>
-                            <th class="col-md-2">Time Taken</th>
-                            <th class="col-md-2">Hidden Time in seconds</th>
-                            <th class="col-md-2">Completed</th>
+                            <th class="col-md-3"><a data-field="name" class="toggle-sort">Name</a></th>
+                            <th class="col-md-2"><a data-field="attempts" class="toggle-sort">Attempts</a></th>
+                            <th class="col-md-2"><a data-field="timeTaken" class="toggle-sort">Time Taken</a></th>
+                            <th class="col-md-2"><a data-field="completed" class="toggle-sort">Completed</a></th>
                             <th class="col-md-3">Actions</th>
                         </tr>
                     </thead>
@@ -30,7 +29,6 @@
                                 <td>{{name}}</td>
                                 <td>{{attempts}}</td>
                                 <td>{{humanizeSeconds timeTaken}}</td>
-                                <td>{{timeTaken}}</td>
                                 <td>{{#if completed}} <span class="label label-primary">Completed</span> {{else}} <span class="label">Incomplete</span>{{/if}}</td>
                                 <td>
                                     {{#if attemptId}}
