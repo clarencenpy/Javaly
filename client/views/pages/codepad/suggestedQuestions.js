@@ -3,7 +3,7 @@ Template.suggestedQuestions.helpers({
         var currentQuestionId = this.questionId;
         var questions = Session.get('currentExercise') || [];
         questions = _.reduce(questions, function (memo, questionId) {
-            var attempt = Attempts.findOne({questionId: question, userId: Meteor.userId()});
+            var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()});
             var question = Questions.findOne(questionId);
             if (questionId === currentQuestionId) {
                 return memo;
