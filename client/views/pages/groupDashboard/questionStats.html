@@ -32,7 +32,8 @@
                                 <td>{{#if completed}} <span class="label label-primary">Completed</span> {{else}} <span class="label">Incomplete</span>{{/if}}</td>
                                 <td>
                                     {{#if attemptId}}
-                                        <a href="{{pathFor 'codepad' id=attemptId}}" class="btn btn-primary btn-xs">View <i class="fa fa-lg fa-code"></i></a>
+                                        <!--codepad modal is in groupView.html-->
+                                        <a class="view-code-btn btn btn-primary btn-xs" data-toggle="modal" data-target="#codepad-modal">View <i class="fa fa-lg fa-code"></i></a>
                                     {{else}}
                                         <a href="" class="btn btn-warning btn-xs">Nudge <i class="fa fa-hand-o-right"></i></a>
                                     {{/if}}
