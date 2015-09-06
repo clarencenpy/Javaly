@@ -1,0 +1,18 @@
+<template name="codepadModal">
+
+    <div class="modal-dialog" >
+        <div class="modal-content animated fadeIn">
+            <div class="modal-header" >
+                <h4>You are viewing {{student.profile.name}}'s codepad</h4>
+            </div>
+            <div class="modal-body">
+                {{> questionCard questionId}}
+                {{> editorNoCompile this }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+</template>

@@ -1,18 +1,8 @@
 Template.questionStats.onCreated(function () {
     this.completedPercentage = new ReactiveVar();
     this.attemptedButNotCompletedPercentage = new ReactiveVar();
-});
-
-Template.questionStats.onRendered(function () {
-    //init datatables for every table
-    this.$('.datatable').each(function () {
-        $(this).DataTable({
-            paging: false,
-            info: false,
-            searching: false,
-            aoColumns: [null, null, {iDataSort: 3}, {visible: false}, null, {bSortable: false}]
-        });
-    })
+    this.sortByField = new ReactiveVar();
+    this.ascending = new ReactiveVar();
 });
 
 Template.questionStats.helpers({
@@ -52,6 +42,13 @@ Template.questionStats.helpers({
         Template.instance().completedPercentage.set(Math.round(completed/total*100));
         Template.instance().attemptedButNotCompletedPercentage.set(Math.round((attempted - completed)/total*100));
 
+        //sort
+        var sortByField = Template.instance().sortByField.get() || 'timeTaken';
+        var ascending = Template.instance().ascending.get() || false;
+        result = _.sortBy(result, sortByField);
+        if (!ascending) {
+            result = result.reverse();
+        }
         return result;
     },
 
@@ -64,3 +61,16 @@ Template.questionStats.helpers({
     }
 });
 
+Template.questionStats.events({
+    'click .toggle-sort': function (event, instance) {
+        var field = $(event.target).data('field');
+        if (instance.sortByField.get() === field) {
+            instance.ascending.set(!instance.ascending.get()); //toggle asc/desc
+        } else {
+            instance.sortByField.set(field);
+        }
+    },
+    'click .view-code-btn': function () {
+        Session.set('selectedAttempt', this.attemptId);
+    }
+});
