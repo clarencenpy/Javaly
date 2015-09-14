@@ -35,7 +35,7 @@ Template.submitQuestion.events({
         instance.$('#test-container').append('\
             <tr>\
                 <td>\
-                    <input name="description" type="text" class="form-control">\
+                    <textarea name="description" type="text" class="form-control"></textarea>\
                 </td>\
                 <td>\
                     <textarea name="prepCode" class="form-control" style="font-family: monospace"></textarea>\
