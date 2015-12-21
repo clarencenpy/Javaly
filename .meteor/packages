@@ -4,15 +4,11 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
 less
-iron:router
 twbs:bootstrap
 fortawesome:fontawesome
-zimme:iron-router-active
 jquery
-okgrow:iron-router-autoscroll
-
+okgrow:router-autoscroll
 
 tomi:upload-server
 tomi:upload-jquery
@@ -28,7 +24,6 @@ meteorhacks:npm
 
 
 npm-container
-lbee:moment-helpers
 reywood:publish-composite
 reactive-var
 momentjs:moment
@@ -40,3 +35,20 @@ msavin:mongol
 msavin:jetsetter
 service-configuration
 accounts-google
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
+lbee:moment-helpers
+iron:router
+zimme:iron-router-active
+zimme:active-route@2.3.2
