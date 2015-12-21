@@ -2,7 +2,8 @@ Template.joinGroups.helpers({
     groups: function () {
         return Groups.find({
             participants: {$not: Meteor.userId()},
-            pendingParticipants: {$not: Meteor.userId()}
+            pendingParticipants: {$not: Meteor.userId()},
+            groupType: {$not: 'PRIVATE'}
         });
     },
     getName: function (id) {

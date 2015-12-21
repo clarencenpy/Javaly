@@ -22,7 +22,7 @@ Meteor.publishComposite('allGroups', {
 //Used in: joinGroups
 Meteor.publishComposite('availableGroups', {
     find: function () {
-        return Groups.find({groupType: {$in: ['OPEN', 'ACCEPT_REQUEST']}});
+        return Groups.find({groupType: {$in: ['OPEN', 'ACCEPT_REQUEST', 'PRIVATE']}});
     },
     children: [
         {
