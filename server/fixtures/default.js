@@ -1,36 +1,14 @@
 if (process.env.NODE_ENV === 'development') {
-    if (Meteor.users.find().count() === 1) { //admin
+    if (Meteor.users.find().count() === 0) {
         //creating users
         var users = [
-            {password: "yllee", name: "Lee Yeow Leong", email: "yllee@smu.edu.sg", roles: ['instructor']},
-            {password: "cboesch", name: "Chris Boesch", email: "cboesch@smu.edu.sg", roles: ['instructor']},
-            {password: "kevinsteppe", name: "Kevin Steppe", email: "kevinsteppe@smu.edu.sg", roles: ['instructor']},
-
-            {password: "wtwong.2015", name: "Wong Wai Tuck", email: "wtwong.2015@sis.smu.edu.sg", roles: ['ta']},
-            {password: "ernestche.2014", name: "Ernest Che", email: "ernestche.2014@sis.smu.edu.sg", roles: ['ta']},
-            {password: "jytay.2014", name: "Tay Jing Ying", email: "jytay.2014@sis.smu.edu.sg", roles: ['ta']},
-            {password: "kester.yeo.2014", name: "Kester Yeo", email: "kester.yeo.2014@sis.smu.edu.sg", roles: ['ta']},
-            {password: "keefetan.2014", name: "Keefe Tan", email: "keefetan.2014@sis.smu.edu.sg", roles: ['ta']},
-            {
-                password: "russell.yap.2014",
-                name: "Russell Yap",
-                email: "russell.yap.2014@sis.smu.edu.sg",
-                roles: ['ta']
-            },
-            {password: "remy.ng.2014", name: "Remy Ng", email: "remy.ng.2014@sis.smu.edu.sg", roles: ['ta']},
-            {password: "jeremyong.2014", name: "Jeremy Ong", email: "jeremyong.2014@sis.smu.edu.sg", roles: ['ta']},
-            {
-                password: "kailong.sim.2014",
-                name: "Sim Kai Long",
-                email: "kailong.sim.2014@sis.smu.edu.sg",
-                roles: ['ta']
-            },
-            {password: "minyan.beh.2014", name: "Beh Min Yan", email: "minyan.beh.2014@sis.smu.edu.sg", roles: ['ta']},
-            {password: "password", name: "Clarence Ngoh", email: "py.ngoh.2014@sis.smu.edu.sg", roles: ['ta']},
-
-            {password: "password", name: "Student1", email: "s1@smu.com", roles: ['student']},
-            {password: "password", name: "Student2", email: "s2@smu.com", roles: ['student']},
-            {password: "password", name: "Student3", email: "s3@smu.com", roles: ['student']}
+            {password: "admin", name: "Administrator", email: "admin@smu.sg", roles: ['admin', 'instructor', 'ta', 'student']},
+            {password: "password", name: "Lee Yeow Leong", email: "yllee@smu.sg", roles: ['instructor', 'ta', 'student']},
+            {password: "password", name: "Chris Boesch", email: "cboesch@smu.sg", roles: ['instructor', 'ta', 'student']},
+            {password: "password", name: "Clarence Ngoh", email: "clarencenpy@smu.sg", roles: ['ta', 'student']},
+            {password: "password", name: "Student1", email: "s1@smu.sg", roles: ['student']},
+            {password: "password", name: "Student2", email: "s2@smu.sg", roles: ['student']},
+            {password: "password", name: "Student3", email: "s3@smu.sg", roles: ['student']}
         ];
 
         _.each(users, function (user) {
@@ -176,7 +154,7 @@ if (process.env.NODE_ENV === 'development') {
                         visibility: "SHOW"
                     }
                 ]
-            },
+            }
         ];
 
         var userId = Meteor.users.findOne({'profile.name': 'Clarence Ngoh'})._id;
@@ -201,17 +179,7 @@ if (process.env.NODE_ENV === 'development') {
         var s1 = Meteor.users.findOne({'profile.name': 'Student1'})._id;
         var s2 = Meteor.users.findOne({'profile.name': 'Student2'})._id;
         var s3 = Meteor.users.findOne({'profile.name': 'Student3'})._id;
-        var ta1 = Meteor.users.findOne({'profile.name': 'Ernest Che'})._id;
-        var ta2 = Meteor.users.findOne({'profile.name': 'Tay Jing Ying'})._id;
-        var ta3 = Meteor.users.findOne({'profile.name': 'Kester Yeo'})._id;
-        var ta4 = Meteor.users.findOne({'profile.name': 'Keefe Tan'})._id;
-        var ta5 = Meteor.users.findOne({'profile.name': 'Russell Yap'})._id;
-        var ta6 = Meteor.users.findOne({'profile.name': 'Remy Ng'})._id;
-        var ta7 = Meteor.users.findOne({'profile.name': 'Jeremy Ong'})._id;
-        var ta8 = Meteor.users.findOne({'profile.name': 'Sim Kai Long'})._id;
-        var ta9 = Meteor.users.findOne({'profile.name': 'Beh Min Yan'})._id;
-        var ta10 = Meteor.users.findOne({'profile.name': 'Clarence Ngoh'})._id;
-        var ta11 = Meteor.users.findOne({'profile.name': 'Wong Wai Tuck'})._id;
+        var ta = Meteor.users.findOne({'profile.name': 'Clarence Ngoh'})._id;
 
         var q1 = Questions.findOne({title: 'Lets add some numbers!'})._id;
         var q2 = Questions.findOne({title: 'Sum the integers in an Array'})._id;
@@ -221,13 +189,14 @@ if (process.env.NODE_ENV === 'development') {
 
         Groups.insert({
             name: 'Beta Testers',
-            groupType: 'PRIVATE',
-            participants: [s1, s2, s3, ta1, ta2, ta3, ta4, ta5, ta6, ta7, ta8, ta9, ta10, ta11],
+            groupType: 'OPEN',
+            participants: [s1, s2, s3],
             exercises: [{
                 description: 'Test each other\'s questions!',
                 questions: [q1, q2, q3, q4, q5]
             }],
-            createdBy: instructor
+            createdBy: instructor,
+            teachingTeam: [ta]
         })
     }
 }
