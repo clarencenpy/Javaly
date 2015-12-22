@@ -9,19 +9,14 @@ twbs:bootstrap
 fortawesome:fontawesome
 jquery
 okgrow:router-autoscroll
-
 tomi:upload-server
 tomi:upload-jquery
 aldeed:collection2
 ian:accounts-ui-bootstrap-3
 accounts-password
 sacha:spin
-aldeed:autoform
-mpowaga:autoform-summernote
 alanning:roles
 meteorhacks:npm
-
-
 npm-container
 reywood:publish-composite
 reactive-var
@@ -52,3 +47,6 @@ iron:router
 zimme:iron-router-active
 zimme:active-route
 mizzao:sharejs-ace@1.1.9
+aldeed:autoform
+chroma:autoform-summernote
+chroma:summernote
