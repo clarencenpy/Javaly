@@ -62,7 +62,8 @@
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#tab-1"> Content</a></li>
                             <li class=""><a data-toggle="tab" href="#tab-2"> Tests</a></li>
-                            <li class=""><a data-toggle="tab" href="#tab-3"> Solution</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-3"> Upload Jar</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-4"> Solution</a></li>
                         </ul>
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane active">
@@ -193,6 +194,23 @@
                             </div>
 
                             <div id="tab-3" class="tab-pane">
+                                <div class="panel-body">
+                                    <p>Upload your dependencies as .jar files, which will then be added to the classpath during compile/run. Uploading a file with the same name will overwrite what was previously uploaded.</p>
+                                    {{> upload_bootstrap fileTypes='.jar' multiple=true formData=uploadJarFormData}}
+                                    {{#if uploadedFiles}}
+                                        <br>
+                                        <strong>Uploaded Files</strong>
+                                        <ul>
+                                            {{#each uploadedFiles}}
+                                                <li>{{this}}</li>
+                                            {{/each}}
+                                        </ul>
+                                    {{/if}}
+                                </div>
+                            </div>
+
+
+                            <div id="tab-4" class="tab-pane">
                                 <div class="panel-body">
                                     <fieldset class="form-horizontal">
                                         <div class="form-group">

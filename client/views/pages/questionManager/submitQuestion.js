@@ -1,16 +1,22 @@
+Template.submitQuestion.onCreated(function () {
+    var template = this;
+    //prepare a id for the to be submitted question, so that we know where to dump the file uploads
+    template.questionId = Random.id();
+});
+
 Template.submitQuestion.onRendered(function () {
     var template = this;
     template.release = new ReactiveVar(false);
-    this.$('[data-toggle=tooltip]').tooltip({
+    template.$('[data-toggle=tooltip]').tooltip({
         container: 'body'
     });
 
     // Initialize i-check plugin
-    this.$('.i-checks').iCheck({
+    template.$('.i-checks').iCheck({
         checkboxClass: 'icheckbox_square-green'
     });
 
-    this.$('.i-checks input')
+    template.$('.i-checks input')
         .on('ifChecked', function(){
             template.release.set(true);
         })
@@ -29,6 +35,12 @@ Template.submitQuestion.helpers({
             editor.getSession().setMode('ace/mode/java');
             editor.setHighlightActiveLine(false);
             editor.setShowPrintMargin(false);
+        }
+    },
+    uploadJarFormData: function () {
+        return {
+            _id: Template.instance().questionId,
+            purpose: 'JAR'
         }
     }
 });
@@ -71,6 +83,7 @@ Template.submitQuestion.events({
         if (AutoForm.validateForm('insertQuestionForm')) {
             var question = {};
 
+            question._id = Template.instance().questionId;
             question.title = AutoForm.getFieldValue('title', 'insertQuestionForm');
             question.tags = AutoForm.getFieldValue('tags', 'insertQuestionForm');
             question.content = AutoForm.getFieldValue('content', 'insertQuestionForm');
@@ -100,7 +113,7 @@ Template.submitQuestion.events({
 
             console.log(question);
 
-            var questionId = Questions.insert(question);
+            Questions.insert(question);
 
             swal({
                 title: "Question Submitted!",
@@ -114,7 +127,7 @@ Template.submitQuestion.events({
                 if (isConfirm) {
                     var attemptId = Attempts.insert({
                         userId: Meteor.userId(),
-                        questionId: questionId
+                        questionId: question._id
                     });
                     Router.go('codepad', {id: attemptId})
                 } else {
@@ -122,7 +135,7 @@ Template.submitQuestion.events({
                 }
             });
 
-            console.log(questionId + ' inserted');
+            console.log(question._id + ' inserted');
 
         } else {
             swal('Not so fast','Please ensure that you have filled up the required fields from all tabs!', 'warning');

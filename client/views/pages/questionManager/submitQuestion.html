@@ -58,7 +58,8 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#tab-1"> Content</a></li>
                         <li class=""><a data-toggle="tab" href="#tab-2"> Tests</a></li>
-                        <li class=""><a data-toggle="tab" href="#tab-3"> Solution</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-3"> Upload Jar</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-4"> Solution</a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane active">
@@ -187,6 +188,13 @@
                         </div>
 
                         <div id="tab-3" class="tab-pane">
+                            <div class="panel-body">
+                                <p>Upload your dependencies as .jar files, which will then be added to the classpath during compile/run.</p>
+                                {{> upload_bootstrap fileTypes='.jar' multiple=true formData=uploadJarFormData}}
+                            </div>
+                        </div>
+
+                        <div id="tab-4" class="tab-pane">
                             <div class="panel-body">
                                 <fieldset class="form-horizontal">
                                     <div class="form-group">

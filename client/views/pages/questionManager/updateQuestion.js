@@ -1,8 +1,29 @@
+Template.updateQuestion.onCreated(function () {
+    var template = this;
+
+    //subscribe to tags
+    template.subscribe('allTags');
+
+    //this is for getting the uploaded files
+    template.uploadedFiles = new ReactiveVar(false);
+    //fetch the data async
+    Meteor.call('getFileNames', template.data._id, function (err, res) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        if (res.length > 0) {
+            template.uploadedFiles.set(res);
+        }
+    })
+
+});
+
 Template.updateQuestion.onRendered(function () {
     var template = this;
     template.release = new ReactiveVar(false);
 
-    this.$('[data-toggle=tooltip]').tooltip({
+    template.$('[data-toggle=tooltip]').tooltip({
         container: 'body'
     });
 
@@ -11,21 +32,19 @@ Template.updateQuestion.onRendered(function () {
         checkboxClass: 'icheckbox_square-green'
     });
 
-    this.$('.i-checks input')
-        .on('ifChecked', function(){
+    template.$('.i-checks input')
+        .on('ifChecked', function () {
             template.release.set(true);
         })
         .on('ifUnchecked', function () {
             template.release.set(false);
         });
 
-    //subscribe to tags
-    template.subscribe('allTags');
 
     //Populate with previous solution object
     var editor = ace.edit('editor');
-    editor.getSession().setValue(this.data.solution ? this.data.solution.code : '');
-    if (this.data.solution ? this.data.solution.release : false) {
+    editor.getSession().setValue(template.data.solution ? template.data.solution.code : '');
+    if (template.data.solution ? template.data.solution.release : false) {
         template.$('.i-checks input').iCheck('check');
     } else {
         template.$('.i-checks input').iCheck('uncheck');
@@ -35,7 +54,7 @@ Template.updateQuestion.onRendered(function () {
 
 Template.updateQuestion.helpers({
     config: function () {
-        return function(editor) {
+        return function (editor) {
             editor.setTheme('ace/theme/crimson_editor');
             editor.getSession().setMode('ace/mode/java');
             editor.setHighlightActiveLine(false);
@@ -47,6 +66,15 @@ Template.updateQuestion.helpers({
     },
     isNotVisible: function (string) {
         return string === 'HIDDEN';
+    },
+    uploadJarFormData: function () {
+        return {
+            _id: Template.instance().data._id,
+            purpose: 'JAR'
+        }
+    },
+    uploadedFiles: function () {
+        return Template.instance().uploadedFiles.get();
     }
 });
 
@@ -86,13 +114,13 @@ Template.updateQuestion.events({
 
     'click #submit-btn': function (event, instance) {
         if (
-            AutoForm.validateField('title','updateQuestionForm') &&
-            AutoForm.validateField('tags','updateQuestionForm') &&
-            AutoForm.validateField('content','updateQuestionForm') &&
-            AutoForm.validateField('classname','updateQuestionForm') &&
-            AutoForm.validateField('methodName','updateQuestionForm') &&
-            AutoForm.validateField('questionType','updateQuestionForm') &&
-            AutoForm.validateField('static','updateQuestionForm')
+            AutoForm.validateField('title', 'updateQuestionForm') &&
+            AutoForm.validateField('tags', 'updateQuestionForm') &&
+            AutoForm.validateField('content', 'updateQuestionForm') &&
+            AutoForm.validateField('classname', 'updateQuestionForm') &&
+            AutoForm.validateField('methodName', 'updateQuestionForm') &&
+            AutoForm.validateField('questionType', 'updateQuestionForm') &&
+            AutoForm.validateField('static', 'updateQuestionForm')
         ) {
 
 
@@ -115,17 +143,19 @@ Template.updateQuestion.events({
                 release: instance.release.get()
             };
 
-            Questions.update(Template.currentData()._id, {$set: {
-                title: AutoForm.getFieldValue('title', 'updateQuestionForm'),
-                tags: AutoForm.getFieldValue('tags', 'updateQuestionForm'),
-                content: AutoForm.getFieldValue('content', 'updateQuestionForm'),
-                classname: AutoForm.getFieldValue('classname', 'updateQuestionForm'),
-                methodName: AutoForm.getFieldValue('methodName', 'updateQuestionForm'),
-                questionType: AutoForm.getFieldValue('questionType', 'updateQuestionForm'),
-                methodType: AutoForm.getFieldValue('methodType', 'updateQuestionForm'),
-                testCases: testCases,
-                solution: solution
-            }});
+            Questions.update(Template.currentData()._id, {
+                $set: {
+                    title: AutoForm.getFieldValue('title', 'updateQuestionForm'),
+                    tags: AutoForm.getFieldValue('tags', 'updateQuestionForm'),
+                    content: AutoForm.getFieldValue('content', 'updateQuestionForm'),
+                    classname: AutoForm.getFieldValue('classname', 'updateQuestionForm'),
+                    methodName: AutoForm.getFieldValue('methodName', 'updateQuestionForm'),
+                    questionType: AutoForm.getFieldValue('questionType', 'updateQuestionForm'),
+                    methodType: AutoForm.getFieldValue('methodType', 'updateQuestionForm'),
+                    testCases: testCases,
+                    solution: solution
+                }
+            });
 
             swal({
                 title: "Question Updated!",
@@ -139,7 +169,7 @@ Template.updateQuestion.events({
                 if (isConfirm) {
                     //check if previous attempt exists
                     var questionId = instance.data._id;
-                    var attempt =  Attempts.findOne({questionId: questionId, userId: Meteor.userId()});
+                    var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()});
                     if (attempt === undefined) {
                         var attemptId = Attempts.insert({
                             userId: Meteor.userId(),
@@ -156,7 +186,7 @@ Template.updateQuestion.events({
 
 
         } else {
-            swal('Not so fast','Please ensure that you have filled up the required fields from all tabs!', 'warning');
+            swal('Not so fast', 'Please ensure that you have filled up the required fields from all tabs!', 'warning');
         }
 
     },
@@ -173,6 +203,7 @@ Template.updateQuestion.events({
 
         }, function () {
             Questions.remove(id);
+            Meteor.call('removeQuestionDirectory', id);
             Router.go('questionManager');
         });
     }
