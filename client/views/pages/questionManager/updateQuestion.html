@@ -40,6 +40,7 @@
     </style>
 
     <div class="wrapper wrapper-content animated fadeInRight">
+        {{#if Template.subscriptionsReady }}
         <div class="ibox">
             <div class="ibox-title">
                 <h5>Update Question</h5>
@@ -57,7 +58,6 @@
             <div class="ibox-content profile-content">
 
                 <div class="tabs-container">
-
                     {{#autoForm collection="Questions" id="updateQuestionForm" type="update" doc=this}}
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#tab-1"> Content</a></li>
@@ -81,7 +81,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="Tags make your question easily searchable">Tags:</label>
                                             <div class="col-sm-9">
-                                                {{> afFieldInput name="tags" type="tags" multiple=true}}
+                                                {{> afFieldInput name="tags" type="select2"}}
                                             </div>
                                         </div>
                                         <div class="form-group {{#if afFieldIsInvalid name='content'}}has-error{{/if}}">
@@ -216,10 +216,12 @@
                         </div>
                     {{/autoForm}}
 
-
                 </div>
             </div>
         </div>
+        {{else}}
+            {{>spinner}}
+        {{/if}}
     </div>
 
 </template>

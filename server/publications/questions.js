@@ -55,6 +55,10 @@ Meteor.publishComposite('allQuestions', {
 
 });
 
+Meteor.publish('allTags', function () {
+    return Tags.find();
+});
+
 Questions.allow({
     insert: function (userId, doc) {
         return userId;

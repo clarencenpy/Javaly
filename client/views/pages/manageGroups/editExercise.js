@@ -1,30 +1,39 @@
 Template.editExercise.onCreated(function () {
-    var instance = this;
-    instance.tagsFilter = new ReactiveVar();
+    var temaplate = this;
+    temaplate.tagsFilter = new ReactiveVar();
 });
 
 Template.editExercise.onRendered(function () {
-    var instance = this;
+    var template = this;
+    template.subscribe('allTags', function () {
+        //wait for ui to render first
+        Tracker.afterFlush(function () {
+            //generate list of tags and initialise chosen plugin
+            var tags = [];
+            var questions = Questions.find().fetch();
+            _.each(questions, function (question) {
+                tags = tags.concat(question.tags);
+            });
+            tags = _.uniq(tags);
+            tags = _.map(tags, function (tag) {
+                return Tags.findOne(tag);
+            });
 
-    //generate list of tags and initialise chosen plugin
-    var tags = [];
-    var questions = Questions.find().fetch();
-    _.each(questions, function (question) {
-        tags = tags.concat(question.tags);
-    });
-    tags = _.uniq(tags);
 
-    var $chosen = this.$('.chosen-select');
-    _.each(tags, function (tag) {
-        $chosen.append('<option value="' + tag + '">' + tag + '</option>');
+            var $chosen = template.$('.chosen-select');
+            _.each(tags, function (tag) {
+                $chosen.append('<option value="' + tag._id + '">' + tag.label + '</option>');
+            });
+
+            $chosen.chosen({
+                max_selected_options: 5
+            }).change(function () {
+                var selected = $(this).val();
+                template.tagsFilter.set(selected);
+            });
+        });
     });
 
-    $chosen.chosen({
-        max_selected_options: 5
-    }).change(function () {
-        var selected = $(this).val();
-        instance.tagsFilter.set(selected);
-    });
 
 
     var pickedSortable = Sortable.create(this.find('#picked'), {
