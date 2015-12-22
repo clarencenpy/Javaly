@@ -1,6 +1,6 @@
 Template.submitQuestion.onRendered(function () {
-    var instance = this;
-    instance.release = new ReactiveVar(false);
+    var template = this;
+    template.release = new ReactiveVar(false);
     this.$('[data-toggle=tooltip]').tooltip({
         container: 'body'
     });
@@ -12,11 +12,14 @@ Template.submitQuestion.onRendered(function () {
 
     this.$('.i-checks input')
         .on('ifChecked', function(){
-            instance.release.set(true);
+            template.release.set(true);
         })
         .on('ifUnchecked', function () {
-            instance.release.set(false);
+            template.release.set(false);
         });
+
+    //subscribe to tags
+    template.subscribe('allTags');
 });
 
 Template.submitQuestion.helpers({

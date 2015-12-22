@@ -1,6 +1,6 @@
 Template.updateQuestion.onRendered(function () {
-    var instance = this;
-    instance.release = new ReactiveVar(false);
+    var template = this;
+    template.release = new ReactiveVar(false);
 
     this.$('[data-toggle=tooltip]').tooltip({
         container: 'body'
@@ -13,20 +13,24 @@ Template.updateQuestion.onRendered(function () {
 
     this.$('.i-checks input')
         .on('ifChecked', function(){
-            instance.release.set(true);
+            template.release.set(true);
         })
         .on('ifUnchecked', function () {
-            instance.release.set(false);
+            template.release.set(false);
         });
+
+    //subscribe to tags
+    template.subscribe('allTags');
 
     //Populate with previous solution object
     var editor = ace.edit('editor');
     editor.getSession().setValue(this.data.solution ? this.data.solution.code : '');
     if (this.data.solution ? this.data.solution.release : false) {
-        instance.$('.i-checks input').iCheck('check');
+        template.$('.i-checks input').iCheck('check');
     } else {
-        instance.$('.i-checks input').iCheck('uncheck');
+        template.$('.i-checks input').iCheck('uncheck');
     }
+
 });
 
 Template.updateQuestion.helpers({

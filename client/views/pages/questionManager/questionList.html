@@ -1,5 +1,5 @@
 <template name="questionList">
-
+    {{#if Template.subscriptionsReady}}
     <div class="ibox">
         <div class="ibox-title">
             <h5>Verified Questions</h5>
@@ -27,7 +27,7 @@
                             <td>{{numAttempts}}</td>
                             <td>
                                 {{#each tags}}
-                                    <span class="label">{{this}}</span>
+                                    <span class="label">{{getLabel this}}</span>
                                 {{/each}}
                             </td>
                         </tr>
@@ -45,5 +45,7 @@
             {{/if}}
         </div>
     </div>
-
+    {{else}}
+        {{>spinner}}
+    {{/if}}
 </template>

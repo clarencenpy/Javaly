@@ -199,4 +199,11 @@ if (process.env.NODE_ENV === 'development') {
             teachingTeam: [ta]
         })
     }
+
+    if (Tags.find().count() === 0) {
+        Tags.insert({label: 'IS200'});
+        Tags.insert({label: 'IS201'});
+        Tags.insert({label: 'if/else'});
+    }
 }
+

@@ -6,8 +6,10 @@ ahmetcetin:autoform-tags@0.1.2
 alanning:roles@1.2.14
 aldeed:autoform@5.8.1
 aldeed:autoform-bs-button-group-input@1.0.2
+aldeed:autoform-select2@2.0.2
 aldeed:collection2@2.7.0
 aldeed:simple-schema@1.5.1
+aldeed:template-extension@3.4.3
 anti:i18n@0.4.3
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
@@ -85,6 +87,7 @@ mongo-id@1.0.1
 mongo-livedata@1.0.9
 msavin:jetsetter@1.5.2
 msavin:mongol@1.6.2
+natestrauser:select2@3.5.1
 npm-bcrypt@0.7.8_2
 npm-container@1.1.0
 npm-mongo@1.4.39_1
@@ -125,3 +128,4 @@ webapp@1.2.3
 webapp-hashing@1.0.5
 zimme:active-route@2.3.2
 zimme:iron-router-active@2.0.1
+zimme:select2-bootstrap3-css@1.4.6
