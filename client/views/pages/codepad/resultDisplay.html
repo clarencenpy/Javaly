@@ -29,8 +29,8 @@
                     {{#each runs}}
                         <tr class={{#if result.success}} success {{else}} danger {{/if}} >
                             <td>{{result.description}}</td>
-                            <td>{{result.expected}}</td>
-                            <td>{{result.actual}}</td>
+                            <td>{{quoteIfString result.expected}}</td>
+                            <td>{{quoteIfString result.actual}}</td>
                             {{#if systemOutput}}<td>{{systemOutput}}</td>{{/if}}
                         </tr>
                     {{/each}}
