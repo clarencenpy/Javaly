@@ -68,7 +68,7 @@ body.landing-page {
   /* CUSTOMIZE THE NAVBAR
   -------------------------------------------------- */
   .navbar-wrapper {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
@@ -415,7 +415,7 @@ body.landing-page {
     font-size: 56px !important;
   }
   .features .big-icon {
-    color: @navy;
+    color: @navy !important;
   }
   .contact {
     background-image: url('../img/landing/word_map.png');
@@ -617,6 +617,18 @@ body.landing-page {
   @media (min-width: 992px) {
     .featurette-heading {
       margin-top: 120px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar .navbar-header {
+      display: block;
+      float: none;
+    }
+    .navbar .navbar-header .navbar-toggle {
+      background-color: #ffffff;
+      padding: 9px 10px;
+      border: none;
     }
   }
 

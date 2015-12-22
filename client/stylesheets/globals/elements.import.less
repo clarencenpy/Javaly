@@ -554,26 +554,47 @@ table.dataTable thead .sorting_desc_disabled {
   background: transparent;
 }
 
-table.dataTable thead .sorting_asc:after {
-  float: right;
-  font-family: fontawesome;
-}
-
-table.dataTable thead .sorting_desc:after {
-  content: "\f0dd";
-  float: right;
-  font-family: fontawesome;
-}
-
-table.dataTable thead .sorting:after {
-  content: "\f0dc";
-  float: right;
-  font-family: fontawesome;
-  color: rgba(50, 50, 50, .5);
-}
-
 .dataTables_wrapper {
   padding-bottom: 30px;
+}
+
+.dataTables_length {
+  float: left;
+}
+
+body.DTTT_Print {
+  background: #fff;
+
+}
+.DTTT_Print #page-wrapper {
+  margin: 0;
+  background:#fff;
+}
+
+button.DTTT_button, div.DTTT_button, a.DTTT_button {
+  border: 1px solid #e7eaec;
+  background: #fff;
+  color: #676a6c;
+  box-shadow: none;
+  padding: 6px 8px;
+}
+button.DTTT_button:hover, div.DTTT_button:hover, a.DTTT_button:hover {
+  border: 1px solid #d2d2d2;
+  background: #fff;
+  color: #676a6c;
+  box-shadow: none;
+  padding: 6px 8px;
+}
+
+button.DTTT_button:hover:not(.DTTT_disabled), div.DTTT_button:hover:not(.DTTT_disabled), a.DTTT_button:hover:not(.DTTT_disabled) {
+  border: 1px solid #d2d2d2;
+  background: #fff;
+  box-shadow: none;
+}
+
+.dataTables_filter label {
+  margin-right: 5px;
+
 }
 
 /* CIRCLE */
@@ -2211,4 +2232,53 @@ a.forum-item-title:hover {
   vertical-align: middle;
   line-height: 20px;
   padding-left: 3px;
+}
+
+/*Slick Carousel */
+
+.slick-prev:before,
+.slick-next:before
+{
+  color: @navy !important;
+}
+
+/* Payments */
+
+.payment-card {
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border: 1px solid @border-color;
+}
+
+.payment-icon-big {
+  font-size: 60px;
+  color: @light-gray;
+}
+
+.payments-method.panel-group .panel+.panel {
+  margin-top: -1px;
+}
+
+.payments-method .panel-heading {
+  padding: 15px;
+}
+
+.payments-method .panel{
+  border-radius: 0;
+}
+
+.payments-method .panel-heading h5 {
+  margin-bottom: 5px;
+}
+
+.payments-method .panel-heading i {
+  font-size: 26px;
+}
+
+/* Select2 custom styles */
+
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+  border-color: @border-color;
 }

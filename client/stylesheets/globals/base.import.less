@@ -112,7 +112,7 @@ video {
 
 /* Summernote text editor  */
 .note-editor {
-  height: auto;
+  height: auto !important;
   min-height: 300px;
 }
 
@@ -519,7 +519,7 @@ code {
   border-color: @border-color;
   border-image: none;
   border-style: solid solid none;
-  border-width: 4px 0px 0;
+  border-width: 3px 0 0;
   color: inherit;
   margin-bottom: 0;
   padding: 14px 15px 7px;
@@ -604,17 +604,18 @@ table.table-mail tr td {
 }
 
 .ibox-tools {
-  display: inline-block;
-  float: right;
+  display: block;
+  float: none;
   margin-top: 0;
   position: relative;
   padding: 0;
+  text-align: right;
 }
 
 .ibox-tools a {
-   cursor: pointer;
-   margin-left: 5px;
-   color: #c4c4c4;
+  cursor: pointer;
+  margin-left: 5px;
+  color: #c4c4c4;
 }
 
 .ibox-tools a.btn-primary {
@@ -626,7 +627,7 @@ table.table-mail tr td {
   font-size: 12px;
 }
 
-.ibox .open > .dropdown-menu {
+.ibox .ibox-tools.open > .dropdown-menu {
   left: auto;
   right: 0;
 }
@@ -799,6 +800,10 @@ table.table-mail tr td {
   color: #888888;
 }
 
+.text-white {
+  color: #ffffff;
+}
+
 .simple_tag {
   background-color: #f3f3f4;
   border: 1px solid #e7eaec;
@@ -824,7 +829,8 @@ table.table-mail tr td {
 .mailbox\.email_view nav.navbar,
 .mailbox\.email_compose nav.navbar,
 .dashboards\.dashboard_4_1 nav.navbar,
-.metrics nav.navbar, .metrics\.index nav.navbar
+.metrics nav.navbar, .metrics\.index nav.navbar,
+.dashboards\.dashboard_5 nav.navbar
 {
   background: #fff;
 }
@@ -836,7 +842,8 @@ table.table-mail tr td {
 .ComposeEmail .navbar.navbar-static-top,
 .EmailView .navbar.navbar-static-top,
 .Inbox .navbar.navbar-static-top,
-.Metrics .navbar.navbar-static-top
+.Metrics .navbar.navbar-static-top,
+.Dashboard_5 .navbar.navbar-static-top
 {
   background: #fff;
 }
@@ -885,7 +892,7 @@ a.close-canvas-menu:hover {
 }
 
 .modal {
- z-index: 2050 !important;
+  z-index: 2050 !important;
 }
 
 .spiner-example {
@@ -921,6 +928,35 @@ a.close-canvas-menu:hover {
 
 .p-xl {
   padding: 40px;
+}
+
+.p-w-xs {
+  padding: 0 10px;
+}
+
+.p-w-sm {
+  padding: 0 15px;
+
+}
+
+.p-w-m {
+  padding: 0 20px;
+
+}
+
+.p-w-md {
+  padding: 0 25px;
+
+}
+
+.p-w-lg {
+  padding: 0 30px;
+
+}
+
+.p-w-xl {
+  padding: 0 40px;
+
 }
 
 .m-xxs {
@@ -1207,7 +1243,51 @@ a.close-canvas-menu:hover {
   margin: 30px 0;
 }
 
+// Fullscreen functions
+
+.fullscreen-ibox-mode .animated {
+  animation: none;
+}
+
+body.fullscreen-ibox-mode {
+  overflow-y: hidden;
+}
+
+.ibox.fullscreen {
+  z-index: 2030;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  margin-bottom: 0;
+}
+
+.ibox.fullscreen .collapse-link {
+  display: none;
+}
+
+.ibox.fullscreen .ibox-content {
+  min-height: calc(~"100% - 48px");
+}
+
 // Bootstrap issue in 3.3.0 with modal https://github.com/twbs/bootstrap/issues/9855
 // Fix
 body.modal-open { padding-right:inherit !important; }
 
+// Fix for modal backdrop with animate.css
+body.modal-open .animated { animation-fill-mode: initial; }
+
+/* Show profile dropdown on fixed sidebar */
+body.mini-navbar.fixed-sidebar .profile-element, .block {
+  display: block !important;
+}
+
+body.mini-navbar.fixed-sidebar .nav-header {
+  padding: 33px 25px;
+}
+
+body.mini-navbar.fixed-sidebar .logo-element{
+  display: none;
+}
