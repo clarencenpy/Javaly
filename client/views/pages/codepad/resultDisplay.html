@@ -22,14 +22,16 @@
                         <th>Test</th>
                         <th>Expected Output</th>
                         <th>Your Output</th>
+                        {{#if runs.[0].systemOutput}}<th>Console</th>{{/if}}
                     </tr>
                     </thead>
                     <tbody style="white-space: pre-wrap; font-family:'Lucida Console', monospace">
-                    {{#each results}}
-                        <tr class={{#if success}} success {{else}} danger {{/if}} >
-                            <td>{{description}}</td>
-                            <td>{{expected}}</td>
-                            <td>{{actual}}</td>
+                    {{#each runs}}
+                        <tr class={{#if result.success}} success {{else}} danger {{/if}} >
+                            <td>{{result.description}}</td>
+                            <td>{{result.expected}}</td>
+                            <td>{{result.actual}}</td>
+                            {{#if systemOutput}}<td>{{systemOutput}}</td>{{/if}}
                         </tr>
                     {{/each}}
                     </tbody>
