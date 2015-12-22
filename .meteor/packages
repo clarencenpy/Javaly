@@ -18,7 +18,6 @@ accounts-password
 sacha:spin
 aldeed:autoform
 mpowaga:autoform-summernote
-mizzao:sharejs-ace
 alanning:roles
 meteorhacks:npm
 
@@ -51,4 +50,5 @@ check
 lbee:moment-helpers
 iron:router
 zimme:iron-router-active
-zimme:active-route@2.3.2
+zimme:active-route
+mizzao:sharejs-ace@1.1.9
