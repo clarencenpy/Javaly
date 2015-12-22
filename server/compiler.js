@@ -77,10 +77,10 @@ Meteor.methods({
 
         jobs.create('compileRun', {
             attemptId: options.attemptId,
+            questionId: question._id,
             classname: question.classname,
             code: options.code,
-            testJSON: testJSON,
-            testCode: question.testCode
+            testJSON: testJSON
         })
         .on('complete', function (result) {
             console.log("Completed: " + (new Date() - start));
