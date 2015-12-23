@@ -30,13 +30,13 @@
                 </li>
 
                 {{#if isInRole 'instructor, admin, ta'}}
-                    <li class="{{isActiveRoute regex='questionManager'}}">
+                    <li class="{{isActiveRoute regex='questionManager|submitQuestion|updateQuestion|readme'}}">
                         <a href="{{pathFor route='questionManager'}}"><i class="fa fa-book"></i> <span class="nav-label">Question Manager</span> </a>
                     </li>
                 {{/if}}
 
                 {{#if isInRole 'instructor, admin, ta'}}
-                    <li class="{{isActiveRoute regex='manageGroups'}}">
+                    <li class="{{isActiveRoute regex='manageGroups|updateGroup|editExercise|groupView'}}">
                         <a href="{{pathFor route='manageGroups'}}"><i class="fa fa-users"></i> <span class="nav-label">Manage Groups</span> </a>
                     </li>
                 {{/if}}
@@ -45,7 +45,7 @@
                         <a href="{{pathFor route='joinGroups'}}"><i class="fa fa-users"></i> <span class="nav-label">Join Groups</span> </a>
                     </li>
 
-                    <li class="{{isActiveRoute regex='assignments'}}">
+                    <li class="{{isActiveRoute regex='assignments|codepad'}}">
                         <a href="{{pathFor route='assignments'}}"><i class="fa fa-inbox"></i> <span class="nav-label">My Assignments</span> </a>
                     </li>
                 {{/if}}
