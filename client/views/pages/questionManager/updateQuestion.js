@@ -1,8 +1,8 @@
 Template.updateQuestion.onCreated(function () {
     var template = this;
 
-    //subscribe to tags
-    template.subscribe('allTags');
+    //for checkbox
+    template.release = new ReactiveVar(false);
 
     //this is for getting the uploaded files
     template.uploadedFiles = new ReactiveVar(false);
@@ -21,24 +21,29 @@ Template.updateQuestion.onCreated(function () {
 
 Template.updateQuestion.onRendered(function () {
     var template = this;
-    template.release = new ReactiveVar(false);
 
-    template.$('[data-toggle=tooltip]').tooltip({
-        container: 'body'
-    });
+    //subscribe to tags
+    template.subscribe('allTags', function () {
+        Tracker.afterFlush(function () {
+            template.$('[data-toggle=tooltip]').tooltip({
+                container: 'body'
+            });
 
-    // Initialize i-check plugin
-    $('.i-checks').iCheck({
-        checkboxClass: 'icheckbox_square-green'
-    });
+            // Initialize i-check plugin
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green'
+            });
 
-    template.$('.i-checks input')
-        .on('ifChecked', function () {
-            template.release.set(true);
+            template.$('.i-checks input')
+                .on('ifChecked', function () {
+                    template.release.set(true);
+                })
+                .on('ifUnchecked', function () {
+                    template.release.set(false);
+                });
         })
-        .on('ifUnchecked', function () {
-            template.release.set(false);
-        });
+    });
+
 
 
     //Populate with previous solution object

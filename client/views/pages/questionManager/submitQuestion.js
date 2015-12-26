@@ -2,30 +2,38 @@ Template.submitQuestion.onCreated(function () {
     var template = this;
     //prepare a id for the to be submitted question, so that we know where to dump the file uploads
     template.questionId = Random.id();
+
+    //for checkbox
+    template.release = new ReactiveVar(false);
 });
 
 Template.submitQuestion.onRendered(function () {
     var template = this;
-    template.release = new ReactiveVar(false);
-    template.$('[data-toggle=tooltip]').tooltip({
-        container: 'body'
-    });
-
-    // Initialize i-check plugin
-    template.$('.i-checks').iCheck({
-        checkboxClass: 'icheckbox_square-green'
-    });
-
-    template.$('.i-checks input')
-        .on('ifChecked', function(){
-            template.release.set(true);
-        })
-        .on('ifUnchecked', function () {
-            template.release.set(false);
-        });
 
     //subscribe to tags
-    template.subscribe('allTags');
+    template.subscribe('allTags', function () {
+        Tracker.afterFlush(function () {
+            //init tooltips
+            template.$('[data-toggle=tooltip]').tooltip({
+                container: 'body'
+            });
+
+            // Initialize i-check plugin
+            template.$('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green'
+            });
+
+            template.$('.i-checks input')
+                .on('ifChecked', function(){
+                    template.release.set(true);
+                })
+                .on('ifUnchecked', function () {
+                    template.release.set(false);
+                });
+        })
+    })
+
+
 });
 
 Template.submitQuestion.helpers({
