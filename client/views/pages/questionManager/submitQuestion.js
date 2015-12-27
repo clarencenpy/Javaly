@@ -1,5 +1,6 @@
 Template.submitQuestion.onCreated(function () {
     var template = this;
+
     //prepare a id for the to be submitted question, so that we know where to dump the file uploads
     template.questionId = Random.id();
 
@@ -95,29 +96,44 @@ Template.submitQuestion.events({
             question.title = AutoForm.getFieldValue('title', 'insertQuestionForm');
             question.tags = AutoForm.getFieldValue('tags', 'insertQuestionForm');
             question.content = AutoForm.getFieldValue('content', 'insertQuestionForm');
-            question.classname = AutoForm.getFieldValue('classname', 'insertQuestionForm');
-            question.methodName = AutoForm.getFieldValue('methodName', 'insertQuestionForm');
-            question.questionType = AutoForm.getFieldValue('questionType', 'insertQuestionForm');
-            question.methodType = AutoForm.getFieldValue('methodType', 'insertQuestionForm');
 
-            question.testCases = [];
-            instance.$('#test-container>tr').each(function (index, elem) {
-                var $elem = $(elem);
-                question.testCases.push({
-                    description: $elem.find('textarea[name="description"]').val(),
-                    prepCode: $elem.find('textarea[name="prepCode"]').val(),
-                    input: $elem.find('input[name="input"]').val(),
-                    output: $elem.find('textarea[name="output"]').val(),
-                    visibility: $elem.find('select[name="visibility"]').val()
-                });
-            });
-
+            //retrieve editor contents for test code
             var editor = ace.edit('editor');
             var code = editor.getSession().getValue();
-            question.solution = {
-                code: code,
-                release: instance.release.get()
-            };
+            console.log(code);
+            question.testCode = code.length > 0 ? code : undefined;
+
+            if (!question.testCode) {
+                question.classname = AutoForm.getFieldValue('classname', 'insertQuestionForm');
+                question.methodName = AutoForm.getFieldValue('methodName', 'insertQuestionForm');
+                question.questionType = AutoForm.getFieldValue('questionType', 'insertQuestionForm');
+                question.methodType = AutoForm.getFieldValue('methodType', 'insertQuestionForm');
+                question.testCases = [];
+                instance.$('#test-container>tr').each(function (index, elem) {
+                    var $elem = $(elem);
+                    var testCase = {
+                        description: $elem.find('textarea[name="description"]').val(),
+                        prepCode: $elem.find('textarea[name="prepCode"]').val(),
+                        input: $elem.find('input[name="input"]').val(),
+                        output: $elem.find('textarea[name="output"]').val(),
+                        visibility: $elem.find('select[name="visibility"]').val()
+                    };
+                    if (testCase.description.length === 0
+                        && testCase.prepCode.length === 0
+                        && testCase.input.length === 0
+                        && testCase.output.length === 0
+                    ) {
+                        // the whole row is empty, ignore
+                    } else {
+                        question.testCases.push(testCase);
+                    }
+                });
+
+                if (!question.methodName || !question.methodType || question.testCases.length === 0) {
+                    swal('Not so fast','Either upload a test file, or use the GUI to create your tests!', 'warning');
+                    return;
+                }
+            }
 
             console.log(question);
 
