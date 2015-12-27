@@ -53,21 +53,34 @@ Meteor.methods({
         }
 
         //  -------- add job ----------- //
-        //TODO: should not even write test to file
 
-        // there are two ways of getting the test code now: 1)From DB as string 2)Test JSON
+        var job = {};
 
-        var testJSON;
+        //decide whether or not to specify questionId
+        if (Meteor.call('getFileNames', question._id).length > 0) {     //there are files uploaded
+            job.questionId = question._id;
+        }
 
+        //generate source code
+        if (question.classname) {
+            job.sourceCode = options.code;
+        } else {
+            job.sourceCode = injectMethodBody(options.code);
+        }
+
+        // generate test code from either: 1)Fully defined 2)Test JSON from UI
         if (question.testCode) {
-            //do nothing for now
-        } else if (question.testCases) {
-            testJSON = {};
-            testJSON.testCases = question.testCases;
-            testJSON.questionType = question.questionType;
-            testJSON.methodName = question.methodName;
-            testJSON.classname = question.classname;
-            testJSON.static = question.methodType === 'STATIC';
+            job.testCode = question.testCode;
+        } else if (question.testCases && question.questionType && question.methodName && question.methodType) {   //all required fields available
+
+            job.testCode = generateTestCode({
+                questionType: question.questionType,
+                methodName: question.methodName,
+                static: question.methodType === 'STATIC',
+                classname: question.classname,
+                testCases: question.testCases
+            });
+
         } else {
             //both not present
             return {status: 'testNotDefined'};
@@ -75,13 +88,7 @@ Meteor.methods({
 
         var future = new Future();
 
-        jobs.create('compileRun', {
-            attemptId: options.attemptId,
-            questionId: question._id,
-            classname: question.classname,
-            code: options.code,
-            testJSON: testJSON
-        })
+        jobs.create('compileRun', job)
         .on('complete', function (result) {
             console.log("Completed: " + (new Date() - start));
                 //console.log(result);
@@ -130,4 +137,92 @@ Meteor.methods({
     }
 
 });
+
+
+//Functions to generate tester code from json
+
+var INSERTION_HASH = 'e35089b2d968d2c00562279dd210847f3e156caa7c9affbaa45a25c6c0e75edf'; //SHA-256 of ILoveJava
+var injectMethodBody = function (methodBody) {
+    var fileContents = 'import java.io.*;import java.util.*; public class MethodHolder{ ' + INSERTION_HASH +' }';
+    return fileContents.replace(INSERTION_HASH, methodBody);
+};
+
+var generateTestCode = function (test) {
+
+    var fileContents = 'import static javaly.core.Test.*;import javaly.core.*;import java.util.*;public class StagingMethodTest{ ' + INSERTION_HASH + ' }';
+    var statements = '';
+    var count = 0;
+
+    test.testCases.forEach(function(testCase) {
+        //construct statement
+        statements += buildStatement(testCase, test.questionType, test.methodName, test.static, test.classname, count);
+        count++;
+    });
+
+    return fileContents.replace(INSERTION_HASH, statements);
+};
+
+var buildStatement = function(testCase, questionType, methodName, isStatic, classname, count) {
+    var statement = '';
+    var methodInvoker = '';
+
+    if (isStatic){
+        methodInvoker = classname ? classname + '.' : 'MethodHolder.';
+    } else {
+        methodInvoker = classname ? 'new ' + classname + '().' : 'new MethodHolder().';
+    }
+
+    //prepare the variables
+    var prepCode = testCase.prepCode ? testCase.prepCode : '';
+    var description = testCase.description ? '"' + testCase.description + '", ' : '';
+    var input = testCase.input ? testCase.input : '';
+    var output = testCase.output;
+    if (output.search(/".+"/) === -1) { //if no quotes
+        output = '"' + output + '"';    //add the quotes
+    }
+    //replace all the newlines with literals to handle multiline output
+    output = output.split('\n').join('\\n');
+    description = description.split('\n').join('\\n');
+
+    if (questionType === 'RETURN'){
+        /*
+         Structure:
+         @TestCase (expectedOutput="output")
+         public void test<count>(){
+         assertEquals(description, output, new MethodHolder().methodName(input));
+         }
+         */
+
+        statement = '@TestCase (expectedOutput=' + output + ')' +
+            'public void test' + count + '(){' +
+            prepCode +
+            'assertEquals(' + description  + testCase.output + ', ' + methodInvoker + methodName + '(' + input + '));' +
+            '}';
+
+    } else if (questionType === 'SYSTEM_OUT') {
+        /*
+         Structure:
+         @TestCase (expectedOutput="output")
+         public void test<count>(){
+         new MethodHolder.methodName(params);
+         assertEquals(description, output, retrieveSystemOutput());
+         }
+         */
+
+        //automatically surround output with quotes for sysout questions
+
+        statement = '@TestCase (expectedOutput=' + output + ')' +
+            'public void test' + count + '(){' +
+            prepCode +
+            methodInvoker + methodName + '(' + input + ');' +
+            'assertEquals(' + description + output + ', retrieveSystemOutput());' +
+            '}';
+    } else {
+        //shouldn't happen
+    }
+
+    return statement;
+};
+
+
 
