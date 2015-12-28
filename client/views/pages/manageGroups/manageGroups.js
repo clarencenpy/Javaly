@@ -25,7 +25,7 @@ Template.manageGroups.events({
             }
         });
 
-        Router.go('editExercise', {
+        Router.go('exerciseBuilder', {
             groupId: groupId,
             exerciseId: exerciseId
         });

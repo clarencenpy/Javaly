@@ -59,6 +59,20 @@ Meteor.publish('allTags', function () {
     return Tags.find();
 });
 
+Meteor.methods({
+    allContributors: function () {
+        var ids = _.uniq(Questions.find({}, {fields: {createdBy: 1}, sort: {createdBy: 1}}).fetch().map(function (q) {
+            return q.createdBy;
+        }));
+        return _.map(ids, function (id) {
+            return {
+                name: Meteor.users.findOne(id).profile.name,
+                id: id
+            }
+        });
+    }
+});
+
 Questions.allow({
     insert: function (userId, doc) {
         return userId;
