@@ -40,5 +40,12 @@ Template.exerciseBuilder.helpers({
 });
 
 Template.exerciseBuilder.events({
-
+    'click #search-btn': function (event, instance) {
+        var searchParams = {};
+        searchParams.title = instance.$('#title').val();
+        searchParams.author = instance.$('#author').val();
+        searchParams.tags = instance.$('#tags').val();
+        Session.set('searchParams', searchParams);
+        Session.set('searching', true);
+    }
 });

@@ -70,6 +70,34 @@ Meteor.methods({
                 id: id
             }
         });
+    },
+    searchQuestions: function (searchParams) {
+        var params = {};
+        if (searchParams.title) {
+            params.title = {
+                $regex: searchParams.title,
+                $options: 'ix'
+            }
+        }
+        if (searchParams.tags) {
+            params.tags = {
+                $all: searchParams.tags
+            }
+        }
+        if (searchParams.author) {
+            params.createdBy = searchParams.author
+        }
+        return Questions.find(params, {sort: {createdAt: 1}}).fetch().map(function (q) {
+            return {
+                title: q.title,
+                author: Meteor.users.findOne(q.createdBy).profile.name,
+                content: q.content,
+                popularity: Attempts.find({questionId: q._id}).count(),
+                tags: q.tags.map(function (tag) {
+                    return Tags.findOne(tag).label;
+                })
+            };
+        });
     }
 });
 
