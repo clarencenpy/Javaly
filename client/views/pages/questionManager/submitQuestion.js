@@ -4,8 +4,6 @@ Template.submitQuestion.onCreated(function () {
     //prepare a id for the to be submitted question, so that we know where to dump the file uploads
     template.questionId = Random.id();
 
-    //for checkbox
-    template.release = new ReactiveVar(false);
 });
 
 Template.submitQuestion.onRendered(function () {
@@ -18,19 +16,6 @@ Template.submitQuestion.onRendered(function () {
             template.$('[data-toggle=tooltip]').tooltip({
                 container: 'body'
             });
-
-            // Initialize i-check plugin
-            template.$('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green'
-            });
-
-            template.$('.i-checks input')
-                .on('ifChecked', function(){
-                    template.release.set(true);
-                })
-                .on('ifUnchecked', function () {
-                    template.release.set(false);
-                });
         })
     })
 
@@ -129,13 +114,22 @@ Template.submitQuestion.events({
                     }
                 });
 
-                if (!question.methodName || !question.methodType || question.testCases.length === 0) {
-                    swal('Not so fast','Either upload a test file, or use the GUI to create your tests!', 'warning');
+                if (!question.methodName || !question.methodType || !question.questionType || question.testCases.length === 0) {
+                    swal({
+                        title: 'Not so fast',
+                        text: '<strong>Please ensure that you:<strong>' +
+                                '<br>A) Write a test class OR' +
+                                '<br>B) Define your test with the GUI properly' +
+                                '<br>&#8226 Method Name is provided' +
+                                '<br>&#8226 Output Type is provided' +
+                                '<br>&#8226 Method Type is provided' +
+                                '<br>&#8226 At least one test case is defined',
+                        type: 'warning',
+                        html: true
+                    });
                     return;
                 }
             }
-
-            console.log(question);
 
             Questions.insert(question);
 
@@ -145,7 +139,8 @@ Template.submitQuestion.events({
                 type: "success",
                 showCancelButton: true,
                 allowEscapeKey: false,
-                confirmButtonText: 'Try it now!'
+                confirmButtonText: 'Try it now!',
+                cancelButtonText: 'Back'
 
             }, function (isConfirm) {
                 if (isConfirm) {

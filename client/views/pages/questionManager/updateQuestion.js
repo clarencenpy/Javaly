@@ -1,9 +1,6 @@
 Template.updateQuestion.onCreated(function () {
     var template = this;
 
-    //for checkbox
-    template.release = new ReactiveVar(false);
-
     //this is for getting the uploaded files
     template.uploadedFiles = new ReactiveVar(false);
     //fetch the data async
@@ -29,31 +26,11 @@ Template.updateQuestion.onRendered(function () {
                 container: 'body'
             });
 
-            // Initialize i-check plugin
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green'
-            });
-
-            template.$('.i-checks input')
-                .on('ifChecked', function () {
-                    template.release.set(true);
-                })
-                .on('ifUnchecked', function () {
-                    template.release.set(false);
-                });
+            //Populate with previous solution object
+            var editor = ace.edit('editor');
+            editor.getSession().setValue(template.data.testCode ? template.data.testCode : '');
         })
     });
-
-
-
-    //Populate with previous solution object
-    var editor = ace.edit('editor');
-    editor.getSession().setValue(template.data.solution ? template.data.solution.code : '');
-    if (template.data.solution ? template.data.solution.release : false) {
-        template.$('.i-checks input').iCheck('check');
-    } else {
-        template.$('.i-checks input').iCheck('uncheck');
-    }
 
 });
 
@@ -80,6 +57,9 @@ Template.updateQuestion.helpers({
     },
     uploadedFiles: function () {
         return Template.instance().uploadedFiles.get();
+    },
+    testCodePresent: function () {
+        return !!Template.instance().data.testCode;
     }
 });
 
@@ -128,38 +108,74 @@ Template.updateQuestion.events({
             AutoForm.validateField('static', 'updateQuestionForm')
         ) {
 
+            var update = {};
+            update.title = AutoForm.getFieldValue('title', 'updateQuestionForm');
+            update.tags = AutoForm.getFieldValue('tags', 'updateQuestionForm');
+            update.content= AutoForm.getFieldValue('content', 'updateQuestionForm');
 
-            var testCases = [];
-            instance.$('#test-container>tr').each(function (index, elem) {
-                var $elem = $(elem);
-                testCases.push({
-                    description: $elem.find('textarea[name="description"]').val(),
-                    prepCode: $elem.find('textarea[name="prepCode"]').val(),
-                    input: $elem.find('input[name="input"]').val(),
-                    output: $elem.find('textarea[name="output"]').val(),
-                    visibility: $elem.find('select[name="visibility"]').val()
-                })
-            });
-
+            //retrieve editor contents for test code
             var editor = ace.edit('editor');
             var code = editor.getSession().getValue();
-            var solution = {
-                code: code,
-                release: instance.release.get()
-            };
+            update.testCode = code.length > 0 ? code : undefined;
+
+            if (!update.testCode) {
+                update.classname = AutoForm.getFieldValue('classname', 'updateQuestionForm');
+                update.methodName = AutoForm.getFieldValue('methodName', 'updateQuestionForm');
+                update.questionType = AutoForm.getFieldValue('questionType', 'updateQuestionForm');
+                update.methodType = AutoForm.getFieldValue('methodType', 'updateQuestionForm');
+                update.testCases = [];
+                instance.$('#test-container>tr').each(function (index, elem) {
+                    var $elem = $(elem);
+                    var testCase = {
+                        description: $elem.find('textarea[name="description"]').val(),
+                        prepCode: $elem.find('textarea[name="prepCode"]').val(),
+                        input: $elem.find('input[name="input"]').val(),
+                        output: $elem.find('textarea[name="output"]').val(),
+                        visibility: $elem.find('select[name="visibility"]').val()
+                    };
+                    if (testCase.description.length === 0
+                        && testCase.prepCode.length === 0
+                        && testCase.input.length === 0
+                        && testCase.output.length === 0
+                    ) {
+                        // the whole row is empty, ignore
+                    } else {
+                        update.testCases.push(testCase);
+                    }
+                });
+
+                if (!update.methodName || !update.methodType || !update.questionType || update.testCases.length === 0) {
+                    swal({
+                        title: 'Not so fast',
+                        text: '<strong>Please ensure that you:</strong>' +
+                                    '<br>A) Write a test class OR' +
+                                    '<br>B) Define your test with the GUI properly' +
+                                    '<br>&#8226 Method Name is provided' +
+                                    '<br>&#8226 Output Type is provided' +
+                                    '<br>&#8226 Method Type is provided' +
+                                    '<br>&#8226 At least one test case is defined',
+                        type: 'warning',
+                        html: true
+                    });
+                    return;
+                }
+            }
+
+            var toDelete = {};
+            if (update.testCode) {
+                //delete the testCases
+                toDelete.classname = true;
+                toDelete.methodName = true;
+                toDelete.questionType = true;
+                toDelete.methodType = true;
+                toDelete.testCases = true;
+            } else {
+                toDelete.testCode = true
+            }
 
             Questions.update(Template.currentData()._id, {
-                $set: {
-                    title: AutoForm.getFieldValue('title', 'updateQuestionForm'),
-                    tags: AutoForm.getFieldValue('tags', 'updateQuestionForm'),
-                    content: AutoForm.getFieldValue('content', 'updateQuestionForm'),
-                    classname: AutoForm.getFieldValue('classname', 'updateQuestionForm'),
-                    methodName: AutoForm.getFieldValue('methodName', 'updateQuestionForm'),
-                    questionType: AutoForm.getFieldValue('questionType', 'updateQuestionForm'),
-                    methodType: AutoForm.getFieldValue('methodType', 'updateQuestionForm'),
-                    testCases: testCases,
-                    solution: solution
-                }
+                $set: update,
+                $unset: toDelete
             });
 
             swal({
@@ -168,7 +184,8 @@ Template.updateQuestion.events({
                 type: "success",
                 showCancelButton: true,
                 allowEscapeKey: false,
-                confirmButtonText: 'Try it now!'
+                confirmButtonText: 'Try it now!',
+                cancelButtonText: 'Back'
 
             }, function (isConfirm) {
                 if (isConfirm) {

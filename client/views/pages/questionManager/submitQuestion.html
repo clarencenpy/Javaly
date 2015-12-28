@@ -57,7 +57,6 @@
                         <li class="active"><a data-toggle="tab" href="#tab-1"> Content</a></li>
                         <li class=""><a data-toggle="tab" href="#tab-2"> Tests</a></li>
                         <li class=""><a data-toggle="tab" href="#tab-3"> Upload Jar</a></li>
-                        <li class=""><a data-toggle="tab" href="#tab-4"> Solution</a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane active">
@@ -99,7 +98,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h5 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Method A: Upload a test file</a>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Method A: Write a test class</a>
                                             </h5>
                                         </div>
                                         <div id="collapseOne" class="panel-collapse collapse in">
@@ -113,7 +112,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Method B: Use the GUI to create simple tests</a>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Method B: Use the GUI to create a test</a>
                                             </h4>
                                         </div>
                                         <div id="collapseTwo" class="panel-collapse collapse">
@@ -221,27 +220,6 @@
                             </div>
                         </div>
 
-                        <div id="tab-4" class="tab-pane">
-                            <div class="panel-body">
-                                <fieldset class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label" data-toggle="tooltip" title="Enter your solution code here, code comments are recommended for clarity" data-placement="right">Code:</label>
-                                        <div class="col-sm-9">
-                                            {{> sharejsAce id="editor" onRender=config}}
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label" data-toggle="tooltip" title="Solutions can only be viewd by students when this is checked" data-placement="right">Release:</label>
-                                        <div class="col-sm-9">
-                                            <div class="i-checks">
-                                                <label> <input id="release" type="checkbox" value=""> </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </div>
-                        </div>
 
                     </div>
                     {{/autoForm}}

@@ -63,7 +63,6 @@
                             <li class="active"><a data-toggle="tab" href="#tab-1"> Content</a></li>
                             <li class=""><a data-toggle="tab" href="#tab-2"> Tests</a></li>
                             <li class=""><a data-toggle="tab" href="#tab-3"> Upload Jar</a></li>
-                            <li class=""><a data-toggle="tab" href="#tab-4"> Solution</a></li>
                         </ul>
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane active">
@@ -101,95 +100,147 @@
 
                             <div id="tab-2" class="tab-pane">
                                 <div class="panel-body">
-
-                                    <fieldset class="form-horizontal">
-                                        <div class="form-group {{#if afFieldIsInvalid name='classname'}}has-error{{/if}}">
-                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="If you require the student to write the full Java class, please specify the class name. If this field is left empty, it is assumed that the student is only required to write the method body.">Class Name:</label>
-                                            <div class="col-sm-9">
-                                                {{> afFieldInput name='classname' placeholder='(optional)'}}
-                                                {{#if afFieldIsInvalid name='classname'}}
-                                                    <span class="help-block">{{{afFieldMessage name='classname'}}}</span>
-                                                {{/if}}
+                                    <div class="panel-group" id="accordion">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h5 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Method A: Write a test class</a>
+                                                </h5>
                                             </div>
-                                        </div>
-                                        <div class="form-group {{#if afFieldIsInvalid name='methodName'}}has-error{{/if}}">
-                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="Name of the method to be tested (enter just the name without parentheses)">Method Name: </label>
-                                            <div class="col-sm-9">
-                                                {{> afFieldInput name='methodName'}}
-                                                {{#if afFieldIsInvalid name='methodName'}}
-                                                    <span class="help-block">{{{afFieldMessage name='methodName'}}}</span>
-                                                {{/if}}
-                                            </div>
-                                        </div>
-                                        <div class="form-group {{#if afFieldIsInvalid name='questionType'}}has-error{{/if}}">
-                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="We currently support testing methods that either return a value or prints to System.out">Output Type:</label>
-                                            <div class="col-sm-9">
-                                                {{> afFieldInput name='questionType' template='buttonGroup'}}
-                                                {{#if afFieldIsInvalid name='questionType'}}
-                                                    <span class="help-block">{{{afFieldMessage name='questionType'}}}</span>
-                                                {{/if}}
-                                            </div>
-                                        </div>
-                                        <div class="form-group {{#if afFieldIsInvalid name='methodType'}}has-error{{/if}}">
-                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="Is the method to be tested static or non-static?">Method Type: </label>
-                                            <div class="col-sm-9">
-                                                {{> afFieldInput name='methodType' template='buttonGroup'}}
-                                                {{#if afFieldIsInvalid name='methodType'}}
-                                                    <span class="help-block">{{{afFieldMessage name='methodType'}}}</span>
-                                                {{/if}}
-                                            </div>
-                                        </div>
-                                        <div class="form-group"><label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="You may specify any number of test cases by hitting the add button. Please ensure that you do not have empty tests (delete rows that are not needed)">Test Cases: </label>
-                                            <div class="col-sm-9">
-                                                <div class="table-responsive">
-                                                    <table class="table table-stripped table-bordered">
-                                                        <thead>
-                                                        <tr>
-                                                            <th data-toggle="tooltip" data-placement="bottom" title="Description for the test case that will be shown to the student, recommended to show the input arguments used, for example: doSomething(5,6)">Description</th>
-                                                            <th data-toggle="tooltip" data-placement="bottom" title="You may write any number of Java statements here that will be executed before the method to be tested is called. This is a good place to define variables that will be referenced by the test method.">Preparation Code</th>
-                                                            <th data-toggle="tooltip" data-placement="bottom" title="Input arguments to be supplied to the method, separated by commas. For example, if your method signature is method(int, String), then input shall be <1, &quot;java&quot;>. You may also reference variables from your preparation code">Input Arguments</th>
-                                                            <th data-toggle="tooltip" data-placement="bottom" title="If you are testing for System Output or String return type, enter the expected value in quotes. For other primitive return values, enter its string representation. If the return value is an object, you need to reference a variable in the preparation code and override the equals() method of that object as required">Expected Output</th>
-                                                            <th data-toggle="tooltip" data-placement="bottom" title="Controls if this test case is visible to the student. Having some test cases that are hidden may prevent students from hardcoding">Visibility</th>
-                                                            <th></th>
-                                                        </tr>
-                                                        </thead>
-
-                                                        <tbody id="test-container">
-                                                        {{#each testCases}}
-                                                            <tr>
-                                                                <td>
-                                                                    <textarea value={{description}} name="description" type="text" class="form-control"></textarea>
-                                                                </td>
-                                                                <td>
-                                                                    <textarea value="{{prepCode}}" name="prepCode" class="form-control" style="font-family: monospace"></textarea>
-                                                                </td>
-                                                                <td>
-                                                                    <input value="{{input}}" name="input" type="text" class="form-control" style="font-family: monospace">
-                                                                </td>
-                                                                <td>
-                                                                    <textarea value={{output}} name="output" type="text" class="form-control" style="font-family: monospace"></textarea>
-                                                                </td>
-                                                                <td>
-                                                                    <select name="visibility" class="form-control" >
-                                                                        <option value="SHOW" selected="{{isVisible visibility}}">Show</option>
-                                                                        <option value="HIDDEN" selected="{{isNotVisible visibility}}">Hidden</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <button class="remove-btn btn btn-white"><i class="fa fa-trash"></i> </button>
-                                                                </td>
-                                                            </tr>
-                                                        {{/each}}
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="text-center">
-                                                    <a id="addTest" class="btn btn-primary btn-sm">Add</a>
+                                            <div id="collapseOne" class="panel-collapse collapse {{#if testCodePresent}}in{{/if}}">
+                                                <div class="panel-body">
+                                                    <p style="margin-bottom: 0px">Write Tester Class</p>
+                                                    <p><small><a href="">See API on how to write the test class</a></small></p>
+                                                    {{> sharejsAce id="editor" onRender=config}}
                                                 </div>
                                             </div>
                                         </div>
-                                    </fieldset>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Method B: Use the GUI to create a test</a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseTwo" class="panel-collapse collapse {{#unless testCodePresent}}in{{/unless}}">
+                                                <div class="panel-body">
+                                                    <fieldset class="form-horizontal">
+                                                        <div class="form-group {{#if afFieldIsInvalid name='classname'}}has-error{{/if}}">
+                                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="If you require the student to write the full Java class, please specify the class name. If this field is left empty, it is assumed that the student is only required to write the method body.">Class Name:</label>
+                                                            <div class="col-sm-9">
+                                                                {{> afFieldInput name='classname' placeholder='optional'}}
+                                                                {{#if afFieldIsInvalid name='classname'}}
+                                                                    <span class="help-block">{{{afFieldMessage name='classname'}}}</span>
+                                                                {{/if}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group {{#if afFieldIsInvalid name='methodName'}}has-error{{/if}}">
+                                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="Name of the method to be tested (enter just the name without parentheses)">Method Name: </label>
+                                                            <div class="col-sm-9">
+                                                                {{> afFieldInput name='methodName'}}
+                                                                {{#if afFieldIsInvalid name='methodName'}}
+                                                                    <span class="help-block">{{{afFieldMessage name='methodName'}}}</span>
+                                                                {{/if}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group {{#if afFieldIsInvalid name='questionType'}}has-error{{/if}}">
+                                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="We currently support testing methods that either return a value or prints to System.out">Output Type:</label>
+                                                            <div class="col-sm-9">
+                                                                {{> afFieldInput name='questionType' template='buttonGroup'}}
+                                                                {{#if afFieldIsInvalid name='questionType'}}
+                                                                    <span class="help-block">{{{afFieldMessage name='questionType'}}}</span>
+                                                                {{/if}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group {{#if afFieldIsInvalid name='methodType'}}has-error{{/if}}">
+                                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="Is the method to be tested static or non-static?">Method Type: </label>
+                                                            <div class="col-sm-9">
+                                                                {{> afFieldInput name='methodType' template='buttonGroup'}}
+                                                                {{#if afFieldIsInvalid name='methodType'}}
+                                                                    <span class="help-block">{{{afFieldMessage name='methodType'}}}</span>
+                                                                {{/if}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group"><label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="You may specify any number of test cases by hitting the add button. Please ensure that you do not have empty tests (delete rows that are not needed)">Test Cases: </label>
+                                                            <div class="col-sm-9">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-stripped table-bordered">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th data-toggle="tooltip" data-placement="bottom" title="Description for the test case that will be shown to the student, recommended to show the input arguments used, for example: doSomething(5,6)">Description</th>
+                                                                            <th data-toggle="tooltip" data-placement="bottom" title="You may write any number of Java statements here that will be executed before the method to be tested is called. This is a good place to define variables that will be referenced by the test method.">Preparation Code</th>
+                                                                            <th data-toggle="tooltip" data-placement="bottom" title="Input arguments to be supplied to the method, separated by commas. For example, if your method signature is method(int, String), then input shall be <1, &quot;java&quot;>. You may also reference variables from your preparation code">Input Arguments</th>
+                                                                            <th data-toggle="tooltip" data-placement="bottom" title="If you are testing for System Output or String return type, enter the expected value in quotes. For other primitive return values, enter its string representation. If the return value is an object, you need to reference a variable in the preparation code and override the equals() method of that object as required">Expected Output</th>
+                                                                            <th data-toggle="tooltip" data-placement="bottom" title="Controls if this test case is visible to the student. Having some test cases that are hidden may prevent students from hardcoding">Visibility</th>
+                                                                            <th></th>
+                                                                        </tr>
+                                                                        </thead>
 
+                                                                        <tbody id="test-container">
+                                                                        {{#each testCases}}
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <textarea value={{description}} name="description" type="text" class="form-control"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <textarea value="{{prepCode}}" name="prepCode" class="form-control" style="font-family: monospace"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <input value="{{input}}" name="input" type="text" class="form-control" style="font-family: monospace">
+                                                                                </td>
+                                                                                <td>
+                                                                                    <textarea value={{output}} name="output" type="text" class="form-control" style="font-family: monospace"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <select name="visibility" class="form-control" >
+                                                                                        <option value="SHOW" selected="{{isVisible visibility}}">Show</option>
+                                                                                        <option value="HIDDEN" selected="{{isNotVisible visibility}}">Hidden</option>
+                                                                                    </select>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <button class="remove-btn btn btn-white"><i class="fa fa-trash"></i> </button>
+                                                                                </td>
+                                                                            </tr>
+                                                                        {{/each}}
+
+                                                                        <!--Add one more row for user to invite user to fill up -->
+                                                                        <tr>
+                                                                            <td>
+                                                                                <textarea name="description" type="text" class="form-control"></textarea>
+                                                                            </td>
+                                                                            <td>
+                                                                                <textarea name="prepCode" class="form-control" style="font-family: monospace"></textarea>
+                                                                            </td>
+                                                                            <td>
+                                                                                <input name="input" type="text" class="form-control" style="font-family: monospace">
+                                                                            </td>
+                                                                            <td>
+                                                                                <textarea name="output" type="text" class="form-control" style="font-family: monospace"></textarea>
+                                                                            </td>
+                                                                            <td>
+                                                                                <select name="visibility" class="form-control" >
+                                                                                    <option value="SHOW" selected>Show</option>
+                                                                                    <option value="HIDDEN">Hidden</option>
+                                                                                </select>
+                                                                            </td>
+                                                                            <td>
+                                                                                <button class="remove-btn btn btn-white"><i class="fa fa-trash"></i> </button>
+                                                                            </td>
+                                                                        </tr>
+                                                                        </tbody>
+
+                                                                    </table>
+                                                                </div>
+                                                                <div class="text-center">
+                                                                    <a id="addTest" class="btn btn-primary btn-sm">Add</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
 
@@ -209,28 +260,6 @@
                                 </div>
                             </div>
 
-
-                            <div id="tab-4" class="tab-pane">
-                                <div class="panel-body">
-                                    <fieldset class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label" data-toggle="tooltip" title="Enter your solution code here, code comments are recommended for clarity" data-placement="right">Code:</label>
-                                            <div class="col-sm-9">
-                                                {{> sharejsAce id="editor" onRender=config}}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label" data-toggle="tooltip" title="Solutions can only be viewd by students when this is checked" data-placement="right">Release:</label>
-                                            <div class="col-sm-9">
-                                                <div class="i-checks">
-                                                    <label> <input type="checkbox" value=""> </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                            </div>
                         </div>
                     {{/autoForm}}
 
