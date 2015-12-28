@@ -9,6 +9,15 @@ Template.mainLayout.rendered = function(){
         }
     });
 
+    // Minimalize menu when screen is less than 1000
+    $(window).bind("resize load", function () {
+        if ($(this).width() < 1000) {
+            collapseSidebar();
+        } else {
+            expandSidebar();
+        }
+    });
+
     // Fix height of layout when resize, scroll and load
     $(window).bind("load resize scroll", function() {
         if(!$("body").hasClass('body-small')) {
