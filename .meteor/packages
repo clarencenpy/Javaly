@@ -16,7 +16,6 @@ ian:accounts-ui-bootstrap-3
 accounts-password
 alanning:roles
 meteorhacks:npm
-npm-container
 reywood:publish-composite
 reactive-var
 momentjs:moment
