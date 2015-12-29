@@ -187,7 +187,7 @@ Template.updateQuestion.events({
                         prepCode: $elem.find('textarea[name="prepCode"]').val(),
                         input: $elem.find('input[name="input"]').val(),
                         output: $elem.find('textarea[name="output"]').val(),
-                        visibility: $elem.find('select[name="visibility"]').val()
+                        visible: $elem.find('select[name="visibility"]').val() === 'SHOW'
                     };
                     if (testCase.description.length === 0
                         && testCase.prepCode.length === 0
