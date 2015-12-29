@@ -68,6 +68,61 @@ Template.submitQuestion.events({
         );
     },
 
+    'click #returnValueTemplate-btn': function () {
+        var editor = ace.edit('editor');
+        editor.getSession().setValue('import static javaly.core.Test.*;\n' +
+        'import javaly.core.*;\n' +
+        'public class StagingMethodTest {\n' +
+            '\t@TestCase(expectedOutput="<expectedOutput>")\n' +
+            '\tpublic void test0() {\n' +
+            '\t\tassertEquals("<description>", <expectedOutput>, <Method Call>);\n' +
+            '\t}\n' +
+        '}');
+    },
+
+
+    'click #systemOutputTemplate-btn': function () {
+        var editor = ace.edit('editor');
+        editor.getSession().setValue('import static javaly.core.Test.*;\n' +
+            'import javaly.core.*;\n' +
+            'public class StagingMethodTest {\n' +
+            '\t@TestCase(expectedOutput="<expectedOutput>")\n' +
+            '\tpublic void test0() {\n' +
+            '\t\tassertEquals("<description>", <expectedOutput>, retrieveSystemOutput());\n' +
+            '\t}\n' +
+            '}');
+    },
+
+    'click #catchExceptionTemplate-btn': function () {
+        var editor = ace.edit('editor');
+        editor.getSession().setValue('import static javaly.core.Test.*;\n' +
+            'import javaly.core.*;\n' +
+            'public class StagingMethodTest {\n' +
+            '\tpublic void test0() {\n' +
+            '\t\t//expectThrowable MUST come before all other code within the method\n' +
+            '\t\texpectThrowable("<description>", new Throwable("<message>"));\n' +
+            '\t\t//run code that is expected to throw the exception here\n\n\n' +
+            '\t}\n' +
+            '}');
+    },
+
+    'click #hiddenTestTemplate-btn': function () {
+        var editor = ace.edit('editor');
+        editor.getSession().setValue('import static javaly.core.Test.*;\n' +
+            'import javaly.core.*;\n' +
+            'public class StagingMethodTest {\n' +
+            '\t@TestCase(expectedOutput="<expectedOutput>", hidden=true)\n' +
+            '\tpublic void test0() {\n' +
+            '\t\tassertEquals("<description>", <expectedOutput>, <Method Call>);\n' +
+            '\t}\n' +
+            '}');
+    },
+
+    'click #clear-btn': function () {
+        var editor = ace.edit('editor');
+        editor.getSession().setValue('');
+    },
+
     'click .remove-btn': function (event, instance) {
         $(event.target).closest('tr').remove();
     },
@@ -85,7 +140,6 @@ Template.submitQuestion.events({
             //retrieve editor contents for test code
             var editor = ace.edit('editor');
             var code = editor.getSession().getValue();
-            console.log(code);
             question.testCode = code.length > 0 ? code : undefined;
 
             if (!question.testCode) {
