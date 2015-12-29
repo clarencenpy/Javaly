@@ -155,6 +155,9 @@ Template.updateQuestion.events({
         $(event.target).closest('tr').remove();
     },
 
+    'click .manageTags-btn': function () {
+        window.open(Router.url('tagManager'));
+    },
 
     'click #submit-btn': function (event, instance) {
         if (

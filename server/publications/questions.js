@@ -112,3 +112,12 @@ Questions.allow({
         return doc.createdBy === userId;
     }
 });
+
+Tags.allow({
+    insert: function (userId) {
+        return userId && Roles.userIsInRole(userId, ['instructor','ta','admin']);
+    },
+    update: function (userId) {
+        return userId && Roles.userIsInRole(userId, ['instructor','ta','admin']);
+    }
+});
