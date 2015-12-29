@@ -165,6 +165,7 @@ var generateTestCode = function (test) {
 var buildStatement = function(testCase, questionType, methodName, isStatic, classname, count) {
     var statement = '';
     var methodInvoker = '';
+    var hiddenParam = ', hidden=true';
 
     if (isStatic){
         methodInvoker = classname ? classname + '.' : 'MethodHolder.';
@@ -174,6 +175,7 @@ var buildStatement = function(testCase, questionType, methodName, isStatic, clas
 
     //prepare the variables
     var prepCode = testCase.prepCode ? testCase.prepCode : '';
+    var visibleCode = testCase.visible ? hiddenParam : '';
     var description = testCase.description ? '"' + testCase.description + '", ' : '';
     var input = testCase.input ? testCase.input : '';
     var output = testCase.output;
@@ -193,7 +195,7 @@ var buildStatement = function(testCase, questionType, methodName, isStatic, clas
          }
          */
 
-        statement = '@TestCase (expectedOutput=' + output + ')' +
+        statement = '@TestCase (expectedOutput=' + output + visibleCode + ')' +
             'public void test' + count + '(){' +
             prepCode +
             'assertEquals(' + description  + testCase.output + ', ' + methodInvoker + methodName + '(' + input + '));' +
@@ -211,7 +213,7 @@ var buildStatement = function(testCase, questionType, methodName, isStatic, clas
 
         //automatically surround output with quotes for sysout questions
 
-        statement = '@TestCase (expectedOutput=' + output + ')' +
+        statement = '@TestCase (expectedOutput=' + output + visibleCode +  ')' +
             'public void test' + count + '(){' +
             prepCode +
             methodInvoker + methodName + '(' + input + ');' +
@@ -223,6 +225,3 @@ var buildStatement = function(testCase, questionType, methodName, isStatic, clas
 
     return statement;
 };
-
-
-
