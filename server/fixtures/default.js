@@ -205,5 +205,25 @@ if (process.env.NODE_ENV === 'development') {
         Tags.insert({label: 'IS201'});
         Tags.insert({label: 'if/else'});
     }
+} else {
+    //production env
+    if (Tags.find().count() === 0) {
+        Tags.insert({label: 'IS200'});
+        Tags.insert({label: 'IS201'});
+        Tags.insert({label: 'if/else'});
+    }
+
+    if (Meteor.users.find().count() === 0) {
+        var id = Accounts.createUser({
+            email: 'admin@smu.edu.sg',
+            password: 'admin',
+            profile: {name: 'Administrator'}
+        });
+
+        // Need _id of existing user record so this call must come
+        // after `Accounts.createUser` or `Accounts.onCreate`
+        Roles.addUsersToRoles(id, ['admin', 'instructor', 'ta', 'student']);
+    }
+
 }
 
