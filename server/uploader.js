@@ -1,4 +1,4 @@
-var uploadDir = process.env.NODE_ENV === 'development' ? process.env.PWD + '/uploads' : '/mnt/javaly/uploads';
+var uploadDir = process.env.NODE_ENV === 'development' ? process.env.PWD + '/uploads' : '/uploads';
 
 Meteor.startup(function () {
 
