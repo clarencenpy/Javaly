@@ -141,6 +141,7 @@ Template.submitQuestion.events({
             var editor = ace.edit('editor');
             var code = editor.getSession().getValue();
             question.testCode = code.length > 0 ? code : undefined;
+            question.classname = instance.$('input[name="classname-top"]').val();
 
             if (!question.testCode) {
                 question.classname = AutoForm.getFieldValue('classname', 'insertQuestionForm');

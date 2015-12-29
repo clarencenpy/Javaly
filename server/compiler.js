@@ -65,7 +65,7 @@ Meteor.methods({
         if (question.classname) {
             job.sourceCode = options.code;
         } else {
-            job.sourceCode = injectMethodBody(options.code);
+            job.sourceCode = question.classname ? options.code : injectMethodBody(options.code);
         }
 
         // generate test code from either: 1)Fully defined 2)Test JSON from UI

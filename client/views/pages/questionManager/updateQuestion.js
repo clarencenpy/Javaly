@@ -60,6 +60,9 @@ Template.updateQuestion.helpers({
     },
     testCodePresent: function () {
         return !!Template.instance().data.testCode;
+    },
+    classname: function () {
+        return Template.instance().data.classname;
     }
 });
 
@@ -173,6 +176,7 @@ Template.updateQuestion.events({
             var editor = ace.edit('editor');
             var code = editor.getSession().getValue();
             update.testCode = code.length > 0 ? code : undefined;
+            update.classname = instance.$('input[name="classname-top"]').val();
 
             if (!update.testCode) {
                 update.classname = AutoForm.getFieldValue('classname', 'updateQuestionForm');
@@ -220,7 +224,6 @@ Template.updateQuestion.events({
             var toDelete = {};
             if (update.testCode) {
                 //delete the testCases
-                toDelete.classname = true;
                 toDelete.methodName = true;
                 toDelete.questionType = true;
                 toDelete.methodType = true;

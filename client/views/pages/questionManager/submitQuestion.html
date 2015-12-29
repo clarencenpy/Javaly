@@ -118,6 +118,15 @@
                                                     <button id="clear-btn" class="pull-right btn btn-xs btn-warning" style="margin-right: 3px">Clear</button>
                                                 </div>
                                                 {{> sharejsAce id="editor" onRender=config}}
+                                                <br>
+                                                <fieldset class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="If you require the student to write the full Java class, please specify the class name. If this field is left empty, it is assumed that the student is only required to write the method body, which will then be injected into a class named MethodHolder">Class Name:</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control" type="text" name="classname-top" placeholder="optional" maxlength="40">
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
                                             </div>
                                         </div>
                                     </div>
@@ -227,7 +236,7 @@
 
                         <div id="tab-3" class="tab-pane">
                             <div class="panel-body">
-                                <p>Upload your dependencies as .jar files, which will then be added to the classpath during compile/run.</p>
+                                <p>Upload your dependencies as .jar or .class files, which will then be added to the classpath during compile/run.</p>
                                 {{> upload_bootstrap fileTypes='.jar' multiple=true formData=uploadJarFormData}}
                             </div>
                         </div>
