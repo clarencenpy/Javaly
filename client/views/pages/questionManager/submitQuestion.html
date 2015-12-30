@@ -43,7 +43,7 @@
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="ibox">
             <div class="ibox-title">
-                <h5>Submit a new question  <small><a href="{{pathFor 'readme'}}">See Examples</a></small></h5>
+                <h5>Submit a new question  <small><a target="_blank" href="{{pathFor 'readme'}}">See Examples</a></small></h5>
                 <button id="submit-btn" class="btn btn-primary btn-sm pull-right">
                     <i class="fa fa-upload"></i>
                     <span class="bold"> Submit </span>
@@ -76,7 +76,7 @@
                                         <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="Tags make your question easily searchable">Tags:</label>
                                         <div class="col-sm-9">
                                             {{> afFieldInput name="tags" type="select2"}}
-                                            <span class="help-block"><a class="manageTags-btn"><small>Manage Tags</small></a></span>
+                                            <span class="help-block"><a target="_blank" href="{{pathFor 'tagManager'}}"><small>Manage Tags</small></a></span>
                                         </div>
                                     </div>
                                     <div class="form-group {{#if afFieldIsInvalid name='content'}}has-error{{/if}}">
@@ -107,8 +107,8 @@
                                                 <div class="m-b-sm">
                                                     <p style="margin-bottom: 0px">Write Tester Class</p>
                                                     <small>
-                                                        <a href="https://github.com/wongwaituck/javaly-test-api/blob/master/WRITING%20YOUR%20OWN%20TEST.md">Read the Guide</a> or look at the
-                                                        <a href="http://wongwaituck.github.io/javaly-test-api/">API Documentation</a>
+                                                        <a target="_blank" href="https://github.com/wongwaituck/javaly-test-api/blob/master/WRITING%20YOUR%20OWN%20TEST.md">Read the Guide</a> or look at the
+                                                        <a target="_blank" href="http://wongwaituck.github.io/javaly-test-api/">API Documentation</a>
                                                     </small>
                                                     <div class="btn-group pull-right">
                                                         <button data-toggle="dropdown" class="btn btn-success btn-xs dropdown-toggle">Templates <span class="caret"></span></button>

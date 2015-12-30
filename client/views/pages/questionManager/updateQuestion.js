@@ -155,10 +155,6 @@ Template.updateQuestion.events({
         $(event.target).closest('tr').remove();
     },
 
-    'click .manageTags-btn': function () {
-        window.open(Router.url('tagManager'));
-    },
-
     'click #submit-btn': function (event, instance) {
         if (
             AutoForm.validateField('title', 'updateQuestionForm') &&
@@ -245,7 +241,7 @@ Template.updateQuestion.events({
                 text: "The question will only be successfully published when it has at least one successful attempt (from you of course!)",
                 type: "success",
                 showCancelButton: true,
-                allowEscapeKey: false,
+                allowEscapeKey: true,
                 confirmButtonText: 'Try it now!',
                 cancelButtonText: 'Back'
 
@@ -282,7 +278,7 @@ Template.updateQuestion.events({
             text: "Existing attempts will not be accessible by students anymore",
             type: "warning",
             showCancelButton: true,
-            allowEscapeKey: false,
+            allowEscapeKey: true,
             confirmButtonText: 'Delete'
 
         }, function () {
