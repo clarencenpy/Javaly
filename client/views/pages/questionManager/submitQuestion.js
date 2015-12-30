@@ -74,7 +74,7 @@ Template.submitQuestion.events({
         'import javaly.core.*;\n' +
         'public class StagingMethodTest {\n' +
             '\t@TestCase(expectedOutput="<expectedOutput>")\n' +
-            '\tpublic void test0() {\n' +
+            '\tpublic void test0() throws Exception {\n' +
             '\t\tassertEquals("<description>", <expectedOutput>, <Method Call>);\n' +
             '\t}\n' +
         '}');
@@ -87,7 +87,7 @@ Template.submitQuestion.events({
             'import javaly.core.*;\n' +
             'public class StagingMethodTest {\n' +
             '\t@TestCase(expectedOutput="<expectedOutput>")\n' +
-            '\tpublic void test0() {\n' +
+            '\tpublic void test0() throws Exception {\n' +
             '\t\tassertEquals("<description>", <expectedOutput>, retrieveSystemOutput());\n' +
             '\t}\n' +
             '}');
@@ -98,7 +98,7 @@ Template.submitQuestion.events({
         editor.getSession().setValue('import static javaly.core.Test.*;\n' +
             'import javaly.core.*;\n' +
             'public class StagingMethodTest {\n' +
-            '\tpublic void test0() {\n' +
+            '\tpublic void test0() throws Exception {\n' +
             '\t\t//expectThrowable MUST come before all other code within the method\n' +
             '\t\texpectThrowable("<description>", new Throwable("<message>"));\n' +
             '\t\t//run code that is expected to throw the exception here\n\n\n' +
@@ -112,7 +112,7 @@ Template.submitQuestion.events({
             'import javaly.core.*;\n' +
             'public class StagingMethodTest {\n' +
             '\t@TestCase(expectedOutput="<expectedOutput>", hidden=true)\n' +
-            '\tpublic void test0() {\n' +
+            '\tpublic void test0() throws Exception {\n' +
             '\t\tassertEquals("<description>", <expectedOutput>, <Method Call>);\n' +
             '\t}\n' +
             '}');
@@ -171,7 +171,7 @@ Template.submitQuestion.events({
                 if (!question.methodName || !question.methodType || !question.questionType || question.testCases.length === 0) {
                     swal({
                         title: 'Not so fast',
-                        text: '<strong>Please ensure that you:<strong>' +
+                        text: '<strong>Please ensure that you:</strong>' +
                                 '<br>A) Write a test class OR' +
                                 '<br>B) Define your test with the GUI properly' +
                                 '<br>&#8226 Method Name is provided' +
