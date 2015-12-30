@@ -2,7 +2,7 @@
 
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>Compile Results</h5>
+            <h5>Test Results</h5>
             {{>iboxTools}}
         </div>
         <div class="ibox-content">
@@ -15,9 +15,19 @@
                     overflow-x: scroll;
                 }
             </style>
+
             <div class="results-box">
-                <table class="table table-hover">
+                <table class="table table-hover table-bordered">
                     <thead>
+                    <tr>
+                        <th colspan="4" class="text-center">
+                            {{#if success}}
+                                <h3 style="color: #00a600">Passed {{pass}} tests <i class="fa fa-lg fa-check"></i></h3>
+                            {{else}}
+                                <h3 style="color: #ff655b">Passed {{pass}} tests <i class="fa fa-lg fa-times"></i></h3>
+                            {{/if}}
+                        </th>
+                    </tr>
                     <tr>
                         <th>Test</th>
                         <th>Expected Output</th>
@@ -27,10 +37,10 @@
                     </thead>
                     <tbody style="white-space: pre-wrap; font-family:'Lucida Console', monospace">
                     {{#each runs}}
-                        <tr class={{#if result.success}} success {{else}} danger {{/if}} >
-                            <td>{{result.description}}</td>
-                            <td>{{quoteIfString result.expected}}</td>
-                            <td>{{quoteIfString result.actual}}</td>
+                        <tr>
+                            <td style="{{#unless result.success}} color:#ff655b; font-weight: bold {{/unless}}">{{result.description}}</td>
+                            <td style="{{#unless result.success}} color:#ff655b; font-weight: bold {{/unless}}">{{quoteIfString result.expected}}</td>
+                            <td style="{{#unless result.success}} color:#ff655b; font-weight: bold {{/unless}}">{{quoteIfString result.actual}}</td>
                             {{#if systemOutput}}<td>{{systemOutput}}</td>{{/if}}
                         </tr>
                     {{/each}}

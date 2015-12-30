@@ -37,7 +37,7 @@
 
                 {{#if isInRole 'instructor, admin, ta'}}
                     <li class="{{isActiveRoute regex='manageGroups|updateGroup|exerciseBuilder|groupView'}}">
-                        <a href="{{pathFor route='manageGroups'}}"><i class="fa fa-users"></i> <span class="nav-label">Manage Groups</span> </a>
+                        <a href="{{pathFor route='manageGroups'}}"><i class="fa fa-dashboard"></i> <span class="nav-label">Manage Groups</span> </a>
                     </li>
                 {{/if}}
                 {{#if isInRole 'student'}}
