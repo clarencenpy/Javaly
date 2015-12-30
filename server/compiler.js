@@ -95,7 +95,7 @@ Meteor.methods({
             future.return(result);
         })
         .on('failed', function (err) {
-            console.log("Compile request for QID " + question._id +  " Failed (" + (new Date() - start) + "ms)");
+            console.log("Compile request for QID " + question._id +  ": Failed (" + (new Date() - start) + "ms)");
                 //console.log(err);
             future.return({isError: true, error: err});
         })
