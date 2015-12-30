@@ -13,16 +13,8 @@ Meteor.publish('questions', function () {
     }
 });
 
-Meteor.publish('questionBank', function () {
-    return Questions.find();
-});
-
 Meteor.publish('question', function (questionId) {
     return Questions.find(questionId);
-});
-
-Meteor.publish('question-tags', function () {
-   return Questions.find({}, {fields: {tags: 1}});
 });
 
 Meteor.publishComposite('allQuestions', {
@@ -59,6 +51,10 @@ Meteor.publish('allTags', function () {
     return Tags.find();
 });
 
+Meteor.publish('questionTitles', function () {
+    return Questions.find({}, {fields: {title: 1}});
+});
+
 Meteor.methods({
     allContributors: function () {
         var ids = _.uniq(Questions.find({}, {fields: {createdBy: 1}, sort: {createdBy: 1}}).fetch().map(function (q) {
@@ -87,8 +83,9 @@ Meteor.methods({
         if (searchParams.author) {
             params.createdBy = searchParams.author
         }
-        return Questions.find(params, {sort: {createdAt: 1}}).fetch().map(function (q) {
+        return Questions.find(params, {sort: {createdAt: 1}, limit: searchParams.limit }).fetch().map(function (q) {
             return {
+                _id: q._id,
                 title: q.title,
                 author: Meteor.users.findOne(q.createdBy).profile.name,
                 content: q.content,

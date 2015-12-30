@@ -1,51 +1,85 @@
 Template.exerciseBuilder.onCreated(function () {
     var template = this;
-    template.authors = new ReactiveVar([]);
+    var exercise = _.find(template.data.exercises, function (exercise) {
+        return exercise._id === Router.current().params.exerciseId;
+    });
+    Session.set('selected', exercise.questions);
 });
 
 Template.exerciseBuilder.onRendered(function () {
     var template = this;
 
-    //subscribe to tags
-    template.subscribe('allTags', function () {
-        Tracker.afterFlush(function () {
-            //init select2
-            template.$('#tags').select2({
-                placeholder: 'Filter by Tags...'
-            });
-        })
+    Sortable.create(template.find('#sortable-container'), {
+        dataIdAttr: 'data-id',
+        animation: 150,
+        filter: 'i',
+        store: {
+            get: function (sortable) {
+                return Session.get('selected');
+            },
+            set: function (sortable) {
+                var order = sortable.toArray();
+                Session.set('selected', order);
+            }
+        }
     });
 
-
-    //subscribe to authors
-    Meteor.call('allContributors', function (err, res) {
-        template.authors.set(res);
-        Tracker.afterFlush(function () {
-            //init select2
-            template.$('#author').select2({
-                placeholder: 'Filter by Author...',
-                allowClear: true
-            });
-        })
-    });
 });
 
 Template.exerciseBuilder.helpers({
-    tags: function () {
-        return Tags.find();
+    description: function () {
+        var exercise = _.find(Template.currentData().exercises, function (exercise) {
+            return exercise._id === Router.current().params.exerciseId;
+        });
+        return exercise.description;
     },
-    authors: function () {
-        return Template.instance().authors.get();
+    selectedQuestions: function () {
+        return Session.get('selected');
+    },
+    getQuestionTitle: function (id) {
+        return Questions.findOne(id).title;
     }
 });
 
 Template.exerciseBuilder.events({
-    'click #search-btn': function (event, instance) {
-        var searchParams = {};
-        searchParams.title = instance.$('#title').val();
-        searchParams.author = instance.$('#author').val();
-        searchParams.tags = instance.$('#tags').val();
-        Session.set('searchParams', searchParams);
-        Session.set('searching', true);
+    'click #save-btn': function (event, instance) {
+        var questions = Session.get('selected') ? Session.get('selected') : [];
+        var description = instance.$('input[name=description]').val();
+        Meteor.call('updateExercise', description, questions, Router.current().params.groupId, Router.current().params.exerciseId, function (err, res) {
+            if (err) {
+                console.log(err);
+            } else {
+                swal({
+                    title: "Exercise Saved!",
+                    text: "Students enrolled in this group may now have access to the questions you have selected",
+                    type: "success",
+                    allowEscapeKey: true,
+                    confirmButtonText: 'Ok'
+                }, function () {
+                    Router.go('manageGroups');
+                });
+            }
+        })
+    },
+    'click #delete-btn': function () {
+        swal({
+            title: "Are you sure?",
+            text: "This may interrupt students who have already started on the exercises",
+            type: "warning",
+            showCancelButton: true,
+            allowEscapeKey: false,
+            confirmButtonText: 'Delete'
+        }, function () {
+            Meteor.call('deleteExercise', Router.current().params.groupId, Router.current().params.exerciseId);
+            Router.go('manageGroups');
+        });
+    },
+
+    'click .remove-btn': function () {
+        Session.set('selected', _.without(Session.get('selected'), this.toString()));
     }
+});
+
+Template.exerciseBuilder.onDestroyed(function () {
+    Session.set('selected', undefined);
 });

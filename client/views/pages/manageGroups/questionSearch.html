@@ -1,0 +1,96 @@
+<template name="questionSearch">
+
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>Search and Add Questions</h5>
+            <div class="ibox-tools">
+                <a href="{{pathFor route='submitQuestion'}}" class="btn btn-primary btn-sm"><i class="fa fa-upload"></i>
+                    Submit new question</a>
+            </div>
+        </div>
+        <!--Search Box-->
+        <div class="ibox-content" style="padding: 10px 20px 0px 20px">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="title">Title</label>
+                        <input type="text" id="title" name="title" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label class="control-label" for="author">Author</label>
+                        <select id="author" style="width: 100%">
+                            <option></option>
+                            {{#each authors}}
+                                <option value="{{id}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label class="control-label" for="tags">Tags</label>
+                        <select id="tags" style="width: 100%" multiple>
+                            {{#each searchTags}}
+                                <option value="{{_id}}">{{label}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <button id="search-btn" style="margin-top: 23px" class="btn btn-primary btn-block btn-outline"><i
+                            class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <!--End Search Box-->
+
+        <div class="ibox-content">
+
+            {{#if searching}}
+                {{> loading }}
+            {{else}}
+
+                <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+                    <thead>
+                    <tr>
+
+                        <th data-toggle="true">Title</th>
+                        <th data-hide="phone">Author</th>
+                        <th data-hide="all">Preview</th>
+                        <th data-hide="phone">Popularity</th>
+                        <th data-hide="phone" data-sort-ignore="true">Tags</th>
+                        <th data-sort-ignore="true">Select</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {{#each questions}}
+                        <tr>
+                            <td>{{title}}</td>
+                            <td>{{author}}</td>
+                            <td>{{{content}}}</td>
+                            <td>{{popularity}}</td>
+                            <td>{{#each tags}}<p class="label" style="margin-left: 3px">{{this}}</p>{{/each}}</td>
+                            <td class="text-center">
+                                {{#if added _id}}
+                                    <button class="remove-btn btn btn-primary btn-xs"><i class="fa fa-check"></i></button>
+                                {{else}}
+                                    <button class="add-btn btn btn-default btn-xs" style="width: 24px; height: 22px"></button>
+                                {{/if}}
+                            </td>
+                        </tr>
+                    {{else}}
+                        <td style="padding-top: 10px" colspan="6" class="text-center">No Results Found</td>
+                    {{/each}}
+
+                    </tbody>
+                </table>
+
+            {{/if}}
+        </div>
+    </div>
+
+</template>

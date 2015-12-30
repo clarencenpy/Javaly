@@ -1,42 +1,51 @@
 <template name="exerciseBuilder">
+    <style>
+        #sortable-container {
+            width: 100%;
+            border: 2px dashed grey;
+            border-radius: 5px;
+            padding: 10px;
+            min-height: 200px;
+        }
+    </style>
+    <div class="wrapper wrapper-content animated fadeInUp">
 
-    <!--Search Box-->
-    <div class="ibox-content m-b-sm border-bottom">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="control-label" for="title">Title</label>
-                    <input type="text" id="title" name="title" class="form-control">
+        <div class="ibox">
+            <div class="ibox-content">
+                <a id="delete-btn" class="btn btn-danger btn-xl pull-right" style="margin-left: 5px"><i
+                        class="fa fa-trash"></i> Delete</a>
+                <a id="save-btn" class="btn btn-primary btn-xl pull-right"><i class="fa fa-check"></i> Save</a>
+                <h2>Exercise Builder</h2>
+                <br>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label" data-toggle="tooltip" data-placement="right"
+                               title="Please add a short description for the exercise">Description:</label>
+                        <div>
+                            <input style="width: 100%" type="text" name="description" value="{{description}}"
+                                   maxlength="50"
+                                   class="form-control" required/>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div id="sortable-container">
+                    {{#each selectedQuestions}}
+                        <p data-id="{{this}}"
+                           style="display: block;
+                                font-size: 14px;
+                                line-height: 2;
+                                margin-bottom: 5px;"
+                           class="label">{{getQuestionTitle this}} <i class="pull-right remove-btn fa fa-times"></i></p>
+                    {{else}}
+                        <h3 style="margin-top: 50px; text-align: center;">Choose questions from the Question Bank to add to the exercise</h3>
+                    {{/each}}
                 </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="form-group">
-                    <label class="control-label" for="author">Author</label>
-                    <select id="author" style="width: 100%">
-                        <option></option>
-                        {{#each authors}}
-                            <option value="{{id}}">{{name}}</option>
-                        {{/each}}
-                    </select>
-                </div>
-            </div>
-            <div class="col-sm-5">
-                <div class="form-group">
-                    <label class="control-label" for="tags">Tags</label>
-                    <select id="tags" style="width: 100%" multiple>
-                        {{#each tags}}
-                            <option value="{{_id}}">{{label}}</option>
-                        {{/each}}
-                    </select>
-                </div>
-            </div>
-            <div class="col-sm-1">
-                <button id="search-btn" style="margin-top: 23px" class="btn btn-primary btn-block btn-outline"><i class="fa fa-search"></i></button>
             </div>
         </div>
-    </div>
-    <!--End Search Box-->
 
-    {{> questionBank }}
+        {{> questionSearch }}
+
+    </div>
 
 </template>
