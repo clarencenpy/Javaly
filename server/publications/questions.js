@@ -23,7 +23,8 @@ Meteor.publishComposite('allQuestions', {
            title: 1,
            tags: 1,
            createdBy: 1,
-           createdAt: 1
+           createdAt: 1,
+           updatedAt: 1
        }});
     },
     children: [

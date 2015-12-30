@@ -14,6 +14,7 @@ Template.questionManager.helpers({
             info._id = question._id;
             info.title = question.title;
             info.createdAt = question.createdAt;
+            info.updatedAt = question.updatedAt;
             info.passed = passedBefore ? true: false;
 
             return info;
