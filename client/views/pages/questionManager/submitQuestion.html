@@ -57,6 +57,7 @@
                         <li class="active"><a data-toggle="tab" href="#tab-1"> Content</a></li>
                         <li class=""><a data-toggle="tab" href="#tab-2"> Tests</a></li>
                         <li class=""><a data-toggle="tab" href="#tab-3"> Upload Jar</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-4"> Javadocs</a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane active">
@@ -245,6 +246,17 @@
                             </div>
                         </div>
 
+
+                        <div id="tab-4" class="tab-pane">
+                            <div class="panel-body">
+                                <p>Upload a zip file containing your Javadocs</p>
+                                {{> upload_bootstrap fileTypes='.zip' multiple=true formData=uploadJavadocsFormData callbacks=uploadJavadocsCallback}}
+                                {{#if uploadedJavadocs}}
+                                    <br>
+                                    <p>You have uploaded your javadocs, which is now accessible at <a href="{{javadocPath}}">{{javadocPath}}</a></p>
+                                {{/if}}
+                            </div>
+                        </div>
 
                     </div>
                     {{/autoForm}}

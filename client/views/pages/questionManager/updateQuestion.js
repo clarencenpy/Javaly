@@ -12,8 +12,18 @@ Template.updateQuestion.onCreated(function () {
         if (res.length > 0) {
             template.uploadedFiles.set(res);
         }
+    });
+    template.javadocPath = new ReactiveVar(false);
+    template.uploadedJavadocs = new ReactiveVar(false);
+    Meteor.call('getJavadocs', template.data._id, function (err, res) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        if (res.length > 0) {
+            template.uploadedJavadocs.set(true);
+        }
     })
-
 });
 
 Template.updateQuestion.onRendered(function () {
@@ -54,6 +64,26 @@ Template.updateQuestion.helpers({
             _id: Template.instance().data._id,
             purpose: 'JAR'
         }
+    },
+    uploadJavadocsFormData: function () {
+        return {
+            _id: Template.instance().data._id,
+            purpose: 'JAVADOCS'
+        }
+    },
+    uploadJavadocsCallback: function() {
+        var template = Template.instance();
+        return {
+            finished: function(index, fileInfo, context) {
+                template.uploadedJavadocs.set(true);
+            }
+        }
+    },
+    uploadedJavadocs: function () {
+        return Template.instance().uploadedJavadocs.get();
+    },
+    javadocPath: function () {
+        return 'kuala.smu.edu.sg/javadocs/' + Template.instance().data._id + '/index.html';
     },
     uploadedFiles: function () {
         return Template.instance().uploadedFiles.get();

@@ -3,7 +3,7 @@ Template.submitQuestion.onCreated(function () {
 
     //prepare a id for the to be submitted question, so that we know where to dump the file uploads
     template.questionId = Random.id();
-
+    template.uploadedJavadocs = new ReactiveVar(false);
 });
 
 Template.submitQuestion.onRendered(function () {
@@ -36,7 +36,28 @@ Template.submitQuestion.helpers({
             _id: Template.instance().questionId,
             purpose: 'JAR'
         }
+    },
+    uploadJavadocsFormData: function () {
+        return {
+            _id: Template.instance().questionId,
+            purpose: 'JAVADOCS'
+        }
+    },
+    uploadJavadocsCallback: function() {
+        var template = Template.instance();
+        return {
+            finished: function(index, fileInfo, context) {
+                template.uploadedJavadocs.set(true);
+            }
+        }
+    },
+    uploadedJavadocs: function () {
+        return Template.instance().uploadedJavadocs.get();
+    },
+    javadocPath: function () {
+        return 'kuala.smu.edu.sg/javadocs/' + Template.instance().questionId + '/index.html';
     }
+
 });
 
 Template.submitQuestion.events({
