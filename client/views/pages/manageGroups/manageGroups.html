@@ -64,7 +64,7 @@
                                             <tbody>
                                                 {{#each exercises}}
                                                     <tr>
-                                                        <td>{{description}}</td>
+                                                        <td>{{#if description}}{{description}}{{else}}<em>Unnamed</em>{{/if}}</td>
                                                         <td><a href="{{pathFor 'exerciseBuilder' groupId=../_id exerciseId=_id}}" class="pull-right"> Edit <i class="fa fa-pencil"></i></a></td>
                                                     </tr>
                                                 {{/each}}
@@ -86,7 +86,7 @@
                                                         <td>{{getName this}}</td>
                                                         <td>
                                                             <a data-groupid="{{../_id}}" class="reject-btn pull-right btn btn-warning btn-xs"> Reject <i class="fa fa-times"></i></a>
-                                                            <a data-groupid="{{../_id}}" class="accept-btn pull-right btn btn-primary btn-xs"> Accept <i class="fa fa-check"></i></a>
+                                                            <a style="margin-right: 3px" data-groupid="{{../_id}}" class="accept-btn pull-right btn btn-primary btn-xs"> Accept <i class="fa fa-check"></i></a>
                                                         </td>
                                                     </tr>
                                                 {{/each}}

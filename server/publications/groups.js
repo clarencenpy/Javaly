@@ -131,8 +131,8 @@ Groups.allow({
     insert: function (userId, doc) {
         return userId && Roles.userIsInRole(userId, ['instructor','admin']);
     },
-    update: function (userId, doc) {
-        return doc.createdBy === userId;
+    update: function (userId, doc, fields) {
+        return _.without(fields, 'exercises').length === 0;
     },
     remove: function (userId, doc) {
         return doc.createdBy === userId;
