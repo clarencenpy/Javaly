@@ -39,18 +39,18 @@ Meteor.methods({
     compileAndRun: function (options) {
 
         var start = new Date();
-        console.log("Start: " + (new Date() - start));
 
         //  -------- fetch the docs ----------- //
         var attempt = Attempts.findOne(options.attemptId);
         var question = Questions.findOne(attempt.questionId);
 
-        var currentCode = attempt.code;
-        if (currentCode === options.code) {    //no changes to the code
-            //do not attempt to rerun code and send {status: unchanged}
-            console.log('no changes to code');
-            return {status: 'unchanged'};
-        }
+        //prevent users from trying to compile exactly the same code
+        //var currentCode = attempt.code;
+        //if (currentCode === options.code) {    //no changes to the code
+        //    //do not attempt to rerun code and send {status: unchanged}
+        //    console.log('no changes to code');
+        //    return {status: 'unchanged'};
+        //}
 
         //  -------- add job ----------- //
 
@@ -90,12 +90,12 @@ Meteor.methods({
 
         jobs.create('compileRun', job)
         .on('complete', function (result) {
-            console.log("Completed: " + (new Date() - start));
+            console.log("Compile request for QID " + question._id +  ": Complete (" + (new Date() - start) + "ms)");
                 //console.log(result);
             future.return(result);
         })
         .on('failed', function (err) {
-            console.log("Failed: " + (new Date() - start));
+            console.log("Compile request for QID " + question._id +  " Failed (" + (new Date() - start) + "ms)");
                 //console.log(err);
             future.return({isError: true, error: err});
         })
