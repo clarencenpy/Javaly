@@ -32,7 +32,7 @@
                         <th>Test</th>
                         <th>Expected Output</th>
                         <th>Your Output</th>
-                        {{#if runs.[0].systemOutput}}<th>Console</th>{{/if}}
+                        {{#if anySystemOutput runs}}<th>Console</th>{{/if}}
                     </tr>
                     </thead>
                     <tbody style="white-space: pre-wrap; font-family:'Lucida Console', monospace">

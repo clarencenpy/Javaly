@@ -18,6 +18,13 @@ Template.resultDisplay.helpers({
     },
     notUndefined: function (x) {
         return x !== undefined;
+    },
+    anySystemOutput: function (runs) {
+        var anySystemOutput = false;
+        _.each(runs, function (run) {
+            if (run.systemOutput) anySystemOutput = true;
+        });
+        return anySystemOutput;
     }
 });
 
