@@ -3,7 +3,7 @@ Template.resultDisplay.helpers({
         if (typeof s === 'string') {
             return '"' + s + '"';
         } else {
-            return s;
+            return '' + s;
         }
     },
     pass: function () {
@@ -15,6 +15,9 @@ Template.resultDisplay.helpers({
         output += '/';
         output += results.runs.length;
         return output;
+    },
+    notUndefined: function (x) {
+        return x !== undefined;
     }
 });
 

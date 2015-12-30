@@ -37,12 +37,14 @@
                     </thead>
                     <tbody style="white-space: pre-wrap; font-family:'Lucida Console', monospace">
                     {{#each runs}}
+                        {{#if notUndefined result.expected}}
                         <tr>
                             <td style="{{#unless result.success}} color:#ff655b; font-weight: bold {{/unless}}">{{result.description}}</td>
                             <td style="{{#unless result.success}} color:#ff655b; font-weight: bold {{/unless}}">{{quoteIfString result.expected}}</td>
                             <td style="{{#unless result.success}} color:#ff655b; font-weight: bold {{/unless}}">{{quoteIfString result.actual}}</td>
                             {{#if systemOutput}}<td>{{systemOutput}}</td>{{/if}}
                         </tr>
+                        {{/if}}
                     {{/each}}
                     </tbody>
                 </table>
