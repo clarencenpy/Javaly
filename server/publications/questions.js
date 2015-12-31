@@ -85,6 +85,9 @@ Meteor.methods({
         if (searchParams.author) {
             params.createdBy = searchParams.author
         }
+        if (!searchParams.includeUnverified) {
+            params.verified = true;
+        }
         return Questions.find(params, {sort: {createdAt: 1}, limit: searchParams.limit }).fetch().map(function (q) {
             return {
                 _id: q._id,
