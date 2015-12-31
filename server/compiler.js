@@ -165,7 +165,6 @@ var generateTestCode = function (test) {
 var buildStatement = function(testCase, questionType, methodName, isStatic, classname, count) {
     var statement = '';
     var methodInvoker = '';
-    var hiddenParam = ', hidden=true';
 
     if (isStatic){
         methodInvoker = classname ? classname + '.' : 'MethodHolder.';
@@ -175,7 +174,7 @@ var buildStatement = function(testCase, questionType, methodName, isStatic, clas
 
     //prepare the variables
     var prepCode = testCase.prepCode ? testCase.prepCode : '';
-    var visibleCode = testCase.visible ? hiddenParam : '';
+    var visibleCode = testCase.visible ? '' : ', hidden=true';
     var description = testCase.description ? '"' + testCase.description + '", ' : '';
     var input = testCase.input ? testCase.input : '';
     var output = testCase.output;

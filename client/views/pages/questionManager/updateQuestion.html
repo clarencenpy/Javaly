@@ -218,8 +218,8 @@
                                                                                 </td>
                                                                                 <td>
                                                                                     <select name="visibility" class="form-control" >
-                                                                                        <option value="SHOW" selected="{{isVisible visibility}}">Show</option>
-                                                                                        <option value="HIDDEN" selected="{{isNotVisible visibility}}">Hidden</option>
+                                                                                        <option value="SHOW" selected="{{#if visible}}true{{/if}}">Show</option>
+                                                                                        <option value="HIDDEN" selected="{{#unless visible}}true{{/unless}}">Hidden</option>
                                                                                     </select>
                                                                                 </td>
                                                                                 <td>

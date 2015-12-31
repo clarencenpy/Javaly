@@ -53,12 +53,6 @@ Template.updateQuestion.helpers({
             editor.setShowPrintMargin(false);
         }
     },
-    isVisible: function (string) {
-        return string === 'SHOW';
-    },
-    isNotVisible: function (string) {
-        return string === 'HIDDEN';
-    },
     uploadJarFormData: function () {
         return {
             _id: Template.instance().data._id,
