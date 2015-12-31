@@ -24,7 +24,8 @@ Meteor.publishComposite('allQuestions', {
            tags: 1,
            createdBy: 1,
            createdAt: 1,
-           updatedAt: 1
+           updatedAt: 1,
+           verified: 1
        }});
     },
     children: [

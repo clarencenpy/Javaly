@@ -124,6 +124,7 @@ Meteor.methods({
                 activeTime: options.activeTime,
                 completed: true     //completed will be true as long as question has been successful before
             }});
+            Questions.update(question._id, {$set: {verified: true}}); //once there is a successful attempt, question will become verified
         } else {
             Attempts.update(options.attemptId, {$set: {
                 code: options.code,

@@ -1,26 +1,6 @@
 Template.questionManager.helpers({
     authoredQuestions: function () {
-        var questions = Questions.find({createdBy: Meteor.userId()}).fetch();
-
-        //collate info for every question
-        questions = _.map(questions, function (question) {
-            var info = {};
-
-            var attempts = Attempts.find({questionId: question._id}).fetch();
-            var passedBefore = _.find(attempts, function (attempt) {   // _.find returns when a match has been found
-                return attempt.completed;
-            });
-
-            info._id = question._id;
-            info.title = question.title;
-            info.createdAt = question.createdAt;
-            info.updatedAt = question.updatedAt;
-            info.passed = passedBefore ? true: false;
-
-            return info;
-        });
-
-        return questions;
+        return Questions.find({createdBy: Meteor.userId()}, {sort: {updatedAt: -1}});
     },
 
     verifiedQuestions: function () {
@@ -28,11 +8,7 @@ Template.questionManager.helpers({
 
         //remove unverified questions
         questions = _.filter(questions, function (question) {
-            var attempts = Attempts.find({questionId: question._id}).fetch();
-            var passedBefore = _.find(attempts, function (attempt) {   // _.find returns when a match has been found
-                return attempt.completed;
-            });
-            return passedBefore ? true : false;
+            return question.verified;
         });
 
         questions = _.map(questions, function (question) {
