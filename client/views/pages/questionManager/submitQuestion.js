@@ -109,7 +109,8 @@ Template.submitQuestion.events({
             'public class StagingMethodTest {\n' +
             '\t@TestCase(expectedOutput="<expectedOutput>")\n' +
             '\tpublic void test0() throws Exception {\n' +
-            '\t\tassertEquals("<description>", <expectedOutput>, retrieveSystemOutput());\n' +
+            '\t\t// Call method that prints to console here\n\n' +
+            '\t\tassertEquals("<description>", "<expectedOutput>", retrieveSystemOutput());\n' +
             '\t}\n' +
             '}');
     },
