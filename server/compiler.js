@@ -110,7 +110,7 @@ Meteor.methods({
             //will have to decide in the future if i wanna store code that cannot compile to history
             Attempts.update(options.attemptId, {$set: {
                 code: options.code,
-                result: {error: result.error},
+                status: 'COMPILE_ERROR',
                 activeTime: options.activeTime
             }});
             throw new Meteor.Error(result.error);
@@ -120,7 +120,7 @@ Meteor.methods({
         if (result.success) {
             Attempts.update(options.attemptId, {$set: {
                 code: options.code,
-                result: result,
+                status: 'PASS',
                 activeTime: options.activeTime,
                 completed: true     //completed will be true as long as question has been successful before
             }});
@@ -128,7 +128,7 @@ Meteor.methods({
         } else {
             Attempts.update(options.attemptId, {$set: {
                 code: options.code,
-                result: result,
+                status: 'FAIL',
                 activeTime: options.activeTime
             }});
         }
