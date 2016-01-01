@@ -55,7 +55,7 @@ Template.submitQuestion.helpers({
         return Template.instance().uploadedJavadocs.get();
     },
     javadocPath: function () {
-        return 'kuala.smu.edu.sg/javadocs/' + Template.instance().questionId + '/index.html';
+        return 'http://kuala.smu.edu.sg/javadocs/' + Template.instance().questionId + '/index.html';
     }
 
 });

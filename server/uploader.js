@@ -20,8 +20,11 @@ Meteor.startup(function () {
         finished: function (fileInfo, formData) {
             console.log('Upload success: ' + fileInfo.path);
             if (process.env.NODE_ENV !== 'development' && formData.purpose === 'JAVADOCS') {
-                exec('unzip /uploads/' + fileInfo.path + ' -d /uploads/' + fileInfo.subDirectory);
+                exec('cd ' + uploadDir + '/' + fileInfo.subDirectory +'; find . \\! -name "' + fileInfo.name + '" -delete; unzip -uo ' + fileInfo.name);
                 console.log('Unzip Complete: ' + fileInfo.path);
+            }
+            if (process.env.NODE_ENV === 'development' && formData.purpose === 'JAVADOCS') {
+
             }
         },
         overwrite: true,
@@ -60,3 +63,5 @@ Meteor.methods({
         exec('rm -rf ' + uploadDir + '/questions/' + questionId);
     }
 });
+
+StaticServer.add('/javadocs', uploadDir + '/javadocs');

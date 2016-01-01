@@ -77,7 +77,7 @@ Template.updateQuestion.helpers({
         return Template.instance().uploadedJavadocs.get();
     },
     javadocPath: function () {
-        return 'kuala.smu.edu.sg/javadocs/' + Template.instance().data._id + '/index.html';
+        return 'http://kuala.smu.edu.sg/javadocs/' + Template.instance().data._id + '/index.html';
     },
     uploadedFiles: function () {
         return Template.instance().uploadedFiles.get();
