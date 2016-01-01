@@ -64,13 +64,16 @@ Meteor.methods({
         //generate source code
         if (question.classname) {
             job.sourceCode = options.code;
+            job.sourceClassname = question.classname;
         } else {
             job.sourceCode = question.classname ? options.code : injectMethodBody(options.code);
+            job.sourceClassname = 'MethodHolder';
         }
 
         // generate test code from either: 1)Fully defined 2)Test JSON from UI
         if (question.testCode) {
             job.testCode = question.testCode;
+            job.testClassname = 'StagingMethodTest';
         } else if (question.testCases && question.questionType && question.methodName && question.methodType) {   //all required fields available
 
             job.testCode = generateTestCode({
@@ -80,6 +83,7 @@ Meteor.methods({
                 classname: question.classname,
                 testCases: question.testCases
             });
+            job.testClassname = 'StagingMethodTest';
 
         } else {
             //both not present
