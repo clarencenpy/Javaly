@@ -132,7 +132,7 @@ Groups.allow({
         return userId && Roles.userIsInRole(userId, ['instructor','admin']);
     },
     update: function (userId, doc, fields) {
-        return _.without(fields, 'exercises').length === 0;
+        return doc.createdBy === userId || _.without(fields, 'exercises').length === 0;
     },
     remove: function (userId, doc) {
         return doc.createdBy === userId;
