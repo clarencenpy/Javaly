@@ -9,7 +9,8 @@ docker run -d -p 6379:6379 --name redis redis
 ```bash
 docker run -d -p 27017:27017 -p 27016:27016 --name mongodb -v /mnt/javaly/mongodb:/data/db mongo --replSet rs
 ```
-Bash in and run mongod slaves
+Bash in and run mongod slaves (If you find ERROR starting the mongod process, delete the mongod.lock files if any) 
+mongo in and check rs.status() to verify that the replica set is properly configured.
 ```
 > mongod --replSet rs --port 27016 --dbpath /data/db/rs1 -noprealloc --smallfiles --fork --logpath /data/db/rs1/rs1.log
 ```
