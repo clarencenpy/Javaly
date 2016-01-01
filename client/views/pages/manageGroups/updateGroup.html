@@ -27,7 +27,8 @@
 
                                     <fieldset class="form-horizontal">
                                         <div class="form-group {{#if afFieldIsInvalid name='name'}}has-error{{/if}}">
-                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="Name of the group">Name:</label>
+                                            <label class="col-sm-2 control-label" data-toggle="tooltip"
+                                                   data-placement="right" title="Name of the group">Name:</label>
                                             <div class="col-sm-9">
                                                 {{> afFieldInput name='name'}}
                                                 {{#if afFieldIsInvalid name='name'}}
@@ -37,7 +38,10 @@
                                         </div>
 
                                         <div class="form-group {{#if afFieldIsInvalid name='groupType'}}has-error{{/if}}">
-                                            <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right" title="Open: Students can view and join<br>Private: Students may not view unless they are invited<br>Accept Requests: Students may view and request to join group, instructor has to approve request">Output Type:</label>
+                                            <label class="col-sm-2 control-label" data-toggle="tooltip"
+                                                   data-placement="right"
+                                                   title="Open: Students can view and join<br>Private: Students may not view unless they are invited<br>Accept Requests: Students may view and request to join group, instructor has to approve request">Output
+                                                Type:</label>
                                             <div class="col-sm-9">
                                                 {{> afFieldInput name='groupType' template='buttonGroup'}}
                                                 {{#if afFieldIsInvalid name='groupType'}}
@@ -60,7 +64,8 @@
                                             <div class="input-group" style="width: 100%">
                                                 <select id="ta-list" multiple data-placeholder="Search...">
                                                     {{#each tas}}
-                                                        <option value="{{_id}}" selected="{{selected}}">{{profile.name}}</option>
+                                                        <option value="{{_id}}"
+                                                                selected="{{selected}}">{{profile.name}}</option>
                                                     {{/each}}
                                                 </select>
                                             </div>
@@ -72,27 +77,25 @@
 
                             <div id="tab-3" class="tab-pane">
                                 <div class="panel-body">
-                                    <div class="row">
 
-                                        <div style="min-height: 500px">
-                                            <h4>Add Students</h4>
-                                            <div class="form-group">
-                                                <h5>{{selectedStudents.length}} selected</h5>
-                                                <div class="input-group" style="width: 100%">
-                                                    <select id="student-list" multiple data-placeholder="Select students...">
-                                                        {{#each students}}
-                                                            <option value="{{_id}}" selected="{{selected}}">{{profile.name}}</option>
-                                                        {{/each}}
-                                                    </select>
-                                                </div>
+                                    <div style="min-height: 500px">
+                                        <h4>Add Students</h4>
+                                        <div class="form-group">
+                                            <h5>{{selectedStudents.length}} selected</h5>
+                                            <div class="input-group" style="width: 100%">
+                                                <select id="student-list" multiple
+                                                        data-placeholder="Select students...">
+                                                    {{#each students}}
+                                                        <option value="{{_id}}"
+                                                                selected="{{selected}}">{{profile.name}}</option>
+                                                    {{/each}}
+                                                </select>
                                             </div>
                                         </div>
-
                                     </div>
+
                                 </div>
                             </div>
-
-
 
 
                         </div>
