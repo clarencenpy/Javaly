@@ -18,14 +18,14 @@ Template.updateGroup.onRendered(function () {
         no_results_text:'Oops, no user by that name/email!',
         width:'100%'
     }).change(function () {
-        instance.selectedStudents.set($(this).val());
+        instance.selectedStudents.set($(this).val() || []);
     });
 
     this.$('#ta-list').chosen({
         no_results_text:'Oops, no user by that name/email!',
         width:'100%'
     }).change(function () {
-        instance.selectedTAs.set($(this).val());
+        instance.selectedTAs.set($(this).val() || []);
     });
 });
 
