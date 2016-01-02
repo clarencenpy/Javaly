@@ -23,7 +23,7 @@ Template.editor.events({
         var code = editor.getSession().getValue();
 
         Meteor.call('compileAndRun', {
-            attemptId: Router.current().params.id,
+            attemptId: Router.current().params._id,
             code: code,
             activeTime: activeTime
         }, function (err, result) {
