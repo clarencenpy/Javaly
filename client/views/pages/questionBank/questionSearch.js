@@ -33,10 +33,10 @@ Template.questionSearch.onRendered(function () {
         })
     });
 
-    // retrieve results fro search params
+    // retrieve results from search params
     template.autorun(function () {
         var searchParams = template.searchParams.get();
-        //searchParams.excludeUnverified = true;
+        if (template.data.verifiedOnly) searchParams.excludeUnverified = true;
         if (searchParams) {
             Meteor.call('searchQuestions', searchParams, function (err, res) {
                 if (!err) template.questions.set(res);
@@ -78,15 +78,5 @@ Template.questionSearch.events({
         searchParams.tags = instance.$('#tags').val();
         instance.searchParams.set(searchParams);
         instance.searching.set(true);
-    },
-
-    'click .add-btn': function () {
-        var selected = Session.get('selected');
-        selected.push(this._id);
-        Session.set('selected', selected);
-    },
-
-    'click .remove-btn': function () {
-        Session.set('selected', _.without(Session.get('selected'), this._id));
     }
 });

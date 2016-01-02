@@ -102,6 +102,7 @@ Meteor.methods({
                 _id: q._id,
                 title: q.title,
                 author: Meteor.users.findOne(q.createdBy).profile.name,
+                createdBy: q.createdBy,
                 updatedAt: q.updatedAt,
                 content: q.content,
                 numAttempts: Attempts.find({questionId: q._id}).count(),
