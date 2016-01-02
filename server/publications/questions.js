@@ -69,6 +69,9 @@ Meteor.methods({
             }
         });
     },
+    hasContributedQuestions: function (id) {
+        return Questions.find({createdBy: id}).count() > 0;
+    },
     searchQuestions: function (searchParams) {
         var params = {};
         var modifiers = {

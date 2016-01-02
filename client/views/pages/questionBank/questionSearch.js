@@ -2,7 +2,7 @@ Template.questionSearch.onCreated(function () {
     var template = this;
     template.authors = new ReactiveVar([]);
     template.questions = new ReactiveVar([]);
-    template.searchParams = new ReactiveVar({limit: 30});
+    template.searchParams = new ReactiveVar(template.data.searchParams || {});
     template.searching = new ReactiveVar(false);
 });
 
@@ -26,10 +26,12 @@ Template.questionSearch.onRendered(function () {
         template.authors.set(res);
         Tracker.afterFlush(function () {
             //init select2
-            template.$('#author').select2({
+            var select2 = template.$('#author').select2({
                 placeholder: 'Filter author',
                 allowClear: true
             });
+            //if default author is set, make sure to reflect it here
+            select2.val(template.data.searchParams.author || '').trigger('change');
         })
     });
 
@@ -37,16 +39,14 @@ Template.questionSearch.onRendered(function () {
     template.autorun(function () {
         var searchParams = template.searchParams.get();
         if (template.data.verifiedOnly) searchParams.excludeUnverified = true;
-        if (searchParams) {
-            Meteor.call('searchQuestions', searchParams, function (err, res) {
-                if (!err) template.questions.set(res);
-                Tracker.afterFlush(function () {
-                    // Initialize fooTable
-                    $('.footable').footable();
-                });
-                template.searching.set(false);
+        Meteor.call('searchQuestions', searchParams, function (err, res) {
+            if (!err) template.questions.set(res);
+            Tracker.afterFlush(function () {
+                // Initialize fooTable
+                $('.footable').footable();
             });
-        }
+            template.searching.set(false);
+        });
     });
 
 });

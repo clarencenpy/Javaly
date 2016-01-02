@@ -19,7 +19,7 @@
 
             {{#each this}}
                 <tr>
-                    <td>{{title}}</td>
+                    <td><a class="goto-question-btn">{{title}}</a></td>
                     <td>{{author}}</td>
                     <td data-value="{{getTimestamp updatedAt}}">{{moFromNow updatedAt}}</td>
                     <td>{{numAttempts}}</td>
@@ -29,7 +29,7 @@
                         {{#if isOwner createdBy}}
                             <a href="{{pathFor 'updateQuestion'}}"><i class="fa fa-pencil"></i> Edit</a>
                         {{/if}}
-                        <a href=""><i class="fa fa-info"></i> Stats</a>
+                        <!--<a href=""><i class="fa fa-info"></i> Stats</a>-->
                     </td>
                 </tr>
             {{/each}}

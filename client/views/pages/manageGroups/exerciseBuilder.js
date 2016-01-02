@@ -4,6 +4,14 @@ Template.exerciseBuilder.onCreated(function () {
         return exercise._id === Router.current().params.exerciseId;
     });
     Session.set('selected', exercise.questions || []);
+
+    //check if user has contributed questions
+    template.hasContributedQuestions = new ReactiveVar(false);
+    Meteor.call('hasContributedQuestions', Meteor.userId(), function (err, res) {
+        if (!err) {
+            template.hasContributedQuestions.set(res);
+        }
+    });
 });
 
 Template.exerciseBuilder.onRendered(function () {
@@ -37,6 +45,13 @@ Template.exerciseBuilder.helpers({
     },
     getQuestionTitle: function (id) {
         return Questions.findOne(id).title;
+    },
+    searchParams: function () {
+        if (Template.instance().hasContributedQuestions.get()) {
+            return {author: Meteor.userId()};
+        } else {
+            return {limit: 30};  //set limit to number of questions allowed to load
+        }
     }
 });
 
