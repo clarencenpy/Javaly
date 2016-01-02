@@ -5,46 +5,65 @@
             border: 2px dashed grey;
             border-radius: 5px;
             padding: 10px;
+        }
+        #sortable {
             min-height: 200px;
         }
     </style>
     <div class="wrapper wrapper-content animated fadeInUp">
 
-        <div class="ibox">
-            <div class="ibox-content">
-                <a id="delete-btn" class="btn btn-danger btn-xl pull-right" style="margin-left: 5px"><i
-                        class="fa fa-trash"></i> Delete</a>
-                <a id="save-btn" class="btn btn-primary btn-xl pull-right"><i class="fa fa-check"></i> Save</a>
-                <h2>Exercise Builder</h2>
-                <br>
-                <fieldset>
-                    <div class="form-group">
-                        <label class="control-label" data-toggle="tooltip" data-placement="right"
-                               title="Please add a short description for the exercise">Description:</label>
-                        <div>
-                            <input style="width: 100%" type="text" name="description" value="{{description}}"
-                                   maxlength="50"
-                                   class="form-control" required/>
-                        </div>
-                    </div>
-                </fieldset>
+        <div class="row">
 
-                <div id="sortable-container">
-                    {{#each selectedQuestions}}
-                        <p data-id="{{this}}"
-                           style="display: block;
-                                font-size: 14px;
-                                line-height: 2;
-                                margin-bottom: 5px;"
-                           class="label">{{getQuestionTitle this}} <i class="pull-right remove-btn fa fa-times"></i></p>
-                    {{else}}
-                        <h3 style="margin-top: 50px; text-align: center;"><i class="fa fa-search"></i> Search for Questions and add them to the Exercise</h3>
-                    {{/each}}
+            <div class="col-lg-4">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <a id="delete-btn" class="btn btn-danger btn-sm pull-right" style="margin-left: 5px"><i
+                                class="fa fa-trash"></i> Delete</a>
+                        <a id="save-btn" class="btn btn-primary btn-sm pull-right"><i class="fa fa-check"></i> Save</a>
+                        <h2>Exercise Builder</h2>
+                        <br>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="control-label" data-toggle="tooltip" data-placement="right"
+                                       title="Please add a short description for the exercise">Description:</label>
+                                <div>
+                                    <input style="width: 100%" type="text" name="description" value="{{description}}"
+                                           maxlength="50"
+                                           class="form-control" required/>
+                                </div>
+                            </div>
+                        </fieldset>
+
+
+                        <div id="sortable-container">
+                            {{#if selectedQuestions.length}}
+                                <p class="text-center text-navy text-bold">{{selectedQuestions.length}} selected</p>
+                            {{/if}}
+                            <div id="sortable">
+                                {{#each selectedQuestions}}
+                                    <p data-id="{{this}}"
+                                        style="display: block;
+                                        font-size: 14px;
+                                        line-height: 2;
+                                        margin-bottom: 5px;"
+                                        class="label">{{getQuestionTitle this}} <i style="width: 10px; cursor: pointer" class="pull-right remove-btn fa fa-times"></i></p>
+                                {{else}}
+                                    <h3 style="padding: 30px; text-align: center;"><i class="fa fa-search"></i> Search for questions to add to the exercise</h3>
+                                {{/each}}
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
+
+            <div class="col-lg-8">
+                {{> questionSearch }}
+            </div>
+
         </div>
 
-        {{> questionSearch }}
+
 
     </div>
 

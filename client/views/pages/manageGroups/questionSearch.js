@@ -15,7 +15,7 @@ Template.questionSearch.onRendered(function () {
         Tracker.afterFlush(function () {
             //init select2
             template.$('#tags').select2({
-                placeholder: 'Filter by Tags...'
+                placeholder: 'Filter tags'
             });
         })
     });
@@ -27,7 +27,7 @@ Template.questionSearch.onRendered(function () {
         Tracker.afterFlush(function () {
             //init select2
             template.$('#author').select2({
-                placeholder: 'Filter by Author...',
+                placeholder: 'Filter author',
                 allowClear: true
             });
         })
@@ -36,6 +36,7 @@ Template.questionSearch.onRendered(function () {
     // retrieve results fro search params
     template.autorun(function () {
         var searchParams = template.searchParams.get();
+        //searchParams.excludeUnverified = true;
         if (searchParams) {
             Meteor.call('searchQuestions', searchParams, function (err, res) {
                 if (!err) template.questions.set(res);

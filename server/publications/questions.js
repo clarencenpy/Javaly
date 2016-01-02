@@ -71,6 +71,11 @@ Meteor.methods({
     },
     searchQuestions: function (searchParams) {
         var params = {};
+        var modifiers = {
+            sort: {updatedAt: 1},
+            limit: searchParams.limit,
+            fields: {}
+        };
         if (searchParams.title) {
             params.title = {
                 $regex: searchParams.title,
@@ -85,16 +90,21 @@ Meteor.methods({
         if (searchParams.author) {
             params.createdBy = searchParams.author
         }
-        if (!searchParams.includeUnverified) {
+        if (searchParams.excludeUnverified) {
             params.verified = true;
         }
-        return Questions.find(params, {sort: {createdAt: 1}, limit: searchParams.limit }).fetch().map(function (q) {
+        if (searchParams.excludeContent) {
+            modifiers.fields.content = -1;
+        }
+
+        return Questions.find(params, modifiers).fetch().map(function (q) {
             return {
                 _id: q._id,
                 title: q.title,
                 author: Meteor.users.findOne(q.createdBy).profile.name,
+                updatedAt: q.updatedAt,
                 content: q.content,
-                popularity: Attempts.find({questionId: q._id}).count(),
+                numAttempts: Attempts.find({questionId: q._id}).count(),
                 tags: q.tags.map(function (tag) {
                     return Tags.findOne(tag).label;
                 })

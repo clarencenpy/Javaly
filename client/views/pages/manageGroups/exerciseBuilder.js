@@ -3,13 +3,13 @@ Template.exerciseBuilder.onCreated(function () {
     var exercise = _.find(template.data.exercises, function (exercise) {
         return exercise._id === Router.current().params.exerciseId;
     });
-    Session.set('selected', exercise.questions);
+    Session.set('selected', exercise.questions || []);
 });
 
 Template.exerciseBuilder.onRendered(function () {
     var template = this;
 
-    Sortable.create(template.find('#sortable-container'), {
+    template.sortable = Sortable.create(template.find('#sortable'), {
         dataIdAttr: 'data-id',
         animation: 150,
         filter: 'i',
@@ -18,8 +18,7 @@ Template.exerciseBuilder.onRendered(function () {
                 return Session.get('selected');
             },
             set: function (sortable) {
-                var order = sortable.toArray();
-                Session.set('selected', order);
+
             }
         }
     });
@@ -43,7 +42,7 @@ Template.exerciseBuilder.helpers({
 
 Template.exerciseBuilder.events({
     'click #save-btn': function (event, instance) {
-        var questions = Session.get('selected') ? Session.get('selected') : [];
+        var questions = instance.sortable.toArray() || [];
         var description = instance.$('input[name=description]').val();
         Meteor.call('updateExercise', description, questions, Router.current().params.groupId, Router.current().params.exerciseId, function (err, res) {
             if (err) {
