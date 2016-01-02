@@ -119,10 +119,10 @@ Questions.allow({
         return userId;
     },
     update: function (userId, doc) {
-        return doc.createdBy === userId;
+        return Roles.userIsInRole(userId, ['admin']) || doc.createdBy === userId;
     },
     remove: function (userId, doc) {
-        return doc.createdBy === userId;
+        return Roles.userIsInRole(userId, ['admin']) || doc.createdBy === userId;
     }
 });
 

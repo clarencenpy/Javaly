@@ -3,6 +3,6 @@ Template.questionListStats.helpers({
         return date.getTime();
     },
     isOwner: function (id) {
-        return Meteor.userId() === id;
+        return Roles.userIsInRole(Meteor.userId(), ['admin']) || Meteor.userId() === id;
     }
 });

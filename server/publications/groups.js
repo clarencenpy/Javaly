@@ -1,5 +1,9 @@
 Meteor.publish('myGroups', function () {
-    return Groups.find({$or: [{createdBy: this.userId}, {teachingTeam: this.userId}]});
+    if (Roles.userIsInRole(this.userId, ['admin'])) {
+        return Groups.find();
+    } else {
+        return Groups.find({$or: [{createdBy: this.userId}, {teachingTeam: this.userId}]});
+    }
 });
 
 Meteor.publishComposite('allGroups', {
@@ -132,10 +136,10 @@ Groups.allow({
         return userId && Roles.userIsInRole(userId, ['instructor','admin']);
     },
     update: function (userId, doc, fields) {
-        return doc.createdBy === userId || _.without(fields, 'exercises').length === 0;
+        return Roles.userIsInRole(userId, ['admin']) || doc.createdBy === userId || _.without(fields, 'exercises').length === 0;
     },
     remove: function (userId, doc) {
-        return doc.createdBy === userId;
+        return Roles.userIsInRole(userId, ['admin']) || doc.createdBy === userId;
     }
 });
 

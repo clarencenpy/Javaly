@@ -1,7 +1,10 @@
 <template name="accessDenied">
-    <div class="access-denied page jumbotron">
-        <h2>Access Denied</h2>
-        <p>You can't get here! You are either not logged in, or have insufficient privileges.</p>
+    <div class="wrapper wrapper-content animated fadeInDown">
+        <div class="ibox-content text-center p-md">
+            <h1><span class="text-navy">Access Denied</span></h1>
+            <p>You are not allowed here, please go back to the main page</p>
+            <a href="{{pathFor route='welcome'}}" class="btn btn-sm btn-primary">Go Back</a>
+        </div>
     </div>
 </template>
 

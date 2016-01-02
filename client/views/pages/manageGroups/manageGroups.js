@@ -3,7 +3,7 @@ Template.manageGroups.helpers({
         return Meteor.users.findOne(id).profile.name;
     },
     isCreator: function () {
-        return Template.currentData().createdBy === Meteor.userId();
+        return Roles.userIsInRole(Meteor.userId(), ['admin']) || Template.currentData().createdBy === Meteor.userId();
     }
 });
 
