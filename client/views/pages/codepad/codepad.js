@@ -9,10 +9,19 @@ Template.codepad.helpers({
     compileResultOrError: function () {
         return Session.get('compileResult') || Session.get('compileError');
     },
-    showSolution: function (attempt) {
-        if (attempt.completed || attempt.history ? attempt.history.length > 3 : false) {
-            var question = Questions.findOne(attempt.questionId);
-            return question.solution ? question.solution.release : false;
-        }
+    questionsToSuggest: function () {
+        var currentQuestionId = this.questionId;
+        var questions = Session.get('currentExercise') || [];
+        questions = _.without(questions, currentQuestionId).map(function (questionId) {
+            var question = Questions.findOne(questionId);
+            var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()});
+            return {
+                completed: attempt ? attempt.completed : false,
+                _id: question._id,
+                title: question.title
+            }
+        });
+
+        return questions;
     }
 });

@@ -16,10 +16,7 @@
                 {{> editor _id }}
             </div>
 
-            <div class="col-lg-6">
-                {{#if showSolution this}}
-                    {{>solution questionId}}
-                {{/if}}
+            <div class="{{#if questionsToSuggest.length}} col-lg-8 {{else}} col-lg-12 {{/if}}">
                 {{#if compileResult}}
                     {{> resultDisplay compileResult }}
                 {{/if}}
@@ -38,9 +35,11 @@
                 {{/unless}}
             </div>
 
-            <div class="col-lg-6">
-                {{> suggestedQuestions}}
+            {{#if questionsToSuggest.length}}
+            <div class="col-lg-4">
+                {{> suggestedQuestions questionsToSuggest}}
             </div>
+            {{/if}}
 
         </div>
 
