@@ -1,0 +1,18 @@
+<template name="topNavLayout">
+
+    <!-- Wrapper-->
+    <div id="wrapper" style="margin-top: 50px">
+
+        <!-- Page wraper -->
+        <div id="page-wrapper" class="gray-bg">
+
+            <!-- Navigation -->
+            {{> topNavigation }}
+
+            <!-- Main view  -->
+            {{> yield}}
+
+        </div>
+    </div>
+    {{> chatWidget }}
+</template>

@@ -1,12 +1,3 @@
-Template.codepad.onRendered(function () {
-    // Toggle collapse of the sidebar
-    toggleSidebar();
-});
-
-Template.codepad.onDestroyed(function () {
-    toggleSidebar();
-});
-
 Template.codepad.helpers({
     compileResult: function () {
         return Session.get('compileResult');
