@@ -75,7 +75,7 @@ Meteor.methods({
     searchQuestions: function (searchParams) {
         var params = {};
         var modifiers = {
-            sort: {updatedAt: 1},
+            sort: {updatedAt: -1},
             limit: searchParams.limit,
             fields: {}
         };
