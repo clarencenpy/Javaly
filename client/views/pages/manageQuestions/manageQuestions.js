@@ -1,4 +1,4 @@
-Template.questionManager.onCreated(function () {
+Template.manageQuestions.onCreated(function () {
     var template = this;
 
     //check if user has contributed questions
@@ -10,7 +10,7 @@ Template.questionManager.onCreated(function () {
     });
 });
 
-Template.questionManager.helpers({
+Template.manageQuestions.helpers({
     searchParams: function () {
         if (Roles.userIsInRole(Meteor.userId(), ['admin'])) {
             return {limit: 30};

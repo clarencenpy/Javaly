@@ -13,8 +13,8 @@
                         <a href="{{pathFor route='welcome'}}"><i class="fa fa-info-circle"></i> <span class="nav-label">Welcome</span> </a>
                     </li>
                     {{#if isInRole 'instructor, admin, ta'}}
-                        <li class="{{isActiveRoute regex='questionManager|submitQuestion|updateQuestion|readme|tagManager'}}">
-                            <a href="{{pathFor route='questionManager'}}"><i class="fa fa-book"></i> <span class="nav-label">Manage Questions</span> </a>
+                        <li class="{{isActiveRoute regex='manageQuestions|submitQuestion|updateQuestion|readme|manageTags'}}">
+                            <a href="{{pathFor route='manageQuestions'}}"><i class="fa fa-book"></i> <span class="nav-label">Manage Questions</span> </a>
                         </li>
                     {{/if}}
                     {{#if isInRole 'instructor, admin, ta'}}

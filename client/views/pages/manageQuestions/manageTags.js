@@ -1,15 +1,15 @@
-Template.tagManager.onRendered(function () {
+Template.manageTags.onRendered(function () {
     var template = this;
     template.subscribe('allTags');
 });
 
-Template.tagManager.helpers({
+Template.manageTags.helpers({
     tags: function () {
         return Tags.find();
     }
 });
 
-Template.tagManager.events({
+Template.manageTags.events({
     'click .edit-btn': function () {
         var id = this._id;
         var tags = Tags.find().fetch().map(function (tag) {
