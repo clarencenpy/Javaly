@@ -226,7 +226,7 @@ Template.submitQuestion.events({
                     });
                     Router.go('codepad', {id: attemptId})
                 } else {
-                    Router.go('questionManager');
+                    Router.go('manageQuestions');
                 }
             });
 

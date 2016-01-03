@@ -285,7 +285,7 @@ Template.updateQuestion.events({
                         Router.go('codepad', {id: attempt._id});
                     }
                 } else {
-                    Router.go('questionManager');
+                    Router.go('manageQuestions');
                 }
             });
 
@@ -309,7 +309,7 @@ Template.updateQuestion.events({
         }, function () {
             Questions.remove(id);
             Meteor.call('removeQuestionDirectory', id);
-            Router.go('questionManager');
+            Router.go('manageQuestions');
         });
     }
 });
