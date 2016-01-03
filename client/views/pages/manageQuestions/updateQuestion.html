@@ -34,28 +34,21 @@
             border-color: #b9b8b8;
         }
 
-        .i-checks {
-            padding: 6px 0px;
-        }
     </style>
 
     <div class="wrapper wrapper-content animated fadeInRight">
         {{#if Template.subscriptionsReady }}
         <div class="ibox">
-            <div class="ibox-title">
-                <h5>Update Question</h5>
-                <div class="ibox-tools">
-                    <button id="submit-btn" class="btn btn-primary btn-sm">
-                        <i class="fa fa-upload"></i>
-                        <span class="bold"> Update </span>
-                    </button>
-                    <button id="delete-btn" class="btn btn-danger btn-sm">
-                        <i class="fa fa-trash"></i>
-                        <span class="bold"> Delete </span>
-                    </button>
-                </div>
-            </div>
+
             <div class="ibox-content profile-content">
+
+                <h2 class="text-center">Update Question</h2>
+                <button id="delete-btn" class="btn btn-danger pull-right">
+                    <i class="fa fa-trash"></i> Delete
+                </button>
+                <button id="submit-btn" class="btn btn-primary pull-right" style="margin-right: 5px">
+                    <i class="fa fa-upload"></i> Update
+                </button>
 
                 <div class="tabs-container">
                     {{#autoForm collection="Questions" id="updateQuestionForm" type="update" doc=this}}
@@ -273,7 +266,7 @@
                             <div id="tab-3" class="tab-pane">
                                 <div class="panel-body">
                                     <p>Upload your dependencies as .jar or .class files, which will then be added to the classpath during compile/run. Uploading a file with the same name will overwrite what was previously uploaded.</p>
-                                    {{> upload_bootstrap fileTypes='.jar' multiple=true formData=uploadJarFormData}}
+                                    {{> upload_bootstrap fileTypes='.jar|.class' multiple=true formData=uploadJarFormData}}
                                     {{#if uploadedFiles}}
                                         <br>
                                         <strong>Uploaded Files</strong>
@@ -288,8 +281,8 @@
 
                             <div id="tab-4" class="tab-pane">
                                 <div class="panel-body">
-                                    <p>Upload a zip file containing your Javadocs</p>
-                                    {{> upload_bootstrap fileTypes='.zip' multiple=true formData=uploadJavadocsFormData callbacks=uploadJavadocsCallback}}
+                                    <p>Upload a zip file containing your Javadocs, and Javaly will host it for you. You may overwrite what you uploaded previously.</p>
+                                    {{> upload_bootstrap fileTypes='.zip' formData=uploadJavadocsFormData callbacks=uploadJavadocsCallback}}
                                     {{#if uploadedJavadocs}}
                                         <br>
                                         <p>You have uploaded your javadocs, which is now accessible at <a target="_blank" href="{{javadocPath}}">{{javadocPath}}</a></p>

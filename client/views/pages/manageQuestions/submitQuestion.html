@@ -34,23 +34,16 @@
             border-color: #b9b8b8;
         }
 
-        .i-checks {
-            padding: 6px 0px;
-        }
     </style>
 
     {{#if Template.subscriptionsReady}}
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="ibox">
-            <div class="ibox-title">
-                <h5>Submit a new question  <small><a target="_blank" href="{{pathFor 'readme'}}">See Examples</a></small></h5>
-                <button id="submit-btn" class="btn btn-primary btn-sm pull-right">
-                    <i class="fa fa-upload"></i>
-                    <span class="bold"> Submit </span>
-                </button>
-            </div>
             <div class="ibox-content profile-content">
-
+                <h2 class="text-center">Submit a new question</h2>
+                <button id="submit-btn" class="btn btn-primary pull-right">
+                    <i class="fa fa-upload"></i> Submit
+                </button>
                 <div class="tabs-container">
                     {{#autoForm collection="Questions" id="insertQuestionForm" type="insert"}}
                     <ul class="nav nav-tabs">
@@ -138,7 +131,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Method B: Use the GUI to create a test</a>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Method B: Use the GUI to create a test <small><a target="_blank" href="{{pathFor 'readme'}}"> See Examples</a></small></a>
                                             </h4>
                                         </div>
                                         <div id="collapseTwo" class="panel-collapse collapse">
@@ -242,15 +235,15 @@
                         <div id="tab-3" class="tab-pane">
                             <div class="panel-body">
                                 <p>Upload your dependencies as .jar or .class files, which will then be added to the classpath during compile/run.</p>
-                                {{> upload_bootstrap fileTypes='.jar' multiple=true formData=uploadJarFormData}}
+                                {{> upload_bootstrap fileTypes='.jar|.class' multiple=true formData=uploadJarFormData}}
                             </div>
                         </div>
 
 
                         <div id="tab-4" class="tab-pane">
                             <div class="panel-body">
-                                <p>Upload a zip file containing your Javadocs</p>
-                                {{> upload_bootstrap fileTypes='.zip' multiple=true formData=uploadJavadocsFormData callbacks=uploadJavadocsCallback}}
+                                <p>Upload a zip file containing your Javadocs, and Javaly will host it for you</p>
+                                {{> upload_bootstrap fileTypes='.zip' formData=uploadJavadocsFormData callbacks=uploadJavadocsCallback}}
                                 {{#if uploadedJavadocs}}
                                     <br>
                                     <p>You have uploaded your javadocs, which is now accessible at <a target="_blank" href="{{javadocPath}}">{{javadocPath}}</a></p>
