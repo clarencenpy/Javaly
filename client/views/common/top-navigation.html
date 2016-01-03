@@ -1,4 +1,33 @@
 <template name="topNavigation">
+
+    <style>
+        #navbar {
+            background-color: #2f4050;
+        }
+        .top-navigation .nav > li > a {
+            color: #a7b1c2;
+        }
+        .top-navigation .nav > li:hover > a,
+        .top-navigation .nav > li.active > a {
+            color: #ffffff;
+        }
+        .top-navigation .nav > li.active > a,
+        .top-navigation .nav > li.active:hover > a,
+        .top-navigation .nav > li:hover > a {
+            background-color: #293846;
+        }
+        .top-navigation .nav > li.active > a {
+            border-bottom: 4px solid #19aa8d;
+        }
+        #login-dropdown-list > a {
+            color: #ffffff;
+        }
+        .navbar-header {
+            border-bottom: 4px solid #1ab394;
+        }
+
+    </style>
+
     <div class="row border-bottom white-bg">
         <nav class="navbar navbar-fixed-top" role="navigation">
             <div class="navbar-header">
