@@ -1,14 +1,11 @@
 <template name="manageQuestions">
 
-    <div class="wrapper wrapper-content animated fadeInDown">
+    <div class="row border-bottom white-bg page-heading animated fadeInDown text-center">
+        <h2><span class="text-navy">Manage Questions</span></h2>
+        <p style="margin-bottom: 0">Submit questions and view questions that others have submitted!</p>
+    </div>
 
-        <div class="ibox-content text-center p-md">
-            <h2><span class="text-navy">Manage Questions</span></h2>
-            <p>
-                Submit questions and view questions that others have submitted!
-            </p>
-        </div>
-        <br>
+    <div class="wrapper wrapper-content animated fadeInUp">
 
         {{> questionSearch template="questionListStats" searchParams=searchParams}}
 

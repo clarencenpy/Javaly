@@ -1,23 +1,22 @@
 <template name='manageGroups'>
 
-    <div class="wrapper wrapper-content animated fadeInDown">
+    <div class="row border-bottom white-bg page-heading animated fadeInDown text-center">
+        <h2><span class="text-navy">Manage Groups</span></h2>
+        <p style="margin-bottom: 0">Create groups and administer groups you teach in</p>
+    </div>
 
-        <div class="ibox-content text-center p-md">
-            <h2><span class="text-navy">Manage Groups</span></h2>
-            <p>Create groups and administer groups you teach in</p>
-        </div>
-        <br>
+    <div class="wrapper wrapper-content animated fadeInUp">
 
         <div class="row">
             <div class="col-lg-8">
                 <div class="ibox float-e-margins">
-                    <div class="ibox-content ibox-heading" style="border-top-width: medium">
+                    <div class="ibox-content" style="border-top-width: medium">
                         {{#if isInRole 'instructor, admin'}}
                         <a href="{{pathFor route='createGroup'}}" class="btn btn-primary" style="position: absolute; top: 30px; right: 30px">
                             <i class="fa fa-plus"></i> Create new Group
                         </a>
                         {{/if}}
-                        <h3><i class="fa fa-user"></i> My Groups</h3>
+                        <h2><i class="fa fa-user"></i> My Groups</h2>
                         <small><i class="fa fa-time"></i>
                             You have {{this.count}} active groups.
                         </small>
@@ -27,7 +26,7 @@
                         {{#if this.count}}
 
                             {{#each this}}
-                                <div class="ibox float-e-margins">
+                                <div class="ibox float-e-margins" style="box-shadow: 1px 10px 20px 1px rgba(0,0,0,0.50)">
                                     <div class="ibox-title">
                                         <h5>{{name}} &nbsp;&nbsp;&nbsp;&nbsp; <small>Created By: {{getName createdBy}}  &nbsp;&nbsp;&nbsp;&nbsp; Enrolment: {{participants.length}}</small></h5>
                                         {{>iboxTools}}
