@@ -31,7 +31,7 @@ Template.updateGroup.onRendered(function () {
 
 
 Template.updateGroup.events({
-    'click #update-settings-btn': function (event, instance) {
+    'click #update-btn': function (event, instance) {
         if (AutoForm.validateForm('updateGroupForm')) {
             Groups.update(Template.currentData()._id, {
                 $set: {

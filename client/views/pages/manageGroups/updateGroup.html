@@ -1,108 +1,78 @@
 <template name="updateGroup">
 
     <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="ibox">
-            <div class="ibox-title">
-                <h5>Update Group</h5>
-                <div class="ibox-tools">
-                    <button id="update-settings-btn" class="btn btn-primary btn-sm">
-                        <i class="fa fa-upload"></i>
-                        <span class="bold"> Update </span>
-                    </button>
-                </div>
-            </div>
+        <div class="ibox" style="position: relative">
+
             <div class="ibox-content profile-content">
 
-                <div class="tabs-container">
+                <h2 class="text-center">Update Group</h2>
+                <button style="position: absolute; top: 20px; right: 20px" id="update-btn" class="btn btn-primary">
+                    <i class="fa fa-check"></i> Update
+                </button>
 
-                    {{#autoForm collection="Groups" id="updateGroupForm" type="update" doc=this}}
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#tab-1"> Settings</a></li>
-                            <li class=""><a data-toggle="tab" href="#tab-2"> Teaching Team</a></li>
-                            <li class=""><a data-toggle="tab" href="#tab-3"> Students</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div id="tab-1" class="tab-pane active">
-                                <div class="panel-body">
 
-                                    <fieldset class="form-horizontal">
-                                        <div class="form-group {{#if afFieldIsInvalid name='name'}}has-error{{/if}}">
-                                            <label class="col-sm-2 control-label" data-toggle="tooltip"
-                                                   data-placement="right" title="Name of the group">Name:</label>
-                                            <div class="col-sm-9">
-                                                {{> afFieldInput name='name'}}
-                                                {{#if afFieldIsInvalid name='name'}}
-                                                    <span class="help-block">{{{afFieldMessage name='name'}}}</span>
-                                                {{/if}}
-                                            </div>
-                                        </div>
+                {{#autoForm collection="Groups" id="updateGroupForm" type="update" doc=this}}
+                    <div class="panel-body">
 
-                                        <div class="form-group {{#if afFieldIsInvalid name='groupType'}}has-error{{/if}}">
-                                            <label class="col-sm-2 control-label" data-toggle="tooltip"
-                                                   data-placement="right"
-                                                   title="Open: Students can view and join<br>Private: Students may not view unless they are invited<br>Accept Requests: Students may view and request to join group, instructor has to approve request">Output
-                                                Type:</label>
-                                            <div class="col-sm-9">
-                                                {{> afFieldInput name='groupType' template='buttonGroup'}}
-                                                {{#if afFieldIsInvalid name='groupType'}}
-                                                    <span class="help-block">{{{afFieldMessage name='groupType'}}}</span>
-                                                {{/if}}
-                                            </div>
-                                        </div>
-                                    </fieldset>
-
+                        <fieldset class="form-horizontal">
+                            <div class="form-group {{#if afFieldIsInvalid name='name'}}has-error{{/if}}">
+                                <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right"
+                                       title="Name of the group">Name:</label>
+                                <div class="col-sm-9">
+                                    {{> afFieldInput name='name'}}
+                                    {{#if afFieldIsInvalid name='name'}}
+                                        <span class="help-block">{{{afFieldMessage name='name'}}}</span>
+                                    {{/if}}
                                 </div>
                             </div>
 
-                            <div id="tab-2" class="tab-pane">
-                                <div class="panel-body">
+                            <div class="form-group {{#if afFieldIsInvalid name='groupType'}}has-error{{/if}}">
+                                <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right"
+                                       title="Open: Students can view and join<br>Private: Students may not view unless they are invited<br>Accept Requests: Students may view and request to join group, instructor has to approve request">Group
+                                    Type:</label>
+                                <div class="col-sm-9">
+                                    {{> afFieldInput name='groupType' template='buttonGroup'}}
+                                    {{#if afFieldIsInvalid name='groupType'}}
+                                        <span class="help-block">{{{afFieldMessage name='groupType'}}}</span>
+                                    {{/if}}
+                                </div>
+                            </div>
 
-                                    <div style="min-height: 500px">
-                                        <h4>Add TAs or co-instructors</h4>
-                                        <div class="form-group">
-                                            <h5>{{selectedTAs.length}} selected</h5>
-                                            <div class="input-group" style="width: 100%">
-                                                <select id="ta-list" multiple data-placeholder="Search...">
-                                                    {{#each tas}}
-                                                        <option value="{{_id}}"
-                                                                selected="{{selected}}">{{profile.name}}</option>
-                                                    {{/each}}
-                                                </select>
-                                            </div>
-                                        </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right"
+                                       title="Select your teaching team">Teaching Team:</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group" style="width: 100%">
+                                        <select id="ta-list" multiple data-placeholder="Search...">
+                                            {{#each tas}}
+                                                <option value={{_id}} selected="{{selected}}">{{profile.name}}</option>
+                                            {{/each}}
+                                        </select>
                                     </div>
-
+                                    <h5>{{selectedTAs.length}} selected</h5>
                                 </div>
                             </div>
 
-                            <div id="tab-3" class="tab-pane">
-                                <div class="panel-body">
-
-                                    <div style="min-height: 500px">
-                                        <h4>Add Students</h4>
-                                        <div class="form-group">
-                                            <h5>{{selectedStudents.length}} selected</h5>
-                                            <div class="input-group" style="width: 100%">
-                                                <select id="student-list" multiple
-                                                        data-placeholder="Select students...">
-                                                    {{#each students}}
-                                                        <option value="{{_id}}"
-                                                                selected="{{selected}}">{{profile.name}}</option>
-                                                    {{/each}}
-                                                </select>
-                                            </div>
-                                        </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" data-toggle="tooltip" data-placement="right"
+                                       title="Select your students">Students:</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group" style="width: 100%">
+                                        <select id="student-list" multiple data-placeholder="Search...">
+                                            {{#each students}}
+                                                <option value={{_id}} selected="{{selected}}">{{profile.name}}</option>
+                                            {{/each}}
+                                        </select>
                                     </div>
-
+                                    <h5>{{selectedStudents.length}} selected</h5>
                                 </div>
                             </div>
+                        </fieldset>
+
+                    </div>
+                {{/autoForm}}
 
 
-                        </div>
-                    {{/autoForm}}
-
-
-                </div>
             </div>
         </div>
     </div>
