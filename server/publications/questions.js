@@ -112,6 +112,7 @@ Meteor.methods({
                 createdBy: q.createdBy,
                 updatedAt: q.updatedAt,
                 content: q.content,
+                verified: q.verified,
                 numAttempts: Attempts.find({questionId: q._id}).count(),
                 tags: _.map(q.tags, function (tag) {
                     return Tags.findOne(tag).label;
