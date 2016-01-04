@@ -80,9 +80,11 @@ Meteor.methods({
             fields: {}
         };
         if (searchParams.title) {
-            params.title = {
-                $regex: searchParams.title,
-                $options: 'ix'
+            if (searchParams.title.length !== 0) {
+                params.title = {
+                    $regex: searchParams.title,
+                    $options: 'ix'
+                }
             }
         }
         if (searchParams.tags) {
@@ -91,7 +93,9 @@ Meteor.methods({
             }
         }
         if (searchParams.author) {
-            params.createdBy = searchParams.author
+            if (searchParams.author.length !== 0) {
+                params.createdBy = searchParams.author;
+            }
         }
         if (searchParams.excludeUnverified) {
             params.verified = true;
@@ -99,6 +103,7 @@ Meteor.methods({
         if (searchParams.excludeContent) {
             modifiers.fields.content = -1;
         }
+        console.log(params)
 
         return Questions.find(params, modifiers).fetch().map(function (q) {
             return {

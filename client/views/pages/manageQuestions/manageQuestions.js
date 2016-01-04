@@ -13,7 +13,7 @@ Template.manageQuestions.onCreated(function () {
 Template.manageQuestions.helpers({
     searchParams: function () {
         if (Roles.userIsInRole(Meteor.userId(), ['admin'])) {
-            return {limit: 30};
+            return {limit: 50};
         }
         if (Template.instance().hasContributedQuestions.get()) {
             return {author: Meteor.userId()};
