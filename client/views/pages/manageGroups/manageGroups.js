@@ -20,7 +20,8 @@ Template.manageGroups.events({
                     _id: exerciseId,
                     description: "",
                     questions: [],
-                    createdAt: new Date()
+                    createdAt: new Date(),
+                    updatedAt: new Date()
                 }
             }
         });

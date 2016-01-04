@@ -48,7 +48,13 @@ Meteor.publish('group', function (groupId) {
 
 Meteor.publishComposite('assignments', {
     find: function() {
-        return Groups.find({participants: this.userId});
+        return Groups.find({participants: this.userId}, {fields: {
+            name: 1,
+            participants: 1,
+            exercises: 1,
+            createdBy: 1,
+            updatedAt: 1
+        }});
     },
     children: [
         {
@@ -161,7 +167,11 @@ Meteor.methods({
         }
 
         Groups.update({_id: groupId, 'exercises._id': exerciseId}, {
-            $set: {'exercises.$.description': description, 'exercises.$.questions': questions}
+            $set: {
+                'exercises.$.description': description,
+                'exercises.$.questions': questions,
+                'exercises.$.updatedAt': new Date()
+            }
         });
 
     },
