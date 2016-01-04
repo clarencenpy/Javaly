@@ -23,12 +23,12 @@
                         <h2>Exercise Builder</h2>
                         <br>
                         <fieldset>
-                            <div class="form-group">
+                            <div class="form-group {{#if descriptionError}}has-error{{/if}}">
                                 <label class="control-label" data-toggle="tooltip" data-placement="right"
                                        title="Please add a short description for the exercise">Description:</label>
                                 <div>
                                     <input style="width: 100%" type="text" name="description" value="{{description}}"
-                                           maxlength="50"
+                                           maxlength="40"
                                            class="form-control" required/>
                                 </div>
                             </div>

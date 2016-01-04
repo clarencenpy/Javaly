@@ -12,6 +12,9 @@ Template.exerciseBuilder.onCreated(function () {
             template.hasContributedQuestions.set(res);
         }
     });
+
+    //for validation
+    template.descriptionError = new ReactiveVar(false);
 });
 
 Template.exerciseBuilder.onRendered(function () {
@@ -52,6 +55,9 @@ Template.exerciseBuilder.helpers({
         } else {
             return {limit: 30};  //set limit to number of questions allowed to load
         }
+    },
+    descriptionError: function () {
+        return Template.instance().descriptionError.get();
     }
 });
 
@@ -59,6 +65,10 @@ Template.exerciseBuilder.events({
     'click #save-btn': function (event, instance) {
         var questions = instance.sortable.toArray() || [];
         var description = instance.$('input[name=description]').val();
+        if (!description) {
+            instance.descriptionError.set(true);
+            return;
+        }
         Meteor.call('updateExercise', description, questions, Router.current().params.groupId, Router.current().params.exerciseId, function (err, res) {
             if (err) {
                 console.log(err);

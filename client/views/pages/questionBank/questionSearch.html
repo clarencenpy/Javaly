@@ -3,9 +3,11 @@
     <div class="ibox">
         <div class="ibox-title">
             <h5>Question Bank</h5>
+            {{#if showSubmitButton }}
             <div class="ibox-tools">
                 <a href="{{pathFor route='submitQuestion'}}" class="btn btn-primary btn-sm"><i class="fa fa-upload"></i> Submit new question</a>
             </div>
+            {{/if}}
         </div>
         <!--Search Box-->
         <div class="ibox-content" style="padding: 10px 20px 0px 20px">
