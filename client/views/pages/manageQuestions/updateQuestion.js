@@ -289,9 +289,9 @@ Template.updateQuestion.events({
                             userId: Meteor.userId(),
                             questionId: questionId
                         });
-                        Router.go('codepad', {id: attemptId});
+                        Router.go('codepad', {_id: attemptId});
                     } else {
-                        Router.go('codepad', {id: attempt._id});
+                        Router.go('codepad', {_id: attempt._id});
                     }
                 } else {
                     Router.go('manageQuestions');

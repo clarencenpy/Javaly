@@ -195,7 +195,7 @@ Template.submitQuestion.events({
                         title: 'Not so fast',
                         text: '<strong>Please ensure that you:</strong>' +
                                 '<br>A) Write a test class OR' +
-                                '<br>B) Define your test with the GUI properly' +
+                                '<br>B) Define your fixedtest with the GUI properly' +
                                 '<br>&#8226 Method Name is provided' +
                                 '<br>&#8226 Output Type is provided' +
                                 '<br>&#8226 Method Type is provided' +
@@ -224,7 +224,7 @@ Template.submitQuestion.events({
                         userId: Meteor.userId(),
                         questionId: question._id
                     });
-                    Router.go('codepad', {id: attemptId})
+                    Router.go('codepad', {_id: attemptId})
                 } else {
                     Router.go('manageQuestions');
                 }
