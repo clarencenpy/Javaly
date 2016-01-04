@@ -211,11 +211,11 @@ Template.submitQuestion.events({
 
             swal({
                 title: "Question Submitted!",
-                text: "The question will only be successfully published when it has at least one successful attempt (from you of course!)",
+                text: 'Your question is now "Unverified" and cannot be added to exercises, until you solve it first.',
                 type: "success",
                 showCancelButton: true,
                 allowEscapeKey: true,
-                confirmButtonText: 'Try it now!',
+                confirmButtonText: 'Solve it now!',
                 cancelButtonText: 'Back'
 
             }, function (isConfirm) {

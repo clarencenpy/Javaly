@@ -90,6 +90,9 @@ Meteor.methods({
             return {status: 'testNotDefined'};
         }
 
+        //if question is unverified, set debug to true
+        job.debug = !question.verified;
+
         var future = new Future();
 
         jobs.create('compileRun', job)

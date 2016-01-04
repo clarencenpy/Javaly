@@ -181,6 +181,7 @@ Template.updateQuestion.events({
     },
 
     'click #submit-btn': function (event, instance) {
+
         if (
             AutoForm.validateField('title', 'updateQuestionForm') &&
             AutoForm.validateField('tags', 'updateQuestionForm') &&
@@ -245,6 +246,14 @@ Template.updateQuestion.events({
                 }
             }
 
+            //check if test has been modified
+            var original = instance.data;
+            var testModified = update.testCode !== original.testCode || update.testCase !== original.testCase;
+
+            if (testModified) {
+                update.verified = false;
+            }
+
             var toDelete = {};
             if (update.testCode) {
                 //delete the testCases
@@ -263,11 +272,11 @@ Template.updateQuestion.events({
 
             swal({
                 title: "Question Updated!",
-                text: "The question will only be successfully published when it has at least one successful attempt (from you of course!)",
+                text: testModified ? 'You have modified your test, thus your question will be set to "Unverified", till you solve it again.' : undefined,
                 type: "success",
                 showCancelButton: true,
                 allowEscapeKey: true,
-                confirmButtonText: 'Try it now!',
+                confirmButtonText: 'Solve it now!',
                 cancelButtonText: 'Back'
 
             }, function (isConfirm) {
@@ -300,7 +309,7 @@ Template.updateQuestion.events({
         var id = this._id;
         swal({
             title: "Are you sure?",
-            text: "Existing attempts will not be accessible by students anymore",
+            text: "Students who have attempted your question will not be able to access their code anymore!",
             type: "warning",
             showCancelButton: true,
             allowEscapeKey: true,
