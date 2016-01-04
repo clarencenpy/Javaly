@@ -76,6 +76,7 @@ Template.questionSearch.events({
         searchParams.title = instance.$('#title').val();
         searchParams.author = instance.$('#author').val();
         searchParams.tags = instance.$('#tags').val();
+        searchParams.excludeContent = instance.data.searchParams.excludeContent;
         instance.searchParams.set(searchParams);
         instance.searching.set(true);
     }

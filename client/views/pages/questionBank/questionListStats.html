@@ -1,7 +1,7 @@
 <template name="questionListStats">
 
     {{#if this}}
-        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+        <table class="footable table table-stripped toggle-arrow-tiny" data-page-navigation=".pagination" data-page-size="15">
             <thead>
             <tr>
 
@@ -35,6 +35,13 @@
             {{/each}}
 
             </tbody>
+            <tfoot class="hide-if-no-paging">
+            <tr>
+                <td colspan="7" class="text-center">
+                    <ul class="pagination pagination-centered hide-if-no-paging"></ul>
+                </td>
+            </tr>
+            </tfoot>
         </table>
     {{else}}
         <div class="text-center" style="margin-top: 40px">

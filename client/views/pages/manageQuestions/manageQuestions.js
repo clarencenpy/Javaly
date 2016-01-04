@@ -12,13 +12,16 @@ Template.manageQuestions.onCreated(function () {
 
 Template.manageQuestions.helpers({
     searchParams: function () {
+        var params = {excludeContent: true};
         if (Roles.userIsInRole(Meteor.userId(), ['admin'])) {
-            return {limit: 50};
+            return params;
         }
         if (Template.instance().hasContributedQuestions.get()) {
-            return {author: Meteor.userId()};
+            params.author = Meteor.userId();
+            return params;
         } else {
-            return {limit: 30};  //set limit to number of questions allowed to load
+            params.limit =  30;
+            return params;  //set limit to number of questions allowed to load
         }
     }
 });

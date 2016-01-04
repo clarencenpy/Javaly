@@ -101,9 +101,8 @@ Meteor.methods({
             params.verified = true;
         }
         if (searchParams.excludeContent) {
-            modifiers.fields.content = -1;
+            modifiers.fields.content = false;
         }
-        console.log(params)
 
         return Questions.find(params, modifiers).fetch().map(function (q) {
             return {
@@ -114,7 +113,7 @@ Meteor.methods({
                 updatedAt: q.updatedAt,
                 content: q.content,
                 numAttempts: Attempts.find({questionId: q._id}).count(),
-                tags: q.tags.map(function (tag) {
+                tags: _.map(q.tags, function (tag) {
                     return Tags.findOne(tag).label;
                 })
             };
