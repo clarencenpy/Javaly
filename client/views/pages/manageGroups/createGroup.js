@@ -30,7 +30,7 @@ Template.createGroup.onRendered(function () {
 });
 
 Template.createGroup.events({
-    'click #save-settings-btn': function (event, instance) {
+    'click #save-btn': function (event, instance) {
         if (AutoForm.validateForm('insertGroupForm')) {
             var group = {
                 name: AutoForm.getFieldValue('name', 'insertGroupForm'),

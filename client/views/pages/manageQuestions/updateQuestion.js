@@ -248,7 +248,7 @@ Template.updateQuestion.events({
 
             //check if test has been modified
             var original = instance.data;
-            var testModified = update.testCode !== original.testCode || update.testCase !== original.testCase;
+            var testModified = update.testCode !== original.testCode || !_.isEqual(update.testCases, original.testCases);
 
             if (testModified) {
                 update.verified = false;
