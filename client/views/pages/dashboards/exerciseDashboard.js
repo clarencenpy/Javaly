@@ -92,8 +92,8 @@ Template.exerciseDashboard.onRendered(function () {
 
             //update the overall stats
             var totalAttempts = questions.length * group.participants.length;
-            template.completedPercentage.set(totalCompleted / totalAttempts * 100);
-            template.attemptedPercentage.set(totalAttempted / totalAttempts * 100);
+            template.completedPercentage.set(Math.round(totalCompleted / totalAttempts * 100));
+            template.attemptedPercentage.set(Math.round(totalAttempted / totalAttempts * 100));
         }
     });
 });
