@@ -17,7 +17,8 @@ Meteor.publishComposite('exerciseDashboard', function (groupId, exerciseId) {
                         userId: 1,
                         totalActiveTime: 1,
                         completed: 1,
-                        'history.date': 1
+                        //'history.date': 1,
+                        active: 1
                     }});
                 }
             },

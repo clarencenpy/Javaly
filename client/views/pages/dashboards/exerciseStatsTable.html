@@ -3,7 +3,7 @@
     {{#each this}}
         <tr>
             {{#each this}}
-                <td class="cell-center">{{{display this}}}</td>
+                <td class="cell-center {{#if this.active}}user-active{{/if}}">{{{display this}}}</td>
             {{/each}}
         </tr>
     {{/each}}

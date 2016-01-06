@@ -13,6 +13,15 @@
                     text-align: center !important;
                     vertical-align: middle !important;
                 }
+                @keyframes bg-pulsate {
+                    0%   { background-color: rgba(252, 255, 210, 1); }
+                    50% { background-color: rgba(252, 255, 210, 0); }
+                    100%   { background-color: rgba(252, 255, 210, 1); }
+                }
+                .user-active {
+                    border-radius: 2px;
+                    animation: bg-pulsate 2s infinite;
+                }
             </style>
 
             <h3 class="cell-center"><strong>{{info.groupName}}</strong> > {{info.exerciseDescription}}</h3>

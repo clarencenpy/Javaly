@@ -3,6 +3,24 @@ Template.editor.onRendered(function () {
     TimeMe.setIdleDurationInSeconds(15);
     TimeMe.setCurrentPageName('editor');
     TimeMe.initialize();
+
+    //active status
+    var attemptId = this.data;
+    Attempts.update(attemptId, {$set: {active: true}});
+
+    ifvisible.on("idle", function(){
+        console.log('idle...');
+        Attempts.update(attemptId, {$set: {active: false}});
+    });
+
+    window.onbeforeunload = function(){
+        Attempts.update(attemptId, {$set: {active: false}});
+    };
+
+    ifvisible.on("wakeup", function(){
+        console.log('active!');
+        Attempts.update(attemptId, {$set: {active: true}});
+    });
 });
 
 
@@ -75,4 +93,7 @@ Template.editor.destroyed = function () {
     Session.set('executing', null);
     Session.set('compileResult', null);
     Session.set('compileError', null);
-}
+
+    var attemptId = this.data;
+    Attempts.update(attemptId, {$set: {active: false}});
+};

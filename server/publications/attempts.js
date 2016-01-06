@@ -31,14 +31,11 @@ Meteor.publish('attemptFromQuestionId', function (questionId) {
 Attempts.allow({
     insert: function (userId, doc) {
         return userId;
-    }
-});
-
-Attempts.deny({
-    update: function() {
-        return true;
+    },
+    update: function(userId, doc, fields) {
+        return doc.userId === userId && _.without(fields, 'active', 'updatedAt').length === 0;
     },
     remove: function () {
-        return true;
+        return false;
     }
 });
