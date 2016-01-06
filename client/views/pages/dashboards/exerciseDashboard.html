@@ -1,0 +1,51 @@
+<template name="exerciseDashboard">
+
+    <div class="row border-bottom white-bg page-heading animated fadeInDown text-center">
+        <h2><span class="text-navy">Exercise Dashboard</span></h2>
+        <p style="margin-bottom: 0">View summary statistics for an exercise</p>
+    </div>
+
+    <div class="wrapper wrapper-content animated fadeInUp">
+
+        <div class="ibox-content">
+            <style>
+                .cell-center {
+                    text-align: center !important;
+                    vertical-align: middle !important;
+                }
+            </style>
+
+            <h3 class="cell-center"><strong>{{info.groupName}}</strong> > {{info.exerciseDescription}}</h3>
+            <div>
+                <span>Overall Progress:</span>
+                <div class="stat-percent">{{completedPercentage}}% completed</div>
+                <div class="progress progress-striped active">
+                    <div style="width: {{completedPercentage}}%" class="progress-bar progress-bar-default"></div>
+                    <div style="width: {{attemptedPercentage}}%" class="progress-bar progress-bar-warning"></div>
+                </div>
+            </div>
+
+            <table class="table-bordered table table-hover">
+                <thead>
+                <tr>
+                    <td class="cell-center" colspan="10000"><small>Click on questions to toggle sorting/grouping </small><i class="fa fa-hand-o-down"></i></td>
+                </tr>
+                <tr>
+                    <th class="cell-center">Student</th>
+                    <th class="sort-completed-btn cell-center"><a>Completed</a></th>
+                    {{#each headers}}
+                        <th class="sort-btn cell-center"><a>{{getTitle this}}</a></th>
+                    {{/each}}
+                </tr>
+                </thead>
+                <tbody>
+                    <!--render here-->
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+
+</template>

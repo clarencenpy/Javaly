@@ -60,7 +60,10 @@
                                                 {{#each exercises}}
                                                     <tr>
                                                         <td>{{#if description}}{{description}}{{else}}<em>Unnamed</em>{{/if}}</td>
-                                                        <td><a href="{{pathFor 'exerciseBuilder' groupId=../_id exerciseId=_id}}" class="pull-right"> Edit <i class="fa fa-pencil"></i></a></td>
+                                                        <td>
+                                                            <a href="{{pathFor 'exerciseBuilder' groupId=../_id exerciseId=_id}}" class="pull-right"> Edit <i class="fa fa-pencil"></i></a>
+                                                            <a href="{{pathFor 'exerciseDashboard' groupId=../_id exerciseId=_id}}" class="pull-right" style="margin-right: 5px"> Dashboard <i class="fa fa-dashboard"></i></a>
+                                                        </td>
                                                     </tr>
                                                 {{/each}}
                                             </tbody>
