@@ -133,6 +133,7 @@ Template.exerciseDashboard.helpers({
     attemptedPercentage: function () {
         return Template.instance().attemptedPercentage.get();
     }
+
 });
 
 Template.exerciseDashboard.events({
@@ -153,4 +154,8 @@ Template.exerciseDashboard.events({
             instance.sortBy.set('completeCount');
         }
     }
+});
+
+Template.exerciseDashboard.onDestroyed(function () {
+    Session.set('selectedAttempt', null);
 });

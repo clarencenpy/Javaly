@@ -32,9 +32,9 @@
                 </tr>
                 <tr>
                     <th class="cell-center">Student</th>
-                    <th class="sort-completed-btn cell-center"><a>Completed</a></th>
+                    <th class="cell-center"><a class="sort-completed-btn">Completed</a></th>
                     {{#each headers}}
-                        <th class="sort-btn cell-center"><a>{{getTitle this}}</a></th>
+                        <th class="cell-center"><a class="sort-btn">{{getTitle this}}</a></th>
                     {{/each}}
                 </tr>
                 </thead>
@@ -46,6 +46,10 @@
         </div>
 
 
+    </div>
+
+    <div class="modal inmodal fade" id="codepad-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        {{> codeModal }}
     </div>
 
 </template>
