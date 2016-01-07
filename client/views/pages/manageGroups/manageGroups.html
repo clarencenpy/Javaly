@@ -100,7 +100,14 @@
 
                             <div class="text-center" style="margin-top: 20px">
                                 <i class="fa fa-users" style="font-size: 5em; color:#e7eaec"></i>
-                                <h4 style="color:#e7eaec">You have not created any groups</h4>
+                                <h4 style="color:#e7eaec">
+                                    {{#if isInRole 'instructor'}}
+                                        <p>You have not created any groups</p>
+                                    {{/if}}
+                                    {{#if isInRole 'ta'}}
+                                        <p>You have not been added as a TA to any group</p>
+                                    {{/if}}
+                                </h4>
                             </div>
 
                         {{/if}}
