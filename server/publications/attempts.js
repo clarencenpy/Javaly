@@ -33,7 +33,7 @@ Attempts.allow({
         return userId;
     },
     update: function(userId, doc, fields) {
-        return doc.userId === userId && _.without(fields, 'active', 'updatedAt').length === 0;
+        return doc.userId === userId && _.intersection(fields, ['history', 'completed']).length === 0;
     },
     remove: function () {
         return false;
