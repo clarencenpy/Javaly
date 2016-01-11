@@ -90,7 +90,7 @@ Template.exerciseDashboard.onRendered(function () {
             //update the ui
             template.$('tbody').empty();
             Blaze.renderWithData(Template.exerciseStatsTable, result, template.$('tbody').get()[0]);
-            console.log(JSON.stringify(result, null, 2));
+            //console.log(JSON.stringify(result, null, 2));
 
             //update the overall stats
             var totalAttempts = questions.length * group.participants.length;
