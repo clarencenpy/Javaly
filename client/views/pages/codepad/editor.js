@@ -4,8 +4,11 @@ Template.editor.onRendered(function () {
     TimeMe.setCurrentPageName('editor');
     TimeMe.initialize();
 
+    var template = this;
+    template.isCodepad = true;
+
     //active status
-    var attemptId = this.data;
+    var attemptId = template.data;
     Meteor.users.update(Meteor.userId(), {$set: {'profile.activeAttempt': attemptId}});
 
     ifvisible.on("idle", function(){
@@ -18,8 +21,10 @@ Template.editor.onRendered(function () {
     };
 
     ifvisible.on("wakeup", function(){
-        console.log('active!');
-        Meteor.users.update(Meteor.userId(), {$set: {'profile.activeAttempt': attemptId}});
+        if (template.isCodepad) {
+            console.log('active!');
+            Meteor.users.update(Meteor.userId(), {$set: {'profile.activeAttempt': attemptId}});
+        }
     });
 });
 
@@ -93,6 +98,6 @@ Template.editor.destroyed = function () {
     Session.set('executing', null);
     Session.set('compileResult', null);
     Session.set('compileError', null);
-    
+
     Meteor.users.update(Meteor.userId(), {$set: {'profile.activeAttempt': null}});
 };
