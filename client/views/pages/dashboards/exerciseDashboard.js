@@ -46,7 +46,9 @@ Template.exerciseDashboard.onRendered(function () {
                             attemptCount++;
                             totalAttempted++;
                         }
-                        if (attempt.active) data.active = true;
+                        if (attempt._id === Meteor.user().profile.activeAttempt) {
+                            data.active = true;
+                        }
 
                         data.attemptId = attempt._id;
                     } else {

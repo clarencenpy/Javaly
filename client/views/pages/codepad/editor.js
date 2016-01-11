@@ -6,20 +6,20 @@ Template.editor.onRendered(function () {
 
     //active status
     var attemptId = this.data;
-    Attempts.update(attemptId, {$set: {active: true}});
+    Meteor.users.update(Meteor.userId(), {$set: {'profile.activeAttempt': attemptId}});
 
     ifvisible.on("idle", function(){
         console.log('idle...');
-        Attempts.update(attemptId, {$set: {active: false}});
+        Meteor.users.update(Meteor.userId(), {$set: {'profile.activeAttempt': null}});
     });
 
     window.onbeforeunload = function(){
-        Attempts.update(attemptId, {$set: {active: false}});
+        Meteor.users.update(Meteor.userId(), {$set: {'profile.activeAttempt': null}});
     };
 
     ifvisible.on("wakeup", function(){
         console.log('active!');
-        Attempts.update(attemptId, {$set: {active: true}});
+        Meteor.users.update(Meteor.userId(), {$set: {'profile.activeAttempt': attemptId}});
     });
 });
 
@@ -93,7 +93,6 @@ Template.editor.destroyed = function () {
     Session.set('executing', null);
     Session.set('compileResult', null);
     Session.set('compileError', null);
-
-    var attemptId = this.data;
-    Attempts.update(attemptId, {$set: {active: false}});
+    
+    Meteor.users.update(Meteor.userId(), {$set: {'profile.activeAttempt': null}});
 };

@@ -7,3 +7,9 @@ Meteor.publish('allUsers', function () {
         'services.google.email': 1
     }});
 });
+
+Meteor.users.allow({
+    update: function(userId, doc, fields) {
+        return doc.userId === userId && _.without(fields, 'profile.activeAttempt').length === 0;
+    }
+});
