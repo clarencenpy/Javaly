@@ -43,7 +43,7 @@ lbee:moment-helpers
 iron:router
 zimme:iron-router-active
 zimme:active-route
-mizzao:sharejs-ace@1.1.9
+xolvio:sharejs-ace
 aldeed:autoform
 chroma:autoform-summernote
 chroma:summernote
