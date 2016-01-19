@@ -1,4 +1,13 @@
 # Javaly
+
+### Issues
+* After cloning, you might see the error: 
+```
+While selecting package versions:
+    error: unknown package in top-level dependencies: npm-container
+```
+An easy fix will be to remove "npm-container" from .meteor/packages, and rerun meteor (will automatically add it back) 
+
 ### Setup Guide
 #### Deployment Quickstart (after initial configuration)
 * Running Redis Server
