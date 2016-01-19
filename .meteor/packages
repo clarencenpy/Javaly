@@ -54,3 +54,5 @@ meteorhacks:npm
 npm-container
 williamledoux:static-server
 mrt:ifvisible
+peerlibrary:directcollection
+rgnevashev:bootstrap-slider
