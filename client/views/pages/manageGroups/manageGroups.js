@@ -8,6 +8,10 @@ Template.manageGroups.helpers({
 });
 
 Template.manageGroups.events({
+    'click .toggle-visibility-btn': function (event) {
+        var groupId = $(event.currentTarget).data('groupid');
+        Meteor.call('setExerciseVisibility', groupId ,this._id, !this.show);
+    },
     'click .add-exercise-btn': function () {
         var groupId = this._id;
         var exerciseId = Random.id();

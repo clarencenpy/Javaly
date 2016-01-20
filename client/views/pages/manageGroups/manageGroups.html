@@ -59,10 +59,11 @@
                                             <tbody>
                                                 {{#each exercises}}
                                                     <tr>
-                                                        <td>{{#if description}}{{description}}{{else}}<em>Unnamed</em>{{/if}}</td>
+                                                        <td>{{#if description}}{{description}}{{else}}<em>Unnamed</em>{{/if}} {{#unless show}} <em>(hidden)</em> {{/unless}}</td>
                                                         <td>
                                                             <a href="{{pathFor 'exerciseBuilder' groupId=../_id exerciseId=_id}}" class="pull-right"> Edit <i class="fa fa-pencil"></i></a>
-                                                            <a href="{{pathFor 'exerciseDashboard' groupId=../_id exerciseId=_id}}" class="pull-right" style="margin-right: 5px"> Dashboard <i class="fa fa-dashboard"></i></a>
+                                                            <a href="{{pathFor 'exerciseDashboard' groupId=../_id exerciseId=_id}}" class="pull-right m-r-md"> Dashboard <i class="fa fa-bar-chart"></i></a>
+                                                            <a data-groupid="{{../_id}}" class="toggle-visibility-btn pull-right m-r-md"> {{#if show}} Hide <i class="fa fa-eye-slash"></i> {{else}} Show <i class="fa fa-eye"></i> {{/if}}</a>
                                                         </td>
                                                     </tr>
                                                 {{/each}}

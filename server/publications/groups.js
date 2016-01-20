@@ -62,28 +62,30 @@ Meteor.publishComposite('assignments', {
             find: function (topLevelDoc) {
                 var questions = [];
                 _.each(topLevelDoc.exercises, function (exercise) {
-                    questions = questions.concat(exercise.questions);
-                });
-                return Questions.find({_id: {$in: questions}}, {fields: {
-                    title: 1
-                }});
-            },
-            children: [
-                {
-                    //for each question, publish all the attempts
-                    find: function (secondLevelDoc, topLevelDoc) {
-                        return Attempts.find({questionId: secondLevelDoc._id, userId: this.userId}, {fields: {
-                            questionId: 1,
-                            userId: 1,
-                            completed: 1,
-                            history: {$slice: -1}, //return only the history of the most recent attempt (to get lastAttempt date)
-                            'history.date': 1
-                        }});
+                    if (exercise.show) {
+                        questions = questions.concat(exercise.questions);
                     }
-                }
-            ]
+});
+return Questions.find({_id: {$in: questions}}, {fields: {
+    title: 1
+}});
+},
+children: [
+    {
+        //for each question, publish all the attempts
+        find: function (secondLevelDoc, topLevelDoc) {
+            return Attempts.find({questionId: secondLevelDoc._id, userId: this.userId}, {fields: {
+                questionId: 1,
+                userId: 1,
+                completed: 1,
+                history: {$slice: -1}, //return only the history of the most recent attempt (to get lastAttempt date)
+                'history.date': 1
+            }});
         }
-    ]
+    }
+]
+}
+]
 
 });
 
@@ -151,6 +153,28 @@ Groups.allow({
 
 // Methods for managing exercises
 Meteor.methods({
+    setExerciseVisibility: function (groupId, exerciseId, show) {
+        //only the teaching team can update exercise
+        if (!Meteor.userId()) {
+            throw new Meteor.Error(403, 'Not Logged In');
+        }
+
+
+        var group = Groups.findOne(groupId);
+        var isTeachingTeam = _.find(group.teachingTeam, function (id) {
+            return id === Meteor.userId();
+        });
+        if (group.createdBy !== Meteor.userId() && !isTeachingTeam) {
+            throw new Meteor.Error(403, 'Access Denied');
+        }
+
+        Groups.update({_id: groupId, 'exercises._id': exerciseId}, {
+            $set: {
+                'exercises.$.show': show
+            }
+        })
+    },
+
     updateExercise: function (description, questions, groupId, exerciseId) {
         //only the teaching team can update exercise
         if (!Meteor.userId()) {

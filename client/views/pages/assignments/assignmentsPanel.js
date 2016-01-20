@@ -18,6 +18,7 @@ Template.assignmentsPanel.helpers({
         groups = _.map(groups, function (group) {
             group.completed = true;
             group.exercises = _.map(group.exercises, function (exercise) {
+                if (!exercise.show) return;
                 exercise.completed = true;
                 exercise.questions = _.map(exercise.questions, function (questionId) {
                     var question = Questions.findOne(questionId);

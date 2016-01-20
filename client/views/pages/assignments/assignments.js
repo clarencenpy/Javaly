@@ -21,6 +21,7 @@ Template.assignments.helpers({
         _.each(groups, function (group) {
             //for each exercise, find out the progress
             _.each(group.exercises, function (exercise) {
+                if (!exercise.show) return;
                 var info = {
                     questions: exercise.questions,   //required by the view button to show questions
                     description: exercise.description,
