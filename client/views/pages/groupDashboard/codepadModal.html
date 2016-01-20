@@ -6,8 +6,8 @@
                 <h4>You are viewing {{student.profile.name}}'s codepad</h4>
             </div>
             <div class="modal-body">
-                {{> questionCard questionId}}
-                {{> editorNoCompile this }}
+                {{> questionCard questionId=questionId}}
+                {{> editorViewer this }}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>

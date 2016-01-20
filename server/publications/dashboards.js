@@ -44,3 +44,11 @@ Meteor.publishComposite('exerciseDashboard', function (groupId, exerciseId) {
         ]
     }
 });
+
+Meteor.methods({
+    history: function (attemptId) {
+        return Attempts.findOne(attemptId, {fields: {
+            history: 1
+        }});
+    }
+});

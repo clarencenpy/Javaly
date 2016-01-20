@@ -1,0 +1,63 @@
+<template name="editorViewer">
+
+    <div class="ibox float-e-margins">
+        <div class="ibox-title" style="position: relative">
+            <h5>{{label}}</h5>
+            <a id="history-btn" class="btn btn-primary btn-sm">{{#if showHistory}} Editing Mode {{else}} History Mode {{/if}}</a>
+        </div>
+        <div class="ibox-content" style="padding: 0px;">
+            {{#if showHistory}}
+                {{#if historyLoaded}}
+                    <div class="row animated fadeInDown" style="padding: 5px">
+                        <div class="col-sm-2">
+                            <a id="back-btn" class="btn btn-default btn-xs {{#if isFirst}} disabled {{/if}}" style="width: 40px">
+                                <i class="fa fa-lg fa-arrow-left"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-2">
+                            <span>{{moCalendar currentAttempt.date}}</span>
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <span style="font-weight: 600; font-size: 110%;">{{attemptDisplay}}</span>
+                        </div>
+                        <div class="col-sm-2">
+                            {{{renderStatus currentAttempt.status}}}
+                        </div>
+                        <div class="col-sm-2">
+                            <a id="fwd-btn" class="btn btn-default btn-xs pull-right {{#if isLast}} disabled {{/if}}" style="width: 40px">
+                                <i class="fa fa-lg fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="animated fadeIn">
+                        {{> sharejsAce onRender=historyConfig id="history"}}
+                    </div>
+                {{else}}
+                    {{> loading }}
+                {{/if}}
+            {{else}}
+                <div class="animated fadeIn">
+                    <!--this refers to attemptId-->
+                    {{> sharejsAce docid=this onRender=config id="editor"}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
+
+    <style>
+        #editor, #history {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        #history-btn {
+            position: absolute;
+            top: 7px;
+            right: 7px;
+        }
+    </style>
+
+
+</template>

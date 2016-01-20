@@ -1,6 +1,6 @@
 Template.questionCard.helpers({
     question: function () {
-        return Questions.findOne(this.toString());  //data context this is somehow interpreted as an object
+        return Questions.findOne(Template.instance().data.questionId);
     },
     author: function () {
         var user = Meteor.users.findOne(this.createdBy);

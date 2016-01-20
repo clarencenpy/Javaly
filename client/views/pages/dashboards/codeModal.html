@@ -1,13 +1,13 @@
 <template name="codeModal">
 
-    <div class="modal-dialog" style="min-width: 80%">
+    <div id="code-modal" class="modal-dialog" style="min-width: 80%">
         <div class="modal-content animated fadeIn">
             <div class="modal-header" >
                 <h4>You are viewing {{getName attempt.userId}}'s codepad</h4>
             </div>
             <div class="modal-body">
-                {{> questionCard attempt.questionId}}
-                {{> editorNoCompile attempt._id }}
+                {{> questionCard questionId=attempt.questionId collapse=true }}
+                {{> editorViewer attempt._id }}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>

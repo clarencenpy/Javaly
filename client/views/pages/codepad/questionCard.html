@@ -1,5 +1,5 @@
 <template name="questionCard">
-    <div class="ibox float-e-margins">
+    <div class="ibox float-e-margins {{#if collapse}} collapsed {{/if}}">
         {{#with question}}
             <div class="ibox-title">
                 <h5>{{title}}<small class="m-l-lg">By {{author}}</small></h5>
