@@ -1,71 +1,119 @@
 <template name="landing">
 
-    <div class="wrapper wrapper-content">
-        <div class="text-center animated fadeInDown">
+    <div class="animated fadeInDown">
 
-            <section  class="container features">
+        <section class="container features">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1>Welcome to Javaly<br/>
+                        <small class="navy" style="position: relative; top: -0.3em"> Programming practice on Steroids
+                        </small>
+                    </h1>
+                    <p>We are currently LIVE</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-center wow fadeInLeft">
+                    <div>
+                        <i class="fa fa-code features-icon"></i>
+                        <h2>Become a Coding God</h2>
+                        <p>Need some extra programming practice to take your skills to the next level? Or revise what
+                            you have learnt in class? Join a <strong>group</strong> and start doing exercises now!</p>
+                    </div>
+                    <div class="m-t-lg">
+                        <i class="fa fa-users features-icon"></i>
+                        <h2>User Analytics</h2>
+                        <p>See where you stand against the rest of your cohort! Javaly tells you how well you are
+                            performing compared to your peers, so you can continuously challenge and improve
+                            yourself.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center wow zoomIn">
+                    <img src="/javalyicon.jpg" width="70%" class="img-circle circle-border m-b-md"
+                         style="border-color: #2f4050; margin-top: 50px;">
+                </div>
+                <div class="col-md-3 text-center wow fadeInRight">
+                    <div>
+                        <i class="fa fa-bar-chart features-icon"></i>
+                        <h2>Performance Tracking</h2>
+                        <p>Instructors get detailed reports on how their class is performing, in real time! Javaly helps
+                            them to identify students who are lagging behind, and take remedial action fast!</p>
+                    </div>
+                    <div class="m-t-lg">
+                        <i class="fa fa-file-text-o features-icon"></i>
+                        <h2>Question Bank</h2>
+                        <p>Javaly comes with its own API to run tests against the code students submit, making it
+                            extremely easy for users to author and share questions.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="timeline gray-section">
+            <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <div class="navy-line"></div>
-                        <h1>Welcome to Javaly<br/> <small class="navy" style="position: relative; top: -0.3em"> Programming practice on Steroids</small> </h1>
-                        <p>We are currently LIVE</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 text-center wow fadeInLeft">
-                        <div>
-                            <i class="fa fa-mobile features-icon"></i>
-                            <h2>Full responsive</h2>
-                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-                        </div>
-                        <div class="m-t-lg">
-                            <i class="fa fa-bar-chart features-icon"></i>
-                            <h2>6 Charts Library</h2>
-                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 text-center  wow zoomIn">
-                        <img src="/javalyicon.jpg" width="70%" class="img-circle circle-border m-b-md" style="border-color: #2f4050; margin-top: 50px;">
-                    </div>
-                    <div class="col-md-3 text-center wow fadeInRight">
-                        <div>
-                            <i class="fa fa-envelope features-icon"></i>
-                            <h2>Mail pages</h2>
-                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-                        </div>
-                        <div class="m-t-lg">
-                            <i class="fa fa-google features-icon"></i>
-                            <h2>AngularJS version</h2>
-                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <br>
-
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="navy-line"></div>
-                        <h1>Discover great feautres</h1>
-                        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+                        <h1>Changelog</h1>
+                        <p>Here's what we have been up to!</p>
                     </div>
                 </div>
                 <div class="row features-block">
-                    <div class="col-lg-6 features-text wow fadeInLeft">
-                        <small>INSPINIA</small>
-                        <h2>Perfectly designed </h2>
-                        <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
-                        <a href="" class="btn btn-primary">Learn more</a>
+
+                    <div class="col-lg-12">
+
+                        <div id="vertical-timeline" class="vertical-container light-timeline center-orientation">
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon navy-bg">
+                                    <i class="fa fa-history"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>Show/Hide Exercises</h2>
+                                    <p>Better control of when the group is allowed to gain access to the exercise</p>
+                                    <span class="vertical-date">Jan 20<br> <small>2016</small></span>
+                                </div>
+                            </div>
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon navy-bg">
+                                    <i class="fa fa-history"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>History Playback</h2>
+                                    <p>Instructors can now step through all the attempts that the student submitted, which is pretty useful for figuring out their thought process!</p>
+                                    <img src="changelog/history_playback.png" style="width:100%">
+                                    <span class="vertical-date">Jan 20<br> <small>2016</small></span>
+                                </div>
+                            </div>
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon navy-bg">
+                                    <i class="fa fa-history"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>Enhanced Dashboard</h2>
+                                    <p>Check out the new exercise dashboard with a more concise overview of the class and the ability to sort by completion status. Also, active students will show a flashing indicator!</p>
+                                    <span class="vertical-date">Jan 6<br> <small>2016</small></span>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
-                    <div class="col-lg-6 text-right wow fadeInRight">
-                        <img src="img/landing/dashboard.png" alt="dashboard" class="img-responsive pull-right">
-                    </div>
+
                 </div>
-            </section>
+            </div>
 
-            <br>
+        </section>
 
-        </div>
+        <br>
 
     </div>
+
 </template>
