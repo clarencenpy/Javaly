@@ -170,11 +170,12 @@ Template.exerciseDashboard.events({
                 data: res.boxplot,
                 tooltip: {
                     headerFormat: '<b>{point.key}</b><br/>',
-                    pointFormat: 'Maximum: {point.high}<br/>' +
-                    'Upper quartile: {point.q3}<br/>' +
+                    pointFormat: 'Solved: {point.statusText} <br>' +
+                    'Max: {point.high}<br/>' +
+                    'Upper: {point.q3}<br/>' +
                     'Median: {point.median}<br/>' +
-                    'Lower quartile: {point.q1}<br/>' +
-                    'Minimum: {point.low}<br/>'
+                    'Lower: {point.q1}<br/>' +
+                    'Min: {point.low}'
 
                 }
             });

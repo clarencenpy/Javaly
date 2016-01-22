@@ -84,7 +84,10 @@ Meteor.methods({
             });
             if (solveTimesForQuestion.length > 0) {
                 questionTitles.push(Questions.findOne(questionId).title);
-                boxplotMatrix.push(getBoxValues(solveTimesForQuestion));
+                var boxValues = getBoxValues(solveTimesForQuestion);
+                //append additional info about how many students solved it
+                boxValues.statusText = solveTimesForQuestion.length + '/' + group.participants.length;
+                boxplotMatrix.push(boxValues);
             }
         });
 
@@ -105,13 +108,13 @@ Meteor.methods({
 
 
 function getBoxValues(data) {
-    var boxValues = [];
-    boxValues.push(Math.round(Math.min.apply(Math,data) * 10) / 10);    //round to 1dp
-    boxValues.push(Math.round(getPercentile(data, 25) * 10) / 10);
-    boxValues.push(Math.round(getPercentile(data, 50) * 10) / 10);
-    boxValues.push(Math.round(getPercentile(data, 75) * 10) / 10);
-    boxValues.push(Math.round(Math.max.apply(Math,data) * 10) / 10);
-    return boxValues;
+    return {
+        low: Math.round(Math.min.apply(Math,data) * 10) / 10,
+        q1: Math.round(getPercentile(data, 25) * 10) / 10,
+        median: Math.round(getPercentile(data, 50) * 10) / 10,
+        q3: Math.round(getPercentile(data, 75) * 10) / 10,
+        high: Math.round(Math.max.apply(Math,data) * 10) / 10
+    }
 }
 //get any percentile from an array
 function getPercentile(data, percentile) {
