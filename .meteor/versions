@@ -44,6 +44,8 @@ fortawesome:fontawesome@4.5.0
 geojson-utils@1.0.4
 google@1.1.7
 handlebars@1.0.4
+highcharts-container@1.0.0
+highcharts:highcharts-meteor@0.2.1
 hot-code-push@1.0.0
 html-tools@1.0.5
 htmljs@1.0.5

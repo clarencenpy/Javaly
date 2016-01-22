@@ -118,7 +118,7 @@ Meteor.methods({
             Attempts.update(options.attemptId, {$set: {
                 code: options.code,
                 status: 'COMPILE_ERROR',
-                activeTime: options.activeTime
+                activeTime: Math.round(options.activeTime * 10) / 10
             }});
             throw new Meteor.Error(result.error);
         }
@@ -136,7 +136,7 @@ Meteor.methods({
             Attempts.update(options.attemptId, {$set: {
                 code: options.code,
                 status: 'FAIL',
-                activeTime: options.activeTime
+                activeTime: Math.round(options.activeTime * 10) / 10
             }});
         }
 

@@ -156,6 +156,97 @@ Template.exerciseDashboard.events({
         } else {
             instance.sortBy.set('completeCount');
         }
+    },
+
+    'click #boxplot-btn': function (event, instance) {
+
+        Meteor.call('boxplot', Router.current().params.groupId, Router.current().params.exerciseId, function (err, res) {
+
+            var series = [];
+
+            //add the boxplot
+            series.push({
+                type: 'boxplot',
+                data: res.boxplot,
+                tooltip: {
+                    headerFormat: '<b>{point.key}</b><br/>',
+                    pointFormat: 'Maximum: {point.high}<br/>' +
+                    'Upper quartile: {point.q3}<br/>' +
+                    'Median: {point.median}<br/>' +
+                    'Lower quartile: {point.q1}<br/>' +
+                    'Minimum: {point.low}<br/>'
+
+                }
+            });
+
+            _.each(res.lines, function (line) {
+                series.push({
+                    type: 'line',
+                    name: line.name,
+                    data: line.data,
+                    tooltip: {
+                        pointFormat: '<b>{series.name}</b>: {point.y}s'
+                    }
+                })
+            });
+
+
+            instance.$('#boxplot').highcharts({
+
+                title: {
+                    text: 'Solve time by Question'
+                },
+                legend: {
+                    enabled: false
+                },
+                credits: false,
+                xAxis: {
+                    categories: res.questionTitles,
+                    title: {
+                        text: 'Questions'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Solve time (s)'
+                    }
+                },
+                plotOptions: {
+                    boxplot: {
+                        fillColor: '#F0F0E0',
+                        lineWidth: 2,
+                        medianColor: '#0C5DA5',
+                        medianWidth: 3,
+                        stemColor: '#A63400',
+                        stemDashStyle: 'dot',
+                        stemWidth: 1,
+                        whiskerColor: '#3D9200',
+                        whiskerLength: '20%',
+                        whiskerWidth: 3
+                    },
+                    line: {
+                        connectNulls: true,
+                        lineWidth: 0.5,
+                        marker: {
+                            radius: 0,
+                            symbol: 'circle',
+                            states: {hover: {radiusPlus: 3}}
+                        }
+
+                    }
+                },
+                series: series
+
+            });
+
+            //needs a resize event in order to render at the 100% width of parent
+            Meteor.setTimeout(function () {
+                window.dispatchEvent(new Event('resize'));
+            },200);
+            Meteor.setTimeout(function () {
+                window.dispatchEvent(new Event('resize'));
+            },1000);
+        });
     }
 });
 

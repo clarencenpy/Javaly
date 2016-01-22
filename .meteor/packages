@@ -56,3 +56,7 @@ williamledoux:static-server
 mrt:ifvisible
 peerlibrary:directcollection
 rgnevashev:bootstrap-slider
+highcharts:highcharts-meteor
+
+
+highcharts-container
