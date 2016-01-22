@@ -79,17 +79,22 @@ Meteor.methods({
                     } else {
                         studentMatrix[name].push(solveTime);
                     }
+                } else {
+                    if (studentMatrix[name] === undefined) {
+                        studentMatrix[name] = [solveTime];
+                    } else {
+                        studentMatrix[name].push(solveTime);
+                    }
                 }
 
             });
-            if (solveTimesForQuestion.length > 0) {
-                questionTitles.push(Questions.findOne(questionId).title);
-                var boxValues = getBoxValues(solveTimesForQuestion);
-                //append additional info about how many students solved it
-                boxValues.statusText = solveTimesForQuestion.length + '/' + group.participants.length;
-                boxplotMatrix.push(boxValues);
-            }
+            questionTitles.push(Questions.findOne(questionId).title);
+            var boxValues = getBoxValues(solveTimesForQuestion);
+            //append additional info about how many students solved it
+            boxValues.statusText = solveTimesForQuestion.length + '/' + group.participants.length;
+            boxplotMatrix.push(boxValues);
         });
+
 
         //some data transformation to suit highcharts
         studentMatrix = _.map(studentMatrix, function (arr, key) {
@@ -108,6 +113,10 @@ Meteor.methods({
 
 
 function getBoxValues(data) {
+    if (data.length === 0) {
+        return {};
+
+    }
     return {
         low: Math.round(Math.min.apply(Math,data) * 10) / 10,
         q1: Math.round(getPercentile(data, 25) * 10) / 10,

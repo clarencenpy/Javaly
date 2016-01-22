@@ -163,6 +163,8 @@ Template.exerciseDashboard.events({
         Meteor.call('boxplot', Router.current().params.groupId, Router.current().params.exerciseId, function (err, res) {
 
             var series = [];
+            console.log(res.lines);
+            console.log(res.boxplot);
 
             //add the boxplot
             series.push({
@@ -227,13 +229,14 @@ Template.exerciseDashboard.events({
                     },
                     line: {
                         connectNulls: true,
-                        lineWidth: 0.5,
+                        lineWidth: 0.2,
+                        states: {hover: {lineWidth: 4}},
                         marker: {
                             radius: 0,
                             symbol: 'circle',
-                            states: {hover: {radiusPlus: 3}}
-                        }
-
+                            states: {hover: {radiusPlus: 5}}
+                        },
+                        color: 'orange'
                     }
                 },
                 series: series
@@ -243,7 +246,7 @@ Template.exerciseDashboard.events({
             //needs a resize event in order to render at the 100% width of parent
             Meteor.setTimeout(function () {
                 window.dispatchEvent(new Event('resize'));
-            },200);
+            },100);
             Meteor.setTimeout(function () {
                 window.dispatchEvent(new Event('resize'));
             },1000);

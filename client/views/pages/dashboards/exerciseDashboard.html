@@ -25,14 +25,20 @@
             </style>
 
             <h3 class="cell-center"><strong>{{info.groupName}}</strong> > {{info.exerciseDescription}}</h3>
-            <div>
-                <span>Overall Progress:</span>
-                <div class="stat-percent">{{completedPercentage}}% completed</div>
-                <div class="progress progress-striped active">
-                    <div style="width: {{completedPercentage}}%" class="progress-bar progress-bar-default"></div>
-                    <div style="width: {{attemptedPercentage}}%" class="progress-bar progress-bar-warning"></div>
+            <div class="row">
+                <div class="col-md-10 col-lg-11">
+                    <span>Overall Progress:</span>
+                    <div class="stat-percent">{{completedPercentage}}% completed</div>
+                    <div class="progress progress-striped active">
+                        <div style="width: {{completedPercentage}}%" class="progress-bar progress-bar-default"></div>
+                        <div style="width: {{attemptedPercentage}}%" class="progress-bar progress-bar-warning"></div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-1">
+                    <button id="boxplot-btn" class="btn btn-primary btn-md pull-right" style="margin-bottom: 20px" data-toggle="modal" data-target="#boxplot-modal">Box Plot</button>
                 </div>
             </div>
+
 
             <table class="table-bordered table table-hover">
                 <thead>
@@ -52,9 +58,6 @@
                 </tbody>
             </table>
 
-            <div class="text-center">
-                <button id="boxplot-btn" class="btn btn-primary" data-toggle="modal" data-target="#boxplot-modal">Show Boxplot</button>
-            </div>
         </div>
 
 
@@ -68,8 +71,8 @@
     <div class="modal inmodal fade" id="boxplot-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" style="min-width: 80%">
             <div class="modal-content animated fadeIn">
-                <div class="modal-body">
-                    <div id="boxplot" class="text-center"></div>
+                <div class="modal-body" style="padding: 20px 0 0 0; background-color: white; min-height: 80vh">
+                    <div id="boxplot" class="text-center" style="height: 80%"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
