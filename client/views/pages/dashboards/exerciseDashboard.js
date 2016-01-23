@@ -160,15 +160,15 @@ Template.exerciseDashboard.events({
 
     'click #boxplot-btn': function (event, instance) {
 
+        var boxplot = instance.$('#boxplot');
         Meteor.call('boxplot', Router.current().params.groupId, Router.current().params.exerciseId, function (err, res) {
 
             var series = [];
-            console.log(res.lines);
-            console.log(res.boxplot);
 
             //add the boxplot
             series.push({
                 type: 'boxplot',
+                showInLegend: false,
                 data: res.boxplot,
                 tooltip: {
                     headerFormat: '<b>{point.key}</b><br/>',
@@ -194,13 +194,22 @@ Template.exerciseDashboard.events({
             });
 
 
-            instance.$('#boxplot').highcharts({
+            boxplot.highcharts({
 
                 title: {
                     text: 'Solve time by Question'
                 },
                 legend: {
-                    enabled: false
+                    title: {
+                        text: 'Hover to highlight',
+                        style: {fontStyle: 'italic', fontWeight: 'normal'}
+                    },
+                    align: 'right',
+                    verticalAlign: 'top',
+                    layout: 'vertical',
+                    itemHoverStyle: {
+                        color: 'orange'
+                    }
                 },
                 credits: false,
                 xAxis: {
@@ -225,18 +234,20 @@ Template.exerciseDashboard.events({
                         stemWidth: 1,
                         whiskerColor: '#3D9200',
                         whiskerLength: '20%',
-                        whiskerWidth: 3
+                        whiskerWidth: 3,
+                        animation: false
                     },
                     line: {
                         connectNulls: true,
-                        lineWidth: 0.2,
+                        lineWidth: 0.3,
                         states: {hover: {lineWidth: 4}},
                         marker: {
                             radius: 0,
                             symbol: 'circle',
                             states: {hover: {radiusPlus: 5}}
                         },
-                        color: 'orange'
+                        color: 'orange',
+                        animation: false
                     }
                 },
                 series: series
@@ -246,10 +257,7 @@ Template.exerciseDashboard.events({
             //needs a resize event in order to render at the 100% width of parent
             Meteor.setTimeout(function () {
                 window.dispatchEvent(new Event('resize'));
-            },100);
-            Meteor.setTimeout(function () {
-                window.dispatchEvent(new Event('resize'));
-            },1000);
+            },1);
         });
     }
 });
