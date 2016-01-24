@@ -34,7 +34,7 @@ Template.exerciseDashboard.onRendered(function () {
                 var completeCount = 0;
                 var attemptCount = 0;
                 _.each(questions, function (questionId) {
-                    var attempt = Attempts.findOne({questionId: questionId, userId: userId});
+                    var attempt = Attempts.findOne({questionId: questionId, userId: userId}, {sort: {updatedAt: -1}});
                     var data = {};
                     if (attempt) {
                         if (attempt.completed) {

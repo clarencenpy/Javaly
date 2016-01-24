@@ -76,7 +76,7 @@ Meteor.methods({
     },
 
     getAttemptId: function (questionId, userId) {
-        var attempt = Attempts.findOne({questionId: questionId, userId: userId});
+        var attempt = Attempts.findOne({questionId: questionId, userId: userId}, {sort: {updatedAt: -1}});
         return attempt ? attempt._id : undefined;
     }
 });

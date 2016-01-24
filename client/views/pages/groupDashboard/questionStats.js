@@ -19,7 +19,7 @@ Template.questionStats.helpers({
         var completed = 0;
         var result = [];
         _.each(group.participants, function (userId) {
-            var attempt = Attempts.findOne({userId: userId, questionId: questionId});
+            var attempt = Attempts.findOne({userId: userId, questionId: questionId}, {sort: {updatedAt: -1}});
             var userInfo = {
                 name: Meteor.users.findOne(userId).profile.name,
                 attempts: attempt ? attempt.history ? attempt.history.length : 0 : 0,

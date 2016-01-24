@@ -18,7 +18,7 @@ Meteor.publishComposite('exerciseDashboard', function (groupId, exerciseId) {
                         totalActiveTime: 1,
                         completed: 1,
                         //'history.date': 1,
-                        active: 1
+                        updatedAt: 1
                     }});
                 }
             },
@@ -64,10 +64,13 @@ Meteor.methods({
         _.each(exercise.questions, function (questionId) {
             var solveTimesForQuestion = [];
             _.each(group.participants, function (userId) {
-                var attempt = Attempts.findOne({questionId: questionId, userId: userId}, {fields: {
-                    completed: 1,
-                    totalActiveTime: 1
-                }});
+                var attempt = Attempts.findOne({questionId: questionId, userId: userId}, {
+                    fields: {
+                        completed: 1,
+                        totalActiveTime: 1
+                    },
+                    sort: {updatedAt: -1}
+                });
 
                 var name = Meteor.users.findOne(userId).profile.name;
                 var solveTime = null;

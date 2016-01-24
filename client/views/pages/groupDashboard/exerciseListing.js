@@ -18,7 +18,7 @@ Template.exerciseListing.onCreated(function () {
 
         _.each(questions, function (questionId) {
             _.each(group.participants, function (userId) {
-                var attempt = Attempts.findOne({userId: userId, questionId: questionId});
+                var attempt = Attempts.findOne({userId: userId, questionId: questionId}, {sort: {updatedAt: -1}});
                 if (attempt && attempt.history) {  //have attempted before
                     attempted++;
                     if (attempt.completed){
@@ -93,7 +93,7 @@ Template.exerciseListing.helpers({
             row.name = Meteor.users.findOne(userId).profile.name;
             row.questions = [];
             _.each(questions, function (questionId) {
-                var attempt = Attempts.findOne({userId: userId, questionId: questionId});
+                var attempt = Attempts.findOne({userId: userId, questionId: questionId}, {sort: {updatedAt: -1}});
                 row.questions.push({
                     completed: attempt ? attempt.completed : false,
                     attempted: attempt
@@ -116,7 +116,7 @@ Template.exerciseListing.helpers({
             row.title = Questions.findOne(questionId).title;
             row.participants = [];
             _.each(group.participants, function (userId) {
-                var attempt = Attempts.findOne({userId: userId, questionId: questionId});
+                var attempt = Attempts.findOne({userId: userId, questionId: questionId}, {sort: {updatedAt: -1}});
                 row.participants.push({
                     completed: attempt ? attempt.completed : false,
                     attempted: attempt

@@ -13,10 +13,13 @@ Meteor.publishComposite('allGroups', {
     children: [
         {
             find: function (topLevelDoc) {
-                return Meteor.users.find({$or: [
+                return Meteor.users.find({
+                    $or: [
                         {_id: topLevelDoc.createdBy},
                         {_id: {$in: topLevelDoc.teachingTeam}}
-                    ]}, {fields: {'profile.name': 1}
+                    ]
+                }, {
+                    fields: {'profile.name': 1}
                 });
             }
         }
@@ -31,10 +34,13 @@ Meteor.publishComposite('availableGroups', {
     children: [
         {
             find: function (topLevelDoc) {
-                return Meteor.users.find({$or: [
-                    {_id: topLevelDoc.createdBy},
-                    {_id: {$in: topLevelDoc.teachingTeam}}
-                ]}, {fields: {'profile.name': 1}
+                return Meteor.users.find({
+                    $or: [
+                        {_id: topLevelDoc.createdBy},
+                        {_id: {$in: topLevelDoc.teachingTeam}}
+                    ]
+                }, {
+                    fields: {'profile.name': 1}
                 });
             }
         }
@@ -47,14 +53,16 @@ Meteor.publish('group', function (groupId) {
 });
 
 Meteor.publishComposite('assignments', {
-    find: function() {
-        return Groups.find({participants: this.userId}, {fields: {
-            name: 1,
-            participants: 1,
-            exercises: 1,
-            createdBy: 1,
-            updatedAt: 1
-        }});
+    find: function () {
+        return Groups.find({participants: this.userId}, {
+            fields: {
+                name: 1,
+                participants: 1,
+                exercises: 1,
+                createdBy: 1,
+                updatedAt: 1
+            }
+        });
     },
     children: [
         {
@@ -65,27 +73,32 @@ Meteor.publishComposite('assignments', {
                     if (exercise.show) {
                         questions = questions.concat(exercise.questions);
                     }
-});
-return Questions.find({_id: {$in: questions}}, {fields: {
-    title: 1
-}});
-},
-children: [
-    {
-        //for each question, publish all the attempts
-        find: function (secondLevelDoc, topLevelDoc) {
-            return Attempts.find({questionId: secondLevelDoc._id, userId: this.userId}, {fields: {
-                questionId: 1,
-                userId: 1,
-                completed: 1,
-                history: {$slice: -1}, //return only the history of the most recent attempt (to get lastAttempt date)
-                'history.date': 1
-            }});
+                });
+                return Questions.find({_id: {$in: questions}}, {
+                    fields: {
+                        title: 1
+                    }
+                });
+            },
+            children: [
+                {
+                    //for each question, publish all the attempts
+                    find: function (secondLevelDoc, topLevelDoc) {
+                        return Attempts.find({questionId: secondLevelDoc._id, userId: this.userId}, {
+                            fields: {
+                                questionId: 1,
+                                userId: 1,
+                                completed: 1,
+                                history: {$slice: -1}, //return only the history of the most recent attempt (to get lastAttempt date)
+                                'history.date': 1,
+                                updatedAt: 1
+                            }
+                        });
+                    }
+                }
+            ]
         }
-    }
-]
-}
-]
+    ]
 
 });
 
@@ -103,13 +116,16 @@ Meteor.publishComposite('groupInfo', function (groupId) {
                         questions = questions.concat(exercise.questions);
                     });
                     var participants = topLevelDoc.participants;
-                    return Attempts.find({$and: [{questionId: {$in: questions}}, {userId: {$in: participants}}]}, {fields: {
-                        questionId: 1,
-                        userId: 1,
-                        totalActiveTime: 1,
-                        completed: 1,
-                        'history.date': 1
-                    }});
+                    return Attempts.find({$and: [{questionId: {$in: questions}}, {userId: {$in: participants}}]}, {
+                        fields: {
+                            questionId: 1,
+                            userId: 1,
+                            totalActiveTime: 1,
+                            completed: 1,
+                            'history.date': 1,
+                            updatedAt: 1
+                        }
+                    });
                 }
             },
             {
@@ -119,20 +135,24 @@ Meteor.publishComposite('groupInfo', function (groupId) {
                     _.each(topLevelDoc.exercises, function (exercise) {
                         questions = questions.concat(exercise.questions);
                     });
-                    return Questions.find({_id: {$in: questions}}, {fields: {
-                        title: 1,
-                        createdBy: 1,
-                        content: 1
-                    }});
+                    return Questions.find({_id: {$in: questions}}, {
+                        fields: {
+                            title: 1,
+                            createdBy: 1,
+                            content: 1
+                        }
+                    });
                 }
             },
             {
                 //publishing User info
                 find: function (topLevelDoc) {
-                    return Meteor.users.find({_id: {$in: topLevelDoc.participants}}, {fields: {
-                        'profile.name': 1,
-                        emails: 1
-                    }})
+                    return Meteor.users.find({_id: {$in: topLevelDoc.participants}}, {
+                        fields: {
+                            'profile.name': 1,
+                            emails: 1
+                        }
+                    })
                 }
             }
         ]
@@ -141,7 +161,7 @@ Meteor.publishComposite('groupInfo', function (groupId) {
 
 Groups.allow({
     insert: function (userId, doc) {
-        return userId && Roles.userIsInRole(userId, ['instructor','admin']);
+        return userId && Roles.userIsInRole(userId, ['instructor', 'admin']);
     },
     update: function (userId, doc, fields) {
         return Roles.userIsInRole(userId, ['admin']) || doc.createdBy === userId || _.without(fields, 'exercises').length === 0;
@@ -254,10 +274,12 @@ Meteor.methods({
         }
 
         //this method can also be used to withdraw request
-        Groups.update(groupId, {$pull: {
-            participants: Meteor.userId(),
-            pendingParticipants: Meteor.userId()
-        }});
+        Groups.update(groupId, {
+            $pull: {
+                participants: Meteor.userId(),
+                pendingParticipants: Meteor.userId()
+            }
+        });
     },
 
     addStudentToGroup: function (userId, groupId) {
@@ -279,9 +301,11 @@ Meteor.methods({
             return id === userId;
         });
         if (pending) {
-            Groups.update(groupId, {$pull: {
-                pendingParticipants: userId
-            }});
+            Groups.update(groupId, {
+                $pull: {
+                    pendingParticipants: userId
+                }
+            });
         }
 
         //add to participants
@@ -289,16 +313,20 @@ Meteor.methods({
             return id === userId;
         });
         if (!alreadyAdded) {
-            Groups.update(groupId, {$push: {
-                participants: userId
-            }});
+            Groups.update(groupId, {
+                $push: {
+                    participants: userId
+                }
+            });
         }
     },
 
     rejectRequest: function (userId, groupId) {
         //remove from pendingParticipants
-        Groups.update(groupId, {$pull: {
-            pendingParticipants: userId
-        }})
+        Groups.update(groupId, {
+            $pull: {
+                pendingParticipants: userId
+            }
+        })
     }
 });
