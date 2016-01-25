@@ -2,13 +2,13 @@ if (process.env.NODE_ENV === 'development') {
     if (Meteor.users.find().count() === 0) {
         //creating users
         var users = [
-            {password: "admin", name: "Administrator", email: "admin@smu.sg", roles: ['admin', 'instructor', 'ta', 'student']},
-            {password: "password", name: "Lee Yeow Leong", email: "yllee@smu.sg", roles: ['instructor', 'ta', 'student']},
-            {password: "password", name: "Chris Boesch", email: "cboesch@smu.sg", roles: ['instructor', 'ta', 'student']},
-            {password: "password", name: "Clarence Ngoh", email: "clarencenpy@smu.sg", roles: ['ta', 'student']},
-            {password: "password", name: "Student1", email: "s1@smu.sg", roles: ['student']},
-            {password: "password", name: "Student2", email: "s2@smu.sg", roles: ['student']},
-            {password: "password", name: "Student3", email: "s3@smu.sg", roles: ['student']}
+            {password: "asdasd", name: "Administrator", email: "admin@smu.sg", roles: ['admin', 'instructor', 'ta', 'student']},
+            {password: "asdasd", name: "Lee Yeow Leong", email: "yl@smu.sg", roles: ['instructor', 'ta', 'student']},
+            {password: "asdasd", name: "Chris Boesch", email: "cb@smu.sg", roles: ['instructor', 'ta', 'student']},
+            {password: "asdasd", name: "Clarence Ngoh", email: "cl@smu.sg", roles: ['ta', 'student']},
+            {password: "asdasd", name: "Student1", email: "s1@smu.sg", roles: ['student']},
+            {password: "asdasd", name: "Student2", email: "s2@smu.sg", roles: ['student']},
+            {password: "asdasd", name: "Student3", email: "s3@smu.sg", roles: ['student']}
         ];
 
         _.each(users, function (user) {
@@ -44,21 +44,21 @@ if (process.env.NODE_ENV === 'development') {
                         prepCode: "",
                         input: "1,2",
                         output: "3",
-                        visibility: "SHOW"
+                        visible: "SHOW"
                     },
                     {
                         description: "add(2,-2)",
                         prepCode: "",
                         input: "2,-2",
                         output: "0",
-                        visibility: "SHOW"
+                        visible: "SHOW"
                     },
                     {
                         description: "add(10,2)",
                         prepCode: "",
                         input: "10,2",
                         output: "12",
-                        visibility: "SHOW"
+                        visible: "SHOW"
                     }
                 ]
             },
@@ -74,14 +74,14 @@ if (process.env.NODE_ENV === 'development') {
                         prepCode: "",
                         input: "2,2",
                         output: "4",
-                        visibility: "SHOW"
+                        visible: "SHOW"
                     },
                     {
                         description: "power(3,3)",
                         prepCode: "",
                         input: "3,3",
                         output: "27",
-                        visibility: "SHOW"
+                        visible: "SHOW"
                     }
                 ]
             },
@@ -97,14 +97,14 @@ if (process.env.NODE_ENV === 'development') {
                         prepCode: "int[] arr = {1,2,3,4};",
                         input: "arr",
                         output: "\"10\"",
-                        visibility: "SHOW"
+                        visible: "SHOW"
                     },
                     {
                         description: "{2,0,2,0}",
                         prepCode: "int[] arr = {2,0,2,0};",
                         input: "arr",
                         output: "\"4\"",
-                        visibility: "SHOW"
+                        visible: "SHOW"
                     }
                 ]
             },
@@ -120,14 +120,14 @@ if (process.env.NODE_ENV === 'development') {
                         prepCode: "",
                         input: "10",
                         output: "\"[1] [2] [3] [4] [5] [6] [7] [8] [9] [10]\"",
-                        visibility: "SHOW"
+                        visible: "SHOW"
                     },
                     {
                         description: "printNumbers(5)",
                         prepCode: "",
                         input: "5",
                         output: "\"[1] [2] [3] [4] [5]\"",
-                        visibility: "SHOW"
+                        visible: "SHOW"
                     }
                 ]
             },
@@ -144,14 +144,14 @@ if (process.env.NODE_ENV === 'development') {
                         prepCode: "Scanner sc = new Scanner(\"i love java\");",
                         input: "sc",
                         output: "\"i love java\"",
-                        visibility: "SHOW"
+                        visible: "SHOW"
                     },
                     {
                         description: "java rocks",
                         prepCode: "Scanner sc = new Scanner(\"java rocks\");",
                         input: "sc",
                         output: "\"java rocks\"",
-                        visibility: "SHOW"
+                        visible: "SHOW"
                     }
                 ]
             }
@@ -187,17 +187,39 @@ if (process.env.NODE_ENV === 'development') {
         var q4 = Questions.findOne({title: 'Power Power'})._id;
         var q5 = Questions.findOne({title: 'Reading from a scanner'})._id;
 
+        var date = new Date();
+
         Groups.insert({
             name: 'Beta Testers',
             groupType: 'OPEN',
-            participants: [s1, s2, s3],
+            participants: [s1, s2, s3, ta],
             exercises: [{
+                _id: Random.id(),
+                createdAt: date,
+                updatedAt: date,
                 description: 'Test each other\'s questions!',
-                questions: [q1, q2, q3, q4, q5]
+                questions: [q1, q2]
+            }],
+            createdBy: instructor,
+            teachingTeam: [ta]
+        });
+
+        Groups.insert({
+            name: 'IS200 G2',
+            groupType: 'OPEN',
+            participants: [s1, s2, s3, ta],
+            exercises: [{
+                _id: Random.id(),
+                createdAt: date,
+                updatedAt: date,
+                description: 'More questions',
+                questions: [q3, q4, q5]
             }],
             createdBy: instructor,
             teachingTeam: [ta]
         })
+
+
     }
 
     if (Tags.find().count() === 0) {
@@ -205,25 +227,5 @@ if (process.env.NODE_ENV === 'development') {
         Tags.insert({label: 'IS201'});
         Tags.insert({label: 'if/else'});
     }
-} else {
-    //production env
-    if (Tags.find().count() === 0) {
-        Tags.insert({label: 'IS200'});
-        Tags.insert({label: 'IS201'});
-        Tags.insert({label: 'if/else'});
-    }
-
-    if (Meteor.users.find().count() === 0) {
-        var id = Accounts.createUser({
-            email: 'admin@smu.edu.sg',
-            password: 'admin',
-            profile: {name: 'Administrator'}
-        });
-
-        // Need _id of existing user record so this call must come
-        // after `Accounts.createUser` or `Accounts.onCreate`
-        Roles.addUsersToRoles(id, ['admin', 'instructor', 'ta', 'student']);
-    }
-
 }
 
