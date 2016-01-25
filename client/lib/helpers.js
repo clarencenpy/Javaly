@@ -11,6 +11,20 @@ Template.registerHelper('humanizeSeconds', function (timeInSeconds) {
     return duration.format(format);
 });
 
+Template.registerHelper('moCalendarDetailed', function (time) {
+    if (time !== undefined) {
+        var moment = moment(time);
+        return moment.calendar(null, {
+            sameDay: '[Today]',
+            nextDay: '[Tomorrow]',
+            nextWeek: 'dddd',
+            lastDay: '[Yesterday]',
+            lastWeek: '[Last] dddd',
+            sameElse: 'DD/MMM/YY, h:mm:ss a'
+        });
+    }
+});
+
 /** CODE TO MANIPULATE THE SIDEBAR **/
 
 //toggleSidebar = function() {
