@@ -13,14 +13,13 @@ Template.registerHelper('humanizeSeconds', function (timeInSeconds) {
 
 Template.registerHelper('moCalendarDetailed', function (time) {
     if (time !== undefined) {
-        var moment = moment(time);
-        return moment.calendar(null, {
-            sameDay: '[Today]',
-            nextDay: '[Tomorrow]',
+        return moment(time).calendar(null, {
+            sameDay: '[Today], h:mm a',
+            nextDay: '[Tomorrow, h:mm a]',
             nextWeek: 'dddd',
-            lastDay: '[Yesterday]',
-            lastWeek: '[Last] dddd',
-            sameElse: 'DD/MMM/YY, h:mm:ss a'
+            lastDay: '[Yesterday, h:mm a]',
+            lastWeek: '[Last] dddd, h:mm a',
+            sameElse: 'DD/MMM/YY, h:mm a'
         });
     }
 });
