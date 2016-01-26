@@ -102,7 +102,7 @@ Template.studentDashboard.helpers({
             _.each(group.exercises, function (exercise) {
                 if (exercise.show) {
                     exercise.groupName = group.name;
-
+                    exercise.groupId = group._id;   //required for generating boxplot
                     var completed = 0;
                     var attempted = 0;
                     exercise.questions = _.map(exercise.questions, function (questionId) {
@@ -167,7 +167,14 @@ Template.studentDashboard.events({
                 if (err) console.log(err);
             })
         });
+    },
 
+    'click .boxplot-btn': function (event, instance) {
+        console.log(this);
+        var target = instance.$('#boxplot');
+        Meteor.call('boxplot', this.groupId, this._id, Meteor.userId(), function (err, res) {
+            renderBoxplot(res, target);     //method found in exerciseDashboard.js
+        });
     }
 });
 

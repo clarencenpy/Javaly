@@ -51,7 +51,10 @@ Meteor.methods({
             history: 1
         }});
     },
-    boxplot: function (groupId, exerciseId) {
+    boxplot: function (groupId, exerciseId, queryUserId) {
+
+        //queryUserId is provided if called by a student, only returns a single student's data and the boxplot stats
+
         var group = Groups.findOne({_id: groupId, 'exercises._id': exerciseId}, {fields: {
             exercises: 1,
             participants: 1
@@ -77,12 +80,8 @@ Meteor.methods({
                 if (attempt && attempt.completed) { //note: this calculation ignores uncompleted attempts
                     solveTime = Math.round(attempt.totalActiveTime * 10) / 10;
                     solveTimesForQuestion.push(solveTime);
-                    if (studentMatrix[name] === undefined) {
-                        studentMatrix[name] = [solveTime];
-                    } else {
-                        studentMatrix[name].push(solveTime);
-                    }
-                } else {
+                }
+                if (queryUserId === undefined || queryUserId === userId) {
                     if (studentMatrix[name] === undefined) {
                         studentMatrix[name] = [solveTime];
                     } else {

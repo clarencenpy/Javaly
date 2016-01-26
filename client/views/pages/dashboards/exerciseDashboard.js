@@ -160,104 +160,9 @@ Template.exerciseDashboard.events({
 
     'click #boxplot-btn': function (event, instance) {
 
-        var boxplot = instance.$('#boxplot');
+        var target = instance.$('#boxplot');
         Meteor.call('boxplot', Router.current().params.groupId, Router.current().params.exerciseId, function (err, res) {
-
-            var series = [];
-
-            //add the boxplot
-            series.push({
-                type: 'boxplot',
-                showInLegend: false,
-                data: res.boxplot,
-                tooltip: {
-                    headerFormat: '<b>{point.key}</b><br/>',
-                    pointFormat: 'Solved: {point.statusText} <br>' +
-                    'Max: {point.high}<br/>' +
-                    'Upper: {point.q3}<br/>' +
-                    'Median: {point.median}<br/>' +
-                    'Lower: {point.q1}<br/>' +
-                    'Min: {point.low}'
-
-                }
-            });
-
-            _.each(res.lines, function (line) {
-                series.push({
-                    type: 'line',
-                    name: line.name,
-                    data: line.data,
-                    tooltip: {
-                        pointFormat: '<b>{series.name}</b>: {point.y}s'
-                    }
-                })
-            });
-
-
-            boxplot.highcharts({
-
-                title: {
-                    text: 'Solve time by Question'
-                },
-                legend: {
-                    title: {
-                        text: 'Hover to highlight',
-                        style: {fontStyle: 'italic', fontWeight: 'normal'}
-                    },
-                    align: 'right',
-                    verticalAlign: 'top',
-                    layout: 'vertical',
-                    itemHoverStyle: {
-                        color: 'orange'
-                    }
-                },
-                credits: false,
-                xAxis: {
-                    categories: res.questionTitles,
-                    title: {
-                        text: 'Questions'
-                    }
-                },
-                yAxis: {
-                    title: {
-                        text: 'Solve time (s)'
-                    }
-                },
-                plotOptions: {
-                    boxplot: {
-                        fillColor: '#F0F0E0',
-                        lineWidth: 2,
-                        medianColor: '#0C5DA5',
-                        medianWidth: 3,
-                        stemColor: '#A63400',
-                        stemDashStyle: 'dot',
-                        stemWidth: 1,
-                        whiskerColor: '#3D9200',
-                        whiskerLength: '20%',
-                        whiskerWidth: 3,
-                        animation: false
-                    },
-                    line: {
-                        connectNulls: true,
-                        lineWidth: 0.3,
-                        states: {hover: {lineWidth: 4}},
-                        marker: {
-                            radius: 0,
-                            symbol: 'circle',
-                            states: {hover: {radiusPlus: 5}}
-                        },
-                        color: 'orange',
-                        animation: false
-                    }
-                },
-                series: series
-
-            });
-
-            //needs a resize event in order to render at the 100% width of parent
-            Meteor.setTimeout(function () {
-                window.dispatchEvent(new Event('resize'));
-            },1);
+            renderBoxplot(res, target, {showAllStudents: true});
         });
     }
 });
@@ -265,3 +170,108 @@ Template.exerciseDashboard.events({
 Template.exerciseDashboard.onDestroyed(function () {
     Session.set('selectedAttempt', null);
 });
+
+renderBoxplot = function (data, target, options) {
+
+    if (options === undefined) {
+        options = {};
+    }
+
+    var series = [];
+
+    //add the boxplot
+    series.push({
+        type: 'boxplot',
+        showInLegend: false,
+        data: data.boxplot,
+        tooltip: {
+            headerFormat: '<b>{point.key}</b><br/>',
+            pointFormat: 'Solved: {point.statusText} <br>' +
+            'Max: {point.high}<br/>' +
+            'Upper: {point.q3}<br/>' +
+            'Median: {point.median}<br/>' +
+            'Lower: {point.q1}<br/>' +
+            'Min: {point.low}'
+
+        }
+    });
+
+    _.each(data.lines, function (line) {
+        series.push({
+            type: 'line',
+            name: line.name,
+            data: line.data,
+            tooltip: {
+                pointFormat: '<b>{series.name}</b>: {point.y}s'
+            }
+        })
+    });
+
+    var highchartsOptions = {
+        title: {
+            text: 'Solve time by Question'
+        },
+        credits: false,
+        xAxis: {
+            categories: data.questionTitles,
+            title: {
+                text: 'Questions'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Solve time (s)'
+            }
+        },
+        plotOptions: {
+            boxplot: {
+                fillColor: '#F0F0E0',
+                lineWidth: 2,
+                medianColor: '#0C5DA5',
+                medianWidth: 3,
+                stemColor: '#A63400',
+                stemDashStyle: 'dot',
+                stemWidth: 1,
+                whiskerColor: '#3D9200',
+                whiskerLength: '20%',
+                whiskerWidth: 3,
+                animation: false
+            },
+            line: {
+                connectNulls: true,
+                lineWidth: options.showAllStudents ? 0.3 : 5,
+                states: {hover: {lineWidth: 4}},
+                marker: {
+                    radius: 0,
+                    symbol: 'circle',
+                    states: {hover: {radiusPlus: options.showAllStudents ? 5 : 0}}
+                },
+                color: 'orange',
+                animation: false
+            }
+        },
+        series: series
+    };
+
+    if (options.showAllStudents) {
+        highchartsOptions.legend = {
+            title: {
+                text: 'Hover to highlight',
+                style: {fontStyle: 'italic', fontWeight: 'normal'}
+            },
+            align: 'right',
+            verticalAlign: 'top',
+            layout: 'vertical',
+            itemHoverStyle: {
+                color: 'orange'
+            }
+        }
+    }
+
+    target.highcharts(highchartsOptions);
+
+    //needs a resize event in order to render at the 100% width of parent
+    Meteor.setTimeout(function () {
+        window.dispatchEvent(new Event('resize'));
+    },1);
+};

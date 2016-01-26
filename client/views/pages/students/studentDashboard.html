@@ -213,7 +213,7 @@
                                 {{#each exercises}}
                                     <div id="{{_id}}" class="tab-pane">
 
-                                        <h4 class="m-b-md"><strong>{{groupName}}</strong> > {{description}}</h4>
+                                        <h4 class="m-b-md" style="display: inline"><strong>{{groupName}}</strong> > {{description}}</h4>
 
                                         <table class="table table-hover margin bottom">
                                             <thead>
@@ -254,6 +254,11 @@
                                             </tbody>
                                         </table>
 
+                                        <div class="text-center">
+                                            <a class="boxplot-btn btn btn-primary btn-sm btn-outline" style="width: 200px" data-toggle="modal" data-target="#boxplot-modal">View Performance</a>
+                                        </div>
+
+
                                     </div>
                                 {{/each}}
                                 </div>
@@ -269,6 +274,20 @@
         </div>
 
 
+    </div>
+
+    <!--Boxplot Modal-->
+    <div class="modal inmodal fade" id="boxplot-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="min-width: 80%">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-body" style="padding: 20px 0 0 0; background-color: white">
+                    <div id="boxplot" class="text-center" style="min-height: 600px"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 </template>
