@@ -19,7 +19,7 @@ Template.registerHelper('moCalendarDetailed', function (time) {
             nextWeek: 'dddd, h:mm a',
             lastDay: '[Yesterday], h:mm a',
             lastWeek: '[Last] dddd, h:mm a',
-            sameElse: 'DD/MMM/YY, h:mm a'
+            sameElse: 'DD MMM YY, h:mm a'
         });
     }
 });

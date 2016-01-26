@@ -123,6 +123,7 @@ Template.studentDashboard.helpers({
                         }
                         return q;
                     });
+                    exercise.numCompleted = completed;
                     exercise.completedPercentage = completed / exercise.questions.length * 100;
                     exercise.attemptedPercentage = attempted / exercise.questions.length * 100;
                     if (completed === exercise.questions.length) exercise.completed = true;
