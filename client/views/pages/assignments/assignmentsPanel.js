@@ -22,7 +22,7 @@ Template.assignmentsPanel.helpers({
                 exercise.completed = true;
                 exercise.questions = _.map(exercise.questions, function (questionId) {
                     var question = Questions.findOne(questionId);
-                    var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()}, {sort: {updatedAt: -1}});
+                    var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()}, {sort: {createdAt: -1}});
                     if (!attempt || !attempt.completed) exercise.completed = false;
 
                     var currentAttempt = Attempts.findOne(activeAttemptId);

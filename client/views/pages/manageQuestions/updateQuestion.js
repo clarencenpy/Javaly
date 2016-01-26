@@ -283,7 +283,7 @@ Template.updateQuestion.events({
                 if (isConfirm) {
                     //check if previous attempt exists
                     var questionId = instance.data._id;
-                    var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()}, {sort: {updatedAt: -1}});
+                    var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()}, {sort: {createdAt: -1}});
                     if (attempt === undefined) {
                         var attemptId = Attempts.insert({
                             userId: Meteor.userId(),

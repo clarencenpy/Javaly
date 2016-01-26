@@ -32,7 +32,7 @@ Template.assignments.helpers({
                     solved: 0
                 };
                 _.each(exercise.questions, function (questionId) {
-                    var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()}, {sort: {updatedAt: -1}});
+                    var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()}, {sort: {createdAt: -1}});
                     if (attempt && attempt.history) {  //have attempted before
                         info.attempted++;
                         if (attempt.completed){
@@ -79,7 +79,7 @@ Template.assignments.helpers({
             q.questionId = questionId; //required when we click the start button
             q.title = question.title;
 
-            var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()}, {sort: {updatedAt: -1}});
+            var attempt = Attempts.findOne({questionId: questionId, userId: Meteor.userId()}, {sort: {createdAt: -1}});
             if (attempt) {
                 q.lastAttempted = attempt.history ? attempt.history[0].date: undefined; //since only the last attempt is published
                 q.completed = attempt.completed;

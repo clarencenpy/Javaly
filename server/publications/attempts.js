@@ -25,7 +25,7 @@ Meteor.publishComposite('codepad', function (attemptId) {
 });
 
 Meteor.publish('attemptFromQuestionId', function (questionId) {
-   return Attempts.find({questionId: questionId, userId: this.userId}, {sort: {updatedAt: -1}});
+   return Attempts.find({questionId: questionId, userId: this.userId}, {sort: {createdAt: -1}});
 });
 
 Attempts.allow({

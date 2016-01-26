@@ -108,7 +108,7 @@ Template.studentDashboard.helpers({
                     exercise.questions = _.map(exercise.questions, function (questionId) {
                         var q = Questions.findOne(questionId);
                         if (q === undefined) return;
-                        var attempts = Attempts.find({questionId: questionId, userId: Meteor.userId()}, {sort: {updatedAt: -1}}).fetch();
+                        var attempts = Attempts.find({questionId: questionId, userId: Meteor.userId()}, {sort: {createdAt: -1}}).fetch();
                         q.numAttempts = attempts.length;
                         if (attempts.length > 0) {
                             var curAttempt = attempts[0];
