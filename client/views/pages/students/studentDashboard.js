@@ -155,9 +155,19 @@ Template.studentDashboard.events({
         })
     },
     'click #leave-btn': function () {
-        Meteor.call('leaveGroup', this._id, function (err, res) {
-            if (err) console.log(err);
-        })
+        var groupId = this._id;
+        swal({
+            title: "Sure about leaving?",
+            type: "warning",
+            showCancelButton: true,
+            allowEscapeKey: true,
+            confirmButtonText: 'Leave'
+        }, function () {
+            Meteor.call('leaveGroup', groupId, function (err, res) {
+                if (err) console.log(err);
+            })
+        });
+
     }
 });
 
