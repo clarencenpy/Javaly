@@ -164,6 +164,12 @@ Template.exerciseDashboard.events({
         Meteor.call('boxplot', Router.current().params.groupId, Router.current().params.exerciseId, function (err, res) {
             renderBoxplot(res, target, {showAllStudents: true});
         });
+    },
+
+    'click #nudge-btn': function () {
+        Meteor.call('nudge', Router.current().params.groupId, Router.current().params.exerciseId, 30, {sendToUnsolved: true},function (err, res) {
+            console.log(res);
+        });
     }
 });
 

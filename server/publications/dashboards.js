@@ -72,7 +72,7 @@ Meteor.methods({
                         completed: 1,
                         totalActiveTime: 1
                     },
-                    sort: {updatedAt: -1}
+                    sort: {createdAt: -1}
                 });
 
                 var name = Meteor.users.findOne(userId).profile.name;
@@ -110,6 +110,103 @@ Meteor.methods({
             questionTitles: questionTitles,
             lines: studentMatrix
         };
+    },
+    nudge: function (groupId, exerciseId, percentile, options) {
+
+        if (options === undefined) {
+            options = {};
+        }
+
+        var mailList = {};
+
+        var group = Groups.findOne(groupId);
+        var exercise = _.find(group.exercises, function (exercise) {
+            if (exercise._id === exerciseId) return exercise;
+        });
+        if (exercise === undefined) return;
+
+        //collate array of solveTime per question
+        var questionTimings = {};
+
+        _.each(exercise.questions, function (questionId) {
+
+            var timings = [];
+
+            _.each(group.participants, function (userId) {
+                var attempt = Attempts.findOne({questionId: questionId, userId: userId}, {
+                    fields: {
+                        completed: 1,
+                        totalActiveTime: 1
+                    },
+                    sort: {createdAt: -1}
+                });
+
+                if (attempt && attempt.completed) { //note: this calculation ignores uncompleted attempts
+                    var solveTime = Math.round(attempt.totalActiveTime * 10) / 10;
+                    timings.push({userId: userId, solveTime: solveTime});
+                } else {
+                    if (options.sendToUnsolved) {
+                        if (mailList[userId] === undefined) {
+                            mailList[userId] = {unsolved: [questionId]}
+                        } else {
+                            mailList[userId].unsolved.push(questionId);
+                        }
+                    }
+                }
+            });
+
+            questionTimings[questionId] = timings;
+        });
+
+        //sort the timings and figure out target students by percentile
+        var sortedQuestionTimings = {};
+        _.each(questionTimings, function (timings, questionId) {
+            sortedQuestionTimings[questionId] = _.sortBy(timings, 'solveTime').reverse();
+        });
+
+        _.each(sortedQuestionTimings, function (timings, questionId) {
+            var numToSend = Math.round(timings.length * (percentile / 100));
+            for (var i=0; i<numToSend; i++) {
+                var timing = timings[i];
+                if (mailList[timing.userId] === undefined) {
+                    mailList[timing.userId] = {retry: [questionId]}
+                } else {
+                    var mail = mailList[timing.userId];
+                    if (mail.retry === undefined) {
+                        mail.retry = [questionId];
+                    } else {
+                        mail.retry.push(questionId);
+                    }
+                }
+            }
+        });
+
+        //keep a record of all question objects, to reduce duplicate database queries
+        var questionList = Questions.find({_id : {$in: exercise.questions}}, {fields: {title: 1}}).fetch();
+
+        var mailJobs = _.map(mailList, function (contents, userId) {
+            var user = Meteor.users.findOne({_id: userId}, {fields: {
+                'profile.name': 1,
+                emails: {$slice: -1},
+                'services.google.email': 1
+            }});
+            return {
+                name: user.profile.name,
+                email: process.env.NODE_ENV === 'development' ? user.emails[0].address : user.services.google.email,
+                unsolved: _.map(contents.unsolved, function (questionId) {
+                    return _.find(questionList, function (q) {
+                        return q._id === questionId;
+                    })
+                }),
+                retry: _.map(contents.retry, function (questionId) {
+                    return _.find(questionList, function (q) {
+                        return q._id === questionId;
+                    })
+                })
+            }
+        });
+        //console.log(JSON.stringify(mailJobs, null, 2));
+        return mailJobs;
     }
 });
 
