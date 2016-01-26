@@ -176,6 +176,11 @@ renderBoxplot = function (data, target, options) {
     if (options === undefined) {
         options = {};
     }
+    /** possible options:
+     *
+     * showAllStudents: if true, legends will be shown and lines will become bold only on hover
+     */
+
 
     var series = [];
 
@@ -199,6 +204,7 @@ renderBoxplot = function (data, target, options) {
     _.each(data.lines, function (line) {
         series.push({
             type: 'line',
+            showInLegend: !!options.showAllStudents,
             name: line.name,
             data: line.data,
             tooltip: {
@@ -209,7 +215,7 @@ renderBoxplot = function (data, target, options) {
 
     var highchartsOptions = {
         title: {
-            text: 'Solve time by Question'
+            text: 'Solve Statistics'
         },
         credits: false,
         xAxis: {
@@ -274,4 +280,7 @@ renderBoxplot = function (data, target, options) {
     Meteor.setTimeout(function () {
         window.dispatchEvent(new Event('resize'));
     },1);
+    Meteor.setTimeout(function () {
+        window.dispatchEvent(new Event('resize'));
+    },100);
 };
