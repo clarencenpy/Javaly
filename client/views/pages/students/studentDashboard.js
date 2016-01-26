@@ -9,12 +9,6 @@ Template.studentDashboard.onRendered(function () {
 
     var template = this;
 
-    // Add special class for full height
-    $('body').addClass('full-height-layout');
-
-    // Set the height of the wrapper
-    $('#page-wrapper').css("min-height", $(window).height()  + "px");
-
     // Add slimScroll to element
     template.$('.full-height-scroll').slimscroll({
         height: '100%'
@@ -78,47 +72,64 @@ Template.studentDashboard.helpers({
     groupsFilter: function () {
         return Groups.find({participants: Meteor.userId()});
     },
+    showExercise: function (completed) {
+        var filter = Template.instance().showOptions.get();
+        if (filter === 'ALL') {
+            return true;
+        }
+        if (filter === 'INCOMPLETE') {
+            return !completed;
+        }
+        if (filter === 'COMPLETE') {
+            return completed;
+        }
+
+    },
     exercises: function () {
         var exercises = [];
         var groupFilter = Template.instance().groupFilter.get();
+
+        var groups;
         if (groupFilter.length === 0) {
             //show all groups
-            var groups = Groups.find({participants: Meteor.userId()}).fetch();
-            _.each(groups, function (group) {
-                _.each(group.exercises, function (exercise) {
-                    if (exercise.show) {
-                        exercise.questions = _.map(exercise.questions, function (questionId) {
-                            var q = Questions.findOne(questionId);
-                            if (q === undefined) return;
-                            var attempts = Attempts.find({questionId: questionId, userId: Meteor.userId()}, {sort: {updatedAt: -1}}).fetch();
-                            q.numAttempts = attempts.length;
-                            if (attempts.length > 0) {
-                                var curAttempt = attempts[0];
-                                q.attemptId = curAttempt._id;
-                                q.completed = curAttempt.completed;
-                                q.lastAttempted = curAttempt.history ? curAttempt.history[0].date: undefined;
-                            }
-                            return q;
-                        });
-                        exercises.push(exercise);
-                    }
-                })
-            })
+            groups = Groups.find({participants: Meteor.userId()}).fetch();
         } else {
-            //show selected groups
-            var group = Groups.findOne(groupFilter);
+            //show matched group
+            groups = [Groups.findOne(groupFilter)];
+        }
+
+        _.each(groups, function (group) {
             _.each(group.exercises, function (exercise) {
                 if (exercise.show) {
+                    exercise.groupName = group.name;
+
+                    var completed = 0;
+                    var attempted = 0;
                     exercise.questions = _.map(exercise.questions, function (questionId) {
                         var q = Questions.findOne(questionId);
                         if (q === undefined) return;
-                        q.attempts = Attempts.findOne({questionId: questionId, userId: Meteor.userId()}, {sort: {updatedAt: -1}});
+                        var attempts = Attempts.find({questionId: questionId, userId: Meteor.userId()}, {sort: {updatedAt: -1}}).fetch();
+                        q.numAttempts = attempts.length;
+                        if (attempts.length > 0) {
+                            var curAttempt = attempts[0];
+                            q.attemptId = curAttempt._id;
+                            q.completed = curAttempt.completed;
+                            q.lastAttempted = curAttempt.history ? curAttempt.history[0].date: undefined;
+                            if (curAttempt.completed) {
+                                completed++;
+                            } else {
+                                if (curAttempt.history && curAttempt.history.length > 0) attempted++;
+                            }
+                        }
                         return q;
                     });
+                    exercise.completedPercentage = completed / exercise.questions.length * 100;
+                    exercise.attemptedPercentage = attempted / exercise.questions.length * 100;
+                    if (completed === exercise.questions.length) exercise.completed = true;
                     exercises.push(exercise);
                 }
             })
-        }
+        });
 
         return exercises;
     }
@@ -128,7 +139,7 @@ Template.studentDashboard.events({
     'click .goto-question-btn': function () {
         var questionId = this._id;
         if (this.attemptId) {  //id
-            Router.go('codepad', {_id: attemptId});
+            Router.go('codepad', {_id: this.attemptId});
         } else {
             var attemptId = Attempts.insert({
                 userId: Meteor.userId(),

@@ -16,11 +16,11 @@
     </style>
 
     <div class="row border-bottom white-bg page-heading animated fadeInDown text-center">
-        <h2><span class="text-navy">Student Dashboard</span></h2>
+        <h2><span class="text-navy">Practice</span></h2>
         <p style="margin-bottom: 0">Join groups, do exercises, review your performance</p>
     </div>
 
-    <div class="wrapper wrapper-content animated fadeInUp" style="height: 87%">
+    <div class="wrapper wrapper-content animated fadeInUp">
 
         <style>
             tr:hover #leave-btn {
@@ -32,10 +32,11 @@
         </style>
 
         <!--My Groups-->
-        <div class="row" style="height: 100%">
+        <div class="row">
             <div class="col-md-3 col-sm-12">
                 <div class="ibox-content">
                     <div class="text-center"><h3>My Groups</h3></div>
+                    <div style="height: 300px; overflow-y: scroll; margin-bottom: 20px">
                     {{#if pendingAndEnrolledGroups.count}}
                         <div class="project-list">
                             <table class="table table-hover">
@@ -74,6 +75,7 @@
                             <p>You have not enrolled in any group!</p>
                         </div>
                     {{/if}}
+                    </div>
 
                     <div id="join-groups-btn" class="btn btn-block btn-primary" data-toggle="modal" data-target="#join-groups-modal">Join Groups</div>
 
@@ -128,8 +130,8 @@
 
 
             <!--Exercise Inbox-->
-            <div class="col-md-9 col-sm-12" style="height: 100%">
-                <div class="ibox-content" style="padding: 0; height: 100%">
+            <div class="col-md-9 col-sm-12">
+                <div class="ibox-content" style="padding: 0">
 
                     <!--Search Box-->
                     <div class="ibox-content" style="padding: 10px 20px 0px 20px; border: 1px solid #e7eaec">
@@ -151,9 +153,9 @@
                                 <div class="form-group">
                                     <label class="control-label" for="showOptions">Show</label>
                                     <select id="showOptions" style="width: 100%">
-                                        <option value="INCOMPLETE">Incomplete</option>
+                                        <option value="INCOMPLETE" selected>Incomplete</option>
                                         <option value="COMPLETE">Complete</option>
-                                        <option value="ALL" selected>All</option>
+                                        <option value="ALL">All</option>
                                     </select>
                                 </div>
                             </div>
@@ -161,28 +163,31 @@
                     </div>
                     <!--End Search Box-->
 
-                    <div class="fh-column" style="height: 90%">
+                    <div class="fh-column" style="height: 600px">
                         <div class="full-height-scroll">
                             <ul class="list-group elements-list" style="margin-bottom: 0">
                                 {{#each exercises}}
-                                <li class="list-group-item" data-toggle="tab" href="#{{_id}}" style="cursor: pointer">
-                                    <strong>{{description}}</strong>
-                                    <div class="small m-t-xs">
-                                        <p>
-                                            Survived not only five centuries, but also the leap scrambled it to make.
-                                        </p>
-                                        <p class="m-b-none text-muted">
-                                            <i class="fa fa-clock-o"></i> {{moCalendarDetailed updatedAt}}
-                                        </p>
-                                    </div>
-                                </li>
+                                    {{#if showExercise completed}}
+                                        <li class="list-group-item" data-toggle="tab" href="#{{_id}}" style="cursor: pointer">
+                                            <strong>{{description}}</strong>
+                                            <div class="small m-t-xs">
+                                                <div class="progress progress-mini m-b-sm" style="background-color: #bbbbbb">
+                                                    <div style="width: {{completedPercentage}}%;" class="progress-bar"></div>
+                                                    <div style="width: {{attemptedPercentage}}%;" class="progress-bar progress-bar-warning"></div>
+                                                </div>
+                                                <p class="m-b-none text-muted">
+                                                    <i class="fa fa-clock-o"></i> {{moCalendarDetailed updatedAt}}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    {{/if}}
                                 {{/each}}
                             </ul>
 
                         </div>
                     </div>
 
-                    <div class="full-height" style="height: 90%">
+                    <div class="full-height" style="height: 600px">
                         <div class="full-height-scroll white-bg border-left">
 
                             <div class="element-detail-box" style="height: 100%">
@@ -190,6 +195,8 @@
                                 <div class="tab-content">
                                 {{#each exercises}}
                                     <div id="{{_id}}" class="tab-pane">
+
+                                        <h4 class="m-b-md"><strong>{{groupName}}</strong> > {{description}}</h4>
 
                                         <table class="table table-hover margin bottom">
                                             <thead>
