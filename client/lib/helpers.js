@@ -15,9 +15,9 @@ Template.registerHelper('moCalendarDetailed', function (time) {
     if (time !== undefined) {
         return moment(time).calendar(null, {
             sameDay: '[Today], h:mm a',
-            nextDay: '[Tomorrow, h:mm a]',
-            nextWeek: 'dddd',
-            lastDay: '[Yesterday, h:mm a]',
+            nextDay: '[Tomorrow], h:mm a',
+            nextWeek: 'dddd, h:mm a',
+            lastDay: '[Yesterday], h:mm a',
             lastWeek: '[Last] dddd, h:mm a',
             sameElse: 'DD/MMM/YY, h:mm a'
         });
