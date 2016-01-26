@@ -25,7 +25,8 @@ Template.manageGroups.events({
                     description: "",
                     questions: [],
                     createdAt: new Date(),
-                    updatedAt: new Date()
+                    updatedAt: new Date(),
+                    show: false
                 }
             }
         });

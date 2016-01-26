@@ -57,7 +57,7 @@ Groups.allow({
         return userId && Roles.userIsInRole(userId, ['instructor', 'admin']);
     },
     update: function (userId, doc, fields) {
-        return Roles.userIsInRole(userId, ['admin']) || doc.createdBy === userId || _.without(fields, 'exercises').length === 0;
+        return Roles.userIsInRole(userId, ['admin']) || doc.createdBy === userId || (_.indexOf(doc.teachingTeam, userId) >= 0 && _.without(fields, 'exercises', 'updatedAt').length === 0);
     },
     remove: function (userId, doc) {
         return Roles.userIsInRole(userId, ['admin']) || doc.createdBy === userId;
