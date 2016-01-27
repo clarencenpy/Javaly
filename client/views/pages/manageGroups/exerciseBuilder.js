@@ -52,7 +52,7 @@ Template.exerciseBuilder.helpers({
 Template.exerciseBuilder.events({
     'click #save-btn': function (event, instance) {
         var questions = instance.sortable.toArray() || [];
-        if (questions[0] === '4q7') {   //unknown issue that causes '4q7' to be returned when nothing is selected
+        if (questions[0] === '4q7') {   //TODO: unknown issue that causes '4q7' to be returned when nothing is selected
             questions = [];
         }
         var description = instance.$('input[name=description]').val();
