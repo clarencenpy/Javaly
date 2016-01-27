@@ -4,6 +4,10 @@ Template.exerciseDashboard.onCreated(function () {
     template.reverse = new ReactiveVar(true);
     template.completedPercentage = new ReactiveVar();
     template.attemptedPercentage = new ReactiveVar();
+
+    //for sending nudge jobs
+    template.loadingJobs = new ReactiveVar(false);
+    template.nudgeJobs = new ReactiveVar();
 });
 
 Template.exerciseDashboard.onRendered(function () {
@@ -166,10 +170,35 @@ Template.exerciseDashboard.events({
         });
     },
 
-    'click #nudge-btn': function () {
+    'click #nudge-btn': function (event, instance) {
+        //allow the instructor to verify the emails that is going to be sent
+        instance.loadingJobs.set(true);
         Meteor.call('nudge', Router.current().params.groupId, Router.current().params.exerciseId, 30, {sendToUnsolved: true},function (err, res) {
-            console.log(res);
+            instance.nudgeJobs.set(res);
+            instance.loadingJobs(false);
         });
+    },
+
+    'click #send-nudge-btn': function (event, instance) {
+        //send the emails after confirmation
+
+        //needed for creating the email subject
+        var group = Groups.findOne(Router.current().params.groupId);
+        var exercise = _.find(group.exercises, function (exercise) {
+            if (exercise._id === Router.current().params.exerciseId) return exercise;
+        });
+
+        var mail = {
+            subject: 'Review your work: ' + group.name + ' - ' + exercise.description,
+            jobs: instance.nudgeJobs.get(),
+            message: message,
+            sender: Meteor.user().profile.name
+        };
+        Meteor.call('sendNudgeEmails', mail, function (err, res) {
+            if (err) console.log(err);
+            swal('Sent Successfully', '', 'success');
+        });
+        instance.nudgeJobs.set(null);
     }
 });
 

@@ -38,7 +38,7 @@
                     <button id="boxplot-btn" class="btn btn-primary btn-sm btn-block m-t-xs" data-toggle="modal" data-target="#boxplot-modal">Box Plot</button>
                 </div>
                 <div class="col-xs-1" style="padding:0 15px 0 2px">
-                    <button id="nudge-btn" class="btn btn-primary btn-sm btn-block m-t-xs">Nudge</button>
+                    <button id="nudge-btn" class="btn btn-primary btn-sm btn-block m-t-xs" data-toggle="modal" data-target="#nudge-modal">Nudge</button>
                 </div>
             </div>
 
@@ -79,6 +79,23 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal inmodal fade" id="nudge-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="min-width: 80%">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header">
+                    <h2>Nudge your students</h2>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button id="send-nudge-btn" class="btn btn-primary" data-dismiss="modal" style="width: 200px">Send Emails</button>
+                    <button class="btn btn-white" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
