@@ -55,11 +55,13 @@ Meteor.methods({
 
         //queryUserId is provided if called by a student, only returns a single student's data and the boxplot stats
 
-        var group = Groups.findOne({_id: groupId, 'exercises._id': exerciseId}, {fields: {
+        var group = Groups.findOne({_id: groupId}, {fields: {
             exercises: 1,
             participants: 1
         }});
-        var exercise = group.exercises[0];
+        var exercise = _.find(group.exercises, function (exercise) {
+            if (exercise._id === exerciseId) return exercise;
+        });
         var boxplotMatrix = [];
         var questionTitles = [];
         var studentMatrix = {};
