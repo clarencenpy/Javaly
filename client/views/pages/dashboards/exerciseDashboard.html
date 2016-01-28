@@ -38,7 +38,7 @@
                     <button id="boxplot-btn" class="btn btn-primary btn-sm btn-block m-t-xs" data-toggle="modal" data-target="#boxplot-modal">Box Plot</button>
                 </div>
                 <div class="col-xs-1" style="padding:0 15px 0 2px">
-                    <button id="nudge-btn" class="btn btn-primary btn-sm btn-block m-t-xs" data-toggle="modal" data-target="#nudge-modal">Nudge</button>
+                    <button class="btn btn-primary btn-sm btn-block m-t-xs" data-toggle="modal" data-target="#nudge-modal">Nudge</button>
                 </div>
             </div>
 
@@ -87,14 +87,75 @@
     <div class="modal inmodal fade" id="nudge-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" style="min-width: 80%">
             <div class="modal-content animated fadeIn">
-                <div class="modal-header">
+                <div class="modal-header" style="padding: 10px">
                     <h2>Nudge your students</h2>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="min-height: 560px">
+                    <div style="border-bottom: 1px solid grey; margin-bottom: 20px; padding: 15px">
+                        <strong>Send to bottom </strong>
+                        <input style="display: inline; width: 60px" type="number" id="percentile" name="percentile" class="form-control" min="5" max="50" step="5" value="30">
+                        <strong class="m-r-lg">percentile</strong>
+                        <strong>Send reminder if unsolved</strong>
+                        <input style="display: inline; width: 40px; padding-top: 10px" type="checkbox" id="sendToUnsolved" name="sendToUnsolved">
+                        <span id="generate-preview-btn" class="btn btn-primary btn-sm pull-right">Generate Preview</span>
+                    </div>
 
+
+                    {{#if loadingJobs}}
+                        {{>loading}}
+                    {{else}}
+                        {{#if nudgeJobs}}
+                            <strong style="padding-left: 15px; margin-bottom: 0">Students that will be emailed: </strong>
+                            <div class="panel-body m-b-md" style="height: 350px; overflow-y: scroll">
+                                <div class="panel-group" id="accordion">
+
+                                    {{#each nudgeJobs}}
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h5 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#{{removeIllegalChars email}}">{{name}}</a>
+                                            </h5>
+                                        </div>
+                                        <div id="{{removeIllegalChars email}}" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                {{#if unsolved.length}}
+                                                    <strong>Unsolved questions</strong>
+                                                    <ul>
+                                                        {{#each unsolved}}
+                                                            <li>{{title}}</li>
+                                                        {{/each}}
+                                                    </ul>
+                                                {{/if}}
+                                                {{#if retry.length}}
+                                                    <strong>Questions to retry</strong>
+                                                    <ul>
+                                                        {{#each retry}}
+                                                            <li>{{title}}</li>
+                                                        {{/each}}
+                                                    </ul>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <span id="send-nudge-btn" class="btn btn-primary" data-dismiss="modal" style="width: 200px">Send Emails</span>
+                            </div>
+                        {{else}}
+                            <div class="text-center" style="margin-top: 160px">
+                                <i class="fa fa-users" style="font-size: 3em"></i>
+                                <h4>
+                                    <p>No students have been flagged for emailing</p>
+                                </h4>
+                            </div>
+
+                        {{/if}}
+                    {{/if}}
                 </div>
                 <div class="modal-footer">
-                    <button id="send-nudge-btn" class="btn btn-primary" data-dismiss="modal" style="width: 200px">Send Emails</button>
                     <button class="btn btn-white" data-dismiss="modal">Close</button>
                 </div>
             </div>

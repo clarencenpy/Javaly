@@ -139,6 +139,20 @@ Template.exerciseDashboard.helpers({
 
     attemptedPercentage: function () {
         return Template.instance().attemptedPercentage.get();
+    },
+
+
+    //nudge feature
+    loadingJobs: function () {
+        return Template.instance().loadingJobs.get();
+    },
+    nudgeJobs: function () {
+        return Template.instance().nudgeJobs.get();
+    },
+    removeIllegalChars: function (email) {
+        email = email.replace(/@/g, '');
+        email = email.replace(/\./g, '');
+        return email;
     }
 
 });
@@ -170,12 +184,17 @@ Template.exerciseDashboard.events({
         });
     },
 
-    'click #nudge-btn': function (event, instance) {
+    //nudge feature
+
+    'click #generate-preview-btn': function (event, instance) {
         //allow the instructor to verify the emails that is going to be sent
+
         instance.loadingJobs.set(true);
-        Meteor.call('nudge', Router.current().params.groupId, Router.current().params.exerciseId, 30, {sendToUnsolved: true},function (err, res) {
+        var percentile = instance.$('input[name="percentile"]').val();
+        var sendToUnsolved = instance.$('input[name="sendToUnsolved"]').is(':checked');
+        Meteor.call('nudge', Router.current().params.groupId, Router.current().params.exerciseId, percentile, {sendToUnsolved: sendToUnsolved},function (err, res) {
             instance.nudgeJobs.set(res);
-            instance.loadingJobs(false);
+            instance.loadingJobs.set(false);
         });
     },
 
@@ -189,9 +208,9 @@ Template.exerciseDashboard.events({
         });
 
         var mail = {
-            subject: 'Review your work: ' + group.name + ' - ' + exercise.description,
+            groupName: group.name,
+            exerciseDesc: exercise.description,
             jobs: instance.nudgeJobs.get(),
-            message: message,
             sender: Meteor.user().profile.name
         };
         Meteor.call('sendNudgeEmails', mail, function (err, res) {
