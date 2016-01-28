@@ -83,52 +83,6 @@
             </div>
 
 
-            <!--Modal for joining groups-->
-            <div class="modal inmodal fade" id="join-groups-modal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content animated fadeIn">
-                        <div class="modal-header" style="padding: 0">
-                            <h2>Available Groups</h2>
-                        </div>
-                        <div class="modal-body">
-                            {{#if availableGroups.count}}
-                                <div class="project-list">
-                                    <table class="table table-hover">
-                                        <tbody>
-                                        {{#each availableGroups}}
-                                            <tr>
-                                                <td>
-                                                    <span style="font-weight: 600">{{name}}</span>
-                                                    <br/>
-                                                    <small>By {{getName createdBy}}</small>
-                                                </td>
-                                                <td>
-                                                    {{#if canRequest groupType}} <i class="fa fa-lg fa-lock"></i> {{/if}}
-                                                </td>
-                                                <td style="text-align: right">
-                                                    <a id="join-btn" class="btn btn-primary btn-sm"><i class="fa fa-sign-in"></i> Join </a>
-                                                </td>
-                                            </tr>
-                                        {{/each}}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            {{else}}
-                                <div class="text-center" style="margin-top: 20px">
-                                    <i class="fa fa-list" style="font-size: 5em; color:#888888"></i>
-                                    <h4>There are no groups available for you now.</h4>
-                                </div>
-                            {{/if}}
-                        </div>
-                        <div class="modal-footer" style="padding: 10px">
-                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
             <!--Exercise Inbox-->
             <div class="col-md-9 col-sm-12">
                 <div class="ibox-content" style="padding: 0">
@@ -221,7 +175,7 @@
                                                 <th class="col-md-5">Question</th>
                                                 <th class="col-md-3">Last Attempt</th>
                                                 <th class="col-md-1">Status</th>
-                                                <th class="col-md-2"></th>
+                                                <th class="col-md-2" style="min-width: 150px"></th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -244,13 +198,12 @@
                                                     </td>
                                                     <td class="text-center">
                                                         {{#if completed}}
-                                                            <a class="retry-question-btn btn btn-primary btn-xs pull-right" style="width: 50px"> Retry</a>
+                                                            <a class="retry-question-btn btn btn-success btn-xs pull-right m-l-xs" style="width: 50px"> Retry</a>
+                                                        {{/if}}
+                                                        {{#if lastAttempted}}
+                                                            <a class="goto-question-btn btn btn-primary btn-xs pull-right" style="width: 50px"> View</a>
                                                         {{else}}
-                                                            {{#if lastAttempted}}
-                                                                <a class="goto-question-btn btn btn-primary btn-xs pull-right" style="width: 50px"> View</a>
-                                                            {{else}}
-                                                                <a class="goto-question-btn btn btn-primary btn-xs pull-right" style="width: 50px"> Start </a>
-                                                            {{/if}}
+                                                            <a class="goto-question-btn btn btn-primary btn-xs pull-right" style="width: 50px"> Start </a>
                                                         {{/if}}
                                                     </td>
                                                 </tr>
@@ -288,6 +241,52 @@
                     <div id="boxplot" class="text-center" style="min-height: 600px"></div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--Modal for joining groups-->
+    <div class="modal inmodal fade" id="join-groups-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header" style="padding: 0">
+                    <h2>Available Groups</h2>
+                </div>
+                <div class="modal-body">
+                    {{#if availableGroups.count}}
+                        <div class="project-list">
+                            <table class="table table-hover">
+                                <tbody>
+                                {{#each availableGroups}}
+                                    <tr>
+                                        <td>
+                                            <span style="font-weight: 600">{{name}}</span>
+                                            <br/>
+                                            <small>By {{getName createdBy}}</small>
+                                        </td>
+                                        <td>
+                                            {{#if canRequest groupType}} <i class="fa fa-lg fa-lock"></i> {{/if}}
+                                        </td>
+                                        <td style="text-align: right">
+                                            <a id="join-btn" class="btn btn-primary btn-sm"><i class="fa fa-sign-in"></i> Join </a>
+                                        </td>
+                                    </tr>
+                                {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    {{else}}
+                        <div class="text-center" style="margin-top: 20px">
+                            <i class="fa fa-list" style="font-size: 5em; color:#888888"></i>
+                            <h4>There are no groups available for you now.</h4>
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="modal-footer" style="padding: 10px">
                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                 </div>
             </div>
