@@ -24,7 +24,7 @@
                     <td data-value="{{getTimestamp updatedAt}}">{{moFromNow updatedAt}}</td>
                     <td>{{numAttempts}}</td>
                     <td>{{#if verified}} <span class="label label-primary">Verified</span> {{else}} <span class="label label-warning">Unverified</span> {{/if}}</td>
-                    <td>{{#each tags}}<p class="label" style="margin-left: 3px">{{this}}</p>{{/each}}</td>
+                    <td style="max-width: 200px">{{#each tags}}<span class="label" style="margin-left: 3px; display: inline-block">{{this}}</span>{{/each}}</td>
                     <td>
                         {{#if isOwner createdBy}}
                             <a href="{{pathFor 'updateQuestion'}}"><i class="fa fa-pencil"></i> Edit</a>

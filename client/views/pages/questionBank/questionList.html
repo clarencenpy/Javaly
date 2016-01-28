@@ -22,7 +22,7 @@
                     <td>{{author}}</td>
                     <td>{{{content}}}</td>
                     <td>{{numAttempts}}</td>
-                    <td>{{#each tags}}<p class="label" style="margin-left: 3px">{{this}}</p>{{/each}}</td>
+                    <td style="max-width: 150px">{{#each tags}}<span class="label" style="margin-left: 3px; display: inline-block">{{this}}</span>{{/each}}</td>
                     <td class="text-center">
                         {{#if added _id}}
                             <button class="remove-btn btn btn-primary btn-xs"><i class="fa fa-check"></i></button>
