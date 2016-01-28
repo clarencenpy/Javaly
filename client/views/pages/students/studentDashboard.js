@@ -149,6 +149,25 @@ Template.studentDashboard.events({
             Router.go('codepad', {_id: attemptId});
         }
     },
+
+    'click .retry-question-btn': function () {
+        var questionId = this._id;
+        swal({
+            title: "Try question again?",
+            text: 'This will reset your existing attempt',
+            type: "warning",
+            showCancelButton: true,
+            allowEscapeKey: true,
+            confirmButtonText: 'Retry'
+        }, function () {
+            var attemptId = Attempts.insert({
+                userId: Meteor.userId(),
+                questionId: questionId
+            });
+            Router.go('codepad', {_id: attemptId});
+        });
+    },
+
     'click #join-btn': function () {
         Meteor.call('requestJoinGroup', this._id, function (err, res) {
             if (err) console.log(err);
@@ -170,7 +189,6 @@ Template.studentDashboard.events({
     },
 
     'click .boxplot-btn': function (event, instance) {
-        console.log(this);
         var target = instance.$('#boxplot');
         Meteor.call('boxplot', this.groupId, this._id, Meteor.userId(), function (err, res) {
             renderBoxplot(res, target);     //method found in exerciseDashboard.js

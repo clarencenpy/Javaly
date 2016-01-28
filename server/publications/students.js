@@ -46,7 +46,8 @@ Meteor.publishComposite('assignments', {
                                 completed: 1,
                                 history: {$slice: -1}, //return only the history of the most recent attempt (to get lastAttempt date)
                                 'history.date': 1,
-                                updatedAt: 1
+                                updatedAt: 1,
+                                createdAt: 1
                             }
                         });
                     }

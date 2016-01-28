@@ -243,10 +243,14 @@
                                                         {{/if}}
                                                     </td>
                                                     <td class="text-center">
-                                                        {{#if lastAttempted}}
-                                                            <a class="goto-question-btn btn btn-primary btn-xs pull-right" style="width: 50px"> View</a>
+                                                        {{#if completed}}
+                                                            <a class="retry-question-btn btn btn-primary btn-xs pull-right" style="width: 50px"> Retry</a>
                                                         {{else}}
-                                                            <a class="goto-question-btn btn btn-primary btn-xs pull-right" style="width: 50px"> Start </a>
+                                                            {{#if lastAttempted}}
+                                                                <a class="goto-question-btn btn btn-primary btn-xs pull-right" style="width: 50px"> View</a>
+                                                            {{else}}
+                                                                <a class="goto-question-btn btn btn-primary btn-xs pull-right" style="width: 50px"> Start </a>
+                                                            {{/if}}
                                                         {{/if}}
                                                     </td>
                                                 </tr>
