@@ -44,6 +44,7 @@ Template.questionSearch.onRendered(function () {
 
     // retrieve results from search params
     template.autorun(function () {
+        template.searching.set(true);
         var searchParams = template.searchParams.get();
         if (template.data.verifiedOnly) searchParams.excludeUnverified = true;
         Meteor.call('searchQuestions', searchParams, function (err, res) {
