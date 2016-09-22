@@ -24,6 +24,11 @@ Template.registerHelper('moCalendarDetailed', function (time) {
     }
 });
 
+Template.registerHelper('log', function (log) {
+    console.log(log)
+})
+
+
 /** CODE TO MANIPULATE THE SIDEBAR **/
 
 //toggleSidebar = function() {

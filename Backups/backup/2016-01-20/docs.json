@@ -1,0 +1,3060 @@
+{ 
+    "_id" : "wbMFX8tnvj5JPY9L3", 
+    "data" : {
+        "v" : NumberInt(57), 
+        "meta" : {
+            "mtime" : 1.452065942301E12, 
+            "ctime" : 1.452065942301E12
+        }, 
+        "snapshot" : "public static int add(int a, int b){\n    return a+b;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "CQGdnrXtEWLPiDuKM", 
+    "data" : {
+        "v" : NumberInt(145), 
+        "meta" : {
+            "mtime" : 1.452068719989E12, 
+            "ctime" : 1.452068719989E12
+        }, 
+        "snapshot" : "public static int calculate(double x, int y, int z){\n    \n    int xInt = (int) x;\n    \n    int subtracted = xInt - y;\n    \n    return subtracted/z;\n    \n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "LehegBkxTgBEF8JEm", 
+    "data" : {
+        "v" : NumberInt(100), 
+        "meta" : {
+            "mtime" : 1.45206883819E12, 
+            "ctime" : 1.45206883819E12
+        }, 
+        "snapshot" : "public static void quotify(String str){\n    \n    \n    \n    System.out.println(\"\\\"\" + str + \"\\\"\" );\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "ubk3weFEXwkTgmbrb", 
+    "data" : {
+        "v" : NumberInt(88), 
+        "meta" : {
+            "mtime" : 1.452068933123E12, 
+            "ctime" : 1.452068933123E12
+        }, 
+        "snapshot" : "public static double doubleInt(int a, int b){\n    \n    \n    \n    return (double) a + b;\n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "iDjBNfa3GtXdbg9pf", 
+    "data" : {
+        "v" : NumberInt(256), 
+        "meta" : {
+            "mtime" : 1.452068995322E12, 
+            "ctime" : 1.452068995322E12
+        }, 
+        "snapshot" : "\npublic static void flippedTriangle(int height){\n    \n    for (int i = 1; i <= height; i++){\n        \n        for(int empty = i; empty < height; empty++){\n            System.out.print(\" \");\n        }\n        for (int ast = i; ast > 0; ast-- ){\n            System.out.print(\"*\");\n        }\n        System.out.println();\n        \n        \n    }\n    \n    \n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "vrDrsTDQzvxCrTMbo", 
+    "data" : {
+        "v" : NumberInt(361), 
+        "meta" : {
+            "mtime" : 1.452141573517E12, 
+            "ctime" : 1.452141573517E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n) {\n    for (int i = 0; i < n; i++) {\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "dyhqiivYQAzD2FfPa", 
+    "data" : {
+        "v" : NumberInt(362), 
+        "meta" : {
+            "mtime" : 1.452141566296E12, 
+            "ctime" : 1.452141566296E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 0; i < n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "LvMB3M9Qq3CePtswt", 
+    "data" : {
+        "v" : NumberInt(297), 
+        "meta" : {
+            "mtime" : 1.452141520467E12, 
+            "ctime" : 1.452141520467E12
+        }, 
+        "snapshot" : "\n    public static void main(String [] args){\n        \n        helloWorld(2);\n    \n        \n    }\n    \n    public static void helloWorld (int n) {\n        \n        for(int i = 0; i<n;i++){\n            System.out.println(\"Hello World!\");    \n        }\n        \n        \n    }\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "rYCeACwN5Cxrergja", 
+    "data" : {
+        "v" : NumberInt(121), 
+        "meta" : {
+            "mtime" : 1.452141582549E12, 
+            "ctime" : 1.452141582549E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 0; i < n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "gk6w6xF3JRPKE5hiT", 
+    "data" : {
+        "v" : NumberInt(415), 
+        "meta" : {
+            "mtime" : 1.45214159387E12, 
+            "ctime" : 1.45214159387E12
+        }, 
+        "snapshot" : "//just writing the method is sufficient, you may omit the class\n\n    \n    public static void helloWorld(int n){\n    \n        for (int i = 0; i < n; i++){\n        \n        System.out.println(\"Hello World!\");\n        \n        }\n    }\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "6GwdAmJ334sNJvLQo", 
+    "data" : {
+        "v" : NumberInt(418), 
+        "meta" : {
+            "mtime" : 1.452141502143E12, 
+            "ctime" : 1.452141502143E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i=0; i<n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "x3QM9pZNsN3jFdcjZ", 
+    "data" : {
+        "v" : NumberInt(111), 
+        "meta" : {
+            "mtime" : 1.452141501506E12, 
+            "ctime" : 1.452141501506E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 0; i < n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}\n\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "KiHHZYBS5kLqQn2i9", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452144528195E12, 
+            "ctime" : 1.452144528195E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "25kRJdwPzFd6Zuk2Z", 
+    "data" : {
+        "v" : NumberInt(629), 
+        "meta" : {
+            "mtime" : 1.45214150665E12, 
+            "ctime" : 1.45214150665E12
+        }, 
+        "snapshot" : "//you only need this, with the proper method name\npublic static void sayHi(){\n    for(int i = 0; i < 6; i++){\n        System.out.println(\"helloWorld!\");\n    }\n}\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "F2LYrgr7iPiRDbbBS", 
+    "data" : {
+        "v" : NumberInt(193), 
+        "meta" : {
+            "mtime" : 1.452141520093E12, 
+            "ctime" : 1.452141520093E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 0; i < n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "iZTtFPR5YtNPMtkqi", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452149827477E12, 
+            "ctime" : 1.452149827477E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "9aeuDPs7wfDWMKR39", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452186046043E12, 
+            "ctime" : 1.452186046043E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "xREbqjbLFZTXwbTTg", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452228065216E12, 
+            "ctime" : 1.452228065216E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "sXqBaSuYvimnJtq52", 
+    "data" : {
+        "v" : NumberInt(106), 
+        "meta" : {
+            "mtime" : 1.451974629273E12, 
+            "ctime" : 1.451974629273E12
+        }, 
+        "snapshot" : "public int adder(int a, int b) {\n    return a + b;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "ciydQM9rrJTvHpijv", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451977930941E12, 
+            "ctime" : 1.451977930941E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "8KGgPiiD8tLvhKXDF", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451978340296E12, 
+            "ctime" : 1.451978340296E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "bqy2vNTnyezZ4hTjH", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.45198063173E12, 
+            "ctime" : 1.45198063173E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "XcrY6EhacBKhsGcAs", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451980634503E12, 
+            "ctime" : 1.451980634503E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "JCfAMTMKrWSRuE3Zb", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451981346268E12, 
+            "ctime" : 1.451981346268E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "2cDpyzrzW7fMYtgqY", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452000445818E12, 
+            "ctime" : 1.452000445818E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "KKQAzrCAWdAsxynaS", 
+    "data" : {
+        "v" : NumberInt(52), 
+        "meta" : {
+            "mtime" : 1.452000459928E12, 
+            "ctime" : 1.452000459928E12
+        }, 
+        "snapshot" : "public static int add(int a, int b) {\n    return a + b;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "LtfY3sfqJ6Q5z8PrL", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452000507279E12, 
+            "ctime" : 1.452000507279E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "xTxj5iz785bzyyw5n", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452000908552E12, 
+            "ctime" : 1.452000908552E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "QwTcdzzCBQNH8b6C3", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452000915024E12, 
+            "ctime" : 1.452000915024E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "D7YtoY2rxe8aiixxk", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452001124052E12, 
+            "ctime" : 1.452001124052E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "hHHz5GMCJeLFyCjEv", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452001137803E12, 
+            "ctime" : 1.452001137803E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "wdzZbffweuTzDEapv", 
+    "data" : {
+        "v" : NumberInt(95), 
+        "meta" : {
+            "mtime" : 1.452005936687E12, 
+            "ctime" : 1.452005936687E12
+        }, 
+        "snapshot" : "public static int adder(int a, int b){\n    return a + b\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "Rikv379BsQnfcP4fB", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452007437369E12, 
+            "ctime" : 1.452007437369E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "aBjkkxrTPtu8GTHrJ", 
+    "data" : {
+        "v" : NumberInt(87), 
+        "meta" : {
+            "mtime" : 1.452052226585E12, 
+            "ctime" : 1.452052226585E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n) {\n    for (int i=0; i<n;i++) {\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "ZPDD3QxNJNftreA9W", 
+    "data" : {
+        "v" : NumberInt(118), 
+        "meta" : {
+            "mtime" : 1.452054030531E12, 
+            "ctime" : 1.452054030531E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for (int i = 0; i < n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "xeJKFzv2DaieutLzN", 
+    "data" : {
+        "v" : NumberInt(186), 
+        "meta" : {
+            "mtime" : 1.452054041796E12, 
+            "ctime" : 1.452054041796E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n) {\n    int count = Math.abs(n);\n    for(int i = 0; i < count; i++) {\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "485FrHELN3xrJfc9Q", 
+    "data" : {
+        "v" : NumberInt(175), 
+        "meta" : {
+            "mtime" : 1.452054064466E12, 
+            "ctime" : 1.452054064466E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    if(n>0){\n        for(int i=0;i<n;i++){\n            System.out.println(\"Hello World!\");\n        } \n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "6TCavHC6ZfXtYwvyG", 
+    "data" : {
+        "v" : NumberInt(310), 
+        "meta" : {
+            "mtime" : 1.452054024893E12, 
+            "ctime" : 1.452054024893E12
+        }, 
+        "snapshot" : "public static void helloWorld(int x){\n    if(x >= 0){\n\t    for(int i = 0; i < x; i++){\n\t        System.out.println(\"Hello World!\");\n\t        \n\t    }\n    }    \n\t    \n}\t", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "5MfSESh3JThBKKriE", 
+    "data" : {
+        "v" : NumberInt(240), 
+        "meta" : {
+            "mtime" : 1.452054068703E12, 
+            "ctime" : 1.452054068703E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    if(n > 0){\n        for(int i = 0;i < n;i++){\n        System.out.println(\"Hello World!\");\n        }\n    }\n}\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "ssfnSdiBntafRN9La", 
+    "data" : {
+        "v" : NumberInt(116), 
+        "meta" : {
+            "mtime" : 1.45205411487E12, 
+            "ctime" : 1.45205411487E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 0; i < n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "o5Mnw6okqBBXnPmEK", 
+    "data" : {
+        "v" : NumberInt(124), 
+        "meta" : {
+            "mtime" : 1.452054081131E12, 
+            "ctime" : 1.452054081131E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int x = 0; x < n ; x++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "a3dzSb8JEavXaHMFf", 
+    "data" : {
+        "v" : NumberInt(204), 
+        "meta" : {
+            "mtime" : 1.452054050448E12, 
+            "ctime" : 1.452054050448E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    if(n < 0){\n        return;\n    }else{\n        for(int i = 1; i <= n; i++){\n            System.out.println(\"Hello World!\");\n        }\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "88vHSs3pnL3acdcJe", 
+    "data" : {
+        "v" : NumberInt(208), 
+        "meta" : {
+            "mtime" : 1.452054019821E12, 
+            "ctime" : 1.452054019821E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 0; i < n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "rTKLEAiJiWnAugPyi", 
+    "data" : {
+        "v" : NumberInt(372), 
+        "meta" : {
+            "mtime" : 1.452054001218E12, 
+            "ctime" : 1.452054001218E12
+        }, 
+        "snapshot" : "    public static void helloWorld(int n) {\n        for (int i=0 ; i<n; i++) {\n            System.out.println(\"Hello World!\");\n        }\n    }\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "g34mpfsiT4RDEAreg", 
+    "data" : {
+        "v" : NumberInt(210), 
+        "meta" : {
+            "mtime" : 1.452054048096E12, 
+            "ctime" : 1.452054048096E12
+        }, 
+        "snapshot" : "\n    public static void main(String [] args){\n        helloWorld(8);\n    }\n    public static void helloWorld(int n){\n        for (int i = 0; i < n; i++){\n            System.out.println(\"Hello World!\");\n        }\n            \n    }\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "7ap7fA2a59ppsYacT", 
+    "data" : {
+        "v" : NumberInt(136), 
+        "meta" : {
+            "mtime" : 1.452053997176E12, 
+            "ctime" : 1.452053997176E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 1; i <= n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "rZeg5B28m2XjqQvmS", 
+    "data" : {
+        "v" : NumberInt(198), 
+        "meta" : {
+            "mtime" : 1.452054027275E12, 
+            "ctime" : 1.452054027275E12
+        }, 
+        "snapshot" : "public static void helloWorld(int num){\n    for (int i = 0; i< num; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "qmrGmXuxjoxKQQRNi", 
+    "data" : {
+        "v" : NumberInt(340), 
+        "meta" : {
+            "mtime" : 1.452054113514E12, 
+            "ctime" : 1.452054113514E12
+        }, 
+        "snapshot" : "public static void helloWorld (int x){\n    for (int i = 0; i < x; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "r7F9SxNsiyKo6SPuw", 
+    "data" : {
+        "v" : NumberInt(98), 
+        "meta" : {
+            "mtime" : 1.452054031259E12, 
+            "ctime" : 1.452054031259E12
+        }, 
+        "snapshot" : "public static void helloWorld (int n){\n    if(n>=0){\n\n        for(int i =0;i<n;i++){\n            System.out.println(\"Hello World!\");\n            \n        }\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "9C7eGWWKu9HSXXfer", 
+    "data" : {
+        "v" : NumberInt(312), 
+        "meta" : {
+            "mtime" : 1.452054199991E12, 
+            "ctime" : 1.452054199991E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 0; i < n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "hj7ZApYsqCKSWhXpK", 
+    "data" : {
+        "v" : NumberInt(133), 
+        "meta" : {
+            "mtime" : 1.452054141761E12, 
+            "ctime" : 1.452054141761E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    if(n>0){\n      for(int i = 0; i < n; i++){\n          System.out.println(\"Hello World!\");\n      }  \n    }\n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "jvc6hFf2P7LWtaiKB", 
+    "data" : {
+        "v" : NumberInt(266), 
+        "meta" : {
+            "mtime" : 1.45205404268E12, 
+            "ctime" : 1.45205404268E12
+        }, 
+        "snapshot" : "\n    public static void helloWorld(int n) {\n\n        for(int i=1;i<=n;i++){\n        System.out.println(\"Hello World!\");\n        }\n    }\n\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "iQw6othRyNbrEBkYz", 
+    "data" : {
+        "v" : NumberInt(129), 
+        "meta" : {
+            "mtime" : 1.452054239553E12, 
+            "ctime" : 1.452054239553E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n) {\n    for ( int i = 0 ; i < n ; i++ ) {\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "q6bSHCKQ9uzcSncqB", 
+    "data" : {
+        "v" : NumberInt(183), 
+        "meta" : {
+            "mtime" : 1.452054124119E12, 
+            "ctime" : 1.452054124119E12
+        }, 
+        "snapshot" : "public static void helloWorld (int n){\n    if(n >= 0) {\n        for(int i = 0; i < n; i++) {\n            System.out.println(\"Hello World!\");\n        }\n    } else {\n        System.out.println(\"Input must be positive!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "RTczWWbscp78DHW7G", 
+    "data" : {
+        "v" : NumberInt(190), 
+        "meta" : {
+            "mtime" : 1.452054172559E12, 
+            "ctime" : 1.452054172559E12
+        }, 
+        "snapshot" : "    public static void helloWorld(int n){\n        for(int k=0;k<n;k++){\n            System.out.println(\"Hello World!\");\n        }\n    }", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "W4HTpniNBxj4jzyfP", 
+    "data" : {
+        "v" : NumberInt(125), 
+        "meta" : {
+            "mtime" : 1.452054077269E12, 
+            "ctime" : 1.452054077269E12
+        }, 
+        "snapshot" : "public static void helloWorld(int k){\n    \n    if(k>=1){\n        for(int i= 1;i<=k;i++){\n            System.out.println(\"Hello World!\");\n            \n        }\n        \n    }\n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "8RsyboSdycnQKPSbg", 
+    "data" : {
+        "v" : NumberInt(366), 
+        "meta" : {
+            "mtime" : 1.452054109924E12, 
+            "ctime" : 1.452054109924E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n       \n    for (int i = 1; i <=n; i++){\n        System.out.println(\"Hello World!\");\n    }\n\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "2W5sNrqtxc48FQktp", 
+    "data" : {
+        "v" : NumberInt(162), 
+        "meta" : {
+            "mtime" : 1.452054372746E12, 
+            "ctime" : 1.452054372746E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    \n    for(int i =0;i<n;i++){\n        System.out.println(\"Hello World!\");\n    }\n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "enLBQammzsfXw25NJ", 
+    "data" : {
+        "v" : NumberInt(496), 
+        "meta" : {
+            "mtime" : 1.452054236037E12, 
+            "ctime" : 1.452054236037E12
+        }, 
+        "snapshot" : "\n    public static void helloWorld(int n){\n        \n        if(n >=0){\n            \n            for(int i=0;i<n;i++){\n                System.out.println(\"Hello World!\");\n            }\n            \n        }\n    \n    }", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "fPv5iLkcXNvpRN8ab", 
+    "data" : {
+        "v" : NumberInt(151), 
+        "meta" : {
+            "mtime" : 1.452055140813E12, 
+            "ctime" : 1.452055140813E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n) {\n    if (n >= 0) {\n        for (int i = 1; i <= n; i++) {\n            System.out.println(\"Hello World!\");\n        }\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "cahCYZ27DjL43y7To", 
+    "data" : {
+        "v" : NumberInt(119), 
+        "meta" : {
+            "mtime" : 1.452054241035E12, 
+            "ctime" : 1.452054241035E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    if(n>0){\n        for(int i=0; i<n; i++){\n            System.out.println(\"Hello World!\");\n        }\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "eg2MDt8wbWRYLPXQL", 
+    "data" : {
+        "v" : NumberInt(450), 
+        "meta" : {
+            "mtime" : 1.452060737589E12, 
+            "ctime" : 1.452060737589E12
+        }, 
+        "snapshot" : "\n    public static void helloWorld(int n){\n        \n        if(n>0) {\n            for(int i = 0; i < n; i++) {\n            System.out.println(\"Hello World!\");\n            }\n        }\n        \n    }\n\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "huy6niyWkrRAqKkBK", 
+    "data" : {
+        "v" : NumberInt(269), 
+        "meta" : {
+            "mtime" : 1.452054074475E12, 
+            "ctime" : 1.452054074475E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n)\n{\n    for (int i = 0; i < n; i++)\n    {\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "RomhCRP6gjtgfwFbK", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452065953654E12, 
+            "ctime" : 1.452065953654E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "CtvxrpNgGXMnuMfmT", 
+    "data" : {
+        "v" : NumberInt(120), 
+        "meta" : {
+            "mtime" : 1.452066131771E12, 
+            "ctime" : 1.452066131771E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    \n    for (int i = 0; i < n; i++){\n        System.out.println(\"Hello World!\");\n    }\n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "QTcP25QyF79aGyK62", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452066586063E12, 
+            "ctime" : 1.452066586063E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "REPrJ8iXHkDg8Mscd", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452067080381E12, 
+            "ctime" : 1.452067080381E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "jAnn7tYe9HW4fKbHe", 
+    "data" : {
+        "v" : NumberInt(170), 
+        "meta" : {
+            "mtime" : 1.452066847285E12, 
+            "ctime" : 1.452066847285E12
+        }, 
+        "snapshot" : "public static String parseEmail(String email){\n\n    return email.substring(0,email.indexOf('@'));\n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "koMXhsre5ziHdJt9d", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452067761709E12, 
+            "ctime" : 1.452067761709E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "wvD7P9jvHw4cPBsph", 
+    "data" : {
+        "v" : NumberInt(135), 
+        "meta" : {
+            "mtime" : 1.452069732944E12, 
+            "ctime" : 1.452069732944E12
+        }, 
+        "snapshot" : "public static int power (int base, int exponent){\n    \n    return (int) java.lang.Math.pow(base, exponent);\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "gWqvyA5WWdvKc7hQv", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452069896833E12, 
+            "ctime" : 1.452069896833E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "JQbFmSECHDB84JY7j", 
+    "data" : {
+        "v" : NumberInt(28), 
+        "meta" : {
+            "mtime" : 1.452069909759E12, 
+            "ctime" : 1.452069909759E12
+        }, 
+        "snapshot" : "", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "A52DJZADxRB9HfPdm", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452069930269E12, 
+            "ctime" : 1.452069930269E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "QbNZEoCCJLBPacW2F", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452069946836E12, 
+            "ctime" : 1.452069946836E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "2gZTovt22BSCRqXPw", 
+    "data" : {
+        "v" : NumberInt(111), 
+        "meta" : {
+            "mtime" : 1.452141508409E12, 
+            "ctime" : 1.452141508409E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n) {\n    for (int i = 0; i < n; i++) {\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "SSy6gRcBTrHhsTQNP", 
+    "data" : {
+        "v" : NumberInt(177), 
+        "meta" : {
+            "mtime" : 1.452141508519E12, 
+            "ctime" : 1.452141508519E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i=0; i<n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "6afpW65z7nvrBge3g", 
+    "data" : {
+        "v" : NumberInt(370), 
+        "meta" : {
+            "mtime" : 1.452141539316E12, 
+            "ctime" : 1.452141539316E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i=0; i<n ; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "xuw8YzJva7KFsyjvX", 
+    "data" : {
+        "v" : NumberInt(339), 
+        "meta" : {
+            "mtime" : 1.452141510403E12, 
+            "ctime" : 1.452141510403E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 1 ; i<=n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "wcQPasjdzmQck6aRS", 
+    "data" : {
+        "v" : NumberInt(130), 
+        "meta" : {
+            "mtime" : 1.452141511477E12, 
+            "ctime" : 1.452141511477E12
+        }, 
+        "snapshot" : "public static void helloWorld (int n){\n    for(int i = 0; i<n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "idrFyiyxGNvEgDv7F", 
+    "data" : {
+        "v" : NumberInt(393), 
+        "meta" : {
+            "mtime" : 1.452141518034E12, 
+            "ctime" : 1.452141518034E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    if (n > 0){\n        for (int i = 0; i < n; i++){\n            System.out.println(\"Hello World!\");\n        }   \n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "C8QgLE2KgiKz8buey", 
+    "data" : {
+        "v" : NumberInt(193), 
+        "meta" : {
+            "mtime" : 1.452141526127E12, 
+            "ctime" : 1.452141526127E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i =0; i<n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "hwYQAayBsEaL2FK2H", 
+    "data" : {
+        "v" : NumberInt(140), 
+        "meta" : {
+            "mtime" : 1.452141509072E12, 
+            "ctime" : 1.452141509072E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 0; i < n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "eukY92DaWdtNiL8XY", 
+    "data" : {
+        "v" : NumberInt(172), 
+        "meta" : {
+            "mtime" : 1.452141510759E12, 
+            "ctime" : 1.452141510759E12
+        }, 
+        "snapshot" : "public static void helloWorld (int n) {\n    for(int i = 0; i < n; i++) {\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "H5byezFftT5Zgsc4h", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452141870701E12, 
+            "ctime" : 1.452141870701E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "NNdmahB3wxZBuHiy6", 
+    "data" : {
+        "v" : NumberInt(206), 
+        "meta" : {
+            "mtime" : 1.452141524275E12, 
+            "ctime" : 1.452141524275E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    \n    for(int i=0; i<n; i++){\n        System.out.println(\"Hello World!\");\n    }\n    \n    \n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "2AKyPNkJdCdbGy3a6", 
+    "data" : {
+        "v" : NumberInt(167), 
+        "meta" : {
+            "mtime" : 1.452141637539E12, 
+            "ctime" : 1.452141637539E12
+        }, 
+        "snapshot" : "\tpublic static void helloWorld(int n){\n\t   for(int i=0;i<n;i++){\n\t       System.out.println(\"Hello World!\");\n\t   } \n\t}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "BaSQ6cSyMoGmSzcJ4", 
+    "data" : {
+        "v" : NumberInt(370), 
+        "meta" : {
+            "mtime" : 1.452141500835E12, 
+            "ctime" : 1.452141500835E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    if(n>=0){\n        for(int i=0;i<n;i++){\n            System.out.println(\"Hello World!\");\n        }\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "26x5dpJAXYEAPRGrJ", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.45214232649E12, 
+            "ctime" : 1.45214232649E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "uRwbhk2dMDpC7HKyZ", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452144438595E12, 
+            "ctime" : 1.452144438595E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "tNpfMDCBGKMqg3ofP", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452146035072E12, 
+            "ctime" : 1.452146035072E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "Yb5iRCmMjBcL2CWne", 
+    "data" : {
+        "v" : NumberInt(20), 
+        "meta" : {
+            "mtime" : 1.452146471823E12, 
+            "ctime" : 1.452146471823E12
+        }, 
+        "snapshot" : "for (int i = 0 ; i)", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "ConFkQ4NBsMgGgMcJ", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452151186125E12, 
+            "ctime" : 1.452151186125E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "ff5kQBauE2jex3C9a", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452153327999E12, 
+            "ctime" : 1.452153327999E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "vKJQzrvACWM6TMCN4", 
+    "data" : {
+        "v" : NumberInt(324), 
+        "meta" : {
+            "mtime" : 1.452171047302E12, 
+            "ctime" : 1.452171047302E12
+        }, 
+        "snapshot" : "public class Book {\n    private String title;\n    private int price;\n    \n    public void setTitle(String _title) {\n        title = _title;\n    }\n    \n    public void setPrice(int _price) {\n        price = _price;\n    }\n    \n    public String getTitle() {\n        return title;\n    }\n    \n    public int getPrice() {\n        return price;\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "cXv5sJzFEfKZWMjEf", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452177339278E12, 
+            "ctime" : 1.452177339278E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "DQiuRKejRffzXbbS7", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452178128222E12, 
+            "ctime" : 1.452178128222E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "bsx7roNvBjb2YqvCt", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452224241147E12, 
+            "ctime" : 1.452224241147E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "Naec4QXe9wLwD4Hnr", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452230450941E12, 
+            "ctime" : 1.452230450941E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "P4Gasy3k2m26EpN35", 
+    "data" : {
+        "v" : NumberInt(130), 
+        "meta" : {
+            "mtime" : 1.452261504622E12, 
+            "ctime" : 1.452261504622E12
+        }, 
+        "snapshot" : "public static String parseEmail(String email){\n    return email.substring(0, email.length() - 11);\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "ZD2AvCcRQpvnpq2vN", 
+    "data" : {
+        "v" : NumberInt(77), 
+        "meta" : {
+            "mtime" : 1.451646711374E12, 
+            "ctime" : 1.451646711374E12
+        }, 
+        "snapshot" : "public static int power(int b, int e) {\n    return (int) Math.pow(b, e);\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "4WFNY82JXaCd5ZEPL", 
+    "data" : {
+        "v" : NumberInt(158), 
+        "meta" : {
+            "mtime" : 1.45164689515E12, 
+            "ctime" : 1.45164689515E12
+        }, 
+        "snapshot" : "public static boolean assignCashierToOperateCounter(Supermarket supermarket, Cashier cashier, int counterNumber) {\n    Counter c = supermarket.getCounter(counterNumber);\n    if(c != null){\n        return c.setCashier(cashier);\n    }\n    return false;\n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "QWZK7HgKjxFvjwhJw", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.4516472202E12, 
+            "ctime" : 1.4516472202E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "tidnboJkGL2frTjXA", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451647266103E12, 
+            "ctime" : 1.451647266103E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "YP6iiXmvRxY7mFkbD", 
+    "data" : {
+        "v" : NumberInt(257), 
+        "meta" : {
+            "mtime" : 1.45164796844E12, 
+            "ctime" : 1.45164796844E12
+        }, 
+        "snapshot" : "public static int getNumberOfCounterWithNoQueue(Supermarket supermarket){\n    int count = 0;\n    for(int i = 1; i <= supermarket.getNumCounters(); i++){\n        Counter c = supermarket.getCounter(i);\n        if(c != null){\n            if(c.getNumCustomersInQueue() == 0){\n                count++;\n            }\n        }\n        \n    }\n    return count;\n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "qc6zsNQW2aSfHyYpH", 
+    "data" : {
+        "v" : NumberInt(374), 
+        "meta" : {
+            "mtime" : 1.45164847071E12, 
+            "ctime" : 1.45164847071E12
+        }, 
+        "snapshot" : "public static String  retrieveStatusOfAllCounters(Supermarket supermarket) {\n    StringBuilder sb = new StringBuilder();\n    sb.append(\"[\");\n    for(int i = 1; i <= supermarket.getNumCounters(); i++){\n        Counter c = supermarket.getCounter(i);\n        sb.append(i + \"-\");\n        if(c != null){\n            if(c.getCashier() != null){\n                sb.append(\"open\");\n            } else{\n                sb.append(\"closed\");\n            }\n        } else {\n            sb.append(\"closed\");\n        }\n        if(i != supermarket.getNumCounters()){\n            sb.append(\", \");\n        }\n    }\n    sb.append(\"]\");\n    return sb.toString();\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "42rHTgNAZZ5wEphiu", 
+    "data" : {
+        "v" : NumberInt(637), 
+        "meta" : {
+            "mtime" : 1.451649288021E12, 
+            "ctime" : 1.451649288021E12
+        }, 
+        "snapshot" : "public static int retrieveOpenCounterWithMostSnrs(Supermarket supermarket) {\n    int counterNum = -1;\n    double percentage = 0.0;\n    \n    for(int i = 1; i <= supermarket.getNumCounters(); i++){\n        Counter c = supermarket.getCounter(i);\n        if(c != null){\n            int numSeniors = 0;\n            for(int j = 1; j <= c.getNumCustomersInQueue(); j++){\n                Customer cus = c.getCustomerAtPosition(j);\n                if(cus.getAge() >= 60){\n                    numSeniors++;\n                }\n            }\n            double curPercentage = (double)numSeniors / c.getNumCustomersInQueue();\n            if(curPercentage > percentage){\n                counterNum = i;\n                percentage = curPercentage;\n            }\n        }\n    }\n    \n    return counterNum;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "x9mJLFe7nND7xM4nB", 
+    "data" : {
+        "v" : NumberInt(341), 
+        "meta" : {
+            "mtime" : 1.451650689705E12, 
+            "ctime" : 1.451650689705E12
+        }, 
+        "snapshot" : "public static String printPattern(String word, char ch){\n    if(word == null){\n        return \"\";\n    }\n    StringBuilder sb = new StringBuilder();\n    for(int i = 0; i < word.length(); i++){\n        char c = word.charAt(i);\n        sb.append(c);\n        if(i != word.length() - 1){\n            sb.append(ch);\n        }\n    }\n    return sb.toString();\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "epXKR9LwzDpcCGWXD", 
+    "data" : {
+        "v" : NumberInt(452), 
+        "meta" : {
+            "mtime" : 1.451653561467E12, 
+            "ctime" : 1.451653561467E12
+        }, 
+        "snapshot" : "public static void printCheckerBoard(String input, int row, int col){\n    for(int i = 0; i < row; i++){\n        for(int j = 0; j < col; j++){\n            if((i+j) % 2 == 0){\n                printStars(input);\n            } else{\n                System.out.print(input);\n            }\n        }\n        if(i != row - 1){\n            System.out.println(\"\");\n        }\n    }\n}\n\nprivate static void printStars(String input){\n    for(int i = 0; i < input.length(); i++){\n        System.out.print(\"*\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "AAYJ3HkZBpaSTjQz9", 
+    "data" : {
+        "v" : NumberInt(470), 
+        "meta" : {
+            "mtime" : 1.451655192347E12, 
+            "ctime" : 1.451655192347E12
+        }, 
+        "snapshot" : "public static String translateMessage(MessageTranslator translator, String secretMessage) {\n    return null;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "ngyeuy94AQaKfbHeW", 
+    "data" : {
+        "v" : NumberInt(20), 
+        "meta" : {
+            "mtime" : 1.451665020542E12, 
+            "ctime" : 1.451665020542E12
+        }, 
+        "snapshot" : "public class Marketer extends Employee{\n    \n    public double getSalary() {\n\t\treturn super.getSalary() + 10000;         // $40,000.00\n\t}\n    \n    public void advertise(){\n        System.out.println(\"Act now, while supplies last!\");\n    }\n    \n}\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "smRLhzSbzpnLDLFxm", 
+    "data" : {
+        "v" : NumberInt(22), 
+        "meta" : {
+            "mtime" : 1.451665548347E12, 
+            "ctime" : 1.451665548347E12
+        }, 
+        "snapshot" : "public class Tester {\n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "25JmGcMa2XKvZWKCw", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451667875456E12, 
+            "ctime" : 1.451667875456E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "eq5hundtsYBLXegGA", 
+    "data" : {
+        "v" : NumberInt(152), 
+        "meta" : {
+            "mtime" : 1.45167092742E12, 
+            "ctime" : 1.45167092742E12
+        }, 
+        "snapshot" : "public static int addPositive(int a, int b){\n    if(a <= 0 || b <= 0){\n        throw new IllegalArgumentException(\"Only positive integers allowed!\");\n    }\n    return a + b;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "DjErDzZXznA8Cq5nH", 
+    "data" : {
+        "v" : NumberInt(163), 
+        "meta" : {
+            "mtime" : 1.451673795252E12, 
+            "ctime" : 1.451673795252E12
+        }, 
+        "snapshot" : "public static int addPositive(int a, int b) {\n    if (a <= 0 || b <= 0) {\n        throw new IllegalArgumentException(\"Only positive integers allowed!\");\n    }\n    return a + b;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "qHPAJKj6AYo57DxeG", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451673889621E12, 
+            "ctime" : 1.451673889621E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "kmwuiR8FrAxcyF84i", 
+    "data" : {
+        "v" : NumberInt(422), 
+        "meta" : {
+            "mtime" : 1.451718592257E12, 
+            "ctime" : 1.451718592257E12
+        }, 
+        "snapshot" : "public static boolean assignCashierToOperateCounter(Supermarket supermarket, Cashier cashier, int counterNumber) {\n    Counter counter = supermarket.getCounter(counterNumber);\n    if (counter == null) {\n        return false;\n    }\n    if (counter.getCashier() != null) {\n        return false;\n    } else {\n        counter.setCashier(cashier);\n        return true;\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "Hb6au2Jr5RTK85q6b", 
+    "data" : {
+        "v" : NumberInt(332), 
+        "meta" : {
+            "mtime" : 1.451718932961E12, 
+            "ctime" : 1.451718932961E12
+        }, 
+        "snapshot" : "public static int getNumberOfCounterWithNoQueue(Supermarket supermarket) {\n    int noQueue = 0;\n    for (int i = 1; i <= supermarket.getNumCounters(); i++) {\n        Counter counter = supermarket.getCounter(i);\n        if (counter.getNumCustomersInQueue() == 0) {\n            noQueue++;\n        }\n    }\n    return noQueue;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "vBRD7WE7HZfa9Fuje", 
+    "data" : {
+        "v" : NumberInt(543), 
+        "meta" : {
+            "mtime" : 1.451719126977E12, 
+            "ctime" : 1.451719126977E12
+        }, 
+        "snapshot" : "public static String retrieveStatusOfAllCounters(Supermarket supermarket) {\n    String toReturn = \"[\";\n    for (int i = 1; i <= supermarket.getNumCounters(); i++) {\n        Counter counter = supermarket.getCounter(i);\n        String status = \"open\";\n        if (counter.getCashier() == null) {\n            status = \"closed\";\n        }\n        toReturn = toReturn + i + \"-\" + status;\n        if (i+1 > supermarket.getNumCounters()) {\n            toReturn = toReturn + \"]\";\n        } else {\n            toReturn = toReturn + \", \";\n        }\n    }\n    return toReturn;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "kR5QbTh7FTybM2H2x", 
+    "data" : {
+        "v" : NumberInt(659), 
+        "meta" : {
+            "mtime" : 1.45171951604E12, 
+            "ctime" : 1.45171951604E12
+        }, 
+        "snapshot" : "public static int retrieveOpenCounterWithMostSnrs(Supermarket supermarket) {\n    int toReturn = -1;\n    double percentage = 0;\n    \n    for (int i = 1; i <= supermarket.getNumCounters(); i++) {\n        Counter counter = supermarket.getCounter(i);\n        int snr = 0;\n        for (int j = 1; j <= counter.getNumCustomersInQueue(); j++) {\n            Customer customer = counter.getCustomerAtPosition(j);\n            if (customer.getAge() >= 60) {\n                snr++;\n            }\n        }\n        double currentPercentage = (double) snr / counter.getNumCustomersInQueue();\n        if (currentPercentage > percentage) {\n            percentage = currentPercentage;\n            toReturn = counter.getId();\n        }\n    }\n    return toReturn;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "6BM7vcoQHfu6qR92i", 
+    "data" : {
+        "v" : NumberInt(369), 
+        "meta" : {
+            "mtime" : 1.451719941175E12, 
+            "ctime" : 1.451719941175E12
+        }, 
+        "snapshot" : "public static String printPattern(String word, char ch) {\n    String toReturn = \"\";\n    \n    if (word == null || word.length() == 0) {\n        return toReturn;\n    }\n    \n    for (int i = 0; i < word.length(); i++) {\n        toReturn += \"\" + word.charAt(i);\n        if (i+1 < word.length()) {\n            toReturn += \"\" + ch;\n        }\n    }\n    return toReturn;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "vYonX7Pkm5jB2tbAb", 
+    "data" : {
+        "v" : NumberInt(729), 
+        "meta" : {
+            "mtime" : 1.451720279194E12, 
+            "ctime" : 1.451720279194E12
+        }, 
+        "snapshot" : "public static void printCheckerBoard(String word, int r, int c) {\n    String stars = \"\";\n    for (int i = 0; i < word.length(); i++) {\n        stars += \"*\";\n    }\n    \n    for (int i = 1; i <= r; i++) {\n        if (i % 2 == 1) {\n            for (int j = 1; j < c; j+=2) {\n                System.out.print(stars);\n                System.out.print(word);\n                if(j+2 == c) {\n                    System.out.print(stars);\n                }\n            }\n        } else {\n            for (int j = 1; j < c; j+=2) {\n                System.out.print(word);\n                System.out.print(stars);\n                if (j+2 == c) {\n                    System.out.print(word);\n                }\n            }\n        }\n        System.out.println();\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "KzZJ4nLx29xy6okuv", 
+    "data" : {
+        "v" : NumberInt(1356), 
+        "meta" : {
+            "mtime" : 1.451721018415E12, 
+            "ctime" : 1.451721018415E12
+        }, 
+        "snapshot" : "public static String translateMessage(MessageTranslator messageTranslator, String secretMessage) {\n    //extract each String that is separated by '|'\n    //decode the String\n    //store in toReturn container\n    \n    String toReturn = \"\";\n    \n    for (int i = 0; i < secretMessage.length(); i+=0) {\n        int indexOfPipe = secretMessage.indexOf('|');\n        if (indexOfPipe != -1) {\n            String secret = secretMessage.substring(i, indexOfPipe);\n            char ch = messageTranslator.decode(secret);\n            if (ch == '#') {\n                ch = ' ';\n            }\n            toReturn += \"\" + ch;\n            secretMessage = secretMessage.substring(indexOfPipe+1);\n        } else {\n            char ch = messageTranslator.decode(secretMessage);\n            toReturn += \"\" + ch;\n            break;\n        }\n    }\n    //toReturn.replaceAll(\"#\", \" \");\n    return toReturn;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "o3Z7xyYksdysDwvx4", 
+    "data" : {
+        "v" : NumberInt(354), 
+        "meta" : {
+            "mtime" : 1.451723390881E12, 
+            "ctime" : 1.451723390881E12
+        }, 
+        "snapshot" : "public static boolean assignCashierToOperateCounter(Supermarket supermarket, Cashier cashier, int counterNumber) {\n       \n        boolean assignmentSuccess = false;\n        if (supermarket.getCounter(counterNumber) != null) {\n            Counter toAssign = supermarket.getCounter(counterNumber);\n            if (toAssign.setCashier(cashier)) {\n                toAssign.setCashier(cashier);\n                assignmentSuccess = true;\n            }\n        }\n        return assignmentSuccess;\n    }\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "QmPKSx4WxzYyhHEy4", 
+    "data" : {
+        "v" : NumberInt(266), 
+        "meta" : {
+            "mtime" : 1.451724724534E12, 
+            "ctime" : 1.451724724534E12
+        }, 
+        "snapshot" : "public static int getNumberOfCounterWithNoQueue(Supermarket supermarket) {\n        int CnoQ = 0;\n        for (int i = 1; i <= supermarket.getNumCounters(); i++) {\n            Counter c = supermarket.getCounter(i);\n            if (c.getNumCustomersInQueue() == 0) {\n                CnoQ++;\n            }\n        }\n        return CnoQ;\n    }", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "PqK7aeBvbPrb9owKW", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451727747901E12, 
+            "ctime" : 1.451727747901E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "EMqKC538oa4XREmao", 
+    "data" : {
+        "v" : NumberInt(239), 
+        "meta" : {
+            "mtime" : 1.451742982286E12, 
+            "ctime" : 1.451742982286E12
+        }, 
+        "snapshot" : "public static boolean assignCashierToOperateCounter(Supermarket supermarket, Cashier cashier, int counterNumber) {\n    if (supermarket.getCounter(counterNumber) != null) {\n        Counter counter = supermarket.getCounter(counterNumber);\n        boolean isTaken = counter.setCashier(cashier);\n        if (isTaken) {\n            return true;\n        }\n    }\n    return false;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "WoAT7mZ7DX7CWRP6H", 
+    "data" : {
+        "v" : NumberInt(286), 
+        "meta" : {
+            "mtime" : 1.45174336051E12, 
+            "ctime" : 1.45174336051E12
+        }, 
+        "snapshot" : "public static int getNumberOfCounterWithNoQueue(Supermarket supermarket) {\n    int numOfCounters = supermarket.getNumCounters();\n    int numOfEmptyCounters = 0;\n    for (int i = 1; i <= numOfCounters; i++) {\n        Counter counter = supermarket.getCounter(i);\n        if (counter.getNumCustomersInQueue() == 0) {\n            numOfEmptyCounters++;\n        }\n    }\n    return numOfEmptyCounters;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "LteMHJGjdYenr2a8S", 
+    "data" : {
+        "v" : NumberInt(507), 
+        "meta" : {
+            "mtime" : 1.451743620597E12, 
+            "ctime" : 1.451743620597E12
+        }, 
+        "snapshot" : "public static String retrieveStatusOfAllCounters(Supermarket supermarket) {\n    int totalCounters = supermarket.getNumCounters();\n    String status = \"[\";\n    if (supermarket.getCounter(1).getCashier() == null) {\n        status += \"1-closed\";\n    }\n    else {\n        status += \"1-open\";\n    }\n    if (totalCounters > 1) {\n        for (int i = 2; i <= totalCounters; i++) {\n            Counter counter = supermarket.getCounter(i);\n            if (counter.getCashier() == null) {\n                status += \", \" + i + \"-closed\";\n                continue;\n            }\n            status += \", \" + i + \"-open\";\n        }\n    }\n    status += \"]\";\n    return status;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "rMsmhbtSiEBSmduRi", 
+    "data" : {
+        "v" : NumberInt(546), 
+        "meta" : {
+            "mtime" : 1.451744180495E12, 
+            "ctime" : 1.451744180495E12
+        }, 
+        "snapshot" : "public static int retrieveOpenCounterWithMostSnrs(Supermarket supermarket) {\n    int id = -1;\n    int totalCounters = supermarket.getNumCounters();\n    double percentage = 0.0;\n    for (int i = 1; i <= totalCounters; i++) {\n        Counter counter = supermarket.getCounter(i);\n        if (counter.getCashier() != null) {\n            int queue = counter.getNumCustomersInQueue();\n            if (queue > 0) {\n                int num = 0;\n                for (int j = 1; j <= queue; j++) {\n                    Customer customer = counter.getCustomerAtPosition(j);\n                    if (customer.getAge() >= 60) {\n                        num++;\n                    }\n                }\n                double current = (double)num / (double)queue;\n                if (percentage == 0.0 && num > 0) {\n                    percentage = current;\n                    id = i;\n                }\n                else {\n                    if (current > percentage) {\n                        id = i;\n                    }\n                }\n            }\n        }\n    }\n    return id;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "JwFMhgKMdusmXuutY", 
+    "data" : {
+        "v" : NumberInt(285), 
+        "meta" : {
+            "mtime" : 1.45174484901E12, 
+            "ctime" : 1.45174484901E12
+        }, 
+        "snapshot" : "public static String printPattern(String word, char ch) {\n    if (word != null && !word.equals(\"\")) {\n        String results = \"\";\n        if (word.length() > 1) {\n            results += \"\" + word.charAt(0);\n            for (int i = 1; i < word.length(); i++) {\n                char c = word.charAt(i);\n                results += \"\" + ch + c;\n            }\n            return results;\n        }\n        else {\n            return word;\n        }\n    }\n    return \"\";\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "a6HodXyH9nxwCc2CX", 
+    "data" : {
+        "v" : NumberInt(378), 
+        "meta" : {
+            "mtime" : 1.45174524629E12, 
+            "ctime" : 1.45174524629E12
+        }, 
+        "snapshot" : "public static void printCheckerBoard(String word, int r, int c) {\n    for (int i = 0; i < r; i++) {\n        int len = word.length();\n        String starStr = \"\";\n        for (int j = 0; j < len; j++) {\n            starStr += \"*\";\n        }\n        if (i % 2 == 0) {\n            for (int j = 0; j < c; j++) {\n                if (j % 2 == 0) {\n                    System.out.print(starStr);    \n                }\n                else {\n                    System.out.print(word);\n                }\n            } \n        }\n        else {\n            for (int j = 0; j < c; j++) {\n                if (j % 2 == 0) {\n                    System.out.print(word);    \n                }\n                else {\n                    System.out.print(starStr);\n                }\n            }  \n        }\n        System.out.println();\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "f8pj9tNAwjGZaM7tW", 
+    "data" : {
+        "v" : NumberInt(878), 
+        "meta" : {
+            "mtime" : 1.451745792742E12, 
+            "ctime" : 1.451745792742E12
+        }, 
+        "snapshot" : "public static String translateMessage(MessageTranslator messageTranslator, String secretMessage) {\n    String message = \"\";\n    while (!secretMessage.equals(\"\")) {\n        if (secretMessage.contains(\"||\") && secretMessage.substring(0,2).equals(\"||\")) {\n            message += \" \";\n            secretMessage = secretMessage.substring(2);\n        }\n        else {\n            if (secretMessage.contains(\"|\")) {\n                int pipeIndex = secretMessage.indexOf('|');\n                String currentChar = secretMessage.substring(0, pipeIndex);\n                if (messageTranslator.decode(currentChar) != '#') {\n                    message += messageTranslator.decode(currentChar);\n                }\n                else {\n                    message += \" \";\n                }\n                \n                secretMessage = secretMessage.substring(pipeIndex + 1);   \n            }\n            else {\n                message += messageTranslator.decode(secretMessage);\n                secretMessage = \"\";\n            }\n        }\n    }\n    return message;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "dvZc9CsGkHQ5v7Jwq", 
+    "data" : {
+        "v" : NumberInt(21), 
+        "meta" : {
+            "mtime" : 1.451754112604E12, 
+            "ctime" : 1.451754112604E12
+        }, 
+        "snapshot" : "kjhkjh,nkjlknln;lnlnl", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "TWgyjb73uJ5i3LEkG", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451803992606E12, 
+            "ctime" : 1.451803992606E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "aHCmcBsWn9EpZ7zcd", 
+    "data" : {
+        "v" : NumberInt(529), 
+        "meta" : {
+            "mtime" : 1.451803817885E12, 
+            "ctime" : 1.451803817885E12
+        }, 
+        "snapshot" : "public static void printOddNumbers(int a, int b) {\n    if (a > b) {\n        int temp = a;\n        a = b;\n        b = temp;\n    }\n    \n    for (int i = a; i <= b; i++)\n        if (i % 2 != 0) {\n            if (i+1 < b)\n              System.out.print(i+\" \");\n            else\n              System.out.print(i);\n        }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "Dq8nkbBtmYmjBw4S5", 
+    "data" : {
+        "v" : NumberInt(440), 
+        "meta" : {
+            "mtime" : 1.451807222972E12, 
+            "ctime" : 1.451807222972E12
+        }, 
+        "snapshot" : "public static void capitalizeWords(String s) {\n    s = s.trim();\n    for (int i = 0; i < s.length(); i++)\n        if (i == 0 || s.charAt(i-1)==' ')\n            System.out.print(Character.toUpperCase(s.charAt(i)));\n        else\n            System.out.print(s.charAt(i));   \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "JoCF2gPFWwLFNKt3J", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451813103532E12, 
+            "ctime" : 1.451813103532E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "Aju4gL3XfPXk5Abth", 
+    "data" : {
+        "v" : NumberInt(313), 
+        "meta" : {
+            "mtime" : 1.451810513435E12, 
+            "ctime" : 1.451810513435E12
+        }, 
+        "snapshot" : "public static void printOddNumbers(int a, int b){\n    if(a > b){\n        b = a ^ b;\n        a = b ^ a;\n        b = a ^ b;\n    }\n    for(;a <= b; a++){\n        if(a % 2 != 0){\n            System.out.print(\"[\" + a + \"]\");\n            if(a != b && b % 2 != 0){\n                System.out.print(\" \");\n            }\n        }\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "4Y3BTCFezbyjrjJZu", 
+    "data" : {
+        "v" : NumberInt(101), 
+        "meta" : {
+            "mtime" : 1.45183843333E12, 
+            "ctime" : 1.45183843333E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n) {\n    for (int i = 0; i < n; i++)\n        System.out.println(\"Hello World!\");\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "aHE9pNWxrA8DZNugJ", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451839871052E12, 
+            "ctime" : 1.451839871052E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "SfFPtdREa7jD4JDZn", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451839990709E12, 
+            "ctime" : 1.451839990709E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "6QkeiDzdLqD6Sa2Hv", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451840008058E12, 
+            "ctime" : 1.451840008058E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "bmtsN3KfanHPDHNbH", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.45184139118E12, 
+            "ctime" : 1.45184139118E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "Qj7hFXRhR88PhvwH9", 
+    "data" : {
+        "v" : NumberInt(117), 
+        "meta" : {
+            "mtime" : 1.451841792671E12, 
+            "ctime" : 1.451841792671E12
+        }, 
+        "snapshot" : "public static void computeAge(String s) {\n    String[] strArr = s.split(\"/\");\n    int year = Calendar.getInstance().get(Calendar.YEAR);\n    System.out.println(year - Integer.parseInt(strArr[2]));\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "kPMgLkt7uYro6zYng", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451880296641E12, 
+            "ctime" : 1.451880296641E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "wJqrW9cMrz4j6NvEw", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451880306481E12, 
+            "ctime" : 1.451880306481E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "R3AJp3ZdG4TZqzgui", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.45188032344E12, 
+            "ctime" : 1.45188032344E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "cpf6Na5m2uh9eHF4e", 
+    "data" : {
+        "v" : NumberInt(133), 
+        "meta" : {
+            "mtime" : 1.451880330258E12, 
+            "ctime" : 1.451880330258E12
+        }, 
+        "snapshot" : "static void  helloWorld(int number)\n{ //HI!\n for(int i =0;i<number;i+=1)\n {\n System.out.println(\"Hello World!\");\n }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "jD4q28s2iYDoJ9Ebh", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451880549996E12, 
+            "ctime" : 1.451880549996E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "yMeXLX8AqgEPjBeYL", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451880585734E12, 
+            "ctime" : 1.451880585734E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "eepvu9tXNia7GRu5E", 
+    "data" : {
+        "v" : NumberInt(351), 
+        "meta" : {
+            "mtime" : 1.451881772459E12, 
+            "ctime" : 1.451881772459E12
+        }, 
+        "snapshot" : "public static boolean assignCashierToOperateCounter(Supermarket supermarket, Cashier cashier, int counterNumber) {\n    if (supermarket.getNumCounters() >= counterNumber){\n        Counter temp = supermarket.getCounter(counterNumber);\n        return temp.setCashier(cashier);\n    } else {\n        return false;\n    }\n    \n    \n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "RPyuFWgqtbyR2FbKF", 
+    "data" : {
+        "v" : NumberInt(208), 
+        "meta" : {
+            "mtime" : 1.451882317629E12, 
+            "ctime" : 1.451882317629E12
+        }, 
+        "snapshot" : "public static void CalAvgScore(int[] input)\n    {\n        int sum=0;\n        for(i=0;i<input.length;i++)\n        {\n            sum=sum+input[i];\n        }\n   System.out.println(sum/input.length);\n}\n    \n    ", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "kR5oc2rA2FpRgEJ79", 
+    "data" : {
+        "v" : NumberInt(339), 
+        "meta" : {
+            "mtime" : 1.451882315401E12, 
+            "ctime" : 1.451882315401E12
+        }, 
+        "snapshot" : "public static String printPattern(String word, char ch){\n    if (word == null || word.length() == 0){\n        return \"\";\n    }\n    String output = \"\";\n    output += word.charAt(0);\n    for (int i = 1; i < word.length(); i++){\n        output += ch;\n        output += word.charAt(i);\n    }\n    \n    return output;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "vknarwiCdHXtBdRh7", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451882569759E12, 
+            "ctime" : 1.451882569759E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "hJjXakrLrWG5wFmjr", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451884745145E12, 
+            "ctime" : 1.451884745145E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "vjKDRtXqYotWa7Hka", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.45188478603E12, 
+            "ctime" : 1.45188478603E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "fjnAvHTb9MjvTDHPK", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451885522132E12, 
+            "ctime" : 1.451885522132E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "Be2uS75P3M3zx5ZmL", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451885594605E12, 
+            "ctime" : 1.451885594605E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "BSBpCMgpLTt8JgtHf", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.45188588933E12, 
+            "ctime" : 1.45188588933E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "xwTmLq2B3cvZHv5wk", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451885992821E12, 
+            "ctime" : 1.451885992821E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "n7KDReeaTt3ZfziWW", 
+    "data" : {
+        "v" : NumberInt(53), 
+        "meta" : {
+            "mtime" : 1.45188805212E12, 
+            "ctime" : 1.45188805212E12
+        }, 
+        "snapshot" : "public static void Test()\n{\n    System.out.println(\"Test\");\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "AuSivP3rR5WgMsri5", 
+    "data" : {
+        "v" : NumberInt(3), 
+        "meta" : {
+            "mtime" : 1.451888261545E12, 
+            "ctime" : 1.451888261545E12
+        }, 
+        "snapshot" : "public static void CalAvgScore(int[] input)\n    {\n        int sum=0;\n        for(i=0;i<input.length;i++)\n        {\n            sum=sum+input[i];\n        }\n   System.out.println(sum);\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "hKw3rJqsm9AH8c8sS", 
+    "data" : {
+        "v" : NumberInt(358), 
+        "meta" : {
+            "mtime" : 1.451840579413E12, 
+            "ctime" : 1.451840579413E12
+        }, 
+        "snapshot" : "public static void printMonths(int n) {\n    String[] months = {\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"};\n    int count = 0;\n    for (String s : months)\n        if (s.length() <= n) {\n            System.out.println(s);\n            count++;\n        }\n    if (count == 0)\n        System.out.println(\"Cannot find any months.\");\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "sjBSZ5xmjgkdpCZQY", 
+    "data" : {
+        "v" : NumberInt(159), 
+        "meta" : {
+            "mtime" : 1.451889262677E12, 
+            "ctime" : 1.451889262677E12
+        }, 
+        "snapshot" : "\npublic static void ReverseString(String in)\n{\n    String re=\"\";\n    int strlen = in.length();\n    for ( int i = strlen - 1 ; i >= 0 ; i--)\n        re = re +in.charAt(i);\n    \n    System.out.println(re);\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "oo6QRDuPREKYXQgov", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451890089208E12, 
+            "ctime" : 1.451890089208E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "EdFioMgTwzHWMohJu", 
+    "data" : {
+        "v" : NumberInt(115), 
+        "meta" : {
+            "mtime" : 1.45189107881E12, 
+            "ctime" : 1.45189107881E12
+        }, 
+        "snapshot" : "public static int CalAvg(int[] array){ //1st method\n        int total =0;\n        int avg = total / array.length;\n        return avg;\n\n    }", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "Q2R7Nnv7fsvP5KNvr", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.45189167551E12, 
+            "ctime" : 1.45189167551E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "fgzpq5hBgtNTnaham", 
+    "data" : {
+        "v" : NumberInt(197), 
+        "meta" : {
+            "mtime" : 1.451891933009E12, 
+            "ctime" : 1.451891933009E12
+        }, 
+        "snapshot" : "public static void CalAvgScore(double[] input)\n    {\n        double sum=0;\n        for(int i=0;i<input.length;i++)\n        {\n            sum=sum+input[i];\n        }\n        double avg=sum/input.length;\n        System.out.printf(\"%.2f\", avg);\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "TpYdTS8EpQ6QoMS6r", 
+    "data" : {
+        "v" : NumberInt(182), 
+        "meta" : {
+            "mtime" : 1.451893503168E12, 
+            "ctime" : 1.451893503168E12
+        }, 
+        "snapshot" : "  \n    public static void translateMessage(MessageTranslator a, String b) {\n    \n      \n    \n    \n    \n\n      \n        \n    }\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "fAiT32eCyx7ryurYT", 
+    "data" : {
+        "v" : NumberInt(191), 
+        "meta" : {
+            "mtime" : 1.451897967596E12, 
+            "ctime" : 1.451897967596E12
+        }, 
+        "snapshot" : "public static void CheckTriangleType(int a,int b, int c)\n{\n    if(a==b&&b==c)\n    {\n        System.out.println(\"EQUILATERAL TRIANGLE\");\n    }\n    else if(a==b || b==c || c==a)\n    {\n         System.out.println(\"ISOSCELES OR INVALID TRIANGLE\");\n    }\n    else\n    {\n         System.out.println(\"SCALENE OR INVALID TRIANGLE\");\n    }\n    }", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "CPAEn5MFNc4LzDqfE", 
+    "data" : {
+        "v" : NumberInt(242), 
+        "meta" : {
+            "mtime" : 1.451904078607E12, 
+            "ctime" : 1.451904078607E12
+        }, 
+        "snapshot" : "public static void CalculateVehicleTax(double orgPrice)\n    {\n        double finalPrice=orgPrice;\n        if(orgPrice<1000)\n        {\n         System.out.println(\"Vehicle value should be greater than or equal to 1000$\");\n        }\n        else if(orgPrice<10000)\n        {\n         System.out.printf(\"%.2f\", finalPrice*1.07);\n        }\n        else if(orgPrice<25000)\n        {\n         System.out.printf(\"%.2f\", finalPrice*1.08);\n        }\n        else\n        {\n         System.out.printf(\"%.2f\", finalPrice*1.10);\n        }\n        \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "o7F3QoWz2x9n9RtTW", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451910064189E12, 
+            "ctime" : 1.451910064189E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "SbmAzuetNitGi86BF", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451910086437E12, 
+            "ctime" : 1.451910086437E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "SzsDo9sMEby3xZkiu", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451915879257E12, 
+            "ctime" : 1.451915879257E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "rrEmzNHEfcr5XSxNX", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451916516837E12, 
+            "ctime" : 1.451916516837E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "YFF5kH3b65C6kJxWC", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451916647535E12, 
+            "ctime" : 1.451916647535E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "b8ZXuQoPTQDdwgN8a", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.45191688121E12, 
+            "ctime" : 1.45191688121E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "2PefzLZCBH2EBGFKB", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.45191692792E12, 
+            "ctime" : 1.45191692792E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "AuMhqn6efR5pTmXxZ", 
+    "data" : {
+        "v" : NumberInt(64), 
+        "meta" : {
+            "mtime" : 1.451927115468E12, 
+            "ctime" : 1.451927115468E12
+        }, 
+        "snapshot" : "public static int add(int a, int b) {\n    return a+b;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "9YgBSQSAi4TkEFby8", 
+    "data" : {
+        "v" : NumberInt(52), 
+        "meta" : {
+            "mtime" : 1.451928243636E12, 
+            "ctime" : 1.451928243636E12
+        }, 
+        "snapshot" : "public static int add(int a, int b) {\n    return a+b;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "kfXJ9ATZMozNJfqek", 
+    "data" : {
+        "v" : NumberInt(140), 
+        "meta" : {
+            "mtime" : 1.451950750444E12, 
+            "ctime" : 1.451950750444E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n) {\n    for(int i=0; i<n; i++) {\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "6BopaxCDaGweDsGDN", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451958202494E12, 
+            "ctime" : 1.451958202494E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "uYr6pTtLe3jePAkek", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451958324722E12, 
+            "ctime" : 1.451958324722E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "XzvG3mZ6evMBGPQb8", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451972135399E12, 
+            "ctime" : 1.451972135399E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "NM3fqfK8ZES5jfNyP", 
+    "data" : {
+        "v" : NumberInt(8), 
+        "meta" : {
+            "mtime" : 1.45197323868E12, 
+            "ctime" : 1.45197323868E12
+        }, 
+        "snapshot" : "public", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "3BQuqcv2ESxoegXx9", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451973915317E12, 
+            "ctime" : 1.451973915317E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "HegBFgwrpBQ9YgCFW", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451974388254E12, 
+            "ctime" : 1.451974388254E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "ZZoNqytEsnYkX5tF2", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451974409259E12, 
+            "ctime" : 1.451974409259E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "3k5gfXmr7bjPCKw5z", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.451974434162E12, 
+            "ctime" : 1.451974434162E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "PKkrqCmDeogdnJFAJ", 
+    "data" : {
+        "v" : NumberInt(172), 
+        "meta" : {
+            "mtime" : 1.45205397202E12, 
+            "ctime" : 1.45205397202E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    if(n>=0){\n        for(int i=0; i<n;i++){\n            System.out.println(\"Hello World!\");\n        }   \n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "GnnEqbp4BtKyoJMes", 
+    "data" : {
+        "v" : NumberInt(344), 
+        "meta" : {
+            "mtime" : 1.452053999242E12, 
+            "ctime" : 1.452053999242E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 1; i <= n; i++){\n        System.out.println(\"Hello World!\");\n    }\n} ", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "8HrS2ZqQ6yffkgmBc", 
+    "data" : {
+        "v" : NumberInt(191), 
+        "meta" : {
+            "mtime" : 1.452053991408E12, 
+            "ctime" : 1.452053991408E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    if(n >= 0){\n        for(int i = 0; i < n; i++){\n            System.out.println(\"Hello World!\");\n        }\n    }else{\n        System.out.println(\"Error found.\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "9iF9CS2CRaASHR7YH", 
+    "data" : {
+        "v" : NumberInt(358), 
+        "meta" : {
+            "mtime" : 1.452054037875E12, 
+            "ctime" : 1.452054037875E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n) {\n    for (int i = 0; i < n; i++) {\n            System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "R2RtTiLBMMN2JDSsM", 
+    "data" : {
+        "v" : NumberInt(116), 
+        "meta" : {
+            "mtime" : 1.452054026291E12, 
+            "ctime" : 1.452054026291E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n) {\n    for (int i = 0; i < n; i++) {\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "wJQJzJRxCsCeHbwot", 
+    "data" : {
+        "v" : NumberInt(342), 
+        "meta" : {
+            "mtime" : 1.452054067015E12, 
+            "ctime" : 1.452054067015E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i =0;i<n;i++){\n        System.out.println(\"Hello World!\");    \n    }\n} \n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "3jpNnHcNcjrJnLWZj", 
+    "data" : {
+        "v" : NumberInt(150), 
+        "meta" : {
+            "mtime" : 1.452054050403E12, 
+            "ctime" : 1.452054050403E12
+        }, 
+        "snapshot" : "public static void helloWorld (int n) {\n    if(n >= 0){\n        for (int x = 0; x < n; x ++){\n            System.out.println(\"Hello World!\");\n        }\n    }  \n    \n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "tmQ4hyeWQa6LWoTNe", 
+    "data" : {
+        "v" : NumberInt(518), 
+        "meta" : {
+            "mtime" : 1.45205403511E12, 
+            "ctime" : 1.45205403511E12
+        }, 
+        "snapshot" : "\n    public static void helloWorld(int n){\n        for(int i=0; i<n; i++){\n            System.out.println(\"Hello World!\");\n        }\n    }", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "NxFrS2GzcyFMA4PPB", 
+    "data" : {
+        "v" : NumberInt(428), 
+        "meta" : {
+            "mtime" : 1.452054085272E12, 
+            "ctime" : 1.452054085272E12
+        }, 
+        "snapshot" : "\n    public static void helloWorld(int n){\n        for (int i =0; i < n; i++){\n            System.out.println(\"Hello World!\");\n        }\n    }", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "knsfeJAQJhoXQTcNs", 
+    "data" : {
+        "v" : NumberInt(991), 
+        "meta" : {
+            "mtime" : 1.45206790232E12, 
+            "ctime" : 1.45206790232E12
+        }, 
+        "snapshot" : "public static void computeAge(String ageString){\n    \n    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat(\"dd/MM/yyyy\");\n    Date birthDate = null;\n    try {\n         birthDate = sdf.parse(ageString);\n    } catch(java.text.ParseException e){\n        e.printStackTrace();\n    }\n    Date today = new Date();\n    long differenceInMilis = today.getTime() - birthDate.getTime();\n    long differenceInYears = differenceInMilis / 1000 / 60 / 60 / 24 / 365;\n    System.out.println(differenceInYears);\n    \n    //String[] ageStringArr = ageString.split(\"/\");\n    //System.out.println(2016 - Integer.parseInt(ageStringArr[2]));\n    \n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "8mv46v3Bhami6EL97", 
+    "data" : {
+        "v" : NumberInt(131), 
+        "meta" : {
+            "mtime" : 1.452096010575E12, 
+            "ctime" : 1.452096010575E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    if(n>=0){\n        for(int i=0;i<n;i++){\n            System.out.println(\"Hello World!\");\n        }\n    }else{\n        return;\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "y3WBDeHrrvuzerEkA", 
+    "data" : {
+        "v" : NumberInt(409), 
+        "meta" : {
+            "mtime" : 1.451979390277E12, 
+            "ctime" : 1.451979390277E12
+        }, 
+        "snapshot" : "\n\npublic static void helloWorld(int n){\n    for(int i = 0; i < n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "qFbZujnyNtTn8sWm2", 
+    "data" : {
+        "v" : NumberInt(102), 
+        "meta" : {
+            "mtime" : 1.452141516644E12, 
+            "ctime" : 1.452141516644E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for (int i = 0; i<n;i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "jfyPsfm8Wgj9cXcEi", 
+    "data" : {
+        "v" : NumberInt(233), 
+        "meta" : {
+            "mtime" : 1.452141493699E12, 
+            "ctime" : 1.452141493699E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n) {\n        for(int i=0; i < n; i++) {\n            System.out.println(\"Hello World!\");\n        }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "5bGHcXXN8CQkJNF6b", 
+    "data" : {
+        "v" : NumberInt(253), 
+        "meta" : {
+            "mtime" : 1.452141505965E12, 
+            "ctime" : 1.452141505965E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int num=0;num<n;num+=1){\n        System.out.println(\"Hello World!\");\n    }\n    \n}\n\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "d3khAs99zBXPzo6uE", 
+    "data" : {
+        "v" : NumberInt(281), 
+        "meta" : {
+            "mtime" : 1.45214150718E12, 
+            "ctime" : 1.45214150718E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 0; i<n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "fwMdF7hqigo3rC936", 
+    "data" : {
+        "v" : NumberInt(289), 
+        "meta" : {
+            "mtime" : 1.45214152267E12, 
+            "ctime" : 1.45214152267E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 0; i<n; i++){ //0, 1, 2 <-- prints 3 times not 2!\n            System.out.println(\"Hello World!\");\n        }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "RtA24FjwL59f3TmHo", 
+    "data" : {
+        "v" : NumberInt(156), 
+        "meta" : {
+            "mtime" : 1.452141525635E12, 
+            "ctime" : 1.452141525635E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    if(n < 0){\n        return;\n    }\n    \n    for(int i = 0; i < n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "n9c8WhziSsipzgdQm", 
+    "data" : {
+        "v" : NumberInt(135), 
+        "meta" : {
+            "mtime" : 1.452141512049E12, 
+            "ctime" : 1.452141512049E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    \n        for(int i = 0; i < n; i++){\n            System.out.println(\"Hello World!\");\n        }\n    \n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "oXiZuQHtFekipjWmS", 
+    "data" : {
+        "v" : NumberInt(426), 
+        "meta" : {
+            "mtime" : 1.452141511431E12, 
+            "ctime" : 1.452141511431E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n) {\n    for(int i = 0; i < n; i++) {\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "z8aFsoJhmx5fKN7Mr", 
+    "data" : {
+        "v" : NumberInt(393), 
+        "meta" : {
+            "mtime" : 1.451744018424E12, 
+            "ctime" : 1.451744018424E12
+        }, 
+        "snapshot" : "", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "KqNCQGE49YLc3HFjT", 
+    "data" : {
+        "v" : NumberInt(122), 
+        "meta" : {
+            "mtime" : 1.452141627552E12, 
+            "ctime" : 1.452141627552E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 0; i < n; i++){\n        System.out.println(\"Hello World!\");    \n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "D8JtNjww43J4ePGhz", 
+    "data" : {
+        "v" : NumberInt(368), 
+        "meta" : {
+            "mtime" : 1.452141623002E12, 
+            "ctime" : 1.452141623002E12
+        }, 
+        "snapshot" : "//only need the method -- tool puts in class for you\npublic static void helloWorld(int i){\n   for(int n=0; n<i; n++){\n       System.out.println(\"Hello World!\");\n   } \n}\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "7jw7ymdcZfc4JR6vh", 
+    "data" : {
+        "v" : NumberInt(482), 
+        "meta" : {
+            "mtime" : 1.452141545058E12, 
+            "ctime" : 1.452141545058E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i=0; i<n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}\n\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "Z5HK4TYYv2suN3Pga", 
+    "data" : {
+        "v" : NumberInt(259), 
+        "meta" : {
+            "mtime" : 1.452141599655E12, 
+            "ctime" : 1.452141599655E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    if(n>=0){\n        for(int i=0; i<n; i++){\n            System.out.println(\"Hello World!\");\n        }\n    }\n}\n\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "dfqBAiWw2ou79Jw3R", 
+    "data" : {
+        "v" : NumberInt(207), 
+        "meta" : {
+            "mtime" : 1.452141515451E12, 
+            "ctime" : 1.452141515451E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    if (n >= 0){\n        for (int m = 0; m < n; m++){ //:) :))\n        System.out.println(\"Hello World!\");\n        }\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "KB5HHwNtCxJ7qvDWi", 
+    "data" : {
+        "v" : NumberInt(139), 
+        "meta" : {
+            "mtime" : 1.452141563997E12, 
+            "ctime" : 1.452141563997E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n) {\n    for (int i = 0; i < n; i++) {\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "XmPywNvkLK5nRLWJL", 
+    "data" : {
+        "v" : NumberInt(227), 
+        "meta" : {
+            "mtime" : 1.452141507785E12, 
+            "ctime" : 1.452141507785E12
+        }, 
+        "snapshot" : "public static void helloWorld (int n) {\n    for (int i = 0; i < n; i++) {\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "R5JxcYu3KA5oWfXZX", 
+    "data" : {
+        "v" : NumberInt(190), 
+        "meta" : {
+            "mtime" : 1.452141513431E12, 
+            "ctime" : 1.452141513431E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 0 ;i < n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "XgQtXeJpq5MJ5HCAj", 
+    "data" : {
+        "v" : NumberInt(114), 
+        "meta" : {
+            "mtime" : 1.452143245348E12, 
+            "ctime" : 1.452143245348E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i=1; i<=n;i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "LHEDrQ8A7M7KbbpsW", 
+    "data" : {
+        "v" : NumberInt(122), 
+        "meta" : {
+            "mtime" : 1.452141589227E12, 
+            "ctime" : 1.452141589227E12
+        }, 
+        "snapshot" : "public static void helloWorld(int n){\n    for(int i = 0; i < n; i++){\n        System.out.println(\"Hello World!\");\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "SjYgthfks4BDf9T8d", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452144461868E12, 
+            "ctime" : 1.452144461868E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "ZKtDtEi48AzyZwph8", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452144504383E12, 
+            "ctime" : 1.452144504383E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "DyBFYAxzE2GYw2wh4", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452144546459E12, 
+            "ctime" : 1.452144546459E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "QBiwR7yBhb9fazAgH", 
+    "data" : {
+        "v" : NumberInt(671), 
+        "meta" : {
+            "mtime" : 1.452144043858E12, 
+            "ctime" : 1.452144043858E12
+        }, 
+        "snapshot" : "public static String retrieveStatusOfAllCounters(Supermarket supermarket) {\n    int numCounters = supermarket.getNumCounters();\n    String counterStatus = \"\";\n    String lastCounterStatus = \"\";\n    \n    for (int i = 1 ; i <= numCounters - 1; i++) {\n        Counter counter = supermarket.getCounter(i);\n        if (counter.getCashier() == null) {\n            counterStatus += i + \"-closed,\";\n        }\n        else {\n            counterStatus += i + \"-open,\";\n        }\n    }\n        Counter lastCounter = supermarket.getCounter(numCounters);\n        if (lastCounter.getCashier() == null) {\n            lastCounterStatus += lastCounter + \"-closed\";\n        }\n        else {\n            lastCounterStatus += lastCounter + \"-open\";\n        }\n        counterStatus += numCounters + lastCounterStatus;  \n    \n    return counterStatus;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "EGsqhQrnX5jkxyvDG", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452146023685E12, 
+            "ctime" : 1.452146023685E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "WioXTCnnmyAkmuxai", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452146366109E12, 
+            "ctime" : 1.452146366109E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "6fadJQ3dHzg9fQRYA", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452146385009E12, 
+            "ctime" : 1.452146385009E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "fksbgTM5sWQhTWgKr", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452148160482E12, 
+            "ctime" : 1.452148160482E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "xX6set8EQzcKxqv5N", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452151155459E12, 
+            "ctime" : 1.452151155459E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "rFEDsRT3k2Lfij7xn", 
+    "data" : {
+        "v" : NumberInt(3), 
+        "meta" : {
+            "mtime" : 1.452151736323E12, 
+            "ctime" : 1.452151736323E12
+        }, 
+        "snapshot" : " class Book\n    {\n        private String title;\n        private int price;\n\n        public void setTitle(String title)\n        {\n            this.title = title;\n        }\n\n        public void setPrice(int price)\n        {\n            this.price=price;\n        }\n\n        public String getTitle()\n        {\n            return this.title;\n        }\n\n        public int getPrice()\n        {\n            return this.price;\n        }\n\n    }", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "i9SdnkbGEypGNfQ4q", 
+    "data" : {
+        "v" : NumberInt(632), 
+        "meta" : {
+            "mtime" : 1.452158525024E12, 
+            "ctime" : 1.452158525024E12
+        }, 
+        "snapshot" : "import java.util.ArrayList;\n\nclass Club\n    {\n        private String name;\n        private ArrayList<Player> players;\n\n        public void setCName(String name)\n        {\n            this.name = name;\n        }\n\n        public String getCName()\n        {\n            return this.name;\n        }\n        \n        public void addPlayer(Player p)\n        {\n            if(this.players==null)\n            {\n              this.players = new ArrayList<Player>(); \n              this.players.add(p);\n            }\n            else\n            {\n                this.players.add(p);\n            }\n            \n        }\n        \n        public String printClubPlayers()\n        {\n            String rstring=\"\";\n            if(this.players==null || this.players.isEmpty())\n                return \"No Players play for \"+this.getCName();\n            else\n            {\n                if(this.players.size()==1)\n                    return players.get(0).getPName() +\" plays for \"+this.getCName();\n                else\n                {\n                    int count=0;\n                    for (Player p : players) \n                    { \n                        if(count==0)\n                            rstring=p.getPName();\n                        else\n                            rstring=rstring+\",\"+p.getPName();\n                        count++;\n                    }\n                    return rstring+\" play for \"+this.getCName();\n                }   \n            }\n        }\n    }\n\nclass Player\n    {\n        private String name;\n\n        public void setPName(String name)\n        {\n            this.name = name;\n        }\n\n        public String getPName()\n        {\n            return this.name;\n        }\n\n\n    }\n\n\n\n", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "7EEoFmGaKsJBTSNJL", 
+    "data" : {
+        "v" : NumberInt(410), 
+        "meta" : {
+            "mtime" : 1.452177325681E12, 
+            "ctime" : 1.452177325681E12
+        }, 
+        "snapshot" : "public class Book{\n    private String title;\n    private int price;\n\n    \n    public void setTitle(String title){\n        this.title = title;\n    }\n    \n    public void setPrice(int price){\n        this.price = price;\n    }\n    \n    public String getTitle(){\n        return title;\n    }\n    \n    public int getPrice(){\n        return price;\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "fu8h5D92aCYZxHXR3", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452228008733E12, 
+            "ctime" : 1.452228008733E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "2KtyfRL9QbaXBhnTn", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452230463207E12, 
+            "ctime" : 1.452230463207E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "HXJZgqkDGbze7McPG", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452345297829E12, 
+            "ctime" : 1.452345297829E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "zhWETevKusYS3tH2n", 
+    "data" : {
+        "v" : NumberInt(609), 
+        "meta" : {
+            "mtime" : 1.452351312741E12, 
+            "ctime" : 1.452351312741E12
+        }, 
+        "snapshot" : "import java.util.*;\n\npublic class Team {\n\tprivate String name;\n\tprivate ArrayList<Member> members;\n\tprivate Member teamLeader;\n\n\tpublic Team(String name) {\n\t\tthis.name = name;\n\t\tmembers = new ArrayList<Member>();\n\t}\n\n\tpublic void addMember(Member member) {\n\t\tmembers.add(member);\n\t}\n\n\tpublic void addTeamLeader(Member member) {\n\t\tthis.teamLeader = member;\n\t}\n\n\tpublic String getName() {\n\t\treturn name;\n\t}\n\n\tpublic int getNumberOfMembers() {\n\t\treturn members.size() + 1;\n\t}\n\n\tpublic Member getTeamLeader() {\n\t\treturn teamLeader;\n\t}\n}\n\nclass Member {\n\tprivate String name;\n\tprivate ArrayList<Team> teams;\n\tprivate ArrayList<Member> friends;\n\n\tpublic Member(String name) {\n\t\tthis.name = name;\n\t\tteams = new ArrayList<Team>();\n\t    friends = new ArrayList<Member>();\n\t}\n\n\tpublic void setName(String name) {\n\t\tthis.name = name;\n\t}\n\n    public String getName() {\n        return this.name;\n    }\n    \n\tpublic void addFriend(Member member) {\n\t\tfriends.add(member);\n\t}\n\n    public int getNumberOfFriends() {\n        return friends.size();\n    }\n    \n\tpublic void addTeam(Team team) {\n\t\tteams.add(team);\n\t}\n\t\n\tpublic int getNumberOfTeams() {\n\t    return teams.size();\n\t}\n\t\n\tpublic String doTask(Task task) {\n\t    return getName()+\"'s task is \"+task.getName();\n\t}\n}\n\nclass Task {\n    private String name;\n    \n    public Task(String name) {\n        this.name = name;\n    }\n    \n    public void setName(String name) {\n\t\tthis.name = name;\n\t}\n\n    public String getName() {\n        return this.name;\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "euKxx9G8miAKkuc3e", 
+    "data" : {
+        "v" : NumberInt(449), 
+        "meta" : {
+            "mtime" : 1.452171086658E12, 
+            "ctime" : 1.452171086658E12
+        }, 
+        "snapshot" : "public class Club {\n    String name;\n    \n    ArrayList<Player> lst = new ArrayList<Player>();\n    \n    public void setCName(String name) {\n        this.name = name;\n    }\n    \n    public void addPlayer(Player p) {\n        lst.add(p);\n    }\n    \n    public String getCName() {\n        return name;\n    }\n    \n    public void printClubPlayers() {\n        System.out.println(\"No\");\n    }\n    \n}\n\npublic class Player {\n    String name;\n    \n    public void setPName(String name) {\n        this.name = name;\n    }\n    \n    public String getPName() {\n        return name;\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "QgBEjDmzPMc9xcmKS", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452430630493E12, 
+            "ctime" : 1.452430630493E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "3oxpgAo657EK4NDbo", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452470413464E12, 
+            "ctime" : 1.452470413464E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "DNaxHyA9onEpjHqBp", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452478062845E12, 
+            "ctime" : 1.452478062845E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "nEMctMC6E6pAeu9WA", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452510297538E12, 
+            "ctime" : 1.452510297538E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "bLgSz3vNAiLhnNXQF", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452514580598E12, 
+            "ctime" : 1.452514580598E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "nQrMswxikhvkPCac7", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452779054866E12, 
+            "ctime" : 1.452779054866E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "6yhQFrTyPhorwbq6W", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452917959606E12, 
+            "ctime" : 1.452917959606E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "Mr67F5G5EHMXYZYEX", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.452917988327E12, 
+            "ctime" : 1.452917988327E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "WTh24WPLW7yewo32E", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.453016601469E12, 
+            "ctime" : 1.453016601469E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "R4YhaxMrTYYaKhZ7G", 
+    "data" : {
+        "v" : NumberInt(1706), 
+        "meta" : {
+            "mtime" : 1.452793987481E12, 
+            "ctime" : 1.452793987481E12
+        }, 
+        "snapshot" : "public class Person {\n    private String name;\n    private int age;\n    \n    public Person(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n    \n    public int getAge() {\n        return age;\n    }\n    \n    public String getName() {\n        return name;\n    }\n    \n    public void setAge(int age) {\n        this.age = age;\n    }\n    \n    public void setName(String name) {\n        this.name = name;\n    }\n    \n    public String toString() {\n        return \"Hi! I am \" + getName() + \". I am \" + getAge() + \" years old.\";\n    }\n}\n\nclass Teacher extends Person {\n    private String department;\n\n    public Teacher(String name, int age, String department) {\n        super(name, age);\n        this.department = department;\n    }\n    \n    public String getDepartment() {\n        return department;\n    }\n    \n    public void setDepartment(String department) {\n        this.department = department;\n    }\n    \n    public String toString() {\n        return super.toString() + \" I am a teacher in Department of \" + getDepartment() + \".\";\n    }\n}\n\nclass Student extends Person {\n    private int admissionYear;\n    \n    public Student(String name, int age, int admissionYear) {\n        super(name, age);\n        this.admissionYear = admissionYear;\n    }\n    \n    public int getAdmissionYear() {\n        return admissionYear;\n    }\n    \n    public void setAdmissionYear(int admissionYear) {\n        this.admissionYear = admissionYear;\n    }\n    \n    public String toString() {\n        return super.toString() + \" I am a student. I was admitted in \" + getAdmissionYear() + \".\";\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "wQsio2ei7kNRCLpfa", 
+    "data" : {
+        "v" : NumberInt(1254), 
+        "meta" : {
+            "mtime" : 1.453026392234E12, 
+            "ctime" : 1.453026392234E12
+        }, 
+        "snapshot" : "public abstract class Shape {\n    String color;\n    \n    public Shape(String color) {\n        this.color = color;\n    }\n    \n    public String getColor() {\n        return color;\n    }\n    \n    public void setColor(String color) {\n        this.color = color;\n    }\n    \n    public abstract double getPerimeter();\n    public abstract double getArea();\n}\n\nclass Rectangle extends Shape {\n    double length;\n    double width;\n    \n    public Rectangle(String color, double length, double width) {\n        super(color);\n        this.length = length;\n        this.width = width;\n    }\n    \n    public double getLength() {\n        return length;\n    }\n    \n    public double getWidth() {\n        return width;\n    }\n    \n    public void setLength(double length) {\n        this.length = length;\n    }\n    \n    public void setWidth(double width) {\n        this.width = width;\n    }\n    \n    public double getArea() {\n        return length*width;\n    }\n    \n    public double getPerimeter() {\n        return 2*(length + width);\n    }\n}\n\nclass Circle extends Shape {\n    double radius;\n    \n    public Circle(String color, double radius) {\n        super(color);\n        this.radius = radius;\n    }\n    \n    public double getRadius() {\n        return radius;\n    }\n    \n    public void setRadius(double radius) {\n        this.radius = radius;\n    }\n    \n    public double getArea() {\n        return 3.14 * radius * radius;\n    }\n    \n    public double getPerimeter() {\n        return 2 * radius * 3.14;\n    }\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "aYqE49Zh2H6m6do5X", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.453028116718E12, 
+            "ctime" : 1.453028116718E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "fwr7qFbNP5dmmy4bk", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.453052201799E12, 
+            "ctime" : 1.453052201799E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "KhZf4fyWKscKQ9Ezi", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.453087749172E12, 
+            "ctime" : 1.453087749172E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "5oYJspZujoXNC7X6o", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.453087789057E12, 
+            "ctime" : 1.453087789057E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "mvXWpvj8nSHzMHeix", 
+    "data" : {
+        "snapshot" : "", 
+        "type" : "text", 
+        "meta" : {
+            "mtime" : 1.453099887298E12, 
+            "ctime" : 1.453099887298E12
+        }, 
+        "v" : NumberInt(0)
+    }
+}
+{ 
+    "_id" : "DHxgtpL68uHCqwNRS", 
+    "data" : {
+        "v" : NumberInt(96), 
+        "meta" : {
+            "mtime" : 1.453099991255E12, 
+            "ctime" : 1.453099991255E12
+        }, 
+        "snapshot" : "public class Rectangle extends Shape {\n    private double length;\n    private double weight;\n}", 
+        "type" : "text"
+    }
+}
+{ 
+    "_id" : "v9seGPzKCsFWhfivR", 
+    "data" : {
+        "v" : NumberInt(102), 
+        "meta" : {
+            "mtime" : 1.453176968965E12, 
+            "ctime" : 1.453176968965E12
+        }, 
+        "snapshot" : "COOl", 
+        "type" : "text"
+    }
+}

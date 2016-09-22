@@ -1,0 +1,247 @@
+{ 
+    "_id" : "AhQ5ryMMajkzsN9Kx", 
+    "name" : "Javaly Beta Test Group", 
+    "groupType" : "PRIVATE", 
+    "participants" : [
+        "EZWJtckhLqqNwhMdt", 
+        "PBoTSDBSjJSR4Am9w", 
+        "abAbxgL3EmmWjB7sf", 
+        "68ozkLhfuHLrFZjZn", 
+        "Y2iqMWBsKaPKSkjRG", 
+        "tcBo4fMNTct6HZH9y", 
+        "gQomari3k2A3ydXcs", 
+        "Zf8vYjbZgY643E4iA", 
+        "83sR4z6favCnL8oBj"
+    ], 
+    "teachingTeam" : [
+        "tcBo4fMNTct6HZH9y"
+    ], 
+    "pendingParticipants" : [
+
+    ], 
+    "exercises" : [
+        {
+            "_id" : "nG5nN2kNaQim8fCF9", 
+            "questions" : [
+                "HqBD3vaejm5KybHnD", 
+                "RDWYAzXw67dJDNyz8", 
+                "MpWwods8ctZAZk2ov", 
+                "xsTmbTMhHzWKFwzSw", 
+                "wRuC4Ed3LggcjdcH5", 
+                "ovCgAccuGWHny3ZXc", 
+                "ccZ7suBHz7fcjm6sk"
+            ], 
+            "createdAt" : ISODate("2016-01-01T14:07:44.383+0000"), 
+            "description" : "Lab Test 2"
+        }
+    ], 
+    "createdBy" : "9rYoFH5igugDWpN2i", 
+    "createdAt" : ISODate("2016-01-01T12:02:04.486+0000"), 
+    "updatedAt" : ISODate("2016-01-05T06:12:36.629+0000")
+}
+{ 
+    "_id" : "GQigrnAjARtk5F9ZR", 
+    "name" : "IS200 Revision Package", 
+    "groupType" : "OPEN", 
+    "participants" : [
+        "9rYoFH5igugDWpN2i", 
+        "abAbxgL3EmmWjB7sf", 
+        "EZWJtckhLqqNwhMdt", 
+        "kKd3iyvrsAiChKGGc", 
+        "68ozkLhfuHLrFZjZn", 
+        "y5WFNcvHSR5gQe4oy", 
+        "o2nCdpiziTjetjyiC", 
+        "PBoTSDBSjJSR4Am9w", 
+        "hGX7dwHp7M7kem4YH"
+    ], 
+    "teachingTeam" : [
+        "9rYoFH5igugDWpN2i", 
+        "kKd3iyvrsAiChKGGc"
+    ], 
+    "pendingParticipants" : [
+
+    ], 
+    "exercises" : [
+
+    ], 
+    "createdBy" : "tcBo4fMNTct6HZH9y", 
+    "createdAt" : ISODate("2016-01-01T16:29:22.140+0000"), 
+    "updatedAt" : ISODate("2016-01-07T04:45:44.738+0000")
+}
+{ 
+    "_id" : "3rCwLskmsTWA7rmEW", 
+    "name" : "IS200G8", 
+    "groupType" : "ACCEPT_REQUEST", 
+    "participants" : [
+        "kwdEpPyHJpHyKZNw4"
+    ], 
+    "teachingTeam" : [
+        "tcBo4fMNTct6HZH9y"
+    ], 
+    "pendingParticipants" : [
+        "abAbxgL3EmmWjB7sf"
+    ], 
+    "exercises" : [
+        {
+            "_id" : "vuDpDQacxuXZDWSa3", 
+            "questions" : [
+                "ccZ7suBHz7fcjm6sk", 
+                "ovCgAccuGWHny3ZXc", 
+                "wRuC4Ed3LggcjdcH5"
+            ], 
+            "createdAt" : ISODate("2016-01-04T07:25:08.885+0000"), 
+            "description" : "Quiz"
+        }
+    ], 
+    "createdBy" : "kwdEpPyHJpHyKZNw4", 
+    "createdAt" : ISODate("2016-01-04T07:13:11.338+0000"), 
+    "updatedAt" : ISODate("2016-01-06T07:35:24.151+0000")
+}
+{ 
+    "_id" : "TKckZm6ERmySE44ni", 
+    "name" : "IS201 AY15T2 G5 Kevin Steppe", 
+    "groupType" : "OPEN", 
+    "participants" : [
+        "83sR4z6favCnL8oBj", 
+        "68ozkLhfuHLrFZjZn", 
+        "tcBo4fMNTct6HZH9y", 
+        "abAbxgL3EmmWjB7sf", 
+        "5ncPQugL7uzRKQC92", 
+        "JK86fgJYarKfzNwm3", 
+        "Fkhs6HExYed55kD3M", 
+        "npFvwTrBtJqZaqBnz", 
+        "deNytmPanwMx89S32", 
+        "AQRmNB6CFhFYkGMXp", 
+        "Jwbt3mY2jSquRwffY", 
+        "PHCk5MRzg4Y2LY7iF", 
+        "zLjuBoH29r9sJ9fGq", 
+        "xAu89GpA2WxoX6yzo", 
+        "HShpsRKvXugq6ZwBc", 
+        "NNWqGaLJp79xqMKyo", 
+        "ygYWJxcpYuGzwJgxD", 
+        "HxRQyLBNbT6ioztcb", 
+        "eztrku6WiYRkLjadk", 
+        "irrvwjcTePd4SpvEH", 
+        "uRgc5J6RJWEYcCCZL", 
+        "kaDZjDvE5BcDPjWcq", 
+        "bJDQkS9S3h5HZyMFb", 
+        "qqdgdohxLDJhyFhW6", 
+        "gongAwtmzJGF3LYDh", 
+        "cW43ScXLhsavfP4xk", 
+        "dttmwWTXpP7m8dRep", 
+        "oPPnyeyEb8HK9xTLE", 
+        "L9Ag4SxXYcjeRshDH", 
+        "Yaj7YvgTvcEPGbfAY", 
+        "GxxmuhzndKTMqmrQv", 
+        "AKhJG4uKYeAwzvXNi", 
+        "mmCxiA2YzfycnEeGz", 
+        "fShffnp24cEo2RCdN", 
+        "AQE3C864LiYQeAJvX", 
+        "8tdkkT7ppwShevv6z", 
+        "gTtxiT2P5stbcskjT", 
+        "9MC3eGkXAs3uq2roA", 
+        "ePfoGkY8kqhTSyLLY", 
+        "syTcfQGx6fjYD2DBD", 
+        "fzFhAfCHiwc4842pK", 
+        "svDTiKSbjrc8MdJkK", 
+        "y5WFNcvHSR5gQe4oy", 
+        "LKwHZemSmZ8QeRcPA"
+    ], 
+    "teachingTeam" : [
+        "tcBo4fMNTct6HZH9y", 
+        "9rYoFH5igugDWpN2i", 
+        "5ncPQugL7uzRKQC92", 
+        "XLeT8JT2x2zD69kMW"
+    ], 
+    "pendingParticipants" : [
+
+    ], 
+    "exercises" : [
+        {
+            "_id" : "hBRYTivgPm37LJvhc", 
+            "description" : "Sign-up Exercise", 
+            "questions" : [
+                "dB7th3N8eaNgJWhjy"
+            ], 
+            "createdAt" : ISODate("2016-01-05T07:23:10.701+0000"), 
+            "updatedAt" : ISODate("2016-01-05T07:24:51.899+0000")
+        }
+    ], 
+    "createdBy" : "KRKfgoL5HMCG8dyC4", 
+    "createdAt" : ISODate("2016-01-01T11:18:42.325+0000"), 
+    "updatedAt" : ISODate("2016-01-07T05:04:09.702+0000")
+}
+{ 
+    "_id" : "hhFTEpfP8NeeFdxLM", 
+    "name" : "IS201 AY15T2 G6 Kevin Steppe", 
+    "groupType" : "OPEN", 
+    "participants" : [
+        "tcBo4fMNTct6HZH9y", 
+        "5ncPQugL7uzRKQC92", 
+        "o2nCdpiziTjetjyiC", 
+        "Zf8vYjbZgY643E4iA", 
+        "PBoTSDBSjJSR4Am9w", 
+        "Y2iqMWBsKaPKSkjRG", 
+        "uErWfF4oq6nX8rSEz", 
+        "Wic3xGwhjaGg2m4pM", 
+        "WDgovxNugxGzpZNug", 
+        "uzpS7dtenvTejjbPx", 
+        "Ktq2iHveYF9sZY7yZ", 
+        "xA9owZdBuNy9khwNZ", 
+        "6sYqa8NsckMh2jLAX", 
+        "TNRsxGSo47ivZF2yn", 
+        "jyBcJo7wcKnHkMJYm", 
+        "jAuExyyMK7nQs7CEn", 
+        "93rpRG8kk3rngskpW", 
+        "4TBa8dYQgPqqp9jSB", 
+        "Qcd4pgqLxpeKJgiAY", 
+        "D7LeG3FuxhnDCXkdf", 
+        "TTKwDrJfuLsH4ietj", 
+        "RodAzLsTifXSwXubZ", 
+        "nXfCjbKsy9KcSBMf8", 
+        "3JZczjMHX4MexPD7k", 
+        "hMbZeYszwhr8HeFb3", 
+        "hGX7dwHp7M7kem4YH", 
+        "FxW9caXRd8vR5Egkk", 
+        "8tuwbsk9rh5E7pjGu", 
+        "tPgDpL2f7Hh6ZHa8B", 
+        "2RarjXXS9LHQCdiKo", 
+        "NTZZhLAfn9zfic6X3", 
+        "iGBq7miKKc7y2CDFf", 
+        "LbzNmSeMDh2EWx7mK", 
+        "sw6DJKqcMpj4bHgND", 
+        "bfgX8N84QjeyBS9BE", 
+        "Qjnk55oJJB3szE8cN", 
+        "mY7tSzSi7iPqEBbJB", 
+        "9rYoFH5igugDWpN2i", 
+        "d3Csi7z8tLka7wAP2", 
+        "ZXabn9PSbRAEHGzB2", 
+        "Sg3F7bE3g3Sfwcg3a", 
+        "LKwHZemSmZ8QeRcPA", 
+        "GFFWb596Yq6CqQ9WA"
+    ], 
+    "teachingTeam" : [
+        "tcBo4fMNTct6HZH9y", 
+        "9rYoFH5igugDWpN2i", 
+        "5ncPQugL7uzRKQC92", 
+        "XLeT8JT2x2zD69kMW", 
+        "68ozkLhfuHLrFZjZn"
+    ], 
+    "pendingParticipants" : [
+
+    ], 
+    "exercises" : [
+        {
+            "_id" : "6K7CKpnwnnybfj8Xq", 
+            "description" : "Sign-up Exercise", 
+            "questions" : [
+                "dB7th3N8eaNgJWhjy"
+            ], 
+            "createdAt" : ISODate("2016-01-05T08:01:26.872+0000"), 
+            "updatedAt" : ISODate("2016-01-05T08:01:39.058+0000")
+        }
+    ], 
+    "createdBy" : "KRKfgoL5HMCG8dyC4", 
+    "createdAt" : ISODate("2016-01-02T11:18:13.354+0000"), 
+    "updatedAt" : ISODate("2016-01-07T05:02:54.345+0000")
+}

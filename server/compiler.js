@@ -112,7 +112,7 @@ Meteor.methods({
 
 
         // ------ update mongodb based on results ------ //
-        if(result.isError) {
+        if(!result || result.isError) {
             //uncompilable code - store result, then throw error to the UI
             //will have to decide in the future if i wanna store code that cannot compile to history
             Attempts.update(options.attemptId, {$set: {

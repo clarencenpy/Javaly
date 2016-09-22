@@ -5,7 +5,7 @@ if (process.env.NODE_ENV === 'development') {
             {password: "asdasd", name: "Administrator", email: "admin@smu.sg", roles: ['admin', 'instructor', 'ta', 'student']},
             {password: "asdasd", name: "Lee Yeow Leong", email: "yl@smu.sg", roles: ['instructor', 'ta', 'student']},
             {password: "asdasd", name: "Chris Boesch", email: "cb@smu.sg", roles: ['instructor', 'ta', 'student']},
-            {password: "asdasd", name: "Clarence Ngoh", email: "cl@smu.sg", roles: ['ta', 'student']},
+            {password: "asdasd", name: "Clarence Ngoh", email: "py.ngoh.2014@sis.smu.edu.sg", roles: ['ta', 'student']},
             {password: "asdasd", name: "Student1", email: "s1@smu.sg", roles: ['student']},
             {password: "asdasd", name: "Student2", email: "s2@smu.sg", roles: ['student']},
             {password: "asdasd", name: "Student3", email: "s3@smu.sg", roles: ['student']}
