@@ -1,1 +1,0 @@
-{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"db.ops"},{"v":1,"key":{"_id.doc":1,"_id.v":1},"name":"_id.doc_1__id.v_1","ns":"db.ops","background":true}]}
