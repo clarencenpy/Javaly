@@ -69,7 +69,8 @@ Meteor.methods({
                 verified: q.verified,
                 numAttempts: Attempts.find({questionId: q._id}).count(),
                 tags: _.map(q.tags, function (tag) {
-                    return Tags.findOne(tag).label;
+                    var tag = Tags.findOne(tag)
+                    return tag ? tag.label : 'IS200'
                 })
             };
         });
