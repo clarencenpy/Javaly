@@ -8,6 +8,7 @@ A web-based platform for authoring and automatically grading programming problem
 * **New**: Nudge students who are performing poorly by automatically sending an email to the bottom x percentile
 * **New**: History Mode that allows you to step through each code submission that a student makes, and understand their thought process
 
+![Screenshot](screenshots/Banner.png?raw=true)
 ![Screenshot](screenshots/Question\ Editor.png?raw=true)
 ![Screenshot](screenshots/Test\ Code\ Editor.png?raw=true)
 ![Screenshot](screenshots/Exercise\ Builder.png?raw=true)
