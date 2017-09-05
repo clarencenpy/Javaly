@@ -1,12 +1,17 @@
 ### Javaly
 A web-based platform for authoring and automatically grading programming problems written in Java
 
+#### Features
 * Question authoring with support for writing test cases or creating them through the GUI
 * Instructors can create groups for their students to join, and push exercises to them
 * See an overview of your student's progress as they code in **real time**!
 * See overall statistics of their solve timings to identify students who need help
 * **New**: Nudge students who are performing poorly by automatically sending an email to the bottom x percentile
 * **New**: History Mode that allows you to step through each code submission that a student makes, and understand their thought process
+
+#### Technical notes
+* Untrusted code is compiled and executed within isolated Docker containers
+* Horizontal scaling of code execution step implemented using job queues on Redis
 
 ![Screenshot](screenshots/Banner.png?raw=true)
 ![Screenshot](screenshots/Question%20Editor.png?raw=true)
